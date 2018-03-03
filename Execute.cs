@@ -1,4 +1,5 @@
 ﻿using System;
+using CodeGen.generators;
 
 namespace CodeGen
 {
@@ -6,7 +7,18 @@ namespace CodeGen
 	{
 		public static void Execute()
 		{
-			Console.WriteLine(Program.DefaultPkg.Name);
+			const string lang = Program.DefaultLang;
+			
+			var gen = GeneratorConf.GetGenerator(lang);
+			var data = gen.Generate(Program.DefaultPkg);
+			var comment = GeneratorConf.Languanges[lang].Comment;
+			var extension = GeneratorConf.Languanges[lang].Extension;
+			foreach (var item in data)
+			{
+				var filename = item.Key + "." + extension;
+				Console.WriteLine(comment, filename);
+				Console.WriteLine(item.Value);
+			}
 		}
 	}
 }

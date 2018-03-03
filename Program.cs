@@ -3,16 +3,21 @@ using CodeGen.generators;
 
 namespace CodeGen
 {
-	class Program
+	internal static class Program
 	{
-		public static string DefaultLang = "csharp";
-		public static Package DefaultPkg = DefaultGenerator.ExamplePkg;
+		public const string DefaultLang = "java";
+		public static Package DefaultPkg = GeneratorConf.ExamplePkg;
 
-		static void Main(string[] args)
+		private static void Main(string[] args)
 		{
-			Console.WriteLine("Hello LHalam!");
-			Console.WriteLine(new GoGenerator().Generate(DefaultPkg));
-			ExecuteConf.Execute();
+			try
+			{
+				ExecuteConf.Execute();
+			}
+			catch (Exception e)
+			{
+				Console.WriteLine(e);
+			}
 		}
 	}
 }

@@ -1,28 +1,27 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 
 namespace CodeGen.generators
 {
-	public class GoGenerator : Generator
+	public class RubyGenerator : Generator
 	{
 		public override Dictionary<string, string> Generate(Package pkg)
 		{
-			return new Dictionary<string, string>();
+			throw new System.NotImplementedException();
 		}
 
 		protected override string GenerateClass(Class @class)
 		{
-			return "";
+			throw new System.NotImplementedException();
 		}
 
 		protected override string GenerateField(Field field)
 		{
-			return "";
+			throw new System.NotImplementedException();
 		}
 
 		protected override string GenerateMethod(Method method)
 		{
-			throw new NotImplementedException();
+			throw new System.NotImplementedException();
 		}
 	}
 }
