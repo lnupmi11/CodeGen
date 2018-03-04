@@ -174,7 +174,7 @@ namespace CodeGen.generators
 			{
 				gen = Languanges[name];
 			}
-			catch (Exception e)
+			catch (Exception)
 			{
 				throw new IndexOutOfRangeException("this generator doesn't exist");
 			}

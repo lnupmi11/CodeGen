@@ -10,6 +10,7 @@ namespace CodeGen
 
 		private static void Main(string[] args)
 		{
+			//TODO parse arguments using https://archive.codeplex.com/?p=commandline
 			try
 			{
 				ExecuteConf.Execute();
