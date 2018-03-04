@@ -144,7 +144,7 @@ namespace CodeGen.generators
 			return indent + code.Replace("\n", "\n" + indent);
 		}
 
-		private static string NormalizeLang(string lang)
+		public static string NormalizeLang(string lang)
 		{
 			if (lang == "js")
 			{
