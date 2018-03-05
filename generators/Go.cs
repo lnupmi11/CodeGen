@@ -3,11 +3,16 @@ using System.Linq;
 
 namespace CodeGen.generators
 {
+	/// <inheritdoc />
+	/// <summary>
+	/// Go language generator
+	/// </summary>
 	public class GoGenerator : Generator
 	{
 		private const string ClassFormat = "type {0} struct {{{1}}}{2}{3}";
 		private string Indent { get; set; } = GeneratorConf.GetIndent(true, 4);
-		
+
+		/// <inheritdoc />
 		public override Dictionary<string, string> Generate(Package pkg)
 		{
 			var data = new Dictionary<string, string>();
@@ -20,6 +25,7 @@ namespace CodeGen.generators
 			return data;
 		}
 
+		/// <inheritdoc />
 		protected override string GenerateClass(Class @class)
 		{
 			string fields = "", methods = "", classes = "";
@@ -30,6 +36,7 @@ namespace CodeGen.generators
 			return string.Format(ClassFormat, @class.Name, fields, methods, classes);
 		}
 
+		/// <inheritdoc />
 		protected override string GenerateField(Field field)
 		{
 			var result = Indent;
@@ -44,6 +51,7 @@ namespace CodeGen.generators
 			return result;
 		}
 
+		/// <inheritdoc />
 		protected override string GenerateMethod(Method method)
 		{
 			var result = "";
@@ -56,7 +64,7 @@ namespace CodeGen.generators
 			for (var i = 0; i < method.Parameters?.Length; i++)
 			{
 				result += method.Parameters[i].Name + " " + method.Parameters[i].Type;
-				if (i+1 < method.Parameters?.Length)
+				if (i + 1 < method.Parameters.Length)
 				{
 					result += ", ";
 				}
