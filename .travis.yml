@@ -5,3 +5,4 @@ install:
 - dotnet restore
 script:
 - dotnet build
+- dotnet xunit
