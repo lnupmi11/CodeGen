@@ -25,12 +25,12 @@ namespace CodeGen.generators
 		{
 			string fields = "", methods = "", classes = "";
 
-			fields = @class.Fields?.Aggregate("\n" + fields, (current, field) => current + GenerateField(field) + "\n");
+			fields = @class.Fields?.Aggregate(fields, (current, field) => current + GenerateField(field) + "\n");
 			
 			methods = @class.Methods?.Aggregate("\n" + methods,
 				(current, method) => current + GeneratorConf.ShiftCode(GenerateMethod(method), 1, Indent) + "\n");
 			
-			classes = @class.Classes?.Aggregate("\n" + classes,
+			classes = @class.Classes?.Aggregate(classes,
 				(current, cls) => current + GeneratorConf.ShiftCode(GenerateClass(cls), 1, Indent));
 			
 			var result = string.Format(ClassFormat, @class.Name, fields, methods, classes);
@@ -41,7 +41,7 @@ namespace CodeGen.generators
 				access = @class.Access + " ";
 			}
 			
-			return access + result + "\nEnd Class\n";
+			return access + result + "\nEnd Class";
 		}
 
 		protected override string GenerateField(Field field)
@@ -57,19 +57,19 @@ namespace CodeGen.generators
 		protected override string GenerateMethod(Method method)
 		{
 			var result = method.Access + " ";
-
-			var type = "";
-
-			type = method.Return?.Length > 0 ? "Function" : "Sub";
+			var type = method.Return?.Length > 0 ? "Function" : "Sub";
 			result += type + " " + method.Name + "(";
 
 			for (var i = 0; i < method.Parameters?.Length; i++)
 			{
-				result += "ByVal " + method.Parameters[i].Name + " As ";
-				result += method.Parameters[i].Type;
+				var parameter = method.Parameters[i].Name + " As " + method.Parameters[i].Type;
 				if (method.Parameters[i].Default?.Length > 0)
 				{
-					result += " = " + method.Parameters[i].Default;
+					result += "Optional " + parameter + " = " + method.Parameters[i].Default;
+				}
+				else
+				{
+					result += "ByVal " + parameter;
 				}
 
 				if (i + 1 < method.Parameters?.Length)
@@ -91,10 +91,7 @@ namespace CodeGen.generators
 			result += "\nEnd " + type + "\n";
 			return result;
 		}
-
-		private void Normalize()
-		{
-			
-		}
 	}
+	
+	
 }
