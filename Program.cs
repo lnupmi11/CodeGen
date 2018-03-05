@@ -5,7 +5,8 @@ namespace CodeGen
 {
 	internal static class Program
 	{
-		public const string DefaultLang = "vb";
+		public const string DefaultLang = "csharp";
+		
 		public static Package DefaultPkg = GeneratorConf.ExamplePkg;
 
 		private static void Main(string[] args)

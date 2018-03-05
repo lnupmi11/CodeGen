@@ -18,6 +18,8 @@ namespace CodeGen.generators
 				data[@class.Name] = GenerateClass(@class) + "\n";
 			}
 
+			
+
 			return data;
 		}
 

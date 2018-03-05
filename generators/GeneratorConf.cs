@@ -78,6 +78,7 @@ namespace CodeGen.generators
 						new Method
 						{
 							Access = "private",
+							Return = "",
 							Name = "print",
 							Parameters = new[]
 							{
@@ -142,6 +143,7 @@ namespace CodeGen.generators
 			{"ruby", new Languange(new RubyGenerator(), "rb", "# {0}")},
 			{"python", new Languange(new PythonGenerator(), "py", "# {0}\n")},
 			{"vb", new Languange(new VBGenerator(), "vb", "' {0}\n")},
+			{"csharp", new Languange(new CSharpGenerator(), "cs","/* {0} */")},
 		};
 
 		public static string GetIndent(bool tabs, int tabStop)
