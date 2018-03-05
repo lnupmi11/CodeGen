@@ -12,6 +12,14 @@ namespace CodeGen.generators
 		protected abstract string GenerateMethod(Method method);
 	}
 
+	public abstract class Normalizer
+	{
+		public abstract Package NormalizePackage(Package pkg);
+		protected abstract Class NormalizeClass(Class @class);
+		protected abstract Field NormalizeField(Field field);
+		protected abstract Method NormalizeMethod(Method method);
+	}
+
 	public struct Languange
 	{
 		public Generator Generator;
