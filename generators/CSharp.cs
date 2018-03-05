@@ -29,7 +29,7 @@ namespace CodeGen.generators
 		protected override string GenerateClass(Class @class)
 		{
 			string fields = "", inherits = "", methods = "", classes = "";
-			if (@class.Parent != "")
+			if (@class.Parent != null)
 			{
 					inherits = ": " + @class.Parent + " ";	
 			}
@@ -38,6 +38,10 @@ namespace CodeGen.generators
 
 			methods = @class.Methods?.Aggregate("\n" + methods,
 				(current, method) => current + GeneratorConf.ShiftCode(GenerateMethod(method), 1, Indent) + "\n");
+			
+			classes = @class.Classes?.Aggregate("\n" + classes,
+				(current, cls) => current + GeneratorConf.ShiftCode(GenerateClass(cls), 1, Indent));
+			
 			return string.Format(ClassFormat, @class.Name, inherits, fields, methods, classes);
 		}
 
