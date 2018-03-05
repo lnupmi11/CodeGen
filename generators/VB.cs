@@ -5,6 +5,9 @@ using System.Linq;
 namespace CodeGen.generators
 {
 	/// <inheritdoc />
+	/// <summary>
+	/// Visual Basic language generator
+	/// </summary>
 	public class VbGenerator : Generator
 	{
 		private const string ClassFormat = "Class {0}\n{1}{2}{3}{4}";
