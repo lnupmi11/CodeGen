@@ -1,4 +1,3 @@
-using System;
 using System.Collections.Generic;
 using System.Linq;
 
@@ -6,9 +5,9 @@ namespace CodeGen.generators
 {
 	public class PythonGenerator : Generator
 	{
-		private const string ClassFormat = "class {0} {1}{{{2}{3}{4}}}";
+		private const string ClassFormat = "class {0}{1}:\n{2}{3}{4}";
 		private string Indent { get; set; } = GeneratorConf.GetIndent(true, 4);
-
+		
 		public override Dictionary<string, string> Generate(Package pkg)
 		{
 			var data = new Dictionary<string, string>();
@@ -24,111 +23,123 @@ namespace CodeGen.generators
 		protected override string GenerateClass(Class @class)
 		{
 			string fields = "", inherits = "", methods = "", classes = "";
+
 			if (@class.Parent != "")
 			{
-				inherits = "extends " + @class.Parent + " ";
+				inherits = "(" + @class.Parent + ")";
 			}
 
-			fields = @class.Fields?.Aggregate("\n" + fields, (current, field) => current + GenerateField(field) + "\n");
-
+			if (@class.Fields?.Length > 0)
+			{
+				fields = GeneratorConf.ShiftCode(GenerateInit(@class), 1, Indent);
+			}
+			
 			methods = @class.Methods?.Aggregate("\n" + methods,
 				(current, method) => current + GeneratorConf.ShiftCode(GenerateMethod(method), 1, Indent) + "\n");
-			return string.Format(ClassFormat, @class.Name, inherits, fields, methods, classes);
+			
+			classes = @class.Classes?.Aggregate("\n" + classes,
+				(current, cls) => current + GeneratorConf.ShiftCode(GenerateClass(cls), 1, Indent));
+			
+			var result = string.Format(ClassFormat, @class.Name, inherits, fields, methods, classes);
+			
+			if (result[result.Length - 2] == ':' && result[result.Length - 1] == '\n')
+			{
+				result += Indent + "pass";
+			}
+
+			return result;
 		}
 
 		protected override string GenerateField(Field field)
 		{
 			var result = Indent;
-			if (field.Access == "" || field.Access == "default")
+
+			if (field.Access == "public")
 			{
-				result += "private ";
-			}
-			else
-			{
-				result += field.Access + " ";
+				field.Name = field.Name?.First().ToString().ToUpper() + field.Name?.Substring(1);
 			}
 
-			if (field.Const)
-			{
-				result += "const ";
-			}
+			result += field.Name + " " + field.Type;
 
-			if (field.Static)
-			{
-				result += "static ";
-			}
-
-			switch (field.Type)
-			{
-				case "string":
-					result += "String ";
-					break;
-				default:
-					result += field.Type + " ";
-					break;
-			}
-
-			result += field.Name;
-			if (field.Default != "")
-			{
-				result += " = " + field.Default;
-			}
-
-			result += ";";
 			return result;
 		}
 
 		protected override string GenerateMethod(Method method)
 		{
-			var result = "";
-			if (method.Access == "" || method.Access == "default")
+			return GenerateMethodWithBody(method, "pass");
+		}
+		
+		private string GenerateInit(Class @class)
+		{
+			string result = "", body = "";
+			var init = new Method
 			{
-				result += "private ";
-			}
-			else
+				Name = "__init__",
+				Parameters = new Parameter[] { }
+			};
+			foreach (var field in @class.Fields)
 			{
-				result += method.Access + " ";
+				init.Parameters.Append(new Parameter()
+				{
+					Name = field.Name,
+					Default = field.Default
+				});
+				body += "self." + field.Name + " = " + field.Name + "\n";
 			}
+
+			result += GenerateMethodWithBody(init, body);
+
+			return result;
+		}
+		
+		private string GenerateMethodWithBody(Method method, string body) 
+		{
+			var result = "def ";
+
+			switch (method.Access)
+			{
+				case "private":
+					method.Name = "__" + method.Name;
+					break;
+				case "protected":
+					method.Name = "_" + method.Name;
+					break;
+			}
+
+			result += method.Name + "(";
 
 			if (method.Static)
 			{
-				result += "static ";
-			}
-
-			if (method.Return == "string")
-				result += "String ";
-			else if (method.Return == "")
-				result += "void ";
+				result = "@staticmethod\n" + result;
+			} 
 			else
-				result += method.Return + " ";
-
-			result += method.Name;
-			result += "(";
-
-			for (var i = 0; i < method.Parameters?.Length; i++)
 			{
-				var parameter = method.Parameters[i];
-				if (parameter.Type == "string")
-				{
-					parameter.Type = "String";
-				}
-
-				result += parameter.Type + " " + parameter.Name;
-				if (i + 1 < method.Parameters.Length)
+				result += "self";
+				if (method.Parameters?.Length > 0)
 				{
 					result += ", ";
 				}
 			}
 
-			result += ") {";
-
-			if (method.Return != "")
+			for (var i = 0; i < method.Parameters?.Length; i++)
 			{
-				result += "\n" + Indent + 
-				          "return new " + (method.Return == "string" ? "String" : method.Return) + "();\n";
+				result += method.Parameters[i].Name;
+				if (method.Parameters[i].Default != "")
+				{
+					result += "=" + method.Parameters[i].Default;
+				}
+				if (i + 1 < method.Parameters?.Length)
+				{
+					result += ", ";
+				}
 			}
 
-			result += "}";
+			if (body == "pass")
+			{
+				body += '\n';
+			}
+			
+			result += "):\n" + GeneratorConf.ShiftCode(body, 1, Indent);
 			return result;
 		}
 	}

@@ -28,7 +28,7 @@ namespace CodeGen
 
 	internal static class Program
 	{
-		public const string DefaultLang = "csharp";
+		public const string DefaultLang = "go";
 		
 		public static Package DefaultPkg = GeneratorConf.ExamplePkg;
 
