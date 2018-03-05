@@ -26,6 +26,7 @@ namespace CodeGen.generators
 			fields = @class.Fields?.Aggregate("\n" + fields, (current, field) => current + GenerateField(field) + "\n");
 			methods = @class.Methods?.Aggregate("\n\n" + methods,
 				(current, method) => current + "func (" + @class.Name + ") " + GenerateMethod(method) + "\n\n");
+			classes = @class.Classes?.Aggregate(classes, (current, cls) => current + GenerateClass(cls));
 			return string.Format(ClassFormat, @class.Name, fields, methods, classes);
 		}
 
