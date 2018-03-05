@@ -5,7 +5,7 @@ namespace CodeGen
 {
 	internal static class Program
 	{
-		public const string DefaultLang = "python";
+		public const string DefaultLang = "vb";
 		public static Package DefaultPkg = GeneratorConf.ExamplePkg;
 
 		private static void Main(string[] args)

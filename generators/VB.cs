@@ -6,7 +6,7 @@ namespace CodeGen.generators
 {
 	public class VBGenerator : Generator
 	{
-		private const string ClassFormat = "Class {0}\n{1}{2}{3}";
+		private const string ClassFormat = "Class {0}\n{1}{2}{3}{4}";
 		private string Indent { get; set; } = GeneratorConf.GetIndent(true, 4);
 		
 		public override Dictionary<string, string> Generate(Package pkg)
@@ -23,8 +23,13 @@ namespace CodeGen.generators
 
 		protected override string GenerateClass(Class @class)
 		{
-			string fields = "", methods = "", classes = "";
+			string fields = "", inherits = "", methods = "", classes = "";
 
+			if (@class.Parent?.Length > 0)
+			{
+				inherits = Indent + "Inherits " + @class.Parent + "\n\n";
+			}
+			
 			fields = @class.Fields?.Aggregate(fields, (current, field) => current + GenerateField(field) + "\n");
 			
 			methods = @class.Methods?.Aggregate("\n" + methods,
@@ -33,7 +38,7 @@ namespace CodeGen.generators
 			classes = @class.Classes?.Aggregate(classes,
 				(current, cls) => current + GeneratorConf.ShiftCode(GenerateClass(cls), 1, Indent));
 			
-			var result = string.Format(ClassFormat, @class.Name, fields, methods, classes);
+			var result = string.Format(ClassFormat, @class.Name, inherits, fields, methods, classes);
 
 			var access = "";
 			if (@class.Access?.Length > 0)
@@ -92,6 +97,106 @@ namespace CodeGen.generators
 			return result;
 		}
 	}
-	
-	
+
+	class VBNormalizer : Normalizer
+	{
+		public override Package NormalizePackage(Package pkg)
+		{
+			for(var i = 0; i < pkg.Classes?.Length; i++)
+			{
+				pkg.Classes[i] = NormalizeClass(pkg.Classes[i]);
+			}
+
+			for(var i = 0; i < pkg.Packages?.Length; i++)
+			{
+				pkg.Packages[i] = NormalizePackage(pkg.Packages[i]);
+			}
+
+			return pkg;
+		}
+
+		protected override Class NormalizeClass(Class @class)
+		{
+			for (var i = 0; i < @class.Fields?.Length; i++)
+			{
+				@class.Fields[i] = NormalizeField(@class.Fields[i]);
+			}
+			
+			for (var i = 0; i < @class.Methods?.Length; i++)
+			{
+				@class.Methods[i] = NormalizeMethod(@class.Methods[i]);
+			}
+			
+			for (var i = 0; i < @class.Classes?.Length; i++)
+			{
+				@class.Classes[i] = NormalizeClass(@class.Classes[i]);
+			}
+
+			@class.Access = Title(@class.Access);
+
+			return @class;
+		}
+
+		protected override Field NormalizeField(Field field)
+		{
+			switch (field.Type)
+			{
+				case "int":
+					field.Type = "Integer";
+					break;
+				default:
+					field.Type = Title(field.Type);
+					break;
+			}
+
+			field.Access = Title(field.Access);
+			return field;
+		}
+
+		protected override Method NormalizeMethod(Method method)
+		{
+			switch (method.Return)
+			{
+				case "int":
+					method.Return = "Integer";
+					break;
+				case "void":
+					method.Return = "";
+					break;
+				default:
+					method.Return = Title(method.Return);
+					break;
+			}
+
+			method.Access = Title(method.Access);
+
+			for (var i = 0; i < method.Parameters?.Length; i++)
+			{
+				method.Parameters[i] = NormalizeParameter(method.Parameters[i]);
+			}
+
+			return method;
+		}
+
+		protected override Parameter NormalizeParameter(Parameter parameter)
+		{
+			switch (parameter.Type)
+			{
+				case "int":
+					parameter.Type = "Integer";
+					break;
+				default:
+					parameter.Type = Title(parameter.Type);
+					break;
+			}
+
+			return parameter;
+		}
+		
+		private static string Title(string @string)
+		{
+			return @string?.First().ToString().ToUpper() + @string?.Substring(1).ToLower();
+		}
+		
+	}
 }
