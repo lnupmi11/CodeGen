@@ -132,6 +132,7 @@ namespace CodeGen.generators
 			{"go", new Languange(new GoGenerator(), "go", "/* {0} */")},
 			{"ruby", new Languange(new RubyGenerator(), "rb", "# {0}")},
 			{"python", new Languange(new PythonGenerator(), "py", "# {0}\n")},
+			{"vb", new Languange(new VBGenerator(), "vb", "' {0}\n")},
 		};
 
 		public static string GetIndent(bool tabs, int tabStop)
