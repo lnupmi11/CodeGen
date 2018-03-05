@@ -3,11 +3,16 @@ using System.Linq;
 
 namespace CodeGen.generators
 {
+	/// <inheritdoc />
+	/// <summary>
+	/// C# language generator
+	/// </summary>
 	public class CSharpGenerator : Generator
 	{
 		private const string ClassFormat = "class {0} {1}{{{2}{3}{4}}}";
 		private string Indent { get; set; } = GeneratorConf.GetIndent(true, 4);
 
+		/// <inheritdoc />
 		public override Dictionary<string, string> Generate(Package pkg)
 		{
 			var data = new Dictionary<string, string>();
@@ -20,6 +25,7 @@ namespace CodeGen.generators
 			return data;
 		}
 
+		/// <inheritdoc />
 		protected override string GenerateClass(Class @class)
 		{
 			string fields = "", inherits = "", methods = "", classes = "";
@@ -35,6 +41,7 @@ namespace CodeGen.generators
 			return string.Format(ClassFormat, @class.Name, inherits, fields, methods, classes);
 		}
 
+		/// <inheritdoc />
 		protected override string GenerateField(Field field)
 		{
 			var result = Indent;
@@ -70,6 +77,7 @@ namespace CodeGen.generators
 			return result;
 		}
 
+		/// <inheritdoc />
 		protected override string GenerateMethod(Method method)
 		{
 			var result = "";

@@ -64,7 +64,7 @@ namespace CodeGen.generators
 			for (var i = 0; i < method.Parameters?.Length; i++)
 			{
 				result += method.Parameters[i].Name + " " + method.Parameters[i].Type;
-				if (i+1 < method.Parameters?.Length)
+				if (i + 1 < method.Parameters.Length)
 				{
 					result += ", ";
 				}
