@@ -1,5 +1,6 @@
 language: csharp
 mono: none
+dotnet: latest
 install:
 - dotnet restore
 script:
