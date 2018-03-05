@@ -21,17 +21,29 @@ namespace CodeGen.generators
 		protected abstract Parameter NormalizeParameter(Parameter parameter);
 	}
 
+	/// <summary>
+	/// The class that describes programming language and has a generator for it
+	/// </summary>
 	public struct Languange
 	{
-		public Generator Generator;
-		public string Extension;
-		public string Comment;
+		public readonly Generator Generator;
+		public readonly string Extension;
+		public readonly string Comment;
+		private readonly Normalizer Normalizer;
 
-		public Languange(Generator generator, string extension = "", string comment = "")
+		/// <summary>
+		/// Constructor for language, used to avoid struct initializers
+		/// </summary>
+		/// <param name="generator"></param>
+		/// <param name="extension"></param>
+		/// <param name="comment"></param>
+		/// <param name="normalizer"></param>
+		public Languange(Generator generator, string extension = "", string comment = "", Normalizer normalizer = null)
 		{
 			Generator = generator;
 			Extension = extension;
 			Comment = comment;
+			Normalizer = normalizer;
 		}
 	}
 
@@ -145,7 +157,7 @@ namespace CodeGen.generators
 			{"vb", new Languange(new VBGenerator(), "vb", "' {0}\n")},
 			{"csharp", new Languange(new CSharpGenerator(), "cs","/* {0} */")},
 		};
-
+		
 		public static string GetIndent(bool tabs, int tabStop)
 		{
 			return tabs ? "\t" : new string(' ', tabStop);
@@ -179,20 +191,26 @@ namespace CodeGen.generators
 			return lang;
 		}
 
-		public static Generator GetGenerator(string name)
+		/// <summary>
+		/// Creates generator if it exists, else throws an error
+		/// </summary>
+		/// <param name="name">name of a language</param>
+		/// <returns>language</returns>
+		/// <exception cref="IndexOutOfRangeException">If the language is not found</exception>
+		public static Languange GetLanguage(string name)
 		{
 			name = NormalizeLang(name);
-			Languange gen;
+			Languange lang;
 			try
 			{
-				gen = Languanges[name];
+				lang = Languanges[name];
 			}
 			catch (Exception)
 			{
-				throw new IndexOutOfRangeException("this generator doesn't exist");
+				throw new IndexOutOfRangeException("this language doesn't exist");
 			}
 
-			return gen.Generator;
+			return lang;
 		}
 	}
 }
