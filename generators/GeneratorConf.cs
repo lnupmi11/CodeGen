@@ -84,29 +84,50 @@ namespace CodeGen.generators
 	/// </summary>
 	public struct Languange
 	{
+		/// <summary>
+		/// Holds the generator of the language. Field is read only
+		/// </summary>
 		public readonly Generator Generator;
+		
+		/// <summary>
+		/// Holds the extension of the file. Field is read only
+		/// </summary>
 		public readonly string Extension;
+		
+		/// <summary>
+		/// Holds comment format. Field is read only
+		/// </summary>
 		public readonly string Comment;
-		private readonly Normalizer Normalizer;
+		
+		/// <summary>
+		/// Holds language normalizer. Field is read only
+		/// </summary>
+		private readonly Normalizer _normalizer;
 
 		/// <summary>
 		/// Constructor for language, used to avoid struct initializers
 		/// </summary>
-		/// <param name="generator"></param>
-		/// <param name="extension"></param>
-		/// <param name="comment"></param>
-		/// <param name="normalizer"></param>
+		/// <param name="generator">Language generator</param>
+		/// <param name="extension">File extension</param>
+		/// <param name="comment">Comment format</param>
+		/// <param name="normalizer">Language normalizer</param>
 		public Languange(Generator generator, string extension = "", string comment = "", Normalizer normalizer = null)
 		{
 			Generator = generator;
 			Extension = extension;
 			Comment = comment;
-			Normalizer = normalizer;
+			_normalizer = normalizer;
 		}
 	}
 
+	/// <summary>
+	/// Holds the configuration of generator
+	/// </summary>
 	public static class GeneratorConf
 	{
+		/// <summary>
+		/// Contains example package
+		/// </summary>
 		public static Package ExamplePkg = new Package
 		{
 			Name = "main",
