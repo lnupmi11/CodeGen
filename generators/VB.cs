@@ -4,11 +4,13 @@ using System.Linq;
 
 namespace CodeGen.generators
 {
-	public class VBGenerator : Generator
+	/// <inheritdoc />
+	public class VbGenerator : Generator
 	{
 		private const string ClassFormat = "Class {0}\n{1}{2}{3}{4}";
 		private string Indent { get; set; } = GeneratorConf.GetIndent(true, 4);
-		
+
+		/// <inheritdoc />
 		public override Dictionary<string, string> Generate(Package pkg)
 		{
 			var data = new Dictionary<string, string>();
@@ -21,6 +23,7 @@ namespace CodeGen.generators
 			return data;
 		}
 
+		/// <inheritdoc />
 		protected override string GenerateClass(Class @class)
 		{
 			string fields = "", inherits = "", methods = "", classes = "";
@@ -49,6 +52,7 @@ namespace CodeGen.generators
 			return access + result + "\nEnd Class";
 		}
 
+		/// <inheritdoc />
 		protected override string GenerateField(Field field)
 		{
 			var result = Indent + field.Access + " " + field.Name + " As " + field.Type;
@@ -59,6 +63,7 @@ namespace CodeGen.generators
 			return result;
 		}
 
+		/// <inheritdoc />
 		protected override string GenerateMethod(Method method)
 		{
 			var result = method.Access + " ";
@@ -77,7 +82,7 @@ namespace CodeGen.generators
 					result += "ByVal " + parameter;
 				}
 
-				if (i + 1 < method.Parameters?.Length)
+				if (i + 1 < method.Parameters.Length)
 				{
 					result += ", ";
 				}
@@ -98,7 +103,8 @@ namespace CodeGen.generators
 		}
 	}
 
-	class VBNormalizer : Normalizer
+	/// <inheritdoc />
+	internal class VbNormalizer : Normalizer
 	{
 		public override Package NormalizePackage(Package pkg)
 		{

@@ -4,20 +4,78 @@ using System.Linq;
 
 namespace CodeGen.generators
 {
+	/// <summary>
+	/// Interface of language generator
+	/// </summary>
 	public abstract class Generator
 	{
+		/// <summary>
+		/// Package generator: generates package with classes and subpackages from given package object
+		/// </summary>
+		/// <param name="pkg">Package object</param>
+		/// <returns>Dictionary of file names (keys) and generated code (values)</returns>
 		public abstract Dictionary<string, string> Generate(Package pkg);
+		
+		/// <summary>
+		///	Class generator: generates class with fields, methods and subclasses from given class object
+		/// </summary>
+		/// <param name="class">Class object</param>
+		/// <returns>String of generated code of class</returns>
 		protected abstract string GenerateClass(Class @class);
+		
+		/// <summary>
+		/// Field generator: generates field from given field object
+		/// </summary>
+		/// <param name="field">Field object</param>
+		/// <returns>String of generated code of field</returns>
 		protected abstract string GenerateField(Field field);
+		
+		/// <summary>
+		/// Method generator: generates method from given method object
+		/// </summary>
+		/// <param name="method">Method object</param>
+		/// <returns>String of generated code of method</returns>
 		protected abstract string GenerateMethod(Method method);
 	}
 
+	/// <summary>
+	/// Interface of language normalizer: normalizes package data according to specified language
+	/// </summary>
 	public abstract class Normalizer
 	{
+		/// <summary>
+		/// Package normalizer: normalizes package with classes and subpackages
+		/// </summary>
+		/// <param name="pkg">Package object</param>
+		/// <returns>Normalized package object</returns>
 		public abstract Package NormalizePackage(Package pkg);
+		
+		/// <summary>
+		/// Class normalizer: normalizes class with fields, methods and subclasses
+		/// </summary>
+		/// <param name="class">Class object</param>
+		/// <returns>Normalized class object</returns>
 		protected abstract Class NormalizeClass(Class @class);
+		
+		/// <summary>
+		/// Field normalizer: normalizes field
+		/// </summary>
+		/// <param name="field">Field object</param>
+		/// <returns>Normalized field object</returns>
 		protected abstract Field NormalizeField(Field field);
+		
+		/// <summary>
+		/// Method normalizer: normalizes method
+		/// </summary>
+		/// <param name="method">Method object</param>
+		/// <returns>Normalized method object</returns>
 		protected abstract Method NormalizeMethod(Method method);
+		
+		/// <summary>
+		/// Parameter normalizer: normalizes parameter
+		/// </summary>
+		/// <param name="parameter">Parameter object</param>
+		/// <returns>Normalized parameter object</returns>
 		protected abstract Parameter NormalizeParameter(Parameter parameter);
 	}
 
@@ -148,27 +206,48 @@ namespace CodeGen.generators
 			}
 		};
 
+		/// <summary>
+		/// Dictionary of language names (keys) and its Language objects (values) 
+		/// </summary>
 		public static readonly Dictionary<string, Languange> Languanges = new Dictionary<string, Languange>
 		{
 			{"java", new Languange(new JavaGenerator(), "java", "/* {0} */")},
 			{"go", new Languange(new GoGenerator(), "go", "/* {0} */")},
 			{"ruby", new Languange(new RubyGenerator(), "rb", "# {0}")},
 			{"python", new Languange(new PythonGenerator(), "py", "# {0}\n")},
-			{"vb", new Languange(new VBGenerator(), "vb", "' {0}\n")},
+			{"vb", new Languange(new VbGenerator(), "vb", "' {0}\n")},
 			{"csharp", new Languange(new CSharpGenerator(), "cs","/* {0} */")},
 		};
 		
+		/// <summary>
+		/// Creates indent using given parameters
+		/// </summary>
+		/// <param name="tabs">Use tabs or spaces</param>
+		/// <param name="tabStop">Number of spaces</param>
+		/// <returns>Indent string</returns>
 		public static string GetIndent(bool tabs, int tabStop)
 		{
 			return tabs ? "\t" : new string(' ', tabStop);
 		}
 
+		/// <summary>
+		/// Shifts code using given parameters
+		/// </summary>
+		/// <param name="code">Code to be shifted</param>
+		/// <param name="num">Number of indents</param>
+		/// <param name="indent">Indent string</param>
+		/// <returns>Shifted code</returns>
 		public static string ShiftCode(string code, int num, string indent)
 		{
 			indent = string.Concat(Enumerable.Repeat(indent, num));
 			return indent + code.Replace("\n", "\n" + indent);
 		}
 
+		/// <summary>
+		/// Converts given language into language which is used for identification of generator
+		/// </summary>
+		/// <param name="lang">Inputed language</param>
+		/// <returns>Normalized language</returns>
 		public static string NormalizeLang(string lang)
 		{
 			if (lang == "js")
