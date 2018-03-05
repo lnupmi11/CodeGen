@@ -6,7 +6,7 @@ namespace CodeGen.generators
 {
 	public class VBGenerator : Generator
 	{
-		private const string ClassFormat = "Class {0}\n{1}{2}{3}";
+		private const string ClassFormat = "Class {0}\n{1}{2}{3}{4}";
 		private string Indent { get; set; } = GeneratorConf.GetIndent(true, 4);
 		
 		public override Dictionary<string, string> Generate(Package pkg)
@@ -23,8 +23,13 @@ namespace CodeGen.generators
 
 		protected override string GenerateClass(Class @class)
 		{
-			string fields = "", methods = "", classes = "";
+			string fields = "", inherits = "", methods = "", classes = "";
 
+			if (@class.Parent?.Length > 0)
+			{
+				inherits = Indent + "Inherits " + @class.Parent + "\n\n";
+			}
+			
 			fields = @class.Fields?.Aggregate(fields, (current, field) => current + GenerateField(field) + "\n");
 			
 			methods = @class.Methods?.Aggregate("\n" + methods,
@@ -33,7 +38,7 @@ namespace CodeGen.generators
 			classes = @class.Classes?.Aggregate(classes,
 				(current, cls) => current + GeneratorConf.ShiftCode(GenerateClass(cls), 1, Indent));
 			
-			var result = string.Format(ClassFormat, @class.Name, fields, methods, classes);
+			var result = string.Format(ClassFormat, @class.Name, inherits, fields, methods, classes);
 
 			var access = "";
 			if (@class.Access?.Length > 0)
@@ -154,6 +159,9 @@ namespace CodeGen.generators
 			{
 				case "int":
 					method.Return = "Integer";
+					break;
+				case "void":
+					method.Return = "";
 					break;
 				default:
 					method.Return = Title(method.Return);
