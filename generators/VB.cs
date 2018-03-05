@@ -92,6 +92,103 @@ namespace CodeGen.generators
 			return result;
 		}
 	}
-	
-	
+
+	class VBNormalizer : Normalizer
+	{
+		public override Package NormalizePackage(Package pkg)
+		{
+			for(var i = 0; i < pkg.Classes?.Length; i++)
+			{
+				pkg.Classes[i] = NormalizeClass(pkg.Classes[i]);
+			}
+
+			for(var i = 0; i < pkg.Packages?.Length; i++)
+			{
+				pkg.Packages[i] = NormalizePackage(pkg.Packages[i]);
+			}
+
+			return pkg;
+		}
+
+		protected override Class NormalizeClass(Class @class)
+		{
+			for (var i = 0; i < @class.Fields?.Length; i++)
+			{
+				@class.Fields[i] = NormalizeField(@class.Fields[i]);
+			}
+			
+			for (var i = 0; i < @class.Methods?.Length; i++)
+			{
+				@class.Methods[i] = NormalizeMethod(@class.Methods[i]);
+			}
+			
+			for (var i = 0; i < @class.Classes?.Length; i++)
+			{
+				@class.Classes[i] = NormalizeClass(@class.Classes[i]);
+			}
+
+			@class.Access = Title(@class.Access);
+
+			return @class;
+		}
+
+		protected override Field NormalizeField(Field field)
+		{
+			switch (field.Type)
+			{
+				case "int":
+					field.Type = "Integer";
+					break;
+				default:
+					field.Type = Title(field.Type);
+					break;
+			}
+
+			field.Access = Title(field.Access);
+			return field;
+		}
+
+		protected override Method NormalizeMethod(Method method)
+		{
+			switch (method.Return)
+			{
+				case "int":
+					method.Return = "Integer";
+					break;
+				default:
+					method.Return = Title(method.Return);
+					break;
+			}
+
+			method.Access = Title(method.Access);
+
+			for (var i = 0; i < method.Parameters?.Length; i++)
+			{
+				method.Parameters[i] = NormalizeParameter(method.Parameters[i]);
+			}
+
+			return method;
+		}
+
+		protected override Parameter NormalizeParameter(Parameter parameter)
+		{
+			switch (parameter.Type)
+			{
+				case "int":
+					parameter.Type = "Integer";
+					break;
+				default:
+					parameter.Type = Title(parameter.Type);
+					break;
+			}
+
+			return parameter;
+		}
+		
+		private static string Title(string @string)
+		{
+			return @string?.First().ToString().ToUpper() + @string?.Substring(1).ToLower();
+		}
+		
+	}
 }

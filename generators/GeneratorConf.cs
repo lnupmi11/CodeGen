@@ -18,6 +18,7 @@ namespace CodeGen.generators
 		protected abstract Class NormalizeClass(Class @class);
 		protected abstract Field NormalizeField(Field field);
 		protected abstract Method NormalizeMethod(Method method);
+		protected abstract Parameter NormalizeParameter(Parameter parameter);
 	}
 
 	public struct Languange
