@@ -111,16 +111,23 @@ namespace CodeGen
 			}
 			catch (Exception)
 			{
-				throw new InvalidDataException("invalid json content");
+				throw new InvalidDataException("invalid json file content");
 			}
 		}
 
 		private static Package DeserializeXml(string body)
 		{
-			var serializer = new XmlSerializer(typeof(Package));
-			using (TextReader reader = new StringReader(body))
+			try
 			{
-				return (Package) serializer.Deserialize(reader);
+				var serializer = new XmlSerializer(typeof(Package));
+				using (TextReader reader = new StringReader(body))
+				{
+					return (Package) serializer.Deserialize(reader);
+				}
+			}
+			catch (Exception e)
+			{
+				throw new InvalidDataException("invalid xml file content");
 			}
 		}
 	}
