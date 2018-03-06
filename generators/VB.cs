@@ -36,12 +36,13 @@ namespace CodeGen.generators
 				inherits = Indent + "Inherits " + @class.Parent + "\n\n";
 			}
 			
-			fields = @class.Fields?.Aggregate(fields, (current, field) => current + GenerateField(field) + '\n');
+			fields = @class.Fields?.Aggregate(fields,
+				(current, field) => current + GenerateField(field) + '\n');
 			
-			methods = @class.Methods?.Aggregate('\n' + methods,
-				(current, method) => current + GeneratorConf.ShiftCode(GenerateMethod(method), 1, Indent) + '\n');
+			methods = @class.Methods?.Aggregate(methods,
+				(current, method) => current + '\n' + GeneratorConf.ShiftCode(GenerateMethod(method), 1, Indent) + '\n');
 	
-			classes = @class.Classes?.Aggregate(classes,
+			classes = @class.Classes?.Aggregate('\n' + classes,
 				(current, cls) => current + GeneratorConf.ShiftCode(GenerateClass(cls), 1, Indent) + '\n');
 			
 			var access = "";
@@ -50,7 +51,7 @@ namespace CodeGen.generators
 				access = @class.Access + ' ';
 			}
 			
-			return string.Format(ClassFormat, access, @class.Name, inherits, fields, methods, classes) + "End Class";
+			return string.Format(ClassFormat, access, @class.Name, inherits, fields, methods, classes) + "\nEnd Class";
 		}
 
 		/// <inheritdoc />
@@ -99,7 +100,7 @@ namespace CodeGen.generators
 				result += '\n' + Indent + "Return";
 			}
 
-			result += "\nEnd " + type + '\n';
+			result += "\nEnd " + type;
 			return result;
 		}
 	}

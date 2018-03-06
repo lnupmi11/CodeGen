@@ -9,7 +9,7 @@ namespace CodeGen.generators
 	/// </summary>
 	public class JavaGenerator : Generator
 	{
-		private const string ClassFormat = "{0}class {1} {2}{{{3}{4}{5}}}";
+		private const string ClassFormat = "{0}class {1}{2}{{{3}{4}{5}}}";
 		private string Indent { get; set; } = GeneratorConf.GetIndent(true, 4);
 
 		/// <inheritdoc />
@@ -28,19 +28,20 @@ namespace CodeGen.generators
 		/// <inheritdoc />
 		protected override string GenerateClass(Class @class)
 		{
-			string fields = "", inherits = "", methods = "", classes = "";
+			string fields = "", inherits = " ", methods = "", classes = "";
 			if (@class.Parent?.Length > 0)
 			{
-				inherits = "extends " + @class.Parent + " ";
+				inherits = " extends " + @class.Parent + " ";
 			}
 
-			fields = @class.Fields?.Aggregate('\n' + fields, (current, field) => current + GenerateField(field) + '\n');
+			fields = @class.Fields?.Aggregate('\n' + fields,
+				(current, field) => current + GenerateField(field) + '\n');
 
-			methods = @class.Methods?.Aggregate('\n' + methods,
-				(current, method) => current + GeneratorConf.ShiftCode(GenerateMethod(method), 1, Indent) + '\n');
+			methods = @class.Methods?.Aggregate(methods,
+				(current, method) => current + '\n' + GeneratorConf.ShiftCode(GenerateMethod(method), 1, Indent) + '\n');
 			
-			classes = @class.Classes?.Aggregate('\n' + classes,
-				(current, cls) => current + GeneratorConf.ShiftCode(GenerateClass(cls), 1, Indent) + '\n');
+			classes = @class.Classes?.Aggregate(classes,
+				(current, cls) => current + '\n' + GeneratorConf.ShiftCode(GenerateClass(cls), 1, Indent) + '\n');
 			
 			var access = "";
 			if (@class.Access?.Length > 0)
