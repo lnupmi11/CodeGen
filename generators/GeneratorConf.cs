@@ -238,6 +238,8 @@ namespace CodeGen.generators
 			{"python", new Languange(new PythonGenerator(), "py", "# {0}\n")},
 			{"vb", new Languange(new VbGenerator(), "vb", "' {0}\n")},
 			{"csharp", new Languange(new CSharpGenerator(), "cs","/* {0} */")},
+			{"groovy", new Languange(new GroovyGenerator(), "groovy","/* {0} */")},
+			// TODO: add Closure, Crystal, Rust, Scala, JS_ES5, Lua, Pyhton/Django, Ruby/Rails
 		};
 		
 		/// <summary>
