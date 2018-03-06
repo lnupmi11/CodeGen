@@ -1,8 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.IO;
+using System.Xml.Serialization;
 using CodeGen.generators;
 using CodeGen.parser;
+using Newtonsoft.Json;
 using YamlDotNet.Serialization;
 using YamlDotNet.Serialization.NamingConventions;
 
@@ -103,12 +105,23 @@ namespace CodeGen
 
 		private static Package DeserializeJson(string body)
 		{
-			return new Package();
+			try
+			{
+				return JsonConvert.DeserializeObject<Package>(body);
+			}
+			catch (Exception)
+			{
+				throw new InvalidDataException("invalid json content");
+			}
 		}
 
 		private static Package DeserializeXml(string body)
 		{
-			return new Package();
+			var serializer = new XmlSerializer(typeof(Package));
+			using (TextReader reader = new StringReader(body))
+			{
+				return (Package) serializer.Deserialize(reader);
+			}
 		}
 	}
 }
