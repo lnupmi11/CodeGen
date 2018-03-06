@@ -29,20 +29,28 @@ namespace CodeGen.generators
 		protected override string GenerateClass(Class @class)
 		{
 			string fields = "", inherits = "", methods = "", classes = "";
-			if (@class.Parent != null)
+			if (@class.Parent?.Length > 0)
 			{
-					inherits = ": " + @class.Parent + " ";	
+					inherits = ": " + @class.Parent + ' ';	
 			}
 
-			fields = @class.Fields?.Aggregate("\n" + fields, (current, field) => current + GenerateField(field) + "\n");
+			fields = @class.Fields?.Aggregate('\n' + fields, (current, field) => current + GenerateField(field) + '\n');
 
-			methods = @class.Methods?.Aggregate("\n" + methods,
-				(current, method) => current + GeneratorConf.ShiftCode(GenerateMethod(method), 1, Indent) + "\n");
+			methods = @class.Methods?.Aggregate('\n' + methods,
+				(current, method) => current + GeneratorConf.ShiftCode(GenerateMethod(method), 1, Indent) + '\n');
 			
-			classes = @class.Classes?.Aggregate("\n" + classes,
-				(current, cls) => current + GeneratorConf.ShiftCode(GenerateClass(cls), 1, Indent));
+			classes = @class.Classes?.Aggregate('\n' + classes,
+				(current, cls) => current + GeneratorConf.ShiftCode(GenerateClass(cls), 1, Indent) + '\n');
 			
-			return string.Format(ClassFormat, @class.Name, inherits, fields, methods, classes);
+			var result = string.Format(ClassFormat, @class.Name, inherits, fields, methods, classes);
+			var access = "";
+			
+			if (@class.Access?.Length > 0)
+			{
+				access = @class.Access + ' ';
+			}
+
+			return access + result;
 		}
 
 		/// <inheritdoc />
@@ -55,7 +63,7 @@ namespace CodeGen.generators
 			}
 			else
 			{
-				result += field.Access + " ";
+				result += field.Access + ' ';
 			}
 
 			if (field.Const)
@@ -69,15 +77,15 @@ namespace CodeGen.generators
 			}
 
 
-			result += field.Type + " ";
+			result += field.Type + ' ';
 
 			result += field.Name;
-			if (field.Default != "")
+			if (field.Default?.Length > 0)
 			{
 				result += " = " + field.Default;
 			}
 
-			result += ";";
+			result += ';';
 			return result;
 		}
 
@@ -91,7 +99,7 @@ namespace CodeGen.generators
 			}
 			else
 			{
-				result += method.Access + " ";
+				result += method.Access + ' ';
 			}
 
 			if (method.Static)
@@ -99,19 +107,18 @@ namespace CodeGen.generators
 				result += "static ";
 			}
 			
-			if (method.Return == "")
+			if (method.Return?.Length == 0)
 				result += "void ";
 			else
-				result += method.Return + " ";
+				result += method.Return + ' ';
 
-			result += method.Name;
-			result += "(";
+			result += method.Name + '(';
 
 			for (var i = 0; i < method.Parameters?.Length; i++)
 			{
 				var parameter = method.Parameters[i];
 
-				result += parameter.Type + " " + parameter.Name;
+				result += parameter.Type + ' ' + parameter.Name;
 				if (i + 1 < method.Parameters.Length)
 				{
 					result += ", ";
@@ -120,13 +127,12 @@ namespace CodeGen.generators
 
 			result += ") {";
 
-			if (method.Return != "")
+			if (method.Return?.Length > 0)
 			{
-				result += "\n" + Indent +
-				          "return new " + method.Return + "();\n";
+				result += '\n' + Indent + "return new " + method.Return + "();\n";
 			}
 
-			result += "}";
+			result += '}';
 			return result;
 		}
 	}
