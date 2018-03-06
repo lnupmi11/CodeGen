@@ -9,7 +9,7 @@ namespace CodeGen.generators
 	/// </summary>
 	public class GroovyGenerator : Generator
 	{
-		private const string ClassFormat = "class {0} {1}{{{2}{3}{4}}}";
+		private const string ClassFormat = "{0}class {1} {2}{{{3}{4}{5}}}";
 		private string Indent { get; set; } = GeneratorConf.GetIndent(true, 4);
 
 		/// <inheritdoc />
@@ -19,7 +19,7 @@ namespace CodeGen.generators
 			Indent = GeneratorConf.GetIndent(!pkg.UseSpaces, 4);
 			foreach (var @class in pkg.Classes)
 			{
-				data[@class.Name] = GenerateClass(@class) + "\n";
+				data[@class.Name] = GenerateClass(@class) + '\n';
 			}
 
 			return data;
@@ -31,7 +31,7 @@ namespace CodeGen.generators
 			string fields = "", inherits = "", methods = "", classes = "";
 			if (@class.Parent?.Length > 0)
 			{
-				inherits = "extends " + @class.Parent + " ";
+				inherits = "extends " + @class.Parent + ' ';
 			}
 
 			fields = @class.Fields?.Aggregate('\n' + fields, (current, field) => current + GenerateField(field) + '\n');
@@ -42,14 +42,13 @@ namespace CodeGen.generators
 			classes = @class.Classes?.Aggregate('\n' + classes,
 				(current, cls) => current + GeneratorConf.ShiftCode(GenerateClass(cls), 1, Indent) + '\n');
 			
-			var result = string.Format(ClassFormat, @class.Name, inherits, fields, methods, classes);
 			var access = "";
 			if (@class.Access?.Length > 0)
 			{
 				access = @class.Access + " ";
 			}
 			
-			return access + result;
+			return string.Format(ClassFormat, access, @class.Name, inherits, fields, methods, classes);;
 		}
 
 		/// <inheritdoc />
@@ -62,7 +61,7 @@ namespace CodeGen.generators
 			}
 			else
 			{
-				result += field.Access + " ";
+				result += field.Access + ' ';
 			}
 
 			if (field.Static)
@@ -76,7 +75,7 @@ namespace CodeGen.generators
 					result += "String ";
 					break;
 				default:
-					result += field.Type + " ";
+					result += field.Type + ' ';
 					break;
 			}
 
@@ -98,7 +97,7 @@ namespace CodeGen.generators
 			}
 			else
 			{
-				result += method.Access + " ";
+				result += method.Access + ' ';
 			}
 
 			switch (method.Return)
@@ -110,7 +109,7 @@ namespace CodeGen.generators
 					result += "void ";
 					break;
 				default:
-					result += method.Return + " ";
+					result += method.Return + ' ';
 					break;
 			}
 
@@ -124,7 +123,7 @@ namespace CodeGen.generators
 					parameter.Type = "String";
 				}
 
-				result += parameter.Type + " " + parameter.Name;
+				result += parameter.Type + ' ' + parameter.Name;
 				if (i + 1 < method.Parameters.Length)
 				{
 					result += ", ";
@@ -138,7 +137,7 @@ namespace CodeGen.generators
 				result += '\n' + Indent + "return 0\n";
 			}
 
-			result += "}";
+			result += '}';
 			return result;
 		}
 	}

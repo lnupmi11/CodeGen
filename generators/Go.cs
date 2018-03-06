@@ -19,7 +19,7 @@ namespace CodeGen.generators
 			Indent = GeneratorConf.GetIndent(!pkg.UseSpaces, 4);
 			foreach (var @class in pkg.Classes)
 			{
-				data[@class.Name] = GenerateClass(@class) + "\n";
+				data[@class.Name] = GenerateClass(@class) + '\n';
 			}
 
 			return data;
@@ -29,7 +29,7 @@ namespace CodeGen.generators
 		protected override string GenerateClass(Class @class)
 		{
 			string fields = "", methods = "", classes = "";
-			fields = @class.Fields?.Aggregate("\n" + fields, (current, field) => current + GenerateField(field) + "\n");
+			fields = @class.Fields?.Aggregate('\n' + fields, (current, field) => current + GenerateField(field) + '\n');
 			methods = @class.Methods?.Aggregate("\n\n" + methods,
 				(current, method) => current + "func (" + @class.Name + ") " + GenerateMethod(method) + "\n\n");
 			classes = @class.Classes?.Aggregate(classes, (current, cls) => current + GenerateClass(cls));
@@ -46,7 +46,7 @@ namespace CodeGen.generators
 				field.Name = field.Name?.First().ToString().ToUpper() + field.Name?.Substring(1);
 			}
 
-			result += field.Name + " " + field.Type;
+			result += field.Name + ' ' + field.Type;
 
 			return result;
 		}
@@ -59,18 +59,18 @@ namespace CodeGen.generators
 			{
 				method.Name = method.Name?.First().ToString().ToUpper() + method.Name?.Substring(1);
 			}
-			result += method.Name + "(";
+			result += method.Name + '(';
 
 			for (var i = 0; i < method.Parameters?.Length; i++)
 			{
-				result += method.Parameters[i].Name + " " + method.Parameters[i].Type;
+				result += method.Parameters[i].Name + ' ' + method.Parameters[i].Type;
 				if (i + 1 < method.Parameters.Length)
 				{
 					result += ", ";
 				}
 			}
 
-			result += ")";
+			result += ')';
 
 			if (method.Return != "")
 			{
@@ -84,7 +84,7 @@ namespace CodeGen.generators
 				result += "\n" + Indent + "return nil\n";
 			}
 
-			result += "}";
+			result += '}';
 
 			return result;
 		}
