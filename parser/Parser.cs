@@ -96,11 +96,15 @@ namespace CodeGen.parser
 		public static string GetFileFormat(string name)
 		{
 			var arr = name.Split('.');
-			if (arr?.Length > 0)
+			if (arr?.Length > 1)
 			{
-				return arr.Last();
+				if (arr.Last().Any(char.IsLetter))
+				{
+					return arr.Last();
+				}
 			}
 			throw new InvalidDataException("invalid input file");
 		}
 	}
 }
+
