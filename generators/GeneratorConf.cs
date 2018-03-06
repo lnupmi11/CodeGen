@@ -238,6 +238,7 @@ namespace CodeGen.generators
 			{"python", new Languange(new PythonGenerator(), "py", "# {0}\n")},
 			{"vb", new Languange(new VbGenerator(), "vb", "' {0}\n")},
 			{"csharp", new Languange(new CSharpGenerator(), "cs","/* {0} */")},
+			{"js_es6", new Languange(new JSes6Generator(), "js","/* {0} */")},
 		};
 		
 		/// <summary>
