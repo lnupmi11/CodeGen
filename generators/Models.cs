@@ -136,6 +136,18 @@ namespace CodeGen.generators
 		/// </summary>
 		[XmlElement("static")]
 		public bool Static { get; set; }
+		
+		/// <summary>
+		/// Denotes if generate getter or not. Type: boolean
+		/// </summary>
+		[XmlElement("getter")]
+		public bool Getter { get; set; }
+		
+		/// <summary>
+		/// Denotes if generate setter or not. Type: boolean
+		/// </summary>
+		[XmlElement("setter")]
+		public bool Setter { get; set; }
 	}
 
 	/// <inheritdoc />

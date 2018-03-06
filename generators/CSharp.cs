@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
+using CodeGen.parser;
 
 namespace CodeGen.generators
 {
@@ -38,6 +39,8 @@ namespace CodeGen.generators
 
 			methods = @class.Methods?.Aggregate('\n' + methods,
 				(current, method) => current + GeneratorConf.ShiftCode(GenerateMethod(method), 1, Indent) + '\n');
+
+			methods += GeneratorConf.ShiftCode(GenerateGettersSetters(@class.Fields), 1, Indent);
 			
 			classes = @class.Classes?.Aggregate('\n' + classes,
 				(current, cls) => current + GeneratorConf.ShiftCode(GenerateClass(cls), 1, Indent) + '\n');
@@ -132,6 +135,39 @@ namespace CodeGen.generators
 
 			result += '}';
 			return result;
+		}
+
+		/// <inheritdoc />
+		protected string GenerateGettersSetters(IEnumerable<Field> fields)
+		{
+			if (fields == null) return "";
+			var result = "";
+			foreach (var field in fields)
+			{
+				if (field.Getter)
+				{
+					result += '\n' + GenerateGetter(field) + '\n';
+				}
+
+				if (field.Setter)
+				{
+					result += '\n' + GenerateSetter(field) + '\n';
+				}
+			}
+
+			return result;
+		}
+
+		private string GenerateGetter(Variable field)
+		{
+			return "public " + field.Type + " get" + Parser.Title(field.Name) + "() {\n" + Indent + 
+			       "return " + field.Name + ";\n}";
+		}
+
+		private string GenerateSetter(Variable field)
+		{
+			return "public void set" + Parser.Title(field.Name) + "(" + field.Type + " newValue) {\n" + Indent + 
+			       field.Name + " = newValue;\n}";
 		}
 	}
 }

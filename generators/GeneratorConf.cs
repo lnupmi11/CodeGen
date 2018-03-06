@@ -154,14 +154,17 @@ namespace CodeGen.generators
 							Type = "string",
 							Static = true,
 							Name = "sort",
-							Default = "\"Golden\""
+							Default = "\"Golden\"",
+							Getter = true,
+							Setter = true
 						},
 						new Field
 						{
 							Access = "private",
 							Type = "int",
 							Name = "size",
-							Default = "1"
+							Default = "1",
+							Getter = true
 						}
 					},
 					Methods = new[]

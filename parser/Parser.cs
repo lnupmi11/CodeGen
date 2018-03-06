@@ -105,6 +105,16 @@ namespace CodeGen.parser
 			}
 			throw new InvalidDataException("invalid input file");
 		}
+		
+		/// <summary>
+		/// Converts first letter of the string to upper case and others to lower case
+		/// </summary>
+		/// <param name="string">String to transform</param>
+		/// <returns>Transformed string</returns>
+		public static string Title(string @string)
+		{
+			return @string?.First().ToString().ToUpper() + @string?.Substring(1).ToLower();
+		}
 	}
 }
 
