@@ -35,13 +35,13 @@ namespace CodeGen.generators
 				inherits = Indent + "Inherits " + @class.Parent + "\n\n";
 			}
 			
-			fields = @class.Fields?.Aggregate(fields, (current, field) => current + GenerateField(field) + "\n");
+			fields = @class.Fields?.Aggregate(fields, (current, field) => current + GenerateField(field) + '\n');
 			
 			methods = @class.Methods?.Aggregate("\n" + methods,
-				(current, method) => current + GeneratorConf.ShiftCode(GenerateMethod(method), 1, Indent) + "\n");
-			
+				(current, method) => current + GeneratorConf.ShiftCode(GenerateMethod(method), 1, Indent) + '\n');
+	
 			classes = @class.Classes?.Aggregate(classes,
-				(current, cls) => current + GeneratorConf.ShiftCode(GenerateClass(cls), 1, Indent));
+				(current, cls) => current + GeneratorConf.ShiftCode(GenerateClass(cls), 1, Indent) + '\n');
 			
 			var result = string.Format(ClassFormat, @class.Name, inherits, fields, methods, classes);
 
@@ -51,7 +51,7 @@ namespace CodeGen.generators
 				access = @class.Access + " ";
 			}
 			
-			return access + result + "\nEnd Class";
+			return access + result + "End Class";
 		}
 
 		/// <inheritdoc />

@@ -108,12 +108,18 @@ namespace CodeGen.generators
 				result += "static ";
 			}
 
-			if (method.Return == "string")
-				result += "String ";
-			else if (method.Return == "")
-				result += "void ";
-			else
-				result += method.Return + " ";
+			switch (method.Return)
+			{
+				case "string":
+					result += "String ";
+					break;
+				case "":
+					result += "void ";
+					break;
+				default:
+					result += method.Return + " ";
+					break;
+			}
 
 			result += method.Name;
 			result += "(";

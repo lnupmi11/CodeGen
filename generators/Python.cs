@@ -138,7 +138,7 @@ namespace CodeGen.generators
 				{
 					result += "=" + method.Parameters[i].Default;
 				}
-				if (i + 1 < method.Parameters?.Length)
+				if (i + 1 < method.Parameters.Length)
 				{
 					result += ", ";
 				}
@@ -154,4 +154,3 @@ namespace CodeGen.generators
 		}
 	}
 }
-
