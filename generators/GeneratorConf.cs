@@ -154,14 +154,17 @@ namespace CodeGen.generators
 							Type = "string",
 							Static = true,
 							Name = "sort",
-							Default = "\"Golden\""
+							Default = "\"Golden\"",
+							Getter = true,
+							Setter = true
 						},
 						new Field
 						{
 							Access = "private",
 							Type = "int",
 							Name = "size",
-							Default = "1"
+							Default = "1",
+							Getter = true
 						}
 					},
 					Methods = new[]
@@ -239,6 +242,8 @@ namespace CodeGen.generators
 			{"vb", new Languange(new VbGenerator(), "vb", "' {0}\n")},
 			{"csharp", new Languange(new CSharpGenerator(), "cs","/* {0} */")},
 			{"js_es6", new Languange(new JSes6Generator(), "js","/* {0} */")},
+			{"groovy", new Languange(new GroovyGenerator(), "groovy","/* {0} */")},
+			// TODO: add Closure, Crystal, Rust, Scala, JS_ES5, Lua, Pyhton/Django, Ruby/Rails
 		};
 		
 		/// <summary>

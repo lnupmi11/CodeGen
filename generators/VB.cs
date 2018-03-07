@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
+using CodeGen.parser;
 
 namespace CodeGen.generators
 {
@@ -9,7 +10,7 @@ namespace CodeGen.generators
 	/// </summary>
 	public class VbGenerator : Generator
 	{
-		private const string ClassFormat = "Class {0}\n{1}{2}{3}{4}";
+		private const string ClassFormat = "{0}Class {1}\n{2}{3}{4}{5}";
 		private string Indent { get; set; } = GeneratorConf.GetIndent(true, 4);
 
 		/// <inheritdoc />
@@ -35,29 +36,28 @@ namespace CodeGen.generators
 				inherits = Indent + "Inherits " + @class.Parent + "\n\n";
 			}
 			
-			fields = @class.Fields?.Aggregate(fields, (current, field) => current + GenerateField(field) + "\n");
+			fields = @class.Fields?.Aggregate(fields,
+				(current, field) => current + GenerateField(field) + '\n');
 			
-			methods = @class.Methods?.Aggregate("\n" + methods,
-				(current, method) => current + GeneratorConf.ShiftCode(GenerateMethod(method), 1, Indent) + "\n");
+			methods = @class.Methods?.Aggregate(methods,
+				(current, method) => current + '\n' + GeneratorConf.ShiftCode(GenerateMethod(method), 1, Indent) + '\n');
+	
+			classes = @class.Classes?.Aggregate('\n' + classes,
+				(current, cls) => current + GeneratorConf.ShiftCode(GenerateClass(cls), 1, Indent) + '\n');
 			
-			classes = @class.Classes?.Aggregate(classes,
-				(current, cls) => current + GeneratorConf.ShiftCode(GenerateClass(cls), 1, Indent));
-			
-			var result = string.Format(ClassFormat, @class.Name, inherits, fields, methods, classes);
-
 			var access = "";
 			if (@class.Access?.Length > 0)
 			{
-				access = @class.Access + " ";
+				access = @class.Access + ' ';
 			}
 			
-			return access + result + "\nEnd Class";
+			return string.Format(ClassFormat, access, @class.Name, inherits, fields, methods, classes) + "\nEnd Class";
 		}
 
 		/// <inheritdoc />
 		protected override string GenerateField(Field field)
 		{
-			var result = Indent + field.Access + " " + field.Name + " As " + field.Type;
+			var result = Indent + field.Access + ' ' + field.Name + " As " + field.Type;
 			if (field.Default?.Length > 0)
 			{
 				result += " = " + field.Default;
@@ -68,9 +68,9 @@ namespace CodeGen.generators
 		/// <inheritdoc />
 		protected override string GenerateMethod(Method method)
 		{
-			var result = method.Access + " ";
+			var result = method.Access + ' ';
 			var type = method.Return?.Length > 0 ? "Function" : "Sub";
-			result += type + " " + method.Name + "(";
+			result += type + ' ' + method.Name + '(';
 
 			for (var i = 0; i < method.Parameters?.Length; i++)
 			{
@@ -90,17 +90,17 @@ namespace CodeGen.generators
 				}
 			}
 
-			result += ")";
+			result += ')';
 			if (type == "Function")
 			{
-				result += " As " + method.Return + "\n" + Indent + "Return 0";
+				result += " As " + method.Return + '\n' + Indent + "Return 0";
 			}
 			else
 			{
-				result += "\n" + Indent + "Return";
+				result += '\n' + Indent + "Return";
 			}
 
-			result += "\nEnd " + type + "\n";
+			result += "\nEnd " + type;
 			return result;
 		}
 	}
@@ -140,7 +140,7 @@ namespace CodeGen.generators
 				@class.Classes[i] = NormalizeClass(@class.Classes[i]);
 			}
 
-			@class.Access = Title(@class.Access);
+			@class.Access = Parser.Title(@class.Access);
 
 			return @class;
 		}
@@ -153,11 +153,11 @@ namespace CodeGen.generators
 					field.Type = "Integer";
 					break;
 				default:
-					field.Type = Title(field.Type);
+					field.Type = Parser.Title(field.Type);
 					break;
 			}
 
-			field.Access = Title(field.Access);
+			field.Access = Parser.Title(field.Access);
 			return field;
 		}
 
@@ -172,11 +172,11 @@ namespace CodeGen.generators
 					method.Return = "";
 					break;
 				default:
-					method.Return = Title(method.Return);
+					method.Return = Parser.Title(method.Return);
 					break;
 			}
 
-			method.Access = Title(method.Access);
+			method.Access = Parser.Title(method.Access);
 
 			for (var i = 0; i < method.Parameters?.Length; i++)
 			{
@@ -194,17 +194,11 @@ namespace CodeGen.generators
 					parameter.Type = "Integer";
 					break;
 				default:
-					parameter.Type = Title(parameter.Type);
+					parameter.Type = Parser.Title(parameter.Type);
 					break;
 			}
 
 			return parameter;
 		}
-		
-		private static string Title(string @string)
-		{
-			return @string?.First().ToString().ToUpper() + @string?.Substring(1).ToLower();
-		}
-		
 	}
 }

@@ -5,9 +5,9 @@ namespace CodeGen.generators
 {
 	/// <inheritdoc />
 	/// <summary>
-	/// Java language generator
+	/// Groovy language generator
 	/// </summary>
-	public class JavaGenerator : Generator
+	public class GroovyGenerator : Generator
 	{
 		private const string ClassFormat = "{0}class {1}{2}{{{3}{4}{5}}}";
 		private string Indent { get; set; } = GeneratorConf.GetIndent(true, 4);
@@ -21,7 +21,7 @@ namespace CodeGen.generators
 			{
 				data[@class.Name] = GenerateClass(@class) + '\n';
 			}
-			
+
 			return data;
 		}
 
@@ -31,7 +31,7 @@ namespace CodeGen.generators
 			string fields = "", inherits = " ", methods = "", classes = "";
 			if (@class.Parent?.Length > 0)
 			{
-				inherits = " extends " + @class.Parent + " ";
+				inherits = " extends " + @class.Parent + ' ';
 			}
 
 			fields = @class.Fields?.Aggregate('\n' + fields,
@@ -46,7 +46,7 @@ namespace CodeGen.generators
 			var access = "";
 			if (@class.Access?.Length > 0)
 			{
-				access = @class.Access + ' ';
+				access = @class.Access + " ";
 			}
 			
 			return string.Format(ClassFormat, access, @class.Name, inherits, fields, methods, classes);;
@@ -63,11 +63,6 @@ namespace CodeGen.generators
 			else
 			{
 				result += field.Access + ' ';
-			}
-
-			if (field.Const)
-			{
-				result += "const ";
 			}
 
 			if (field.Static)
@@ -90,8 +85,6 @@ namespace CodeGen.generators
 			{
 				result += " = " + field.Default;
 			}
-
-			result += ';';
 			return result;
 		}
 
@@ -108,11 +101,6 @@ namespace CodeGen.generators
 				result += method.Access + ' ';
 			}
 
-			if (method.Static)
-			{
-				result += "static ";
-			}
-
 			switch (method.Return)
 			{
 				case "string":
@@ -126,8 +114,7 @@ namespace CodeGen.generators
 					break;
 			}
 
-			result += method.Name;
-			result += '(';
+			result += method.Name + '(';
 
 			for (var i = 0; i < method.Parameters?.Length; i++)
 			{
@@ -137,7 +124,7 @@ namespace CodeGen.generators
 					parameter.Type = "String";
 				}
 
-				result += parameter.Type + " " + parameter.Name;
+				result += parameter.Type + ' ' + parameter.Name;
 				if (i + 1 < method.Parameters.Length)
 				{
 					result += ", ";
@@ -148,8 +135,7 @@ namespace CodeGen.generators
 
 			if (method.Return?.Length > 0)
 			{
-				result += '\n' + Indent + 
-				          "return new " + (method.Return == "string" ? "String" : method.Return) + "();\n";
+				result += '\n' + Indent + "return 0\n";
 			}
 
 			result += '}';

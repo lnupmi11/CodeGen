@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
+using CodeGen.parser;
 
 namespace CodeGen.generators
 {
@@ -9,7 +10,7 @@ namespace CodeGen.generators
 	/// </summary>
 	public class CSharpGenerator : Generator
 	{
-		private const string ClassFormat = "class {0} {1}{{{2}{3}{4}}}";
+		private const string ClassFormat = "{0}class {1}{2}{{{3}{4}{5}}}";
 		private string Indent { get; set; } = GeneratorConf.GetIndent(true, 4);
 
 		/// <inheritdoc />
@@ -19,7 +20,7 @@ namespace CodeGen.generators
 			Indent = GeneratorConf.GetIndent(!pkg.UseSpaces, 4);
 			foreach (var @class in pkg.Classes)
 			{
-				data[@class.Name] = GenerateClass(@class) + "\n";
+				data[@class.Name] = GenerateClass(@class) + '\n';
 			}
 
 			return data;
@@ -28,21 +29,33 @@ namespace CodeGen.generators
 		/// <inheritdoc />
 		protected override string GenerateClass(Class @class)
 		{
-			string fields = "", inherits = "", methods = "", classes = "";
-			if (@class.Parent != null)
+			string fields = "", inherits = " ", methods = "", classes = "";
+			if (@class.Parent?.Length > 0)
 			{
-					inherits = ": " + @class.Parent + " ";	
+					inherits = " : " + @class.Parent + ' ';	
 			}
 
-			fields = @class.Fields?.Aggregate("\n" + fields, (current, field) => current + GenerateField(field) + "\n");
+			fields = @class.Fields?.Aggregate('\n' + fields,
+				(current, field) => current + GenerateField(field) + '\n');
 
-			methods = @class.Methods?.Aggregate("\n" + methods,
-				(current, method) => current + GeneratorConf.ShiftCode(GenerateMethod(method), 1, Indent) + "\n");
+			methods = @class.Methods?.Aggregate(methods,
+				(current, method) => current + '\n' + GeneratorConf.ShiftCode(GenerateMethod(method), 1, Indent) + '\n');
+
+			if (@class.Fields?.Length > 0)
+			{
+				methods += GeneratorConf.ShiftCode(GenerateGettersSetters(@class.Fields), 1, Indent);	
+			}
 			
-			classes = @class.Classes?.Aggregate("\n" + classes,
-				(current, cls) => current + GeneratorConf.ShiftCode(GenerateClass(cls), 1, Indent));
+			classes = @class.Classes?.Aggregate(classes,
+				(current, cls) => current + '\n' + GeneratorConf.ShiftCode(GenerateClass(cls), 1, Indent) + '\n') + '\n';
 			
-			return string.Format(ClassFormat, @class.Name, inherits, fields, methods, classes);
+			var access = "";
+			if (@class.Access?.Length > 0)
+			{
+				access = @class.Access + ' ';
+			}
+
+			return string.Format(ClassFormat, access, @class.Name, inherits, fields, methods, classes);
 		}
 
 		/// <inheritdoc />
@@ -55,7 +68,7 @@ namespace CodeGen.generators
 			}
 			else
 			{
-				result += field.Access + " ";
+				result += field.Access + ' ';
 			}
 
 			if (field.Const)
@@ -69,15 +82,15 @@ namespace CodeGen.generators
 			}
 
 
-			result += field.Type + " ";
+			result += field.Type + ' ';
 
 			result += field.Name;
-			if (field.Default != "")
+			if (field.Default?.Length > 0)
 			{
 				result += " = " + field.Default;
 			}
 
-			result += ";";
+			result += ';';
 			return result;
 		}
 
@@ -91,7 +104,7 @@ namespace CodeGen.generators
 			}
 			else
 			{
-				result += method.Access + " ";
+				result += method.Access + ' ';
 			}
 
 			if (method.Static)
@@ -99,19 +112,18 @@ namespace CodeGen.generators
 				result += "static ";
 			}
 			
-			if (method.Return == "")
+			if (method.Return?.Length == 0)
 				result += "void ";
 			else
-				result += method.Return + " ";
+				result += method.Return + ' ';
 
-			result += method.Name;
-			result += "(";
+			result += method.Name + '(';
 
 			for (var i = 0; i < method.Parameters?.Length; i++)
 			{
 				var parameter = method.Parameters[i];
 
-				result += parameter.Type + " " + parameter.Name;
+				result += parameter.Type + ' ' + parameter.Name;
 				if (i + 1 < method.Parameters.Length)
 				{
 					result += ", ";
@@ -120,14 +132,46 @@ namespace CodeGen.generators
 
 			result += ") {";
 
-			if (method.Return != "")
+			if (method.Return?.Length > 0)
 			{
-				result += "\n" + Indent +
-				          "return new " + method.Return + "();\n";
+				result += '\n' + Indent + "return new " + method.Return + "();\n";
 			}
 
-			result += "}";
+			result += '}';
 			return result;
+		}
+
+		/// <inheritdoc />
+		protected string GenerateGettersSetters(IEnumerable<Field> fields)
+		{
+			if (fields == null) return "";
+			var result = "";
+			foreach (var field in fields)
+			{
+				if (field.Getter)
+				{
+					result += '\n' + GenerateGetter(field) + '\n';
+				}
+
+				if (field.Setter)
+				{
+					result += '\n' + GenerateSetter(field) + '\n';
+				}
+			}
+
+			return result;
+		}
+
+		private string GenerateGetter(Variable field)
+		{
+			return "public " + field.Type + " get" + Parser.Title(field.Name) + "() {\n" + Indent + 
+			       "return " + field.Name + ";\n}";
+		}
+
+		private string GenerateSetter(Variable field)
+		{
+			return "public void set" + Parser.Title(field.Name) + "(" + field.Type + " newValue) {\n" + Indent + 
+			       field.Name + " = newValue;\n}";
 		}
 	}
 }
