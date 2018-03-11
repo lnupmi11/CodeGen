@@ -147,6 +147,7 @@ namespace CodeGen.generators
 	/// <summary>
 	/// Holds the configuration of generator
 	/// </summary>
+	// ReSharper disable once ClassNeverInstantiated.Global
 	public class GeneratorConf
 	{
 		/// <summary>
