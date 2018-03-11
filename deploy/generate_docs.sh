@@ -33,15 +33,15 @@
 ##### Setup this script and get the current gh-pages branch.               #####
 echo 'Setting up the script...'
 # Exit with nonzero exit code if anything fails
-set -e
+set -ex
 
 # Create a clean working directory for this script.
 mkdir code_docs
 cd code_docs
 
 # Get the current gh-pages branch
-git clone -b gh-pages https://git@$GH_REPO_REF
-cd $GH_REPO_NAME
+git clone -b gh-pages "https://git@$GH_REPO_REF"
+cd "$GH_REPO_NAME"
 
 ##### Configure git.
 # Set the push default to simple i.e. push only the current branch.
@@ -67,7 +67,10 @@ echo "" > .nojekyll
 ##### Generate the Doxygen code documentation and log the output.          #####
 echo 'Generating Doxygen code documentation...'
 # Redirect both stderr and stdout to the log file AND the console.
-doxygen $DOXYFILE 2>&1 | tee doxygen.log
+doxygen "$DOXYFILE" 2>&1 | tee doxygen.log
+
+echo 'Moving manual docs to github pages'
+cp "$TRAVIS_BUILD_DIR/*.md" ./
 
 ################################################################################
 ##### Upload the documentation to the gh-pages branch of the repository.   #####
@@ -75,7 +78,6 @@ doxygen $DOXYFILE 2>&1 | tee doxygen.log
 # Check this by verifying that the html directory and the file html/index.html
 # both exist. This is a good indication that Doxygen did it's work.
 if [ -d "docs/html" ] && [ -f "docs/html/index.html" ]; then
-
     echo 'Uploading documentation to the gh-pages branch...'
     # Add everything in this directory (the Doxygen code documentation) to the
     # gh-pages branch.
@@ -86,7 +88,7 @@ if [ -d "docs/html" ] && [ -f "docs/html/index.html" ]; then
     # Commit the added files with a title and description containing the Travis CI
     # build number and the GitHub commit reference that issued this build.
     git commit -m "Deploy code docs to GitHub Pages Travis build: ${TRAVIS_BUILD_NUMBER}" -m "Commit: ${TRAVIS_COMMIT}"
-
+    
     # Force push to the remote gh-pages branch.
     # The ouput is redirected to /dev/null to hide any sensitive credential data
     # that might otherwise be exposed.
