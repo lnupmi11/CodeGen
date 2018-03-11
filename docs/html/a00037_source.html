@@ -133,48 +133,43 @@ $(document).ready(function(){initNavTree('a00037_source.html','');});
 <div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;            <span class="keywordflow">return</span> webClient.DownloadString(url);</div>
 <div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;        }</div>
 <div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;</div>
-<div class="line"><a name="l00055"></a><span class="lineno"><a class="line" href="a00018.html#addb0a8b1127eb9907303d4c09c2bf841">   55</a></span>&#160;        <span class="keyword">public</span> <span class="keyword">static</span> <span class="keywordtype">void</span> <a class="code" href="a00018.html#addb0a8b1127eb9907303d4c09c2bf841">ValidateArgs</a>(<span class="keywordtype">string</span> lang, <span class="keywordtype">string</span> file, <span class="keywordtype">string</span> url)</div>
-<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;        {</div>
-<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;            <span class="keywordflow">if</span> (lang == <span class="stringliteral">&quot;&quot;</span>)</div>
-<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;            {</div>
-<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;                <span class="keywordflow">throw</span> <span class="keyword">new</span> InvalidDataException(<span class="stringliteral">&quot;specify language (-l) flag&quot;</span>);</div>
-<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;            }</div>
-<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;            <span class="keywordflow">if</span> (url == <span class="stringliteral">&quot;&quot;</span> &amp;&amp; file == <span class="stringliteral">&quot;&quot;</span>)</div>
-<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;            {</div>
-<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;                <span class="keywordflow">throw</span> <span class="keyword">new</span> InvalidDataException(<span class="stringliteral">&quot;specify file path (-f) or url path (-u) flag&quot;</span>);</div>
-<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;            }</div>
-<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;            <span class="keywordflow">if</span> (file != <span class="stringliteral">&quot;&quot;</span> &amp;&amp; url != <span class="stringliteral">&quot;&quot;</span>)</div>
-<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;            {</div>
-<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;                <span class="comment">// TODO: remove &#39;-u&#39; flag and add method that check if file path is url</span></div>
-<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;                <span class="keywordflow">throw</span> <span class="keyword">new</span> InvalidDataException(<span class="stringliteral">&quot;do not use both -f and -u flags at the same time&quot;</span>);</div>
-<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;            }</div>
-<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;        }</div>
-<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;</div>
-<div class="line"><a name="l00078"></a><span class="lineno"><a class="line" href="a00018.html#a3297d7993fc6c739b3ff74f469c0589a">   78</a></span>&#160;        <span class="keyword">public</span> <span class="keyword">static</span> <span class="keywordtype">string</span> <a class="code" href="a00018.html#a3297d7993fc6c739b3ff74f469c0589a">GetFileFormat</a>(<span class="keywordtype">string</span> name)</div>
-<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;        {</div>
-<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;            var arr = name.Split(<span class="charliteral">&#39;.&#39;</span>);</div>
-<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;            <span class="keywordflow">if</span> (!(arr?.Length &gt; 1)) <span class="keywordflow">throw</span> <span class="keyword">new</span> InvalidDataException(<span class="stringliteral">&quot;invalid input file&quot;</span>);</div>
-<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;            <span class="keywordflow">if</span> (arr.Last().Any(char.IsLetter))</div>
-<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;            {</div>
-<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;                <span class="keywordflow">return</span> arr.Last();</div>
-<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;            }</div>
-<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;            <span class="keywordflow">throw</span> <span class="keyword">new</span> InvalidDataException(<span class="stringliteral">&quot;invalid input file&quot;</span>);</div>
-<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;        }</div>
-<div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;        </div>
-<div class="line"><a name="l00094"></a><span class="lineno"><a class="line" href="a00018.html#aaa59afdc45cfc1c9583c40e11791fc15">   94</a></span>&#160;        <span class="keyword">public</span> <span class="keyword">static</span> <span class="keywordtype">string</span> <a class="code" href="a00018.html#aaa59afdc45cfc1c9583c40e11791fc15">Title</a>(<span class="keywordtype">string</span> @<span class="keywordtype">string</span>)</div>
-<div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160;        {</div>
-<div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160;            <span class="keywordflow">return</span> @<span class="keywordtype">string</span>?.First().ToString().ToUpper() + @<span class="keywordtype">string</span>?.Substring(1).ToLower();</div>
-<div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160;        }</div>
-<div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160;    }</div>
-<div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160;}</div>
-<div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160;</div>
+<div class="line"><a name="l00054"></a><span class="lineno"><a class="line" href="a00018.html#a08c3676b18eda87ee6645febbafaeaa8">   54</a></span>&#160;        <span class="keyword">public</span> <span class="keyword">static</span> <span class="keywordtype">void</span> <a class="code" href="a00018.html#a08c3676b18eda87ee6645febbafaeaa8">ValidateArgs</a>(<span class="keywordtype">string</span> lang, <span class="keywordtype">string</span> file)</div>
+<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;        {</div>
+<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;            <span class="keywordflow">if</span> (lang == <span class="stringliteral">&quot;&quot;</span>)</div>
+<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;            {</div>
+<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;                <span class="keywordflow">throw</span> <span class="keyword">new</span> InvalidDataException(<span class="stringliteral">&quot;specify language (-l) flag&quot;</span>);</div>
+<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;            }</div>
+<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;            <span class="keywordflow">if</span> (file == <span class="stringliteral">&quot;&quot;</span>)</div>
+<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;            {</div>
+<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;                <span class="keywordflow">throw</span> <span class="keyword">new</span> InvalidDataException(<span class="stringliteral">&quot;specify file path (-f) flag&quot;</span>);</div>
+<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;            }</div>
+<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;        }</div>
+<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;</div>
+<div class="line"><a name="l00072"></a><span class="lineno"><a class="line" href="a00018.html#a3297d7993fc6c739b3ff74f469c0589a">   72</a></span>&#160;        <span class="keyword">public</span> <span class="keyword">static</span> <span class="keywordtype">string</span> <a class="code" href="a00018.html#a3297d7993fc6c739b3ff74f469c0589a">GetFileFormat</a>(<span class="keywordtype">string</span> name)</div>
+<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;        {</div>
+<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;            var arr = name.Split(<span class="charliteral">&#39;.&#39;</span>);</div>
+<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;            <span class="keywordflow">if</span> (!(arr?.Length &gt; 1)) <span class="keywordflow">throw</span> <span class="keyword">new</span> InvalidDataException(<span class="stringliteral">&quot;invalid input file&quot;</span>);</div>
+<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;            <span class="keywordflow">if</span> (arr.Last().Any(char.IsLetter))</div>
+<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;            {</div>
+<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;                <span class="keywordflow">return</span> arr.Last();</div>
+<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;            }</div>
+<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;            <span class="keywordflow">throw</span> <span class="keyword">new</span> InvalidDataException(<span class="stringliteral">&quot;invalid input file&quot;</span>);</div>
+<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;        }</div>
+<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;        </div>
+<div class="line"><a name="l00088"></a><span class="lineno"><a class="line" href="a00018.html#aaa59afdc45cfc1c9583c40e11791fc15">   88</a></span>&#160;        <span class="keyword">public</span> <span class="keyword">static</span> <span class="keywordtype">string</span> <a class="code" href="a00018.html#aaa59afdc45cfc1c9583c40e11791fc15">Title</a>(<span class="keywordtype">string</span> @<span class="keywordtype">string</span>)</div>
+<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;        {</div>
+<div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;            <span class="keywordflow">return</span> @<span class="keywordtype">string</span>?.First().ToString().ToUpper() + @<span class="keywordtype">string</span>?.Substring(1).ToLower();</div>
+<div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;        }</div>
+<div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;    }</div>
+<div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;}</div>
+<div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;</div>
 <div class="ttc" id="a00018_html_a1d09a5fa154036958d654c65d3e64d7b"><div class="ttname"><a href="a00018.html#a1d09a5fa154036958d654c65d3e64d7b">CodeGen.parser.Parser.Write</a></div><div class="ttdeci">static void Write(string path, string fileContext)</div><div class="ttdoc">Writes string to a file </div><div class="ttdef"><b>Definition:</b> <a href="a00037_source.html#l00032">Parser.cs:32</a></div></div>
-<div class="ttc" id="a00018_html_aaa59afdc45cfc1c9583c40e11791fc15"><div class="ttname"><a href="a00018.html#aaa59afdc45cfc1c9583c40e11791fc15">CodeGen.parser.Parser.Title</a></div><div class="ttdeci">static string Title(string @string)</div><div class="ttdoc">Converts first letter of the string to upper case and others to lower case </div><div class="ttdef"><b>Definition:</b> <a href="a00037_source.html#l00094">Parser.cs:94</a></div></div>
+<div class="ttc" id="a00018_html_aaa59afdc45cfc1c9583c40e11791fc15"><div class="ttname"><a href="a00018.html#aaa59afdc45cfc1c9583c40e11791fc15">CodeGen.parser.Parser.Title</a></div><div class="ttdeci">static string Title(string @string)</div><div class="ttdoc">Converts first letter of the string to upper case and others to lower case </div><div class="ttdef"><b>Definition:</b> <a href="a00037_source.html#l00088">Parser.cs:88</a></div></div>
 <div class="ttc" id="a00018_html_aa8dc1a017c221d468885fd1ad7043de4"><div class="ttname"><a href="a00018.html#aa8dc1a017c221d468885fd1ad7043de4">CodeGen.parser.Parser.Download</a></div><div class="ttdeci">static string Download(string url)</div><div class="ttdoc">Downloads file from the server by url </div><div class="ttdef"><b>Definition:</b> <a href="a00037_source.html#l00042">Parser.cs:42</a></div></div>
 <div class="ttc" id="a00018_html"><div class="ttname"><a href="a00018.html">CodeGen.parser.Parser</a></div><div class="ttdoc">Parser </div><div class="ttdef"><b>Definition:</b> <a href="a00037_source.html#l00010">Parser.cs:10</a></div></div>
+<div class="ttc" id="a00018_html_a08c3676b18eda87ee6645febbafaeaa8"><div class="ttname"><a href="a00018.html#a08c3676b18eda87ee6645febbafaeaa8">CodeGen.parser.Parser.ValidateArgs</a></div><div class="ttdeci">static void ValidateArgs(string lang, string file)</div><div class="ttdoc">Validates arguments given from command line </div><div class="ttdef"><b>Definition:</b> <a href="a00037_source.html#l00054">Parser.cs:54</a></div></div>
 <div class="ttc" id="a00018_html_af3a5d34f3773eff03e97c42b40ea3e96"><div class="ttname"><a href="a00018.html#af3a5d34f3773eff03e97c42b40ea3e96">CodeGen.parser.Parser.Read</a></div><div class="ttdeci">static string Read(string name)</div><div class="ttdoc">Reads file by file path </div><div class="ttdef"><b>Definition:</b> <a href="a00037_source.html#l00018">Parser.cs:18</a></div></div>
-<div class="ttc" id="a00018_html_addb0a8b1127eb9907303d4c09c2bf841"><div class="ttname"><a href="a00018.html#addb0a8b1127eb9907303d4c09c2bf841">CodeGen.parser.Parser.ValidateArgs</a></div><div class="ttdeci">static void ValidateArgs(string lang, string file, string url)</div><div class="ttdoc">Validates arguments given from command line </div><div class="ttdef"><b>Definition:</b> <a href="a00037_source.html#l00055">Parser.cs:55</a></div></div>
-<div class="ttc" id="a00018_html_a3297d7993fc6c739b3ff74f469c0589a"><div class="ttname"><a href="a00018.html#a3297d7993fc6c739b3ff74f469c0589a">CodeGen.parser.Parser.GetFileFormat</a></div><div class="ttdeci">static string GetFileFormat(string name)</div><div class="ttdoc">Gets file format by extension </div><div class="ttdef"><b>Definition:</b> <a href="a00037_source.html#l00078">Parser.cs:78</a></div></div>
+<div class="ttc" id="a00018_html_a3297d7993fc6c739b3ff74f469c0589a"><div class="ttname"><a href="a00018.html#a3297d7993fc6c739b3ff74f469c0589a">CodeGen.parser.Parser.GetFileFormat</a></div><div class="ttdeci">static string GetFileFormat(string name)</div><div class="ttdoc">Gets file format by extension </div><div class="ttdef"><b>Definition:</b> <a href="a00037_source.html#l00072">Parser.cs:72</a></div></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->

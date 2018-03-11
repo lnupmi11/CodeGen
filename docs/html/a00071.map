@@ -1,10 +1,3 @@
-<map id="CodeGen.generators.Generator" name="CodeGen.generators.Generator">
-<area shape="rect" id="node2" href="$a00004.html" title="C# language generator " alt="" coords="278,5,469,46"/>
-<area shape="rect" id="node3" href="$a00005.html" title="Generator for JavaScript ES6 " alt="" coords="259,71,487,97"/>
-<area shape="rect" id="node4" href="$a00010.html" title="Go language generator " alt="" coords="263,121,483,148"/>
-<area shape="rect" id="node5" href="$a00011.html" title="Groovy language generator " alt="" coords="279,173,467,214"/>
-<area shape="rect" id="node6" href="$a00012.html" title="Java language generator " alt="" coords="258,239,489,265"/>
-<area shape="rect" id="node7" href="$a00020.html" title="Python language generator " alt="" coords="280,290,467,331"/>
-<area shape="rect" id="node8" href="$a00021.html" title="Ruby language generator " alt="" coords="256,356,491,383"/>
-<area shape="rect" id="node9" href="$a00024.html" title="Visual Basic language generator " alt="" coords="264,407,483,433"/>
+<map id="CodeGen.generators.ES6Generator" name="CodeGen.generators.ES6Generator">
+<area shape="rect" id="node2" href="$a00007.html" title="Interface of language generator " alt="" coords="79,5,157,32"/>
 </map>
