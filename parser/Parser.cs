@@ -7,7 +7,7 @@ namespace CodeGen.parser
 	/// <summary>
 	/// Parser
 	/// </summary>
-	public static class Parser
+	public class Parser
 	{
 		/// <summary>
 		/// Reads file by file path

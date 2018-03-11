@@ -1,8 +1,24 @@
 language: csharp
 mono: none
 dotnet: 2.1.4
+branches:
+  except:
+    - gh-pages
+env:
+  global:
+    - GH_REPO_NAME: CodeGen
+    - DOXYFILE: $TRAVIS_BUILD_DIR/Doxyfile
+    - GH_REPO_REF: github.com/lnupmi11/CodeGen.git
+addons:
+  apt:
+    packages:
+      - doxygen
+      - graphviz
 install:
 - dotnet restore
 script:
 - dotnet build
 - dotnet xunit
+after_success:
+  - cd $TRAVIS_BUILD_DIR
+  - ./deploy/generate_docs.sh
