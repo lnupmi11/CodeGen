@@ -30,13 +30,13 @@ namespace CodeGen
 
 			var pkg = string.IsNullOrWhiteSpace(Program.Opts?.File)
 				? Program.DefaultPkg
-				: ParseFileByFormat(GetSerializedData("", Program.Opts.File), Program.Opts.File);
+				: ParseFile(Program.Opts.File);
 
 			var data = gen.Generate(pkg);
 
 			if (Program.Opts != null && Program.Opts.Stdout)
 			{
-				PutDataToStdout(data, lang);				
+				PutDataToStdout(data, lang);
 			}
 			else
 			{
@@ -44,6 +44,11 @@ namespace CodeGen
 			}
 		}
 
+		private static Package ParseFile(string filename)
+		{
+			return ParseFileByFormat(GetSerializedData(filename), filename);
+		}
+		
 		private static Package ParseFileByFormat(string body, string fileName)
 		{
 			Package pkg;
@@ -68,9 +73,16 @@ namespace CodeGen
 			return pkg;
 		}
 
-		private static string GetSerializedData(string url, string fileName)
+		private static string GetSerializedData(string fileName)
 		{
-			return url != "" ? Parser.Download(url) : Parser.Read(fileName);
+			var allowedSchemes = new[] {Uri.UriSchemeHttp, Uri.UriSchemeHttps, Uri.UriSchemeFtp, Uri.UriSchemeFtp};
+
+			var result = Uri.TryCreate(fileName, UriKind.Absolute, out var uriResult)
+			             && Array.IndexOf(allowedSchemes, uriResult.Scheme) > -1
+				? Parser.Download(fileName)
+				: Parser.Read(fileName);
+
+			return result;
 		}
 
 		private static void PutDataToFiles(Dictionary<string, string> fileContextMap, Languange lang)

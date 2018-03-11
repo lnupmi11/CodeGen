@@ -14,7 +14,7 @@ namespace CodeGen.generators
 		/// <inheritdoc />
 		protected override string GenerateClass(Class @class)
 		{
-			string fields = "", inherits = " ", methods = "", classes = "";
+			string access = "", fields = "", inherits = "", methods = "", classes = "";
 			if (@class.Parent?.Length > 0)
 			{
 				inherits = " extends " + @class.Parent + " ";
@@ -29,7 +29,6 @@ namespace CodeGen.generators
 			classes = @class.Classes?.Aggregate(classes,
 				(current, cls) => current + '\n' + GeneratorConf.ShiftCode(GenerateClass(cls), 1, Indent) + '\n');
 			
-			var access = "";
 			if (@class.Access?.Length > 0)
 			{
 				access = @class.Access + ' ';

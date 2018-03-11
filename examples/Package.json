@@ -72,36 +72,37 @@
           "parameters": null
         }
       ],
-      "classes": null,
+      "classes": [
+        {
+          "name": "Seed",
+          "fields": [
+            {
+              "name": "size",
+              "type": "int",
+              "const": false,
+              "pointer": false,
+              "default": "",
+              "access": "public",
+              "static": false
+            }
+          ],
+          "methods": [
+            {
+              "name": "transform",
+              "return": "int",
+              "access": "public",
+              "const": true,
+              "static": true,
+              "parameters": null
+            }
+          ],
+          "classes": null,
+          "parent": "",
+          "access": "private"
+        }
+      ],
       "parent": "Fruit",
       "access": ""
-    },
-    {
-      "name": "Seed",
-      "fields": [
-        {
-          "name": "size",
-          "type": "int",
-          "const": false,
-          "pointer": false,
-          "default": "",
-          "access": "public",
-          "static": false
-        }
-      ],
-      "methods": [
-        {
-          "name": "transform",
-          "return": "int",
-          "access": "public",
-          "const": true,
-          "static": true,
-          "parameters": null
-        }
-      ],
-      "classes": null,
-      "parent": "",
-      "access": "private"
     }
   ]
 

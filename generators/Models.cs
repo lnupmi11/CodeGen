@@ -23,13 +23,13 @@ namespace CodeGen.generators
 		/// <summary>
 		/// Represents classes. Type: array of type Class
 		/// </summary>
-		[XmlElement("classes")]
+		[XmlArray("classes")]
 		public Class[] Classes { get; set; }
 
 		/// <summary>
 		/// Represents subpackages. Type: array of type Package
 		/// </summary>
-		[XmlElement("Packages")]
+		[XmlElement("packages")]
 		public Package[] Packages { get; set; }
 
 		/// <inheritdoc />
@@ -44,6 +44,7 @@ namespace CodeGen.generators
 	/// Contains name, array of fields, methods and subclasses,
 	/// parent class name, access specifier. Overrides ToString() method.
 	/// </summary>
+	[XmlRoot("class")]
 	public class Class
 	{
 		/// <summary>

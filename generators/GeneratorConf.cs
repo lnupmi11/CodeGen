@@ -25,7 +25,8 @@ namespace CodeGen.generators
 			UseTabs = !pkg.UseSpaces;
 			foreach (var @class in pkg.Classes)
 			{
-				data[@class.Name] = GenerateClass(@class) + '\n';
+				if (@class?.Name != null)
+					data[@class.Name] = GenerateClass(@class) + '\n';
 			}
 
 			return data;

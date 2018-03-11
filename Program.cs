@@ -26,21 +26,21 @@ namespace CodeGen
 
 		[Option('s', "spaces", Default = -1, HelpText = "Spaces offset (if not set or negative - using tabs)")]
 		public int? Spaces { get; }
-		
+
 		// Set Default to false in production
-		[Option('o', "stdout", Default = false, HelpText = "")]
+		[Option('o', "stdout", Default = true, HelpText = "")]
 		public bool Stdout { get; }
 
 		public override string ToString()
 		{
-			return string.Format("{{ -l=\"{0}\" -f=\"{1}\" -s={2}}}", Lang, File, Spaces);
+			return $"{{ -l=\"{Lang}\" -f=\"{File}\" -s={Spaces} {(Stdout ? "-o" : "")}}}";
 		}
 	}
 
 
 	internal static class Program
 	{
-		public const string DefaultLang = "csharp";
+		public const string DefaultLang = "java";
 
 		public static readonly Package DefaultPkg = GeneratorConf.ExamplePkg;
 

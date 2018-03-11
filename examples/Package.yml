@@ -2,6 +2,7 @@ name: main
 classes:
 - name: Fruit
 - name: Apple
+  parent: Fruit
   fields:
   - name: colour
     type: string
@@ -32,16 +33,16 @@ classes:
     return: string
     access: public
     const: true
-  parent: Fruit
-- name: Seed
-  access: private
-  fields:
-  - name: size
-    type: int
-    access: public
-  methods:
-  - name: transform
-    return: int
-    access: public
-    const: true
-    static: true
+  classes:
+  - name: Seed
+    access: private
+    fields:
+    - name: size
+      type: int
+      access: public
+    methods:
+    - name: transform
+      return: int
+      access: public
+      const: true
+      static: true

@@ -64,30 +64,32 @@
                     <static>false</static>
                 </method>
             </methods>
+            <classes>
+                <class>
+                    <name>Seed</name>
+                    <fields>
+                        <field>
+                            <name>size</name>
+                            <type>int</type>
+                            <const>false</const>
+                            <pointer>false</pointer>
+                            <access>public</access>
+                            <static>false</static>
+                        </field>
+                    </fields>
+                    <methods>
+                        <method>
+                            <name>transform</name>
+                            <return>int</return>
+                            <access>public</access>
+                            <const>true</const>
+                            <static>true</static>
+                        </method>
+                    </methods>
+                    <access>private</access>
+                </class>
+            </classes>
             <parent>Fruit</parent>
-        </class>
-        <class>
-            <name>Seed</name>
-            <fields>
-                <field>
-                    <name>size</name>
-                    <type>int</type>
-                    <const>false</const>
-                    <pointer>false</pointer>
-                    <access>public</access>
-                    <static>false</static>
-                </field>
-            </fields>
-            <methods>
-                <method>
-                    <name>transform</name>
-                    <return>int</return>
-                    <access>public</access>
-                    <const>true</const>
-                    <static>true</static>
-                </method>
-            </methods>
-            <access>private</access>
         </class>
     </classes>
     <use_spaces>false</use_spaces>
