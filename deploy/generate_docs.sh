@@ -61,7 +61,7 @@ rm -rf *
 # to be seen on the gh-pages site. Therefore creating an empty .nojekyll file.
 # Presumably this is only needed when the SHORT_NAMES option in Doxygen is set
 # to NO, which it is by default. So creating the file just in case.
-echo "" > .nojekyll
+#echo "" > .nojekyll
 
 ################################################################################
 ##### Generate the Doxygen code documentation and log the output.          #####
@@ -70,7 +70,7 @@ echo 'Generating Doxygen code documentation...'
 doxygen "$DOXYFILE" 2>&1 | tee doxygen.log
 
 echo 'Moving manual docs to github pages'
-cp "$TRAVIS_BUILD_DIR/*.md" ./
+cp -v $TRAVIS_BUILD_DIR/*.md ./ || true
 
 ################################################################################
 ##### Upload the documentation to the gh-pages branch of the repository.   #####
