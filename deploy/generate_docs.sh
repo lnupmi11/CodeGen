@@ -57,11 +57,14 @@ git config user.email "travis@travis-ci.org"
 # documentation.
 rm -rf *
 
+# restore back Jekyll config
+git checkout -- _config.yml
+
 # Need to create a .nojekyll file to allow filenames starting with an underscore
 # to be seen on the gh-pages site. Therefore creating an empty .nojekyll file.
 # Presumably this is only needed when the SHORT_NAMES option in Doxygen is set
 # to NO, which it is by default. So creating the file just in case.
-echo "" > .nojekyll
+# echo "" > .nojekyll
 
 ################################################################################
 ##### Generate the Doxygen code documentation and log the output.          #####
