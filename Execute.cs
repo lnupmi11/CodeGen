@@ -17,7 +17,7 @@ namespace CodeGen
 	public static class ExecuteConf
 	{
 		private const string OutputDir = "out";
-		
+
 		/// <summary>
 		/// The main flow of application
 		/// </summary>
@@ -26,20 +26,24 @@ namespace CodeGen
 			var langName = Program.Opts != null ? Program.Opts.Lang : Program.DefaultLang;
 			var lang = GeneratorConf.GetLanguage(langName);
 			var gen = lang.Generator;
-
 			if (gen == null) throw new NullReferenceException("This language has no generator");
-			
-			var data = gen.Generate(Program.DefaultPkg);
-			var comment = lang.Comment;
-			var extension = lang.Extension;
-			foreach (var item in data)
+
+			var pkg = string.IsNullOrWhiteSpace(Program.Opts?.File)
+				? Program.DefaultPkg
+				: ParseFileByFormat(GetSerializedData("", Program.Opts.File), Program.Opts.File);
+
+			var data = gen.Generate(pkg);
+
+			if (Program.Opts != null && Program.Opts.Stdout)
 			{
-				var filename = item.Key + "." + extension;
-				Console.WriteLine(comment, filename);
-				Console.WriteLine(item.Value);
+				PutDataToStdout(data, lang);				
+			}
+			else
+			{
+				PutDataToFiles(data, lang);
 			}
 		}
-		
+
 		private static Package ParseFileByFormat(string body, string fileName)
 		{
 			Package pkg;
@@ -63,42 +67,46 @@ namespace CodeGen
 
 			return pkg;
 		}
-		
+
 		private static string GetSerializedData(string url, string fileName)
 		{
 			return url != "" ? Parser.Download(url) : Parser.Read(fileName);
 		}
-		
-		private static void PutDataToFiles(Dictionary<string, string> fileContextMap, string lang)
+
+		private static void PutDataToFiles(Dictionary<string, string> fileContextMap, Languange lang)
 		{
-			var ext = Parser.GetExtension(lang);
+			var ext = lang.Extension;
 			Directory.CreateDirectory(OutputDir);
 			foreach (var file in fileContextMap)
 			{
-				Parser.Write(OutputDir + "/" + file.Key + ext, file.Value);
+				Parser.Write(OutputDir + "/" + file.Key + '.' + ext, file.Value);
 			}
+
 			Console.WriteLine("Generated successfully.");
 		}
-		
-		private static void PutDataToStdout(Dictionary<string, string> fileContextMap, string lang)
+
+		private static void PutDataToStdout(Dictionary<string, string> fileContextMap, Languange lang)
 		{
-			var ext = Parser.GetExtension(lang);
-			var comment = GeneratorConf.Languanges[lang].Comment;
+			var ext = lang.Extension;
+			var comment = lang.Comment;
 			var filename = "";
 			foreach (var file in fileContextMap)
 			{
 				if (comment != "")
 				{
-					filename = string.Format(comment, OutputDir, file.Key + ext);
+					filename = string.Format(comment, file.Key + "." + ext);
 				}
+
 				Console.WriteLine(filename);
-				Console.WriteLine("\n{0}\n", file.Value);
+				Console.WriteLine(file.Value);
 			}
 		}
 
 		private static Package DeserializeYaml(string body)
 		{
-			var deserializer = new Deserializer(namingConvention: new CamelCaseNamingConvention());
+			var deserializer = new DeserializerBuilder()
+				.WithNamingConvention(new CamelCaseNamingConvention())
+				.Build();
 			var pkg = deserializer.Deserialize<Package>(new StringReader(body));
 			return pkg;
 		}
@@ -125,7 +133,7 @@ namespace CodeGen
 					return (Package) serializer.Deserialize(reader);
 				}
 			}
-			catch (Exception e)
+			catch (Exception)
 			{
 				throw new InvalidDataException("invalid xml file content");
 			}

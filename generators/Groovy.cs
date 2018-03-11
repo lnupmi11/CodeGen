@@ -1,5 +1,4 @@
-﻿using System.Collections.Generic;
-using System.Linq;
+﻿using System.Linq;
 
 namespace CodeGen.generators
 {
@@ -11,19 +10,6 @@ namespace CodeGen.generators
 	{
 		private const string ClassFormat = "{0}class {1}{2}{{{3}{4}{5}}}";
 		private string Indent { get; set; } = GeneratorConf.GetIndent(true, 4);
-
-		/// <inheritdoc />
-		public override Dictionary<string, string> Generate(Package pkg)
-		{
-			var data = new Dictionary<string, string>();
-			Indent = GeneratorConf.GetIndent(!pkg.UseSpaces, 4);
-			foreach (var @class in pkg.Classes)
-			{
-				data[@class.Name] = GenerateClass(@class) + '\n';
-			}
-
-			return data;
-		}
 
 		/// <inheritdoc />
 		protected override string GenerateClass(Class @class)

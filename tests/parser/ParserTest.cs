@@ -5,8 +5,14 @@ using System.Collections.Generic;
 
 namespace CodeGen.tests.parser
 {
+	/// <summary>
+	/// 
+	/// </summary>
 	public class ParserTest
 	{
+		/// <summary>
+		/// 
+		/// </summary>
 		[Fact]
 		public void GetFileFormatTest()
 		{
@@ -16,18 +22,9 @@ namespace CodeGen.tests.parser
 			Assert.Throws<InvalidDataException>(() => Parser.GetFileFormat("."));
 		}
 
-		[Fact]
-		public void GetExtensionTest()
-		{
-			Assert.Equal(".java", Parser.GetExtension("java"));
-			Assert.Equal(".go", Parser.GetExtension("go"));
-			Assert.Equal(".rb", Parser.GetExtension("ruby"));
-			Assert.Equal(".py", Parser.GetExtension("python"));
-			Assert.Equal(".vb", Parser.GetExtension("vb"));
-			Assert.Equal(".cs", Parser.GetExtension("csharp"));
-			Assert.Throws<KeyNotFoundException>(() => Parser.GetExtension("somelang"));
-		}
-
+		/// <summary>
+		/// 
+		/// </summary>
 		[Fact]
 		public void ValidateArgsTest()
 		{

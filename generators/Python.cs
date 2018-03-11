@@ -13,24 +13,11 @@ namespace CodeGen.generators
 		private string Indent { get; set; } = GeneratorConf.GetIndent(true, 4);
 		
 		/// <inheritdoc />
-		public override Dictionary<string, string> Generate(Package pkg)
-		{
-			var data = new Dictionary<string, string>();
-			Indent = GeneratorConf.GetIndent(!pkg.UseSpaces, 4);
-			foreach (var @class in pkg.Classes)
-			{
-				data[@class.Name] = GenerateClass(@class) + '\n';
-			}
-
-			return data;
-		}
-
-		/// <inheritdoc />
 		protected override string GenerateClass(Class @class)
 		{
 			string fields = "", inherits = "", methods = "", classes = "";
 
-			if (@class.Parent != "")
+			if (!string.IsNullOrWhiteSpace(@class.Parent))
 			{
 				inherits = '(' + @class.Parent + ')';
 			}
@@ -76,30 +63,6 @@ namespace CodeGen.generators
 		{
 			return GenerateMethodWithBody(method, "pass");
 		}
-		
-		private string GenerateInit(Class @class)
-		{
-			string result = "", body = "";
-			var init = new Method
-			{
-				Name = "__init__",
-				Parameters = new Parameter[] { }
-			};
-			foreach (var field in @class.Fields)
-			{
-				init.Parameters.Append(new Parameter()
-				{
-					Name = field.Name,
-					Default = field.Default
-				});
-				body += "self." + field.Name + " = " + field.Name + '\n';
-			}
-
-			result += GenerateMethodWithBody(init, body);
-
-			return result;
-		}
-		
 
 		private string GenerateMethodWithBody(Method method, string body) 
 		{
@@ -133,7 +96,7 @@ namespace CodeGen.generators
 			for (var i = 0; i < method.Parameters?.Length; i++)
 			{
 				result += method.Parameters[i].Name;
-				if (method.Parameters[i].Default != "")
+				if (!string.IsNullOrWhiteSpace(method.Parameters[i].Default))
 				{
 					result += '=' + method.Parameters[i].Default;
 				}
@@ -149,6 +112,50 @@ namespace CodeGen.generators
 			}
 			
 			result += "):\n" + GeneratorConf.ShiftCode(body, 1, Indent);
+			return result;
+		}
+
+		private string GenerateInit(Class @class)
+		{
+			string result = "", body = "";
+			var init = new Method
+			{
+				Name = "__init__",
+			};
+			var previousIsStatic = false;
+			var paramList = new List<Parameter>();
+
+			for (var i = 0; i < @class.Fields.Length; i++)
+			{
+				var field = @class.Fields[i];
+
+				if (field.Static)
+				{
+					previousIsStatic = true;
+					continue;
+				}
+
+				paramList.Add(new Parameter
+				{
+					Name = field.Name,
+					Default = field.Default
+				});
+
+				body += "self." + field.Name + " = " + field.Name;
+
+				if (i + 1 < @class.Fields.Length && !previousIsStatic)
+				{
+					body += "\n";
+				}
+
+				previousIsStatic = false;
+
+			}
+
+			init.Parameters = paramList.ToArray();
+
+			result += GenerateMethodWithBody(init, body);
+
 			return result;
 		}
 	}

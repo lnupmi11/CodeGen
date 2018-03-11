@@ -10,26 +10,41 @@ namespace CodeGen.generators
 	public abstract class Generator
 	{
 		/// <summary>
+		/// 
+		/// </summary>
+		protected static bool UseTabs = true;
+
+		/// <summary>
 		/// Package generator: generates package with classes and subpackages from given package object
 		/// </summary>
 		/// <param name="pkg">Package object</param>
 		/// <returns>Dictionary of file names (keys) and generated code (values)</returns>
-		public abstract Dictionary<string, string> Generate(Package pkg);
-		
+		public Dictionary<string, string> Generate(Package pkg)
+		{
+			var data = new Dictionary<string, string>();
+			UseTabs = !pkg.UseSpaces;
+			foreach (var @class in pkg.Classes)
+			{
+				data[@class.Name] = GenerateClass(@class) + '\n';
+			}
+
+			return data;
+		}
+
 		/// <summary>
 		///	Class generator: generates class with fields, methods and subclasses from given class object
 		/// </summary>
 		/// <param name="class">Class object</param>
 		/// <returns>String of generated code of class</returns>
 		protected abstract string GenerateClass(Class @class);
-		
+
 		/// <summary>
 		/// Field generator: generates field from given field object
 		/// </summary>
 		/// <param name="field">Field object</param>
 		/// <returns>String of generated code of field</returns>
 		protected abstract string GenerateField(Field field);
-		
+
 		/// <summary>
 		/// Method generator: generates method from given method object
 		/// </summary>
@@ -49,28 +64,28 @@ namespace CodeGen.generators
 		/// <param name="pkg">Package object</param>
 		/// <returns>Normalized package object</returns>
 		public abstract Package NormalizePackage(Package pkg);
-		
+
 		/// <summary>
 		/// Class normalizer: normalizes class with fields, methods and subclasses
 		/// </summary>
 		/// <param name="class">Class object</param>
 		/// <returns>Normalized class object</returns>
 		protected abstract Class NormalizeClass(Class @class);
-		
+
 		/// <summary>
 		/// Field normalizer: normalizes field
 		/// </summary>
 		/// <param name="field">Field object</param>
 		/// <returns>Normalized field object</returns>
 		protected abstract Field NormalizeField(Field field);
-		
+
 		/// <summary>
 		/// Method normalizer: normalizes method
 		/// </summary>
 		/// <param name="method">Method object</param>
 		/// <returns>Normalized method object</returns>
 		protected abstract Method NormalizeMethod(Method method);
-		
+
 		/// <summary>
 		/// Parameter normalizer: normalizes parameter
 		/// </summary>
@@ -88,21 +103,26 @@ namespace CodeGen.generators
 		/// Holds the generator of the language. Field is read only
 		/// </summary>
 		public readonly Generator Generator;
-		
+
 		/// <summary>
 		/// Holds the extension of the file. Field is read only
 		/// </summary>
 		public readonly string Extension;
-		
+
 		/// <summary>
 		/// Holds comment format. Field is read only
 		/// </summary>
 		public readonly string Comment;
-		
+
 		/// <summary>
 		/// Holds language normalizer. Field is read only
 		/// </summary>
 		private readonly Normalizer _normalizer;
+
+		/// <summary>
+		/// The size of identation (works if using spaces, else 1 tab)
+		/// </summary>
+		public readonly int IndentSize;
 
 		/// <summary>
 		/// Constructor for language, used to avoid struct initializers
@@ -111,12 +131,15 @@ namespace CodeGen.generators
 		/// <param name="extension">File extension</param>
 		/// <param name="comment">Comment format</param>
 		/// <param name="normalizer">Language normalizer</param>
-		public Languange(Generator generator, string extension = "", string comment = "", Normalizer normalizer = null)
+		/// <param name="indentSize">The size of identation (works if using spaces, else 1 tab)</param>
+		public Languange(Generator generator, string extension = "", string comment = "", Normalizer normalizer = null,
+			int indentSize = 4)
 		{
 			Generator = generator;
 			Extension = extension;
 			Comment = comment;
 			_normalizer = normalizer;
+			IndentSize = indentSize;
 		}
 	}
 
@@ -128,7 +151,7 @@ namespace CodeGen.generators
 		/// <summary>
 		/// Contains example package
 		/// </summary>
-		public static Package ExamplePkg = new Package
+		public static readonly Package ExamplePkg = new Package
 		{
 			Name = "main",
 			UseSpaces = true,
@@ -188,13 +211,13 @@ namespace CodeGen.generators
 							Access = "protected",
 							Return = "int",
 							Static = true,
-							Name = "getSize"
+							Name = "getSizeValue"
 						},
 						new Method
 						{
 							Access = "public",
 							Return = "string",
-							Name = "getColor",
+							Name = "getColorName",
 							Const = true
 						}
 					},
@@ -240,12 +263,13 @@ namespace CodeGen.generators
 			{"ruby", new Languange(new RubyGenerator(), "rb", "# {0}")},
 			{"python", new Languange(new PythonGenerator(), "py", "# {0}\n")},
 			{"vb", new Languange(new VbGenerator(), "vb", "' {0}\n")},
-			{"csharp", new Languange(new CSharpGenerator(), "cs","/* {0} */")},
-			{"js_es6", new Languange(new JSes6Generator(), "js","/* {0} */")},
-			{"groovy", new Languange(new GroovyGenerator(), "groovy","/* {0} */")},
-			// TODO: add Closure, Crystal, Rust, Scala, JS_ES5, Lua, Pyhton/Django, Ruby/Rails
+			{"csharp", new Languange(new CSharpGenerator(), "cs", "/* {0} */")},
+			{"js_es6", new Languange(new ES6Generator(), "js", "/* {0} */")},
+			{"groovy", new Languange(new GroovyGenerator(), "groovy", "/* {0} */")},
+			// TODO: add languages: JS_ES5, Crystal, Closure, Kotlin, Rust, Scala, Lua,
+			// TODO: add frameworks: Pyhton/Django, Ruby/Rails
 		};
-		
+
 		/// <summary>
 		/// Creates indent using given parameters
 		/// </summary>

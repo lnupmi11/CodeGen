@@ -1,14 +1,13 @@
 ﻿using System.IO;
 using System.Net;
 using System.Linq;
-using System.Collections.Generic;
 
 namespace CodeGen.parser
 {
 	/// <summary>
 	/// Parser
 	/// </summary>
-	public class Parser
+	public static class Parser
 	{
 		/// <summary>
 		/// Reads file by file path
@@ -71,23 +70,6 @@ namespace CodeGen.parser
 		}
 
 		/// <summary>
-		/// Creates file extension by given language
-		/// </summary>
-		/// <param name="language">Programming language</param>
-		/// <returns>File extension</returns>
-		/// <exception cref="KeyNotFoundException">Throws if given language does not exist</exception>
-		public static string GetExtension(string language)
-		{
-			language = generators.GeneratorConf.NormalizeLang(language);
-			if (generators.GeneratorConf.Languanges.ContainsKey(language))
-			{
-				return "." + generators.GeneratorConf.Languanges[language].Extension;
-			}
-
-			throw new KeyNotFoundException("invalid language");
-		}
-
-		/// <summary>
 		/// Gets file format by extension
 		/// </summary>
 		/// <param name="name">File name</param>
@@ -96,12 +78,10 @@ namespace CodeGen.parser
 		public static string GetFileFormat(string name)
 		{
 			var arr = name.Split('.');
-			if (arr?.Length > 1)
+			if (!(arr?.Length > 1)) throw new InvalidDataException("invalid input file");
+			if (arr.Last().Any(char.IsLetter))
 			{
-				if (arr.Last().Any(char.IsLetter))
-				{
-					return arr.Last();
-				}
+				return arr.Last();
 			}
 			throw new InvalidDataException("invalid input file");
 		}

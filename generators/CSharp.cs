@@ -11,20 +11,7 @@ namespace CodeGen.generators
 	public class CSharpGenerator : Generator
 	{
 		private const string ClassFormat = "{0}class {1}{2}{{{3}{4}{5}}}";
-		private string Indent { get; set; } = GeneratorConf.GetIndent(true, 4);
-
-		/// <inheritdoc />
-		public override Dictionary<string, string> Generate(Package pkg)
-		{
-			var data = new Dictionary<string, string>();
-			Indent = GeneratorConf.GetIndent(!pkg.UseSpaces, 4);
-			foreach (var @class in pkg.Classes)
-			{
-				data[@class.Name] = GenerateClass(@class) + '\n';
-			}
-
-			return data;
-		}
+		private string Indent { get; set; } = GeneratorConf.GetIndent(UseTabs, 4);
 
 		/// <inheritdoc />
 		protected override string GenerateClass(Class @class)
@@ -32,7 +19,7 @@ namespace CodeGen.generators
 			string fields = "", inherits = " ", methods = "", classes = "";
 			if (@class.Parent?.Length > 0)
 			{
-					inherits = " : " + @class.Parent + ' ';	
+				inherits = " : " + @class.Parent + ' ';
 			}
 
 			fields = @class.Fields?.Aggregate('\n' + fields,
@@ -43,12 +30,12 @@ namespace CodeGen.generators
 
 			if (@class.Fields?.Length > 0)
 			{
-				methods += GeneratorConf.ShiftCode(GenerateGettersSetters(@class.Fields), 1, Indent);	
+				methods += GeneratorConf.ShiftCode(GenerateGettersSetters(@class.Fields), 1, Indent);
 			}
-			
+
 			classes = @class.Classes?.Aggregate(classes,
-				(current, cls) => current + '\n' + GeneratorConf.ShiftCode(GenerateClass(cls), 1, Indent) + '\n') + '\n';
-			
+				          (current, cls) => current + '\n' + GeneratorConf.ShiftCode(GenerateClass(cls), 1, Indent) + '\n') + '\n';
+
 			var access = "";
 			if (@class.Access?.Length > 0)
 			{
@@ -111,7 +98,7 @@ namespace CodeGen.generators
 			{
 				result += "static ";
 			}
-			
+
 			if (method.Return?.Length == 0)
 				result += "void ";
 			else
@@ -141,8 +128,12 @@ namespace CodeGen.generators
 			return result;
 		}
 
-		/// <inheritdoc />
-		protected string GenerateGettersSetters(IEnumerable<Field> fields)
+		/// <summary>
+		/// 
+		/// </summary>
+		/// <param name="fields"></param>
+		/// <returns></returns>
+		private string GenerateGettersSetters(IEnumerable<Field> fields)
 		{
 			if (fields == null) return "";
 			var result = "";
@@ -162,15 +153,25 @@ namespace CodeGen.generators
 			return result;
 		}
 
+		/// <summary>
+		/// 
+		/// </summary>
+		/// <param name="field"></param>
+		/// <returns></returns>
 		private string GenerateGetter(Variable field)
 		{
-			return "public " + field.Type + " get" + Parser.Title(field.Name) + "() {\n" + Indent + 
+			return "public " + field.Type + " get" + Parser.Title(field.Name) + "() {\n" + Indent +
 			       "return " + field.Name + ";\n}";
 		}
 
+		/// <summary>
+		/// 
+		/// </summary>
+		/// <param name="field"></param>
+		/// <returns></returns>
 		private string GenerateSetter(Variable field)
 		{
-			return "public void set" + Parser.Title(field.Name) + "(" + field.Type + " newValue) {\n" + Indent + 
+			return "public void set" + Parser.Title(field.Name) + "(" + field.Type + " newValue) {\n" + Indent +
 			       field.Name + " = newValue;\n}";
 		}
 	}
