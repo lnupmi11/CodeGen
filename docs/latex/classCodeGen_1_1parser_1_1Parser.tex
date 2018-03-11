@@ -1,0 +1,158 @@
+\hypertarget{classCodeGen_1_1parser_1_1Parser}{}\section{Code\+Gen.\+parser.\+Parser Class Reference}
+\label{classCodeGen_1_1parser_1_1Parser}\index{Code\+Gen.\+parser.\+Parser@{Code\+Gen.\+parser.\+Parser}}
+
+
+\mbox{\hyperlink{classCodeGen_1_1parser_1_1Parser}{Parser}}  
+
+
+\subsection*{Static Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+static string \mbox{\hyperlink{classCodeGen_1_1parser_1_1Parser_af3a5d34f3773eff03e97c42b40ea3e96}{Read}} (string name)
+\begin{DoxyCompactList}\small\item\em Reads file by file path \end{DoxyCompactList}\item 
+static void \mbox{\hyperlink{classCodeGen_1_1parser_1_1Parser_a1d09a5fa154036958d654c65d3e64d7b}{Write}} (string path, string file\+Context)
+\begin{DoxyCompactList}\small\item\em Writes string to a file \end{DoxyCompactList}\item 
+static string \mbox{\hyperlink{classCodeGen_1_1parser_1_1Parser_aa8dc1a017c221d468885fd1ad7043de4}{Download}} (string url)
+\begin{DoxyCompactList}\small\item\em Downloads file from the server by url \end{DoxyCompactList}\item 
+static void \mbox{\hyperlink{classCodeGen_1_1parser_1_1Parser_addb0a8b1127eb9907303d4c09c2bf841}{Validate\+Args}} (string lang, string file, string url)
+\begin{DoxyCompactList}\small\item\em Validates arguments given from command line \end{DoxyCompactList}\item 
+static string \mbox{\hyperlink{classCodeGen_1_1parser_1_1Parser_a3297d7993fc6c739b3ff74f469c0589a}{Get\+File\+Format}} (string name)
+\begin{DoxyCompactList}\small\item\em Gets file format by extension \end{DoxyCompactList}\item 
+static string \mbox{\hyperlink{classCodeGen_1_1parser_1_1Parser_aaa59afdc45cfc1c9583c40e11791fc15}{Title}} (string @string)
+\begin{DoxyCompactList}\small\item\em Converts first letter of the string to upper case and others to lower case \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+\mbox{\hyperlink{classCodeGen_1_1parser_1_1Parser}{Parser}} 
+
+
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{classCodeGen_1_1parser_1_1Parser_aa8dc1a017c221d468885fd1ad7043de4}\label{classCodeGen_1_1parser_1_1Parser_aa8dc1a017c221d468885fd1ad7043de4}} 
+\index{Code\+Gen\+::parser\+::\+Parser@{Code\+Gen\+::parser\+::\+Parser}!Download@{Download}}
+\index{Download@{Download}!Code\+Gen\+::parser\+::\+Parser@{Code\+Gen\+::parser\+::\+Parser}}
+\subsubsection{\texorpdfstring{Download()}{Download()}}
+{\footnotesize\ttfamily static string Code\+Gen.\+parser.\+Parser.\+Download (\begin{DoxyParamCaption}\item[{string}]{url }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}}
+
+
+
+Downloads file from the server by url 
+
+
+\begin{DoxyParams}{Parameters}
+{\em url} & Path to file on the server\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+File content
+\end{DoxyReturn}
+\mbox{\Hypertarget{classCodeGen_1_1parser_1_1Parser_a3297d7993fc6c739b3ff74f469c0589a}\label{classCodeGen_1_1parser_1_1Parser_a3297d7993fc6c739b3ff74f469c0589a}} 
+\index{Code\+Gen\+::parser\+::\+Parser@{Code\+Gen\+::parser\+::\+Parser}!Get\+File\+Format@{Get\+File\+Format}}
+\index{Get\+File\+Format@{Get\+File\+Format}!Code\+Gen\+::parser\+::\+Parser@{Code\+Gen\+::parser\+::\+Parser}}
+\subsubsection{\texorpdfstring{Get\+File\+Format()}{GetFileFormat()}}
+{\footnotesize\ttfamily static string Code\+Gen.\+parser.\+Parser.\+Get\+File\+Format (\begin{DoxyParamCaption}\item[{string}]{name }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}}
+
+
+
+Gets file format by extension 
+
+
+\begin{DoxyParams}{Parameters}
+{\em name} & File name\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+File extension
+\end{DoxyReturn}
+
+\begin{DoxyExceptions}{Exceptions}
+{\em Invalid\+Data\+Exception} & Throws if file has no extension\\
+\hline
+\end{DoxyExceptions}
+\mbox{\Hypertarget{classCodeGen_1_1parser_1_1Parser_af3a5d34f3773eff03e97c42b40ea3e96}\label{classCodeGen_1_1parser_1_1Parser_af3a5d34f3773eff03e97c42b40ea3e96}} 
+\index{Code\+Gen\+::parser\+::\+Parser@{Code\+Gen\+::parser\+::\+Parser}!Read@{Read}}
+\index{Read@{Read}!Code\+Gen\+::parser\+::\+Parser@{Code\+Gen\+::parser\+::\+Parser}}
+\subsubsection{\texorpdfstring{Read()}{Read()}}
+{\footnotesize\ttfamily static string Code\+Gen.\+parser.\+Parser.\+Read (\begin{DoxyParamCaption}\item[{string}]{name }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}}
+
+
+
+Reads file by file path 
+
+
+\begin{DoxyParams}{Parameters}
+{\em name} & Path to file\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+File content
+\end{DoxyReturn}
+
+\begin{DoxyExceptions}{Exceptions}
+{\em File\+Not\+Found\+Exception} & Throws if file does not exist\\
+\hline
+\end{DoxyExceptions}
+\mbox{\Hypertarget{classCodeGen_1_1parser_1_1Parser_aaa59afdc45cfc1c9583c40e11791fc15}\label{classCodeGen_1_1parser_1_1Parser_aaa59afdc45cfc1c9583c40e11791fc15}} 
+\index{Code\+Gen\+::parser\+::\+Parser@{Code\+Gen\+::parser\+::\+Parser}!Title@{Title}}
+\index{Title@{Title}!Code\+Gen\+::parser\+::\+Parser@{Code\+Gen\+::parser\+::\+Parser}}
+\subsubsection{\texorpdfstring{Title()}{Title()}}
+{\footnotesize\ttfamily static string Code\+Gen.\+parser.\+Parser.\+Title (\begin{DoxyParamCaption}\item[{string @}]{string }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}}
+
+
+
+Converts first letter of the string to upper case and others to lower case 
+
+
+\begin{DoxyParams}{Parameters}
+{\em string} & String to transform\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Transformed string
+\end{DoxyReturn}
+\mbox{\Hypertarget{classCodeGen_1_1parser_1_1Parser_addb0a8b1127eb9907303d4c09c2bf841}\label{classCodeGen_1_1parser_1_1Parser_addb0a8b1127eb9907303d4c09c2bf841}} 
+\index{Code\+Gen\+::parser\+::\+Parser@{Code\+Gen\+::parser\+::\+Parser}!Validate\+Args@{Validate\+Args}}
+\index{Validate\+Args@{Validate\+Args}!Code\+Gen\+::parser\+::\+Parser@{Code\+Gen\+::parser\+::\+Parser}}
+\subsubsection{\texorpdfstring{Validate\+Args()}{ValidateArgs()}}
+{\footnotesize\ttfamily static void Code\+Gen.\+parser.\+Parser.\+Validate\+Args (\begin{DoxyParamCaption}\item[{string}]{lang,  }\item[{string}]{file,  }\item[{string}]{url }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}}
+
+
+
+Validates arguments given from command line 
+
+
+\begin{DoxyParams}{Parameters}
+{\em lang} & Programming language\\
+\hline
+{\em file} & Path to local file\\
+\hline
+{\em url} & Path to file on the server\\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyExceptions}{Exceptions}
+{\em Invalid\+Data\+Exception} & Throws if some of arguments are invalid\\
+\hline
+\end{DoxyExceptions}
+\mbox{\Hypertarget{classCodeGen_1_1parser_1_1Parser_a1d09a5fa154036958d654c65d3e64d7b}\label{classCodeGen_1_1parser_1_1Parser_a1d09a5fa154036958d654c65d3e64d7b}} 
+\index{Code\+Gen\+::parser\+::\+Parser@{Code\+Gen\+::parser\+::\+Parser}!Write@{Write}}
+\index{Write@{Write}!Code\+Gen\+::parser\+::\+Parser@{Code\+Gen\+::parser\+::\+Parser}}
+\subsubsection{\texorpdfstring{Write()}{Write()}}
+{\footnotesize\ttfamily static void Code\+Gen.\+parser.\+Parser.\+Write (\begin{DoxyParamCaption}\item[{string}]{path,  }\item[{string}]{file\+Context }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}}
+
+
+
+Writes string to a file 
+
+
+\begin{DoxyParams}{Parameters}
+{\em path} & Path to new file\\
+\hline
+{\em file\+Context} & Content of a file\\
+\hline
+\end{DoxyParams}
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+parser/\mbox{\hyperlink{Parser_8cs}{Parser.\+cs}}\end{DoxyCompactItemize}

@@ -1,0 +1,170 @@
+\hypertarget{classCodeGen_1_1generators_1_1GeneratorConf}{}\section{Code\+Gen.\+generators.\+Generator\+Conf Class Reference}
+\label{classCodeGen_1_1generators_1_1GeneratorConf}\index{Code\+Gen.\+generators.\+Generator\+Conf@{Code\+Gen.\+generators.\+Generator\+Conf}}
+
+
+Holds the configuration of generator  
+
+
+
+
+Collaboration diagram for Code\+Gen.\+generators.\+Generator\+Conf\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=271pt]{classCodeGen_1_1generators_1_1GeneratorConf__coll__graph}
+\end{center}
+\end{figure}
+\subsection*{Static Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+static string \mbox{\hyperlink{classCodeGen_1_1generators_1_1GeneratorConf_a00082fad632c4dda77b1b025d1b2b280}{Get\+Indent}} (bool tabs, int tab\+Stop)
+\begin{DoxyCompactList}\small\item\em Creates indent using given parameters \end{DoxyCompactList}\item 
+static string \mbox{\hyperlink{classCodeGen_1_1generators_1_1GeneratorConf_a71dbec00a6e5d6d390dd8a24b64b6bb2}{Shift\+Code}} (string code, int num, string indent)
+\begin{DoxyCompactList}\small\item\em Shifts code using given parameters \end{DoxyCompactList}\item 
+static string \mbox{\hyperlink{classCodeGen_1_1generators_1_1GeneratorConf_a7b70aa3e67ba52dfbd1a271da20fc74e}{Normalize\+Lang}} (string lang)
+\begin{DoxyCompactList}\small\item\em Converts given language into language which is used for identification of generator \end{DoxyCompactList}\item 
+static \mbox{\hyperlink{structCodeGen_1_1generators_1_1Languange}{Languange}} \mbox{\hyperlink{classCodeGen_1_1generators_1_1GeneratorConf_a358bcc4be771d981ac1aa4c451b48383}{Get\+Language}} (string name)
+\begin{DoxyCompactList}\small\item\em Creates generator if it exists, else throws an error \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Static Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+static readonly \mbox{\hyperlink{classCodeGen_1_1generators_1_1Package}{Package}} \mbox{\hyperlink{classCodeGen_1_1generators_1_1GeneratorConf_a9680e7722e2eb32214fa8ac1476f7903}{Example\+Pkg}}
+\begin{DoxyCompactList}\small\item\em Contains example package \end{DoxyCompactList}\item 
+static readonly Dictionary$<$ string, \mbox{\hyperlink{structCodeGen_1_1generators_1_1Languange}{Languange}} $>$ \mbox{\hyperlink{classCodeGen_1_1generators_1_1GeneratorConf_a830f7e81defcc68af267575792253b35}{Languanges}}
+\begin{DoxyCompactList}\small\item\em Dictionary of language names (keys) and its Language objects (values) \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Holds the configuration of generator 
+
+
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{classCodeGen_1_1generators_1_1GeneratorConf_a00082fad632c4dda77b1b025d1b2b280}\label{classCodeGen_1_1generators_1_1GeneratorConf_a00082fad632c4dda77b1b025d1b2b280}} 
+\index{Code\+Gen\+::generators\+::\+Generator\+Conf@{Code\+Gen\+::generators\+::\+Generator\+Conf}!Get\+Indent@{Get\+Indent}}
+\index{Get\+Indent@{Get\+Indent}!Code\+Gen\+::generators\+::\+Generator\+Conf@{Code\+Gen\+::generators\+::\+Generator\+Conf}}
+\subsubsection{\texorpdfstring{Get\+Indent()}{GetIndent()}}
+{\footnotesize\ttfamily static string Code\+Gen.\+generators.\+Generator\+Conf.\+Get\+Indent (\begin{DoxyParamCaption}\item[{bool}]{tabs,  }\item[{int}]{tab\+Stop }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}}
+
+
+
+Creates indent using given parameters 
+
+
+\begin{DoxyParams}{Parameters}
+{\em tabs} & Use tabs or spaces\\
+\hline
+{\em tab\+Stop} & Number of spaces\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Indent string
+\end{DoxyReturn}
+\mbox{\Hypertarget{classCodeGen_1_1generators_1_1GeneratorConf_a358bcc4be771d981ac1aa4c451b48383}\label{classCodeGen_1_1generators_1_1GeneratorConf_a358bcc4be771d981ac1aa4c451b48383}} 
+\index{Code\+Gen\+::generators\+::\+Generator\+Conf@{Code\+Gen\+::generators\+::\+Generator\+Conf}!Get\+Language@{Get\+Language}}
+\index{Get\+Language@{Get\+Language}!Code\+Gen\+::generators\+::\+Generator\+Conf@{Code\+Gen\+::generators\+::\+Generator\+Conf}}
+\subsubsection{\texorpdfstring{Get\+Language()}{GetLanguage()}}
+{\footnotesize\ttfamily static \mbox{\hyperlink{structCodeGen_1_1generators_1_1Languange}{Languange}} Code\+Gen.\+generators.\+Generator\+Conf.\+Get\+Language (\begin{DoxyParamCaption}\item[{string}]{name }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}}
+
+
+
+Creates generator if it exists, else throws an error 
+
+
+\begin{DoxyParams}{Parameters}
+{\em name} & name of a language\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+language
+\end{DoxyReturn}
+
+\begin{DoxyExceptions}{Exceptions}
+{\em Index\+Out\+Of\+Range\+Exception} & If the language is not found\\
+\hline
+\end{DoxyExceptions}
+\mbox{\Hypertarget{classCodeGen_1_1generators_1_1GeneratorConf_a7b70aa3e67ba52dfbd1a271da20fc74e}\label{classCodeGen_1_1generators_1_1GeneratorConf_a7b70aa3e67ba52dfbd1a271da20fc74e}} 
+\index{Code\+Gen\+::generators\+::\+Generator\+Conf@{Code\+Gen\+::generators\+::\+Generator\+Conf}!Normalize\+Lang@{Normalize\+Lang}}
+\index{Normalize\+Lang@{Normalize\+Lang}!Code\+Gen\+::generators\+::\+Generator\+Conf@{Code\+Gen\+::generators\+::\+Generator\+Conf}}
+\subsubsection{\texorpdfstring{Normalize\+Lang()}{NormalizeLang()}}
+{\footnotesize\ttfamily static string Code\+Gen.\+generators.\+Generator\+Conf.\+Normalize\+Lang (\begin{DoxyParamCaption}\item[{string}]{lang }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}}
+
+
+
+Converts given language into language which is used for identification of generator 
+
+
+\begin{DoxyParams}{Parameters}
+{\em lang} & Inputed language\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Normalized language
+\end{DoxyReturn}
+\mbox{\Hypertarget{classCodeGen_1_1generators_1_1GeneratorConf_a71dbec00a6e5d6d390dd8a24b64b6bb2}\label{classCodeGen_1_1generators_1_1GeneratorConf_a71dbec00a6e5d6d390dd8a24b64b6bb2}} 
+\index{Code\+Gen\+::generators\+::\+Generator\+Conf@{Code\+Gen\+::generators\+::\+Generator\+Conf}!Shift\+Code@{Shift\+Code}}
+\index{Shift\+Code@{Shift\+Code}!Code\+Gen\+::generators\+::\+Generator\+Conf@{Code\+Gen\+::generators\+::\+Generator\+Conf}}
+\subsubsection{\texorpdfstring{Shift\+Code()}{ShiftCode()}}
+{\footnotesize\ttfamily static string Code\+Gen.\+generators.\+Generator\+Conf.\+Shift\+Code (\begin{DoxyParamCaption}\item[{string}]{code,  }\item[{int}]{num,  }\item[{string}]{indent }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}}
+
+
+
+Shifts code using given parameters 
+
+
+\begin{DoxyParams}{Parameters}
+{\em code} & Code to be shifted\\
+\hline
+{\em num} & Number of indents\\
+\hline
+{\em indent} & Indent string\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Shifted code
+\end{DoxyReturn}
+
+
+\subsection{Member Data Documentation}
+\mbox{\Hypertarget{classCodeGen_1_1generators_1_1GeneratorConf_a9680e7722e2eb32214fa8ac1476f7903}\label{classCodeGen_1_1generators_1_1GeneratorConf_a9680e7722e2eb32214fa8ac1476f7903}} 
+\index{Code\+Gen\+::generators\+::\+Generator\+Conf@{Code\+Gen\+::generators\+::\+Generator\+Conf}!Example\+Pkg@{Example\+Pkg}}
+\index{Example\+Pkg@{Example\+Pkg}!Code\+Gen\+::generators\+::\+Generator\+Conf@{Code\+Gen\+::generators\+::\+Generator\+Conf}}
+\subsubsection{\texorpdfstring{Example\+Pkg}{ExamplePkg}}
+{\footnotesize\ttfamily readonly \mbox{\hyperlink{classCodeGen_1_1generators_1_1Package}{Package}} Code\+Gen.\+generators.\+Generator\+Conf.\+Example\+Pkg\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Contains example package 
+
+\mbox{\Hypertarget{classCodeGen_1_1generators_1_1GeneratorConf_a830f7e81defcc68af267575792253b35}\label{classCodeGen_1_1generators_1_1GeneratorConf_a830f7e81defcc68af267575792253b35}} 
+\index{Code\+Gen\+::generators\+::\+Generator\+Conf@{Code\+Gen\+::generators\+::\+Generator\+Conf}!Languanges@{Languanges}}
+\index{Languanges@{Languanges}!Code\+Gen\+::generators\+::\+Generator\+Conf@{Code\+Gen\+::generators\+::\+Generator\+Conf}}
+\subsubsection{\texorpdfstring{Languanges}{Languanges}}
+{\footnotesize\ttfamily readonly Dictionary$<$string, \mbox{\hyperlink{structCodeGen_1_1generators_1_1Languange}{Languange}}$>$ Code\+Gen.\+generators.\+Generator\+Conf.\+Languanges\hspace{0.3cm}{\ttfamily [static]}}
+
+{\bfseries Initial value\+:}
+\begin{DoxyCode}
+= \textcolor{keyword}{new} Dictionary<string, Languange>
+        \{
+            \{\textcolor{stringliteral}{"java"}, \textcolor{keyword}{new} Languange(\textcolor{keyword}{new} JavaGenerator(), \textcolor{stringliteral}{"java"}, \textcolor{stringliteral}{"/* \{0\} */"})\},
+            \{\textcolor{stringliteral}{"go"}, \textcolor{keyword}{new} Languange(\textcolor{keyword}{new} GoGenerator(), \textcolor{stringliteral}{"go"}, \textcolor{stringliteral}{"/* \{0\} */"})\},
+            \{\textcolor{stringliteral}{"ruby"}, \textcolor{keyword}{new} Languange(\textcolor{keyword}{new} RubyGenerator(), \textcolor{stringliteral}{"rb"}, \textcolor{stringliteral}{"# \{0\}"})\},
+            \{\textcolor{stringliteral}{"python"}, \textcolor{keyword}{new} Languange(\textcolor{keyword}{new} PythonGenerator(), \textcolor{stringliteral}{"py"}, \textcolor{stringliteral}{"# \{0\}\(\backslash\)n"})\},
+            \{\textcolor{stringliteral}{"vb"}, \textcolor{keyword}{new} Languange(\textcolor{keyword}{new} VbGenerator(), \textcolor{stringliteral}{"vb"}, \textcolor{stringliteral}{"' \{0\}\(\backslash\)n"})\},
+            \{\textcolor{stringliteral}{"csharp"}, \textcolor{keyword}{new} Languange(\textcolor{keyword}{new} CSharpGenerator(), \textcolor{stringliteral}{"cs"}, \textcolor{stringliteral}{"/* \{0\} */"})\},
+            \{\textcolor{stringliteral}{"js\_es6"}, \textcolor{keyword}{new} Languange(\textcolor{keyword}{new} ES6Generator(), \textcolor{stringliteral}{"js"}, \textcolor{stringliteral}{"/* \{0\} */"})\},
+            \{\textcolor{stringliteral}{"groovy"}, \textcolor{keyword}{new} Languange(\textcolor{keyword}{new} GroovyGenerator(), \textcolor{stringliteral}{"groovy"}, \textcolor{stringliteral}{"/* \{0\} */"})\},
+            
+            
+        \}
+\end{DoxyCode}
+
+
+Dictionary of language names (keys) and its Language objects (values) 
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+generators/\mbox{\hyperlink{GeneratorConf_8cs}{Generator\+Conf.\+cs}}\end{DoxyCompactItemize}

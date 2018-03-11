@@ -1,0 +1,11 @@
+/home/orest/workspace/CSharp/CodeGen/bin/Debug/netcoreapp2.0/CodeGen.deps.json
+/home/orest/workspace/CSharp/CodeGen/bin/Debug/netcoreapp2.0/CodeGen.runtimeconfig.json
+/home/orest/workspace/CSharp/CodeGen/bin/Debug/netcoreapp2.0/CodeGen.runtimeconfig.dev.json
+/home/orest/workspace/CSharp/CodeGen/bin/Debug/netcoreapp2.0/CodeGen.dll
+/home/orest/workspace/CSharp/CodeGen/bin/Debug/netcoreapp2.0/CodeGen.pdb
+/home/orest/workspace/CSharp/CodeGen/obj/Debug/netcoreapp2.0/CodeGen.csproj.CoreCompileInputs.cache
+/home/orest/workspace/CSharp/CodeGen/obj/Debug/netcoreapp2.0/CodeGen.AssemblyInfoInputs.cache
+/home/orest/workspace/CSharp/CodeGen/obj/Debug/netcoreapp2.0/CodeGen.AssemblyInfo.cs
+/home/orest/workspace/CSharp/CodeGen/obj/Debug/netcoreapp2.0/CodeGen.dll
+/home/orest/workspace/CSharp/CodeGen/obj/Debug/netcoreapp2.0/CodeGen.pdb
+/home/orest/workspace/CSharp/CodeGen/bin/Debug/netcoreapp2.0/CodeGen.xml
