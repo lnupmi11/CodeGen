@@ -28,11 +28,9 @@ namespace CodeGen.tests.parser
 		[Fact]
 		public void ValidateArgsTest()
 		{
-			Assert.Throws<InvalidDataException>(() => Parser.ValidateArgs("", "file.xml", "http://url.com"));
-			Assert.Throws<InvalidDataException>(() => Parser.ValidateArgs("python", "file.xml", "http://url.com"));
-			Assert.Throws<InvalidDataException>(() => Parser.ValidateArgs("go", "", ""));
-			Parser.ValidateArgs("python", "file.xml", "");
-			Parser.ValidateArgs("python", "", "http://url.com");
+			Assert.Throws<InvalidDataException>(() => Parser.ValidateArgs("", "file.xml"));
+			Assert.Throws<InvalidDataException>(() => Parser.ValidateArgs("python", ""));
+			Parser.ValidateArgs("python", "file.xml");
 		}
 	}
 }

@@ -50,22 +50,16 @@ namespace CodeGen.parser
 		/// </summary>
 		/// <param name="lang">Programming language</param>
 		/// <param name="file">Path to local file</param>
-		/// <param name="url">Path to file on the server</param>
 		/// <exception cref="InvalidDataException">Throws if some of arguments are invalid</exception>
-		public static void ValidateArgs(string lang, string file, string url)
+		public static void ValidateArgs(string lang, string file)
 		{
 			if (lang == "")
 			{
 				throw new InvalidDataException("specify language (-l) flag");
 			}
-			if (url == "" && file == "")
+			if (file == "")
 			{
-				throw new InvalidDataException("specify file path (-f) or url path (-u) flag");
-			}
-			if (file != "" && url != "")
-			{
-				// TODO: remove '-u' flag and add method that check if file path is url
-				throw new InvalidDataException("do not use both -f and -u flags at the same time");
+				throw new InvalidDataException("specify file path (-f) flag");
 			}
 		}
 

@@ -258,6 +258,8 @@ namespace CodeGen.generators
 		/// <summary>
 		/// Dictionary of language names (keys) and its Language objects (values) 
 		/// </summary>
+		/// \todo Add languages: JS_ES5, Crystal, Closure, Kotlin, Rust, Scala, Lua,
+		/// \todo Add frameworks: Pyhton/Django, Ruby/Rails
 		public static readonly Dictionary<string, Languange> Languanges = new Dictionary<string, Languange>
 		{
 			{"java", new Languange(new JavaGenerator(), "java", "/* {0} */")},
@@ -268,8 +270,6 @@ namespace CodeGen.generators
 			{"csharp", new Languange(new CSharpGenerator(), "cs", "/* {0} */")},
 			{"js_es6", new Languange(new ES6Generator(), "js", "/* {0} */")},
 			{"groovy", new Languange(new GroovyGenerator(), "groovy", "/* {0} */")},
-			// TODO: add languages: JS_ES5, Crystal, Closure, Kotlin, Rust, Scala, Lua,
-			// TODO: add frameworks: Pyhton/Django, Ruby/Rails
 		};
 
 		/// <summary>
