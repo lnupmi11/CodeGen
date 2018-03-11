@@ -147,7 +147,7 @@ namespace CodeGen.generators
 	/// <summary>
 	/// Holds the configuration of generator
 	/// </summary>
-	public static class GeneratorConf
+	public class GeneratorConf
 	{
 		/// <summary>
 		/// Contains example package
