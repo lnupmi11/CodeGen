@@ -53,7 +53,9 @@ namespace CodeGen
 				.WithNotParsed(Console.WriteLine);
 			try
 			{
-//				Console.Out.WriteLine("Opts = {0}", Opts);
+			#if DEBUG
+//				Console.Out.WriteLine("Opts = {0}", Opts);				
+			#endif
 				ExecuteConf.Execute();
 			}
 			catch (Exception e)
