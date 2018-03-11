@@ -1,17 +1,18 @@
-Warning: ignoring unsupported tag `ALLOW_UNICODE_NAMES    =' at line 14, file /home/travis/build/lnupmi11/CodeGen/Doxyfile
-Warning: ignoring unsupported tag `TOC_INCLUDE_HEADINGS   =' at line 57, file /home/travis/build/lnupmi11/CodeGen/Doxyfile
-Warning: ignoring unsupported tag `GROUP_NESTED_COMPOUNDS =' at line 114, file /home/travis/build/lnupmi11/CodeGen/Doxyfile
-Warning: ignoring unsupported tag `HIDE_COMPOUND_REFERENCE=' at line 285, file /home/travis/build/lnupmi11/CodeGen/Doxyfile
-Warning: ignoring unsupported tag `WARN_AS_ERROR          =' at line 509, file /home/travis/build/lnupmi11/CodeGen/Doxyfile
-Warning: ignoring unsupported tag `HTML_DYNAMIC_MENUS     =' at line 944, file /home/travis/build/lnupmi11/CodeGen/Doxyfile
-Warning: ignoring unsupported tag `LATEX_EXTRA_STYLESHEET =' at line 1459, file /home/travis/build/lnupmi11/CodeGen/Doxyfile
-Warning: ignoring unsupported tag `LATEX_TIMESTAMP        =' at line 1526, file /home/travis/build/lnupmi11/CodeGen/Doxyfile
-Warning: ignoring unsupported tag `RTF_SOURCE_CODE        =' at line 1592, file /home/travis/build/lnupmi11/CodeGen/Doxyfile
-Warning: ignoring unsupported tag `MAN_SUBDIR             =' at line 1627, file /home/travis/build/lnupmi11/CodeGen/Doxyfile
-Warning: ignoring unsupported tag `DOCBOOK_PROGRAMLISTING =' at line 1690, file /home/travis/build/lnupmi11/CodeGen/Doxyfile
-Warning: ignoring unsupported tag `PLANTUML_JAR_PATH      =' at line 2119, file /home/travis/build/lnupmi11/CodeGen/Doxyfile
-Warning: ignoring unsupported tag `PLANTUML_CFG_FILE      =' at line 2124, file /home/travis/build/lnupmi11/CodeGen/Doxyfile
-Warning: ignoring unsupported tag `PLANTUML_INCLUDE_PATH  =' at line 2129, file /home/travis/build/lnupmi11/CodeGen/Doxyfile
+Warning: ignoring unsupported tag `ALLOW_UNICODE_NAMES    =' at line 13, file /home/travis/build/lnupmi11/CodeGen/Doxyfile
+Warning: ignoring unsupported tag `GROUP_NESTED_COMPOUNDS =' at line 54, file /home/travis/build/lnupmi11/CodeGen/Doxyfile
+Warning: ignoring unsupported tag `HIDE_COMPOUND_REFERENCE=' at line 77, file /home/travis/build/lnupmi11/CodeGen/Doxyfile
+Warning: ignoring unsupported tag `WARN_AS_ERROR          =' at line 108, file /home/travis/build/lnupmi11/CodeGen/Doxyfile
+Warning: Tag `CLANG_ASSISTED_PARSING' at line 143 of file /home/travis/build/lnupmi11/CodeGen/Doxyfile belongs to an option that was not enabled at compile time.
+To avoid this warning please remove this line from your configuration file, upgrade it using "doxygen -u", or recompile doxygen with this feature enabled.
+Warning: Tag `CLANG_OPTIONS' at line 144 of file /home/travis/build/lnupmi11/CodeGen/Doxyfile belongs to an option that was not enabled at compile time.
+To avoid this warning please remove this line from your configuration file, upgrade it using "doxygen -u", or recompile doxygen with this feature enabled.
+Warning: ignoring unsupported tag `LATEX_EXTRA_STYLESHEET =' at line 221, file /home/travis/build/lnupmi11/CodeGen/Doxyfile
+Warning: ignoring unsupported tag `LATEX_TIMESTAMP        =' at line 229, file /home/travis/build/lnupmi11/CodeGen/Doxyfile
+Warning: ignoring unsupported tag `RTF_SOURCE_CODE        =' at line 239, file /home/travis/build/lnupmi11/CodeGen/Doxyfile
+Warning: ignoring unsupported tag `MAN_SUBDIR             =' at line 246, file /home/travis/build/lnupmi11/CodeGen/Doxyfile
+Warning: ignoring unsupported tag `DOCBOOK_PROGRAMLISTING =' at line 259, file /home/travis/build/lnupmi11/CodeGen/Doxyfile
+Warning: ignoring unsupported tag `PLANTUML_JAR_PATH      =' at line 322, file /home/travis/build/lnupmi11/CodeGen/Doxyfile
+Warning: ignoring unsupported tag `PLANTUML_INCLUDE_PATH  =' at line 323, file /home/travis/build/lnupmi11/CodeGen/Doxyfile
 Notice: Output directory `docs' does not exist. I have created it for you.
 Searching for include files...
 Searching for example files...
