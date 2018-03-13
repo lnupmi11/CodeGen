@@ -270,6 +270,7 @@ namespace CodeGen.generators
 			{"csharp", new Languange(new CSharpGenerator(), "cs", "/* {0} */")},
 			{"js_es6", new Languange(new ES6Generator(), "js", "/* {0} */")},
 			{"groovy", new Languange(new GroovyGenerator(), "groovy", "/* {0} */")},
+            {"cpp", new Languange(new CppGenerator(), "cpp", "/* {0} */")},
 		};
 
 		/// <summary>

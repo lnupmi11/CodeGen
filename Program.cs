@@ -40,7 +40,7 @@ namespace CodeGen
 
 	internal static class Program
 	{
-		public const string DefaultLang = "java";
+		public const string DefaultLang = "cpp";
 
 		public static readonly Package DefaultPkg = GeneratorConf.ExamplePkg;
 
