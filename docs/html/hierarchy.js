@@ -10,7 +10,7 @@ var hierarchy =
       [ "CodeGen.generators.JavaGenerator", "a00013.html", null ],
       [ "CodeGen.generators.PythonGenerator", "a00021.html", null ],
       [ "CodeGen.generators.RubyGenerator", "a00022.html", null ],
-      [ "CodeGen.generators.VbGenerator", "a00025.html", null ]
+      [ "CodeGen.generators.VbGenerator", "a00024.html", null ]
     ] ],
     [ "CodeGen.generators.GeneratorConf", "a00009.html", null ],
     [ "CodeGen.tests.generators.GeneratorConfTest", "a00010.html", null ],
@@ -20,8 +20,7 @@ var hierarchy =
     [ "CodeGen.generators.Package", "a00017.html", null ],
     [ "CodeGen.parser.Parser", "a00019.html", null ],
     [ "CodeGen.tests.parser.ParserTest", "a00020.html", null ],
-    [ "CodeGen.utils.Utils", "a00023.html", null ],
-    [ "CodeGen.generators.Variable", "a00024.html", [
+    [ "CodeGen.generators.Variable", "a00023.html", [
       [ "CodeGen.generators.Field", "a00007.html", null ],
       [ "CodeGen.generators.Parameter", "a00018.html", null ]
     ] ]

@@ -1,4 +1,5 @@
 var searchData=
 [
-  ['utils',['Utils',['../a00023.html',1,'CodeGen::utils']]]
+  ['variable',['Variable',['../a00023.html',1,'CodeGen::generators']]],
+  ['vbgenerator',['VbGenerator',['../a00024.html',1,'CodeGen::generators']]]
 ];
