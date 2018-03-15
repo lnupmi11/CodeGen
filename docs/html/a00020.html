@@ -4,7 +4,7 @@
 <meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.8.6"/>
-<title>CodeGen: CodeGen.tests.parser.ParserTest Class Reference</title>
+<title>CodeGen: CodeGen.generators.Parser Class Reference</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -106,73 +106,224 @@ $(document).ready(function(){initNavTree('a00020.html','');});
 <div class="header">
   <div class="summary">
 <a href="#pub-methods">Public Member Functions</a> &#124;
-<a href="a00115.html">List of all members</a>  </div>
+<a href="#pro-methods">Protected Member Functions</a> &#124;
+<a href="a00083.html">List of all members</a>  </div>
   <div class="headertitle">
-<div class="title">CodeGen.tests.parser.ParserTest Class Reference</div>  </div>
+<div class="title">CodeGen.generators.Parser Class Reference<span class="mlabels"><span class="mlabel">abstract</span></span></div>  </div>
 </div><!--header-->
 <div class="contents">
 
-<p> 
+<p>Language parser  
  <a href="a00020.html#details">More...</a></p>
+<div class="dynheader">
+Inheritance diagram for CodeGen.generators.Parser:</div>
+<div class="dyncontent">
+<div class="center"><img src="a00084.png" border="0" usemap="#_code_gen_8generators_8_parser_inherit__map" alt="Inheritance graph"/></div>
+<map name="_code_gen_8generators_8_parser_inherit__map" id="_code_gen_8generators_8_parser_inherit__map">
+<area shape="rect" id="node2" href="a00012.html" title="Go language parser " alt="" coords="9,80,185,107"/></map>
+<center><span class="legend">[<a target="top" href="graph_legend.html">legend</a>]</span></center></div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:a2ff958c473c175a86ea7823169a89f45"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00020.html#a2ff958c473c175a86ea7823169a89f45">GetFileFormatTest</a> ()</td></tr>
-<tr class="separator:a2ff958c473c175a86ea7823169a89f45"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ad2dd3e55f52ce80b354d70751bd6915a"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00020.html#ad2dd3e55f52ce80b354d70751bd6915a">ValidateArgsTest</a> ()</td></tr>
-<tr class="separator:ad2dd3e55f52ce80b354d70751bd6915a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a497c6a3478574cca174c08e6fc5e2cbd"><td class="memItemLeft" align="right" valign="top">abstract <a class="el" href="a00018.html">Package</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00020.html#a497c6a3478574cca174c08e6fc5e2cbd">ParsePackage</a> (string pkg)</td></tr>
+<tr class="separator:a497c6a3478574cca174c08e6fc5e2cbd"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pro-methods"></a>
+Protected Member Functions</h2></td></tr>
+<tr class="memitem:aa1b5a629d97b2c3eb09816f20f5adb3b"><td class="memItemLeft" align="right" valign="top">abstract List&lt; <a class="el" href="a00003.html">Class</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00020.html#aa1b5a629d97b2c3eb09816f20f5adb3b">ParseClasses</a> (string @class)</td></tr>
+<tr class="separator:aa1b5a629d97b2c3eb09816f20f5adb3b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a80e6080c7982719fdb1ac1e785779624"><td class="memItemLeft" align="right" valign="top">abstract List&lt; <a class="el" href="a00007.html">Field</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00020.html#a80e6080c7982719fdb1ac1e785779624">ParseFields</a> (string field)</td></tr>
+<tr class="separator:a80e6080c7982719fdb1ac1e785779624"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a15a760a0b3e5f481f5d494d0ce4fef07"><td class="memItemLeft" align="right" valign="top">abstract List&lt; <a class="el" href="a00016.html">Method</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00020.html#a15a760a0b3e5f481f5d494d0ce4fef07">ParseMethods</a> (string method)</td></tr>
+<tr class="separator:a15a760a0b3e5f481f5d494d0ce4fef07"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a460cfaa27b923f73c22ec6cab88b4479"><td class="memItemLeft" align="right" valign="top">abstract List&lt; <a class="el" href="a00019.html">Parameter</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00020.html#a460cfaa27b923f73c22ec6cab88b4479">ParseParameters</a> (string parameter)</td></tr>
+<tr class="separator:a460cfaa27b923f73c22ec6cab88b4479"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock">
-<p>Definition at line <a class="el" href="a00042_source.html#l00010">10</a> of file <a class="el" href="a00042_source.html">ParserTest.cs</a>.</p>
+<div class="textblock"><p>Language parser </p>
+
+<p>Definition at line <a class="el" href="a00030_source.html#l00101">101</a> of file <a class="el" href="a00030_source.html">GeneratorConf.cs</a>.</p>
 </div><h2 class="groupheader">Member Function Documentation</h2>
-<a class="anchor" id="a2ff958c473c175a86ea7823169a89f45"></a>
+<a class="anchor" id="aa1b5a629d97b2c3eb09816f20f5adb3b"></a>
 <div class="memitem">
 <div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">void CodeGen.tests.parser.ParserTest.GetFileFormatTest </td>
+          <td class="memname">abstract List&lt;<a class="el" href="a00003.html">Class</a>&gt; CodeGen.generators.Parser.ParseClasses </td>
           <td>(</td>
-          <td class="paramname"></td><td>)</td>
+          <td class="paramtype">string @&#160;</td>
+          <td class="paramname"><em>class</em></td><td>)</td>
           <td></td>
         </tr>
       </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">protected</span><span class="mlabel">pure virtual</span></span>  </td>
+  </tr>
+</table>
 </div><div class="memdoc">
 
 <p></p>
-
-<p>Definition at line <a class="el" href="a00042_source.html#l00016">16</a> of file <a class="el" href="a00042_source.html">ParserTest.cs</a>.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">class</td><td></td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd></dd></dl>
 
 </div>
 </div>
-<a class="anchor" id="ad2dd3e55f52ce80b354d70751bd6915a"></a>
+<a class="anchor" id="a80e6080c7982719fdb1ac1e785779624"></a>
 <div class="memitem">
 <div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">void CodeGen.tests.parser.ParserTest.ValidateArgsTest </td>
+          <td class="memname">abstract List&lt;<a class="el" href="a00007.html">Field</a>&gt; CodeGen.generators.Parser.ParseFields </td>
           <td>(</td>
-          <td class="paramname"></td><td>)</td>
+          <td class="paramtype">string&#160;</td>
+          <td class="paramname"><em>field</em></td><td>)</td>
           <td></td>
         </tr>
       </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">protected</span><span class="mlabel">pure virtual</span></span>  </td>
+  </tr>
+</table>
 </div><div class="memdoc">
 
 <p></p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">field</td><td></td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd></dd></dl>
 
-<p>Definition at line <a class="el" href="a00042_source.html#l00028">28</a> of file <a class="el" href="a00042_source.html">ParserTest.cs</a>.</p>
+<p>Implemented in <a class="el" href="a00012.html#a4bcf7b3fd9b9792474c47a0d9f697404">CodeGen.parser.GoParser</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="a15a760a0b3e5f481f5d494d0ce4fef07"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">abstract List&lt;<a class="el" href="a00016.html">Method</a>&gt; CodeGen.generators.Parser.ParseMethods </td>
+          <td>(</td>
+          <td class="paramtype">string&#160;</td>
+          <td class="paramname"><em>method</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">protected</span><span class="mlabel">pure virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p></p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">method</td><td></td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd></dd></dl>
+
+</div>
+</div>
+<a class="anchor" id="a497c6a3478574cca174c08e6fc5e2cbd"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">abstract <a class="el" href="a00018.html">Package</a> CodeGen.generators.Parser.ParsePackage </td>
+          <td>(</td>
+          <td class="paramtype">string&#160;</td>
+          <td class="paramname"><em>pkg</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">pure virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p></p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">pkg</td><td></td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd></dd></dl>
+
+<p>Implemented in <a class="el" href="a00012.html#ac59b9062b5a95d87b0372f000f68d39a">CodeGen.parser.GoParser</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="a460cfaa27b923f73c22ec6cab88b4479"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">abstract List&lt;<a class="el" href="a00019.html">Parameter</a>&gt; CodeGen.generators.Parser.ParseParameters </td>
+          <td>(</td>
+          <td class="paramtype">string&#160;</td>
+          <td class="paramname"><em>parameter</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">protected</span><span class="mlabel">pure virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p></p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">parameter</td><td></td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd></dd></dl>
+
+<p>Implemented in <a class="el" href="a00012.html#ab70f85f792007b65bd646ea2d50e7941">CodeGen.parser.GoParser</a>.</p>
 
 </div>
 </div>
 <hr/>The documentation for this class was generated from the following file:<ul>
-<li>/home/travis/build/lnupmi11/CodeGen/tests/parser/<a class="el" href="a00042_source.html">ParserTest.cs</a></li>
+<li>/home/travis/build/lnupmi11/CodeGen/generators/<a class="el" href="a00030_source.html">GeneratorConf.cs</a></li>
 </ul>
 </div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="navelem"><a class="el" href="a00044.html">CodeGen</a></li><li class="navelem"><a class="el" href="a00047.html">tests</a></li><li class="navelem"><a class="el" href="a00049.html">parser</a></li><li class="navelem"><a class="el" href="a00020.html">ParserTest</a></li>
+    <li class="navelem"><a class="el" href="a00045.html">CodeGen</a></li><li class="navelem"><a class="el" href="a00046.html">generators</a></li><li class="navelem"><a class="el" href="a00020.html">Parser</a></li>
     <li class="footer">Generated by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.6 </li>

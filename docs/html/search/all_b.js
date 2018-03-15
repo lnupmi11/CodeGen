@@ -1,15 +1,19 @@
 var searchData=
 [
-  ['package',['Package',['../a00017.html',1,'CodeGen::generators']]],
-  ['packages',['Packages',['../a00017.html#a014a74cbc2bc2876e24d5a250cb54c68',1,'CodeGen::generators::Package']]],
-  ['parameter',['Parameter',['../a00018.html',1,'CodeGen::generators']]],
-  ['parameters',['Parameters',['../a00015.html#ae6898cecae4a670b5e72568bce89fea3',1,'CodeGen::generators::Method']]],
+  ['package',['Package',['../a00018.html',1,'CodeGen::generators']]],
+  ['packages',['Packages',['../a00018.html#a014a74cbc2bc2876e24d5a250cb54c68',1,'CodeGen::generators::Package']]],
+  ['parameter',['Parameter',['../a00019.html',1,'CodeGen::generators']]],
+  ['parameters',['Parameters',['../a00016.html#ae6898cecae4a670b5e72568bce89fea3',1,'CodeGen::generators::Method']]],
   ['parent',['Parent',['../a00003.html#a930c3a9625829896ec1201e282f3fda1',1,'CodeGen::generators::Class']]],
-  ['parser',['Parser',['../a00019.html',1,'CodeGen::parser']]],
-  ['parser_2ecs',['Parser.cs',['../a00038.html',1,'']]],
-  ['parsertest',['ParserTest',['../a00020.html',1,'CodeGen::tests::parser']]],
-  ['parsertest_2ecs',['ParserTest.cs',['../a00042.html',1,'']]],
-  ['program_2ecs',['Program.cs',['../a00039.html',1,'']]],
-  ['python_2ecs',['Python.cs',['../a00034.html',1,'']]],
-  ['pythongenerator',['PythonGenerator',['../a00021.html',1,'CodeGen::generators']]]
+  ['parseclasses',['ParseClasses',['../a00020.html#aa1b5a629d97b2c3eb09816f20f5adb3b',1,'CodeGen.generators.Parser.ParseClasses()'],['../a00012.html#ab626ad89d5e9af9b1d38dba84755e584',1,'CodeGen.parser.GoParser.ParseClasses()']]],
+  ['parsefields',['ParseFields',['../a00020.html#a80e6080c7982719fdb1ac1e785779624',1,'CodeGen.generators.Parser.ParseFields()'],['../a00012.html#a4bcf7b3fd9b9792474c47a0d9f697404',1,'CodeGen.parser.GoParser.ParseFields()']]],
+  ['parsemethods',['ParseMethods',['../a00020.html#a15a760a0b3e5f481f5d494d0ce4fef07',1,'CodeGen.generators.Parser.ParseMethods()'],['../a00012.html#acc852b0e01635bca45d8edd5b68bc361',1,'CodeGen.parser.GoParser.ParseMethods()']]],
+  ['parsepackage',['ParsePackage',['../a00020.html#a497c6a3478574cca174c08e6fc5e2cbd',1,'CodeGen.generators.Parser.ParsePackage()'],['../a00012.html#ac59b9062b5a95d87b0372f000f68d39a',1,'CodeGen.parser.GoParser.ParsePackage()']]],
+  ['parseparameters',['ParseParameters',['../a00020.html#a460cfaa27b923f73c22ec6cab88b4479',1,'CodeGen.generators.Parser.ParseParameters()'],['../a00012.html#ab70f85f792007b65bd646ea2d50e7941',1,'CodeGen.parser.GoParser.ParseParameters()']]],
+  ['parser',['Parser',['../a00020.html',1,'CodeGen::generators']]],
+  ['parsertest',['ParserTest',['../a00021.html',1,'CodeGen::tests::parser']]],
+  ['parsertest_2ecs',['ParserTest.cs',['../a00043.html',1,'']]],
+  ['program_2ecs',['Program.cs',['../a00040.html',1,'']]],
+  ['python_2ecs',['Python.cs',['../a00036.html',1,'']]],
+  ['pythongenerator',['PythonGenerator',['../a00022.html',1,'CodeGen::generators']]]
 ];

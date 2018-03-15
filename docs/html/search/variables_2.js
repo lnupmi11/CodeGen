@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['generator',['Generator',['../a00014.html#a25fb0a47247497581d2d0560d0db66d8',1,'CodeGen::generators::Languange']]]
+  ['generator',['Generator',['../a00015.html#a25fb0a47247497581d2d0560d0db66d8',1,'CodeGen::generators::Languange']]]
 ];

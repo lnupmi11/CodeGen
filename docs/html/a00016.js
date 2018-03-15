@@ -1,8 +1,9 @@
 var a00016 =
 [
-    [ "NormalizeClass", "a00016.html#ae79262a7509b9d78393262dccf63dcc5", null ],
-    [ "NormalizeField", "a00016.html#aafd7bd1d143fb2082a0e4ef53fcbb46b", null ],
-    [ "NormalizeMethod", "a00016.html#a68a4b1c8b53e9ce28507430412cb310e", null ],
-    [ "NormalizePackage", "a00016.html#a24212f04a2ed558c46ac62e23efcf0ae", null ],
-    [ "NormalizeParameter", "a00016.html#a981da1c9b6b487ba3043e538a4991000", null ]
+    [ "Access", "a00016.html#ad713380461315774e85e7316f9a48df9", null ],
+    [ "Const", "a00016.html#a31ce28145fc93a8b16dc8a1132a73694", null ],
+    [ "Name", "a00016.html#a102f86b59635b173d66ed34541cf3e4c", null ],
+    [ "Parameters", "a00016.html#ae6898cecae4a670b5e72568bce89fea3", null ],
+    [ "Return", "a00016.html#a1f14ec7aef5e61d595870f2fee56a885", null ],
+    [ "Static", "a00016.html#a40aa2b9a7000ae6acc851b97410ce2af", null ]
 ];

@@ -1,7 +1,8 @@
 var a00012 =
 [
-    [ "GenerateClass", "a00012.html#af13381a7be697b1f22cbf39bc0ab0e8d", null ],
-    [ "GenerateField", "a00012.html#a8ccffd1ee31dfad7f7599ab0bca0dc6b", null ],
-    [ "GenerateMethod", "a00012.html#a7c8d2446310971e10a24b802bd9c62a0", null ],
-    [ "Indent", "a00012.html#a4156fd8583341dba3c1e88f02525db96", null ]
+    [ "ParseClasses", "a00012.html#ab626ad89d5e9af9b1d38dba84755e584", null ],
+    [ "ParseFields", "a00012.html#a4bcf7b3fd9b9792474c47a0d9f697404", null ],
+    [ "ParseMethods", "a00012.html#acc852b0e01635bca45d8edd5b68bc361", null ],
+    [ "ParsePackage", "a00012.html#ac59b9062b5a95d87b0372f000f68d39a", null ],
+    [ "ParseParameters", "a00012.html#ab70f85f792007b65bd646ea2d50e7941", null ]
 ];

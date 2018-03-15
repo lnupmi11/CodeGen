@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['rubygenerator',['RubyGenerator',['../a00022.html',1,'CodeGen::generators']]]
+  ['rubygenerator',['RubyGenerator',['../a00023.html',1,'CodeGen::generators']]]
 ];
