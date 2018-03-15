@@ -1,7 +1,6 @@
 ﻿using Xunit;
 using System.IO;
-using CodeGen.parser;
-using System.Collections.Generic;
+using CodeGen.utils;
 
 namespace CodeGen.tests.parser
 {
@@ -16,10 +15,10 @@ namespace CodeGen.tests.parser
 		[Fact]
 		public void GetFileFormatTest()
 		{
-			Assert.Equal("xml", Parser.GetFileFormat("file.xml"));
-			Assert.Throws<InvalidDataException>(() => Parser.GetFileFormat("filexml"));
-			Assert.Throws<InvalidDataException>(() => Parser.GetFileFormat("filexml..."));
-			Assert.Throws<InvalidDataException>(() => Parser.GetFileFormat("."));
+			Assert.Equal("xml", Utils.GetFileFormat("file.xml"));
+			Assert.Throws<InvalidDataException>(() => Utils.GetFileFormat("filexml"));
+			Assert.Throws<InvalidDataException>(() => Utils.GetFileFormat("filexml..."));
+			Assert.Throws<InvalidDataException>(() => Utils.GetFileFormat("."));
 		}
 
 		/// <summary>
@@ -28,9 +27,9 @@ namespace CodeGen.tests.parser
 		[Fact]
 		public void ValidateArgsTest()
 		{
-			Assert.Throws<InvalidDataException>(() => Parser.ValidateArgs("", "file.xml"));
-			Assert.Throws<InvalidDataException>(() => Parser.ValidateArgs("python", ""));
-			Parser.ValidateArgs("python", "file.xml");
+			Assert.Throws<InvalidDataException>(() => Utils.ValidateArgs("", "file.xml"));
+			Assert.Throws<InvalidDataException>(() => Utils.ValidateArgs("python", ""));
+			Utils.ValidateArgs("python", "file.xml");
 		}
 	}
 }

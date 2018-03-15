@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
-using CodeGen.parser;
+using CodeGen.utils;
 
 namespace CodeGen.generators
 {
@@ -160,7 +160,7 @@ namespace CodeGen.generators
 		/// <returns></returns>
 		private string GenerateGetter(Variable field)
 		{
-			return "public " + field.Type + " get" + Parser.Title(field.Name) + "() {\n" + Indent +
+			return "public " + field.Type + " get" + Utils.Title(field.Name) + "() {\n" + Indent +
 			       "return " + field.Name + ";\n}";
 		}
 
@@ -171,7 +171,7 @@ namespace CodeGen.generators
 		/// <returns></returns>
 		private string GenerateSetter(Variable field)
 		{
-			return "public void set" + Parser.Title(field.Name) + "(" + field.Type + " newValue) {\n" + Indent +
+			return "public void set" + Utils.Title(field.Name) + "(" + field.Type + " newValue) {\n" + Indent +
 			       field.Name + " = newValue;\n}";
 		}
 	}

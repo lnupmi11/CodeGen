@@ -1,5 +1,5 @@
 ﻿using System.Linq;
-using CodeGen.parser;
+using CodeGen.utils;
 
 namespace CodeGen.generators
 {
@@ -126,7 +126,7 @@ namespace CodeGen.generators
 				@class.Classes[i] = NormalizeClass(@class.Classes[i]);
 			}
 
-			@class.Access = Parser.Title(@class.Access);
+			@class.Access = Utils.Title(@class.Access);
 
 			return @class;
 		}
@@ -139,11 +139,11 @@ namespace CodeGen.generators
 					field.Type = "Integer";
 					break;
 				default:
-					field.Type = Parser.Title(field.Type);
+					field.Type = Utils.Title(field.Type);
 					break;
 			}
 
-			field.Access = Parser.Title(field.Access);
+			field.Access = Utils.Title(field.Access);
 			return field;
 		}
 
@@ -158,11 +158,11 @@ namespace CodeGen.generators
 					method.Return = "";
 					break;
 				default:
-					method.Return = Parser.Title(method.Return);
+					method.Return = Utils.Title(method.Return);
 					break;
 			}
 
-			method.Access = Parser.Title(method.Access);
+			method.Access = Utils.Title(method.Access);
 
 			for (var i = 0; i < method.Parameters?.Length; i++)
 			{
@@ -180,7 +180,7 @@ namespace CodeGen.generators
 					parameter.Type = "Integer";
 					break;
 				default:
-					parameter.Type = Parser.Title(parameter.Type);
+					parameter.Type = Utils.Title(parameter.Type);
 					break;
 			}
 

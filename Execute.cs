@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Xml.Serialization;
 using CodeGen.generators;
-using CodeGen.parser;
+using CodeGen.utils;
 using Newtonsoft.Json;
 using YamlDotNet.Serialization;
 using YamlDotNet.Serialization.NamingConventions;
@@ -53,7 +53,7 @@ namespace CodeGen
 		{
 			Package pkg;
 
-			var fileFormat = Parser.GetFileFormat(fileName);
+			var fileFormat = Utils.GetFileFormat(fileName);
 
 			switch (fileFormat)
 			{
@@ -79,8 +79,8 @@ namespace CodeGen
 
 			var result = Uri.TryCreate(fileName, UriKind.Absolute, out var uriResult)
 			             && Array.IndexOf(allowedSchemes, uriResult.Scheme) > -1
-				? Parser.Download(fileName)
-				: Parser.Read(fileName);
+				? Utils.Download(fileName)
+				: Utils.Read(fileName);
 
 			return result;
 		}
@@ -91,7 +91,7 @@ namespace CodeGen
 			Directory.CreateDirectory(OutputDir);
 			foreach (var file in fileContextMap)
 			{
-				Parser.Write(OutputDir + "/" + file.Key + '.' + ext, file.Value);
+				Utils.Write(OutputDir + "/" + file.Key + '.' + ext, file.Value);
 			}
 
 			Console.WriteLine("Generated successfully.");
