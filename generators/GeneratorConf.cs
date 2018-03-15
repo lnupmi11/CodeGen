@@ -96,6 +96,47 @@ namespace CodeGen.generators
 	}
 
 	/// <summary>
+	/// Language parser
+	/// </summary>
+	public abstract class Parser
+	{
+		/// <summary>
+		/// 
+		/// </summary>
+		/// <param name="pkg"></param>
+		/// <returns></returns>
+		public abstract Package ParsePackage(string pkg);
+
+		/// <summary>
+		/// 
+		/// </summary>
+		/// <param name="class"></param>
+		/// <returns></returns>
+		protected abstract List<Class> ParseClasses(string @class);
+
+		/// <summary>
+		/// 
+		/// </summary>
+		/// <param name="field"></param>
+		/// <returns></returns>
+		protected abstract List<Field> ParseFields(string field);
+
+		/// <summary>
+		/// 
+		/// </summary>
+		/// <param name="method"></param>
+		/// <returns></returns>
+		protected abstract List<Method> ParseMethods(string method);
+
+		/// <summary>
+		/// 
+		/// </summary>
+		/// <param name="parameter"></param>
+		/// <returns></returns>
+		protected abstract List<Parameter> ParseParameters(string parameter);
+	}
+
+	/// <summary>
 	/// The class that describes programming language and has a generator for it
 	/// </summary>
 	public struct Languange

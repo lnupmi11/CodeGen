@@ -1,5 +1,6 @@
 ﻿using System;
 using CodeGen.generators;
+using CodeGen.parser;
 using CommandLine;
 
 namespace CodeGen
@@ -37,18 +38,44 @@ namespace CodeGen
 		}
 	}
 
-
 	internal static class Program
 	{
-		public const string DefaultLang = "cpp";
+		public const string DefaultLang = "go";
 
 		public static readonly Package DefaultPkg = GeneratorConf.ExamplePkg;
 
 		public static Options Opts;
 
+
+		private const string fileContent = @"
+type Apple struct {
+        Colour string
+        Sort string
+        size int
+}
+
+func (Apple) print(colour string) {}
+
+func (Apple) getSizeValue() int {
+        return nil
+}
+
+func (Apple) GetColorName() string {
+        return nil
+}
+
+type Seed struct {
+        Size int
+}
+
+func (Seed) Transform() int {
+        return nil
+}
+";
+		
 		private static void Main(string[] args)
 		{
-			Parser.Default.ParseArguments<Options>(args)
+			CommandLine.Parser.Default.ParseArguments<Options>(args)
 				.WithParsed(opts => Opts = opts)
 				.WithNotParsed(Console.WriteLine);
 			try
@@ -56,7 +83,15 @@ namespace CodeGen
 			#if DEBUG
 //				Console.Out.WriteLine("Opts = {0}", Opts);				
 			#endif
-				ExecuteConf.Execute();
+				
+			//	ExecuteConf.Execute();
+				var pkg = new GoParser().ParsePackage(fileContent);
+				var m = new GoGenerator().Generate(pkg);
+				foreach (var file in m)
+				{
+					Console.WriteLine(file.Value);
+				}
+
 			}
 			catch (Exception e)
 			{
