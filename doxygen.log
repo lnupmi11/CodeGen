@@ -45,6 +45,8 @@ Reading and parsing tag files
 Parsing files
 Preprocessing /home/travis/build/lnupmi11/CodeGen/Execute.cs...
 Parsing file /home/travis/build/lnupmi11/CodeGen/Execute.cs...
+Preprocessing /home/travis/build/lnupmi11/CodeGen/generators/CppGenerator.cs...
+Parsing file /home/travis/build/lnupmi11/CodeGen/generators/CppGenerator.cs...
 Preprocessing /home/travis/build/lnupmi11/CodeGen/generators/CSharp.cs...
 Parsing file /home/travis/build/lnupmi11/CodeGen/generators/CSharp.cs...
 Preprocessing /home/travis/build/lnupmi11/CodeGen/generators/ES6.cs...
@@ -131,6 +133,7 @@ Generating search indices...
 Generating example documentation...
 Generating file sources...
 Generating code for file /home/travis/build/lnupmi11/CodeGen/Execute.cs...
+Generating code for file /home/travis/build/lnupmi11/CodeGen/generators/CppGenerator.cs...
 Generating code for file /home/travis/build/lnupmi11/CodeGen/generators/CSharp.cs...
 Generating code for file /home/travis/build/lnupmi11/CodeGen/generators/ES6.cs...
 Generating code for file /home/travis/build/lnupmi11/CodeGen/generators/GeneratorConf.cs...
@@ -150,6 +153,7 @@ Generating code for file /home/travis/build/lnupmi11/CodeGen/tests/parser/Parser
 Generating code for file /home/travis/build/lnupmi11/CodeGen/utils/Utils.cs...
 Generating file documentation...
 Generating docs for file /home/travis/build/lnupmi11/CodeGen/Execute.cs...
+Generating docs for file /home/travis/build/lnupmi11/CodeGen/generators/CppGenerator.cs...
 Generating docs for file /home/travis/build/lnupmi11/CodeGen/generators/CSharp.cs...
 Generating docs for file /home/travis/build/lnupmi11/CodeGen/generators/ES6.cs...
 Generating docs for file /home/travis/build/lnupmi11/CodeGen/generators/GeneratorConf.cs...
@@ -175,6 +179,7 @@ Generating class documentation...
 Generating namespace index...
 Generating docs for namespace CodeGen
 Generating docs for namespace CodeGen::generators
+Generating docs for compound CodeGen::generators::CppGenerator...
 Generating docs for compound CodeGen::generators::CSharpGenerator...
 Generating call graph for function CodeGen.generators.CSharpGenerator.GenerateClass
 Generating docs for compound CodeGen::generators::ES6Generator...
@@ -243,94 +248,97 @@ Generating example index...
 finalizing index lists...
 Running dot...
 Generating dot graphs using 33 parallel threads...
-Running dot for graph 1/61
-Running dot for graph 2/61
-Running dot for graph 3/61
-Running dot for graph 4/61
-Running dot for graph 5/61
-Running dot for graph 6/61
-Running dot for graph 7/61
-Running dot for graph 8/61
-Running dot for graph 9/61
-Running dot for graph 10/61
-Running dot for graph 11/61
-Running dot for graph 12/61
-Running dot for graph 13/61
-Running dot for graph 14/61
-Running dot for graph 15/61
-Running dot for graph 16/61
-Running dot for graph 17/61
-Running dot for graph 18/61
-Running dot for graph 19/61
-Running dot for graph 20/61
-Running dot for graph 21/61
-Running dot for graph 22/61
-Running dot for graph 23/61
-Running dot for graph 24/61
-Running dot for graph 25/61
-Running dot for graph 26/61
-Running dot for graph 27/61
-Running dot for graph 28/61
-Running dot for graph 29/61
-Running dot for graph 30/61
-Running dot for graph 31/61
-Running dot for graph 32/61
-Running dot for graph 33/61
-Running dot for graph 34/61
-Running dot for graph 35/61
-Running dot for graph 36/61
-Running dot for graph 37/61
-Running dot for graph 38/61
-Running dot for graph 39/61
-Running dot for graph 40/61
-Running dot for graph 41/61
-Running dot for graph 42/61
-Running dot for graph 43/61
-Running dot for graph 44/61
-Running dot for graph 45/61
-Running dot for graph 46/61
-Running dot for graph 47/61
-Running dot for graph 48/61
-Running dot for graph 49/61
-Running dot for graph 50/61
-Running dot for graph 51/61
-Running dot for graph 52/61
-Running dot for graph 53/61
-Running dot for graph 54/61
-Running dot for graph 55/61
-Running dot for graph 56/61
-Running dot for graph 57/61
-Running dot for graph 58/61
-Running dot for graph 59/61
-Running dot for graph 60/61
-Running dot for graph 61/61
-Patching output file 1/28
-Patching output file 2/28
-Patching output file 3/28
-Patching output file 4/28
-Patching output file 5/28
-Patching output file 6/28
-Patching output file 7/28
-Patching output file 8/28
-Patching output file 9/28
-Patching output file 10/28
-Patching output file 11/28
-Patching output file 12/28
-Patching output file 13/28
-Patching output file 14/28
-Patching output file 15/28
-Patching output file 16/28
-Patching output file 17/28
-Patching output file 18/28
-Patching output file 19/28
-Patching output file 20/28
-Patching output file 21/28
-Patching output file 22/28
-Patching output file 23/28
-Patching output file 24/28
-Patching output file 25/28
-Patching output file 26/28
-Patching output file 27/28
-Patching output file 28/28
-lookup cache used 715/65536 hits=2244 misses=731
+Running dot for graph 1/63
+Running dot for graph 2/63
+Running dot for graph 3/63
+Running dot for graph 4/63
+Running dot for graph 5/63
+Running dot for graph 6/63
+Running dot for graph 7/63
+Running dot for graph 8/63
+Running dot for graph 9/63
+Running dot for graph 10/63
+Running dot for graph 11/63
+Running dot for graph 12/63
+Running dot for graph 13/63
+Running dot for graph 14/63
+Running dot for graph 15/63
+Running dot for graph 16/63
+Running dot for graph 17/63
+Running dot for graph 18/63
+Running dot for graph 19/63
+Running dot for graph 20/63
+Running dot for graph 21/63
+Running dot for graph 22/63
+Running dot for graph 23/63
+Running dot for graph 24/63
+Running dot for graph 25/63
+Running dot for graph 26/63
+Running dot for graph 27/63
+Running dot for graph 28/63
+Running dot for graph 29/63
+Running dot for graph 30/63
+Running dot for graph 31/63
+Running dot for graph 32/63
+Running dot for graph 33/63
+Running dot for graph 34/63
+Running dot for graph 35/63
+Running dot for graph 36/63
+Running dot for graph 37/63
+Running dot for graph 38/63
+Running dot for graph 39/63
+Running dot for graph 40/63
+Running dot for graph 41/63
+Running dot for graph 42/63
+Running dot for graph 43/63
+Running dot for graph 44/63
+Running dot for graph 45/63
+Running dot for graph 46/63
+Running dot for graph 47/63
+Running dot for graph 48/63
+Running dot for graph 49/63
+Running dot for graph 50/63
+Running dot for graph 51/63
+Running dot for graph 52/63
+Running dot for graph 53/63
+Running dot for graph 54/63
+Running dot for graph 55/63
+Running dot for graph 56/63
+Running dot for graph 57/63
+Running dot for graph 58/63
+Running dot for graph 59/63
+Running dot for graph 60/63
+Running dot for graph 61/63
+Running dot for graph 62/63
+Running dot for graph 63/63
+Patching output file 1/29
+Patching output file 2/29
+Patching output file 3/29
+Patching output file 4/29
+Patching output file 5/29
+Patching output file 6/29
+Patching output file 7/29
+Patching output file 8/29
+Patching output file 9/29
+Patching output file 10/29
+Patching output file 11/29
+Patching output file 12/29
+Patching output file 13/29
+Patching output file 14/29
+Patching output file 15/29
+Patching output file 16/29
+Patching output file 17/29
+Patching output file 18/29
+Patching output file 19/29
+Patching output file 20/29
+Patching output file 21/29
+Patching output file 22/29
+Patching output file 23/29
+Patching output file 24/29
+Patching output file 25/29
+Patching output file 26/29
+Patching output file 27/29
+Patching output file 28/29
+Patching output file 29/29
+lookup cache used 761/65536 hits=2377 misses=778
 finished...

@@ -4,7 +4,7 @@
 <meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.8.6"/>
-<title>CodeGen: CodeGen.generators.Generator Class Reference</title>
+<title>CodeGen: CodeGen.generators.Field Class Reference</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -105,81 +105,64 @@ $(document).ready(function(){initNavTree('a00007.html','');});
 
 <div class="header">
   <div class="summary">
-<a href="#pub-methods">Public Member Functions</a> &#124;
-<a href="#pro-methods">Protected Member Functions</a> &#124;
-<a href="#pro-static-attribs">Static Protected Attributes</a> &#124;
-<a href="a00072.html">List of all members</a>  </div>
+<a href="#properties">Properties</a> &#124;
+<a href="a00098.html">List of all members</a>  </div>
   <div class="headertitle">
-<div class="title">CodeGen.generators.Generator Class Reference<span class="mlabels"><span class="mlabel">abstract</span></span></div>  </div>
+<div class="title">CodeGen.generators.Field Class Reference</div>  </div>
 </div><!--header-->
 <div class="contents">
 
-<p>Interface of language generator  
+<p>The structure that describes field. Contains access, const and static properties. Inherits from <a class="el" href="a00024.html" title="The structure that describes variable. Contains name, type and default value ">Variable</a>  
  <a href="a00007.html#details">More...</a></p>
 <div class="dynheader">
-Inheritance diagram for CodeGen.generators.Generator:</div>
+Inheritance diagram for CodeGen.generators.Field:</div>
 <div class="dyncontent">
-<div class="center"><img src="a00073.png" border="0" usemap="#_code_gen_8generators_8_generator_inherit__map" alt="Inheritance graph"/></div>
-<map name="_code_gen_8generators_8_generator_inherit__map" id="_code_gen_8generators_8_generator_inherit__map">
-<area shape="rect" id="node2" href="a00004.html" title="C# language generator " alt="" coords="278,5,469,46"/><area shape="rect" id="node3" href="a00005.html" title="Generator for JavaScript ES6 " alt="" coords="259,71,487,97"/><area shape="rect" id="node4" href="a00010.html" title="Go language generator " alt="" coords="263,121,483,148"/><area shape="rect" id="node5" href="a00011.html" title="Groovy language generator " alt="" coords="279,173,467,214"/><area shape="rect" id="node6" href="a00012.html" title="Java language generator " alt="" coords="258,239,489,265"/><area shape="rect" id="node7" href="a00020.html" title="Python language generator " alt="" coords="280,290,467,331"/><area shape="rect" id="node8" href="a00021.html" title="Ruby language generator " alt="" coords="256,356,491,383"/><area shape="rect" id="node9" href="a00024.html" title="Visual Basic language generator " alt="" coords="264,407,483,433"/></map>
+<div class="center"><img src="a00099.png" border="0" usemap="#_code_gen_8generators_8_field_inherit__map" alt="Inheritance graph"/></div>
+<map name="_code_gen_8generators_8_field_inherit__map" id="_code_gen_8generators_8_field_inherit__map">
+<area shape="rect" id="node2" href="a00024.html" title="The structure that describes variable. Contains name, type and default value " alt="" coords="57,5,127,32"/></map>
+<center><span class="legend">[<a target="top" href="graph_legend.html">legend</a>]</span></center></div>
+<div class="dynheader">
+Collaboration diagram for CodeGen.generators.Field:</div>
+<div class="dyncontent">
+<div class="center"><img src="a00100.png" border="0" usemap="#_code_gen_8generators_8_field_coll__map" alt="Collaboration graph"/></div>
+<map name="_code_gen_8generators_8_field_coll__map" id="_code_gen_8generators_8_field_coll__map">
+<area shape="rect" id="node2" href="a00024.html" title="The structure that describes variable. Contains name, type and default value " alt="" coords="57,5,127,32"/></map>
 <center><span class="legend">[<a target="top" href="graph_legend.html">legend</a>]</span></center></div>
 <table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
-Public Member Functions</h2></td></tr>
-<tr class="memitem:a5c5f7f56cdb910dc5d71ed407f874d84"><td class="memItemLeft" align="right" valign="top">Dictionary&lt; string, string &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00007.html#a5c5f7f56cdb910dc5d71ed407f874d84">Generate</a> (<a class="el" href="a00016.html">Package</a> pkg)</td></tr>
-<tr class="memdesc:a5c5f7f56cdb910dc5d71ed407f874d84"><td class="mdescLeft">&#160;</td><td class="mdescRight"><a class="el" href="a00016.html" title="The structure that describes package. Contains classes and subpackages ">Package</a> generator: generates package with classes and subpackages from given package object  <a href="#a5c5f7f56cdb910dc5d71ed407f874d84">More...</a><br/></td></tr>
-<tr class="separator:a5c5f7f56cdb910dc5d71ed407f874d84"><td class="memSeparator" colspan="2">&#160;</td></tr>
-</table><table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pro-methods"></a>
-Protected Member Functions</h2></td></tr>
-<tr class="memitem:a8847fd8b6d408a0dfc087dcc1dc58340"><td class="memItemLeft" align="right" valign="top">abstract string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00007.html#a8847fd8b6d408a0dfc087dcc1dc58340">GenerateClass</a> (<a class="el" href="a00003.html">Class</a> @class)</td></tr>
-<tr class="memdesc:a8847fd8b6d408a0dfc087dcc1dc58340"><td class="mdescLeft">&#160;</td><td class="mdescRight"><a class="el" href="a00003.html" title="The structure that describes class. Contains name, array of fields, methods and subclasses, parent class name, access specifier. Overrides ToString() method. ">Class</a> generator: generates class with fields, methods and subclasses from given class object  <a href="#a8847fd8b6d408a0dfc087dcc1dc58340">More...</a><br/></td></tr>
-<tr class="separator:a8847fd8b6d408a0dfc087dcc1dc58340"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a0d1a48aedbca08c05af734a43739d1c3"><td class="memItemLeft" align="right" valign="top">abstract string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00007.html#a0d1a48aedbca08c05af734a43739d1c3">GenerateField</a> (<a class="el" href="a00006.html">Field</a> field)</td></tr>
-<tr class="memdesc:a0d1a48aedbca08c05af734a43739d1c3"><td class="mdescLeft">&#160;</td><td class="mdescRight"><a class="el" href="a00006.html" title="The structure that describes field. Contains access, const and static properties. Inherits from Varia...">Field</a> generator: generates field from given field object  <a href="#a0d1a48aedbca08c05af734a43739d1c3">More...</a><br/></td></tr>
-<tr class="separator:a0d1a48aedbca08c05af734a43739d1c3"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a04fc9bd217b3b8c3d5f7b1a3f92c79d3"><td class="memItemLeft" align="right" valign="top">abstract string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00007.html#a04fc9bd217b3b8c3d5f7b1a3f92c79d3">GenerateMethod</a> (<a class="el" href="a00014.html">Method</a> method)</td></tr>
-<tr class="memdesc:a04fc9bd217b3b8c3d5f7b1a3f92c79d3"><td class="mdescLeft">&#160;</td><td class="mdescRight"><a class="el" href="a00014.html" title="The structure that describes method. Contains name, return type, access level, const and static prope...">Method</a> generator: generates method from given method object  <a href="#a04fc9bd217b3b8c3d5f7b1a3f92c79d3">More...</a><br/></td></tr>
-<tr class="separator:a04fc9bd217b3b8c3d5f7b1a3f92c79d3"><td class="memSeparator" colspan="2">&#160;</td></tr>
-</table><table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pro-static-attribs"></a>
-Static Protected Attributes</h2></td></tr>
-<tr class="memitem:a7a3edb5addb8b879b39666718f32514d"><td class="memItemLeft" align="right" valign="top">static bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00007.html#a7a3edb5addb8b879b39666718f32514d">UseTabs</a> = true</td></tr>
-<tr class="separator:a7a3edb5addb8b879b39666718f32514d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="properties"></a>
+Properties</h2></td></tr>
+<tr class="memitem:a49f206d40214424a35eefb0704371ad0"><td class="memItemLeft" align="right" valign="top">string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00007.html#a49f206d40214424a35eefb0704371ad0">Access</a><code> [get, set]</code></td></tr>
+<tr class="memdesc:a49f206d40214424a35eefb0704371ad0"><td class="mdescLeft">&#160;</td><td class="mdescRight">Represents access level of the field. Type: string  <a href="#a49f206d40214424a35eefb0704371ad0">More...</a><br/></td></tr>
+<tr class="separator:a49f206d40214424a35eefb0704371ad0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a13e03701c6d0b16e3ad7bdeda05a33aa"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00007.html#a13e03701c6d0b16e3ad7bdeda05a33aa">Const</a><code> [get, set]</code></td></tr>
+<tr class="memdesc:a13e03701c6d0b16e3ad7bdeda05a33aa"><td class="mdescLeft">&#160;</td><td class="mdescRight">Denotes if field is constant or not. Type: boolean  <a href="#a13e03701c6d0b16e3ad7bdeda05a33aa">More...</a><br/></td></tr>
+<tr class="separator:a13e03701c6d0b16e3ad7bdeda05a33aa"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a09f180833f4cf101aa0b4183407d7a80"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00007.html#a09f180833f4cf101aa0b4183407d7a80">Static</a><code> [get, set]</code></td></tr>
+<tr class="memdesc:a09f180833f4cf101aa0b4183407d7a80"><td class="mdescLeft">&#160;</td><td class="mdescRight">Denotes if field is static or not. Type: boolean  <a href="#a09f180833f4cf101aa0b4183407d7a80">More...</a><br/></td></tr>
+<tr class="separator:a09f180833f4cf101aa0b4183407d7a80"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aca6981cbfa9b6b370daef12a42e22662"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00007.html#aca6981cbfa9b6b370daef12a42e22662">Getter</a><code> [get, set]</code></td></tr>
+<tr class="memdesc:aca6981cbfa9b6b370daef12a42e22662"><td class="mdescLeft">&#160;</td><td class="mdescRight">Denotes if generate getter or not. Type: boolean  <a href="#aca6981cbfa9b6b370daef12a42e22662">More...</a><br/></td></tr>
+<tr class="separator:aca6981cbfa9b6b370daef12a42e22662"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad57a32f584421475ceb3c929e56b20f9"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00007.html#ad57a32f584421475ceb3c929e56b20f9">Setter</a><code> [get, set]</code></td></tr>
+<tr class="memdesc:ad57a32f584421475ceb3c929e56b20f9"><td class="mdescLeft">&#160;</td><td class="mdescRight">Denotes if generate setter or not. Type: boolean  <a href="#ad57a32f584421475ceb3c929e56b20f9">More...</a><br/></td></tr>
+<tr class="separator:ad57a32f584421475ceb3c929e56b20f9"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="inherit_header properties_a00024"><td colspan="2" onclick="javascript:toggleInherit('properties_a00024')"><img src="closed.png" alt="-"/>&#160;Properties inherited from <a class="el" href="a00024.html">CodeGen.generators.Variable</a></td></tr>
+<tr class="memitem:a6b02f8bef23931e0a98adb0ff6399aed inherit properties_a00024"><td class="memItemLeft" align="right" valign="top">string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00024.html#a6b02f8bef23931e0a98adb0ff6399aed">Name</a><code> [get, set]</code></td></tr>
+<tr class="memdesc:a6b02f8bef23931e0a98adb0ff6399aed inherit properties_a00024"><td class="mdescLeft">&#160;</td><td class="mdescRight">Represents the name of the variable. Type: string  <a href="#a6b02f8bef23931e0a98adb0ff6399aed">More...</a><br/></td></tr>
+<tr class="separator:a6b02f8bef23931e0a98adb0ff6399aed inherit properties_a00024"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a42c04d2c0f45318b1fcf0fd8753bdbcf inherit properties_a00024"><td class="memItemLeft" align="right" valign="top">string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00024.html#a42c04d2c0f45318b1fcf0fd8753bdbcf">Type</a><code> [get, set]</code></td></tr>
+<tr class="memdesc:a42c04d2c0f45318b1fcf0fd8753bdbcf inherit properties_a00024"><td class="mdescLeft">&#160;</td><td class="mdescRight">Represents the type of the variable. Type: string  <a href="#a42c04d2c0f45318b1fcf0fd8753bdbcf">More...</a><br/></td></tr>
+<tr class="separator:a42c04d2c0f45318b1fcf0fd8753bdbcf inherit properties_a00024"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a773fcfe6f0e77f96ab75279c5f8c2051 inherit properties_a00024"><td class="memItemLeft" align="right" valign="top">string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00024.html#a773fcfe6f0e77f96ab75279c5f8c2051">Default</a><code> [get, set]</code></td></tr>
+<tr class="memdesc:a773fcfe6f0e77f96ab75279c5f8c2051 inherit properties_a00024"><td class="mdescLeft">&#160;</td><td class="mdescRight">Represents default value of the varibale. Type: string  <a href="#a773fcfe6f0e77f96ab75279c5f8c2051">More...</a><br/></td></tr>
+<tr class="separator:a773fcfe6f0e77f96ab75279c5f8c2051 inherit properties_a00024"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock"><p>Interface of language generator </p>
+<div class="textblock"><p>The structure that describes field. Contains access, const and static properties. Inherits from <a class="el" href="a00024.html" title="The structure that describes variable. Contains name, type and default value ">Variable</a> </p>
 
-<p>Definition at line <a class="el" href="a00028_source.html#l00010">10</a> of file <a class="el" href="a00028_source.html">GeneratorConf.cs</a>.</p>
-</div><h2 class="groupheader">Member Function Documentation</h2>
-<a class="anchor" id="a5c5f7f56cdb910dc5d71ed407f874d84"></a>
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">Dictionary&lt;string, string&gt; CodeGen.generators.Generator.Generate </td>
-          <td>(</td>
-          <td class="paramtype"><a class="el" href="a00016.html">Package</a>&#160;</td>
-          <td class="paramname"><em>pkg</em></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p><a class="el" href="a00016.html" title="The structure that describes package. Contains classes and subpackages ">Package</a> generator: generates package with classes and subpackages from given package object </p>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">pkg</td><td><a class="el" href="a00016.html" title="The structure that describes package. Contains classes and subpackages ">Package</a> object</td></tr>
-  </table>
-  </dd>
-</dl>
-<dl class="section return"><dt>Returns</dt><dd>Dictionary of file names (keys) and generated code (values)</dd></dl>
-
-<p>Definition at line <a class="el" href="a00028_source.html#l00022">22</a> of file <a class="el" href="a00028_source.html">GeneratorConf.cs</a>.</p>
-
-</div>
-</div>
-<a class="anchor" id="a8847fd8b6d408a0dfc087dcc1dc58340"></a>
+<p>Definition at line <a class="el" href="a00034_source.html#l00121">121</a> of file <a class="el" href="a00034_source.html">Models.cs</a>.</p>
+</div><h2 class="groupheader">Property Documentation</h2>
+<a class="anchor" id="a49f206d40214424a35eefb0704371ad0"></a>
 <div class="memitem">
 <div class="memproto">
 <table class="mlabels">
@@ -187,34 +170,23 @@ Static Protected Attributes</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">abstract string CodeGen.generators.Generator.GenerateClass </td>
-          <td>(</td>
-          <td class="paramtype"><a class="el" href="a00003.html">Class</a> @&#160;</td>
-          <td class="paramname"><em>class</em></td><td>)</td>
-          <td></td>
+          <td class="memname">string CodeGen.generators.Field.Access</td>
         </tr>
       </table>
   </td>
   <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">protected</span><span class="mlabel">pure virtual</span></span>  </td>
+<span class="mlabels"><span class="mlabel">get</span><span class="mlabel">set</span></span>  </td>
   </tr>
 </table>
 </div><div class="memdoc">
 
-<p><a class="el" href="a00003.html" title="The structure that describes class. Contains name, array of fields, methods and subclasses, parent class name, access specifier. Overrides ToString() method. ">Class</a> generator: generates class with fields, methods and subclasses from given class object </p>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">class</td><td><a class="el" href="a00003.html" title="The structure that describes class. Contains name, array of fields, methods and subclasses, parent class name, access specifier. Overrides ToString() method. ">Class</a> object</td></tr>
-  </table>
-  </dd>
-</dl>
-<dl class="section return"><dt>Returns</dt><dd>String of generated code of class</dd></dl>
+<p>Represents access level of the field. Type: string </p>
 
-<p>Implemented in <a class="el" href="a00004.html#ae09fc218c8ddef8f13649ed278e93ff1">CodeGen.generators.CSharpGenerator</a>, <a class="el" href="a00005.html#a53988e6898a5cf7b926e4c74a5af1703">CodeGen.generators.ES6Generator</a>, <a class="el" href="a00020.html#a7ef1629fdf50856e1424ed4fd8be564c">CodeGen.generators.PythonGenerator</a>, <a class="el" href="a00021.html#a5d54d68890f2fc6c58e297f79647c033">CodeGen.generators.RubyGenerator</a>, <a class="el" href="a00024.html#a78dd1bac9e915e214bb6a43b3ebc15b5">CodeGen.generators.VbGenerator</a>, <a class="el" href="a00010.html#aacdb59f4942c999f06400f9f92732858">CodeGen.generators.GoGenerator</a>, <a class="el" href="a00011.html#af13381a7be697b1f22cbf39bc0ab0e8d">CodeGen.generators.GroovyGenerator</a>, and <a class="el" href="a00012.html#aebc6618c4d20b03195d4dd2a9bd03ffb">CodeGen.generators.JavaGenerator</a>.</p>
+<p>Definition at line <a class="el" href="a00034_source.html#l00127">127</a> of file <a class="el" href="a00034_source.html">Models.cs</a>.</p>
 
 </div>
 </div>
-<a class="anchor" id="a0d1a48aedbca08c05af734a43739d1c3"></a>
+<a class="anchor" id="a13e03701c6d0b16e3ad7bdeda05a33aa"></a>
 <div class="memitem">
 <div class="memproto">
 <table class="mlabels">
@@ -222,34 +194,23 @@ Static Protected Attributes</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">abstract string CodeGen.generators.Generator.GenerateField </td>
-          <td>(</td>
-          <td class="paramtype"><a class="el" href="a00006.html">Field</a>&#160;</td>
-          <td class="paramname"><em>field</em></td><td>)</td>
-          <td></td>
+          <td class="memname">bool CodeGen.generators.Field.Const</td>
         </tr>
       </table>
   </td>
   <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">protected</span><span class="mlabel">pure virtual</span></span>  </td>
+<span class="mlabels"><span class="mlabel">get</span><span class="mlabel">set</span></span>  </td>
   </tr>
 </table>
 </div><div class="memdoc">
 
-<p><a class="el" href="a00006.html" title="The structure that describes field. Contains access, const and static properties. Inherits from Varia...">Field</a> generator: generates field from given field object </p>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">field</td><td><a class="el" href="a00006.html" title="The structure that describes field. Contains access, const and static properties. Inherits from Varia...">Field</a> object</td></tr>
-  </table>
-  </dd>
-</dl>
-<dl class="section return"><dt>Returns</dt><dd>String of generated code of field</dd></dl>
+<p>Denotes if field is constant or not. Type: boolean </p>
 
-<p>Implemented in <a class="el" href="a00004.html#a72ff9ea0d6e5119e5a720eb54a952201">CodeGen.generators.CSharpGenerator</a>, <a class="el" href="a00005.html#a35f257a51768270892dfa05dcf2c64c0">CodeGen.generators.ES6Generator</a>, <a class="el" href="a00020.html#aafd171ffd14980515eef644b929bd712">CodeGen.generators.PythonGenerator</a>, <a class="el" href="a00024.html#a114f5fcd8cc13180701041b6d9815f3f">CodeGen.generators.VbGenerator</a>, <a class="el" href="a00011.html#a8ccffd1ee31dfad7f7599ab0bca0dc6b">CodeGen.generators.GroovyGenerator</a>, <a class="el" href="a00021.html#a08fbd6d88c129901aa159e3a9a706278">CodeGen.generators.RubyGenerator</a>, <a class="el" href="a00012.html#a84c05958d52e40e29a5a2157de4579e2">CodeGen.generators.JavaGenerator</a>, and <a class="el" href="a00010.html#aa7417b36b964e679a37dfee960148768">CodeGen.generators.GoGenerator</a>.</p>
+<p>Definition at line <a class="el" href="a00034_source.html#l00133">133</a> of file <a class="el" href="a00034_source.html">Models.cs</a>.</p>
 
 </div>
 </div>
-<a class="anchor" id="a04fc9bd217b3b8c3d5f7b1a3f92c79d3"></a>
+<a class="anchor" id="aca6981cbfa9b6b370daef12a42e22662"></a>
 <div class="memitem">
 <div class="memproto">
 <table class="mlabels">
@@ -257,35 +218,23 @@ Static Protected Attributes</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">abstract string CodeGen.generators.Generator.GenerateMethod </td>
-          <td>(</td>
-          <td class="paramtype"><a class="el" href="a00014.html">Method</a>&#160;</td>
-          <td class="paramname"><em>method</em></td><td>)</td>
-          <td></td>
+          <td class="memname">bool CodeGen.generators.Field.Getter</td>
         </tr>
       </table>
   </td>
   <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">protected</span><span class="mlabel">pure virtual</span></span>  </td>
+<span class="mlabels"><span class="mlabel">get</span><span class="mlabel">set</span></span>  </td>
   </tr>
 </table>
 </div><div class="memdoc">
 
-<p><a class="el" href="a00014.html" title="The structure that describes method. Contains name, return type, access level, const and static prope...">Method</a> generator: generates method from given method object </p>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">method</td><td><a class="el" href="a00014.html" title="The structure that describes method. Contains name, return type, access level, const and static prope...">Method</a> object</td></tr>
-  </table>
-  </dd>
-</dl>
-<dl class="section return"><dt>Returns</dt><dd>String of generated code of method</dd></dl>
+<p>Denotes if generate getter or not. Type: boolean </p>
 
-<p>Implemented in <a class="el" href="a00004.html#af39766dfe9c70d55091f7b8812bf8399">CodeGen.generators.CSharpGenerator</a>, <a class="el" href="a00012.html#a01dca6b9662f50fbd4735dbe97c99cc2">CodeGen.generators.JavaGenerator</a>, <a class="el" href="a00011.html#a7c8d2446310971e10a24b802bd9c62a0">CodeGen.generators.GroovyGenerator</a>, <a class="el" href="a00005.html#a4107b28b436462ea13ce60b092c453f2">CodeGen.generators.ES6Generator</a>, <a class="el" href="a00020.html#a09ea61b8eb384efcc36aa3574f9cb6a8">CodeGen.generators.PythonGenerator</a>, <a class="el" href="a00021.html#aa37c187dae8e400b050dcddba10d216b">CodeGen.generators.RubyGenerator</a>, <a class="el" href="a00024.html#ab8855feff4b8292c04a53362d270b34d">CodeGen.generators.VbGenerator</a>, and <a class="el" href="a00010.html#ac732350d06454ed93f2053c0971c8fd9">CodeGen.generators.GoGenerator</a>.</p>
+<p>Definition at line <a class="el" href="a00034_source.html#l00145">145</a> of file <a class="el" href="a00034_source.html">Models.cs</a>.</p>
 
 </div>
 </div>
-<h2 class="groupheader">Member Data Documentation</h2>
-<a class="anchor" id="a7a3edb5addb8b879b39666718f32514d"></a>
+<a class="anchor" id="ad57a32f584421475ceb3c929e56b20f9"></a>
 <div class="memitem">
 <div class="memproto">
 <table class="mlabels">
@@ -293,31 +242,55 @@ Static Protected Attributes</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">bool CodeGen.generators.Generator.UseTabs = true</td>
+          <td class="memname">bool CodeGen.generators.Field.Setter</td>
         </tr>
       </table>
   </td>
   <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">static</span><span class="mlabel">protected</span></span>  </td>
+<span class="mlabels"><span class="mlabel">get</span><span class="mlabel">set</span></span>  </td>
   </tr>
 </table>
 </div><div class="memdoc">
 
-<p></p>
+<p>Denotes if generate setter or not. Type: boolean </p>
 
-<p>Definition at line <a class="el" href="a00028_source.html#l00015">15</a> of file <a class="el" href="a00028_source.html">GeneratorConf.cs</a>.</p>
+<p>Definition at line <a class="el" href="a00034_source.html#l00151">151</a> of file <a class="el" href="a00034_source.html">Models.cs</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="a09f180833f4cf101aa0b4183407d7a80"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool CodeGen.generators.Field.Static</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">get</span><span class="mlabel">set</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Denotes if field is static or not. Type: boolean </p>
+
+<p>Definition at line <a class="el" href="a00034_source.html#l00139">139</a> of file <a class="el" href="a00034_source.html">Models.cs</a>.</p>
 
 </div>
 </div>
 <hr/>The documentation for this class was generated from the following file:<ul>
-<li>/home/travis/build/lnupmi11/CodeGen/generators/<a class="el" href="a00028_source.html">GeneratorConf.cs</a></li>
+<li>/home/travis/build/lnupmi11/CodeGen/generators/<a class="el" href="a00034_source.html">Models.cs</a></li>
 </ul>
 </div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="navelem"><a class="el" href="a00043.html">CodeGen</a></li><li class="navelem"><a class="el" href="a00044.html">generators</a></li><li class="navelem"><a class="el" href="a00007.html">Generator</a></li>
+    <li class="navelem"><a class="el" href="a00045.html">CodeGen</a></li><li class="navelem"><a class="el" href="a00046.html">generators</a></li><li class="navelem"><a class="el" href="a00007.html">Field</a></li>
     <li class="footer">Generated by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.6 </li>

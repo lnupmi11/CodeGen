@@ -1,11 +1,12 @@
 <map id="Graphical Class Hierarchy" name="Graphical Class Hierarchy">
-<area shape="rect" id="node1" href="$a00007.html" title="Interface of language generator " alt="" coords="5,209,208,236"/>
-<area shape="rect" id="node2" href="$a00004.html" title="C# language generator " alt="" coords="278,5,469,46"/>
-<area shape="rect" id="node3" href="$a00005.html" title="Generator for JavaScript ES6 " alt="" coords="259,71,487,97"/>
-<area shape="rect" id="node4" href="$a00010.html" title="Go language generator " alt="" coords="263,121,483,148"/>
-<area shape="rect" id="node5" href="$a00011.html" title="Groovy language generator " alt="" coords="279,173,467,214"/>
-<area shape="rect" id="node6" href="$a00012.html" title="Java language generator " alt="" coords="258,239,489,265"/>
-<area shape="rect" id="node7" href="$a00020.html" title="Python language generator " alt="" coords="280,290,467,331"/>
-<area shape="rect" id="node8" href="$a00021.html" title="Ruby language generator " alt="" coords="256,356,491,383"/>
-<area shape="rect" id="node9" href="$a00024.html" title="Visual Basic language generator " alt="" coords="264,407,483,433"/>
+<area shape="rect" id="node1" href="$a00008.html" title="Interface of language generator " alt="" coords="5,232,208,259"/>
+<area shape="rect" id="node2" href="$a00004.html" title="C++ language generator " alt="" coords="260,5,487,32"/>
+<area shape="rect" id="node3" href="$a00005.html" title="C# language generator " alt="" coords="278,57,469,98"/>
+<area shape="rect" id="node4" href="$a00006.html" title="Generator for JavaScript ES6 " alt="" coords="259,123,487,149"/>
+<area shape="rect" id="node5" href="$a00011.html" title="Go language generator " alt="" coords="263,173,483,200"/>
+<area shape="rect" id="node6" href="$a00012.html" title="Groovy language generator " alt="" coords="279,225,467,266"/>
+<area shape="rect" id="node7" href="$a00013.html" title="Java language generator " alt="" coords="258,291,489,317"/>
+<area shape="rect" id="node8" href="$a00021.html" title="Python language generator " alt="" coords="280,342,467,383"/>
+<area shape="rect" id="node9" href="$a00022.html" title="Ruby language generator " alt="" coords="256,408,491,435"/>
+<area shape="rect" id="node10" href="$a00025.html" title="Visual Basic language generator " alt="" coords="264,459,483,485"/>
 </map>

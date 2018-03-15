@@ -1,8 +1,7 @@
 var a00006 =
 [
-    [ "Access", "a00006.html#a49f206d40214424a35eefb0704371ad0", null ],
-    [ "Const", "a00006.html#a13e03701c6d0b16e3ad7bdeda05a33aa", null ],
-    [ "Getter", "a00006.html#aca6981cbfa9b6b370daef12a42e22662", null ],
-    [ "Setter", "a00006.html#ad57a32f584421475ceb3c929e56b20f9", null ],
-    [ "Static", "a00006.html#a09f180833f4cf101aa0b4183407d7a80", null ]
+    [ "GenerateClass", "a00006.html#a53988e6898a5cf7b926e4c74a5af1703", null ],
+    [ "GenerateField", "a00006.html#a35f257a51768270892dfa05dcf2c64c0", null ],
+    [ "GenerateMethod", "a00006.html#a4107b28b436462ea13ce60b092c453f2", null ],
+    [ "Indent", "a00006.html#a791781b65bf0f9eeed21597963d7aa16", null ]
 ];

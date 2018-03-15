@@ -1,9 +1,8 @@
 var a00014 =
 [
-    [ "Access", "a00014.html#ad713380461315774e85e7316f9a48df9", null ],
-    [ "Const", "a00014.html#a31ce28145fc93a8b16dc8a1132a73694", null ],
-    [ "Name", "a00014.html#a102f86b59635b173d66ed34541cf3e4c", null ],
-    [ "Parameters", "a00014.html#ae6898cecae4a670b5e72568bce89fea3", null ],
-    [ "Return", "a00014.html#a1f14ec7aef5e61d595870f2fee56a885", null ],
-    [ "Static", "a00014.html#a40aa2b9a7000ae6acc851b97410ce2af", null ]
+    [ "Languange", "a00014.html#a89fa98041473b18a7df845e14edcba07", null ],
+    [ "Comment", "a00014.html#aa63aaf377bcac5ca06c14304701c3493", null ],
+    [ "Extension", "a00014.html#af00eae192536b05d637d0b81954202c7", null ],
+    [ "Generator", "a00014.html#a25fb0a47247497581d2d0560d0db66d8", null ],
+    [ "IndentSize", "a00014.html#a3337b97358faf06c1e633e80f71cf2b4", null ]
 ];

@@ -1,4 +1,4 @@
 var namespaces =
 [
-    [ "CodeGen", "a00043.html", "a00043" ]
+    [ "CodeGen", "a00045.html", "a00045" ]
 ];

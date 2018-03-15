@@ -1,4 +1,5 @@
 var a00048 =
 [
-    [ "ParserTest", "a00019.html", "a00019" ]
+    [ "generators", "a00049.html", "a00049" ],
+    [ "parser", "a00050.html", "a00050" ]
 ];
