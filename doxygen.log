@@ -69,8 +69,8 @@ Preprocessing /home/travis/build/lnupmi11/CodeGen/generators/VB.cs...
 Parsing file /home/travis/build/lnupmi11/CodeGen/generators/VB.cs...
 Preprocessing /home/travis/build/lnupmi11/CodeGen/obj/Debug/netcoreapp2.0/CodeGen.AssemblyInfo.cs...
 Parsing file /home/travis/build/lnupmi11/CodeGen/obj/Debug/netcoreapp2.0/CodeGen.AssemblyInfo.cs...
-Preprocessing /home/travis/build/lnupmi11/CodeGen/parser/Go.cs...
-Parsing file /home/travis/build/lnupmi11/CodeGen/parser/Go.cs...
+Preprocessing /home/travis/build/lnupmi11/CodeGen/parser/Parser.cs...
+Parsing file /home/travis/build/lnupmi11/CodeGen/parser/Parser.cs...
 Preprocessing /home/travis/build/lnupmi11/CodeGen/Program.cs...
 Parsing file /home/travis/build/lnupmi11/CodeGen/Program.cs...
 Reading /home/travis/build/lnupmi11/CodeGen/README.md...
@@ -138,7 +138,6 @@ Generating code for file /home/travis/build/lnupmi11/CodeGen/generators/CSharp.c
 Generating code for file /home/travis/build/lnupmi11/CodeGen/generators/ES6.cs...
 Generating code for file /home/travis/build/lnupmi11/CodeGen/generators/GeneratorConf.cs...
 Generating code for file /home/travis/build/lnupmi11/CodeGen/generators/Go.cs...
-Generating code for file /home/travis/build/lnupmi11/CodeGen/parser/Go.cs...
 Generating code for file /home/travis/build/lnupmi11/CodeGen/generators/Groovy.cs...
 Generating code for file /home/travis/build/lnupmi11/CodeGen/generators/Java.cs...
 Generating code for file /home/travis/build/lnupmi11/CodeGen/generators/Models.cs...
@@ -146,6 +145,7 @@ Generating code for file /home/travis/build/lnupmi11/CodeGen/generators/Python.c
 Generating code for file /home/travis/build/lnupmi11/CodeGen/generators/Ruby.cs...
 Generating code for file /home/travis/build/lnupmi11/CodeGen/generators/VB.cs...
 Generating code for file /home/travis/build/lnupmi11/CodeGen/obj/Debug/netcoreapp2.0/CodeGen.AssemblyInfo.cs...
+Generating code for file /home/travis/build/lnupmi11/CodeGen/parser/Parser.cs...
 Generating code for file /home/travis/build/lnupmi11/CodeGen/Program.cs...
 Generating code for file /home/travis/build/lnupmi11/CodeGen/README.md...
 Generating code for file /home/travis/build/lnupmi11/CodeGen/tests/generators/GeneratorConfTest.cs...
@@ -158,7 +158,6 @@ Generating docs for file /home/travis/build/lnupmi11/CodeGen/generators/CSharp.c
 Generating docs for file /home/travis/build/lnupmi11/CodeGen/generators/ES6.cs...
 Generating docs for file /home/travis/build/lnupmi11/CodeGen/generators/GeneratorConf.cs...
 Generating docs for file /home/travis/build/lnupmi11/CodeGen/generators/Go.cs...
-Generating docs for file /home/travis/build/lnupmi11/CodeGen/parser/Go.cs...
 Generating docs for file /home/travis/build/lnupmi11/CodeGen/generators/Groovy.cs...
 Generating docs for file /home/travis/build/lnupmi11/CodeGen/generators/Java.cs...
 Generating docs for file /home/travis/build/lnupmi11/CodeGen/generators/Models.cs...
@@ -166,6 +165,7 @@ Generating docs for file /home/travis/build/lnupmi11/CodeGen/generators/Python.c
 Generating docs for file /home/travis/build/lnupmi11/CodeGen/generators/Ruby.cs...
 Generating docs for file /home/travis/build/lnupmi11/CodeGen/generators/VB.cs...
 Generating docs for file /home/travis/build/lnupmi11/CodeGen/obj/Debug/netcoreapp2.0/CodeGen.AssemblyInfo.cs...
+Generating docs for file /home/travis/build/lnupmi11/CodeGen/parser/Parser.cs...
 Generating docs for file /home/travis/build/lnupmi11/CodeGen/Program.cs...
 Generating docs for file /home/travis/build/lnupmi11/CodeGen/README.md...
 Generating docs for file /home/travis/build/lnupmi11/CodeGen/tests/generators/GeneratorConfTest.cs...
@@ -186,7 +186,6 @@ Generating docs for compound CodeGen::generators::ES6Generator...
 Generating call graph for function CodeGen.generators.ES6Generator.GenerateClass
 Generating docs for compound CodeGen::generators::Generator...
 Generating docs for compound CodeGen::generators::Normalizer...
-Generating docs for compound CodeGen::generators::Parser...
 Generating docs for compound CodeGen::generators::Languange...
 Generating docs for compound CodeGen::generators::GeneratorConf...
 Generating caller graph for function CodeGen.generators.GeneratorConf.GetLanguage
@@ -209,7 +208,7 @@ Generating call graph for function CodeGen.generators.RubyGenerator.GenerateClas
 Generating docs for compound CodeGen::generators::VbGenerator...
 Generating call graph for function CodeGen.generators.VbGenerator.GenerateClass
 Generating docs for namespace CodeGen::parser
-Generating docs for compound CodeGen::parser::GoParser...
+Generating docs for compound CodeGen::parser::Parser...
 Generating docs for namespace CodeGen::tests
 Generating docs for namespace CodeGen::tests::generators
 Generating docs for compound CodeGen::tests::generators::GeneratorConfTest...
@@ -244,95 +243,90 @@ Generating example index...
 finalizing index lists...
 Running dot...
 Generating dot graphs using 33 parallel threads...
-Running dot for graph 1/61
-Running dot for graph 2/61
-Running dot for graph 3/61
-Running dot for graph 4/61
-Running dot for graph 5/61
-Running dot for graph 6/61
-Running dot for graph 7/61
-Running dot for graph 8/61
-Running dot for graph 9/61
-Running dot for graph 10/61
-Running dot for graph 11/61
-Running dot for graph 12/61
-Running dot for graph 13/61
-Running dot for graph 14/61
-Running dot for graph 15/61
-Running dot for graph 16/61
-Running dot for graph 17/61
-Running dot for graph 18/61
-Running dot for graph 19/61
-Running dot for graph 20/61
-Running dot for graph 21/61
-Running dot for graph 22/61
-Running dot for graph 23/61
-Running dot for graph 24/61
-Running dot for graph 25/61
-Running dot for graph 26/61
-Running dot for graph 27/61
-Running dot for graph 28/61
-Running dot for graph 29/61
-Running dot for graph 30/61
-Running dot for graph 31/61
-Running dot for graph 32/61
-Running dot for graph 33/61
-Running dot for graph 34/61
-Running dot for graph 35/61
-Running dot for graph 36/61
-Running dot for graph 37/61
-Running dot for graph 38/61
-Running dot for graph 39/61
-Running dot for graph 40/61
-Running dot for graph 41/61
-Running dot for graph 42/61
-Running dot for graph 43/61
-Running dot for graph 44/61
-Running dot for graph 45/61
-Running dot for graph 46/61
-Running dot for graph 47/61
-Running dot for graph 48/61
-Running dot for graph 49/61
-Running dot for graph 50/61
-Running dot for graph 51/61
-Running dot for graph 52/61
-Running dot for graph 53/61
-Running dot for graph 54/61
-Running dot for graph 55/61
-Running dot for graph 56/61
-Running dot for graph 57/61
-Running dot for graph 58/61
-Running dot for graph 59/61
-Running dot for graph 60/61
-Running dot for graph 61/61
-Patching output file 1/29
-Patching output file 2/29
-Patching output file 3/29
-Patching output file 4/29
-Patching output file 5/29
-Patching output file 6/29
-Patching output file 7/29
-Patching output file 8/29
-Patching output file 9/29
-Patching output file 10/29
-Patching output file 11/29
-Patching output file 12/29
-Patching output file 13/29
-Patching output file 14/29
-Patching output file 15/29
-Patching output file 16/29
-Patching output file 17/29
-Patching output file 18/29
-Patching output file 19/29
-Patching output file 20/29
-Patching output file 21/29
-Patching output file 22/29
-Patching output file 23/29
-Patching output file 24/29
-Patching output file 25/29
-Patching output file 26/29
-Patching output file 27/29
-Patching output file 28/29
-Patching output file 29/29
-lookup cache used 827/65536 hits=2649 misses=846
+Running dot for graph 1/58
+Running dot for graph 2/58
+Running dot for graph 3/58
+Running dot for graph 4/58
+Running dot for graph 5/58
+Running dot for graph 6/58
+Running dot for graph 7/58
+Running dot for graph 8/58
+Running dot for graph 9/58
+Running dot for graph 10/58
+Running dot for graph 11/58
+Running dot for graph 12/58
+Running dot for graph 13/58
+Running dot for graph 14/58
+Running dot for graph 15/58
+Running dot for graph 16/58
+Running dot for graph 17/58
+Running dot for graph 18/58
+Running dot for graph 19/58
+Running dot for graph 20/58
+Running dot for graph 21/58
+Running dot for graph 22/58
+Running dot for graph 23/58
+Running dot for graph 24/58
+Running dot for graph 25/58
+Running dot for graph 26/58
+Running dot for graph 27/58
+Running dot for graph 28/58
+Running dot for graph 29/58
+Running dot for graph 30/58
+Running dot for graph 31/58
+Running dot for graph 32/58
+Running dot for graph 33/58
+Running dot for graph 34/58
+Running dot for graph 35/58
+Running dot for graph 36/58
+Running dot for graph 37/58
+Running dot for graph 38/58
+Running dot for graph 39/58
+Running dot for graph 40/58
+Running dot for graph 41/58
+Running dot for graph 42/58
+Running dot for graph 43/58
+Running dot for graph 44/58
+Running dot for graph 45/58
+Running dot for graph 46/58
+Running dot for graph 47/58
+Running dot for graph 48/58
+Running dot for graph 49/58
+Running dot for graph 50/58
+Running dot for graph 51/58
+Running dot for graph 52/58
+Running dot for graph 53/58
+Running dot for graph 54/58
+Running dot for graph 55/58
+Running dot for graph 56/58
+Running dot for graph 57/58
+Running dot for graph 58/58
+Patching output file 1/27
+Patching output file 2/27
+Patching output file 3/27
+Patching output file 4/27
+Patching output file 5/27
+Patching output file 6/27
+Patching output file 7/27
+Patching output file 8/27
+Patching output file 9/27
+Patching output file 10/27
+Patching output file 11/27
+Patching output file 12/27
+Patching output file 13/27
+Patching output file 14/27
+Patching output file 15/27
+Patching output file 16/27
+Patching output file 17/27
+Patching output file 18/27
+Patching output file 19/27
+Patching output file 20/27
+Patching output file 21/27
+Patching output file 22/27
+Patching output file 23/27
+Patching output file 24/27
+Patching output file 25/27
+Patching output file 26/27
+Patching output file 27/27
+lookup cache used 759/65536 hits=2394 misses=776
 finished...
