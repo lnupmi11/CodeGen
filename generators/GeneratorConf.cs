@@ -112,28 +112,28 @@ namespace CodeGen.generators
 		/// </summary>
 		/// <param name="class"></param>
 		/// <returns></returns>
-		protected abstract List<Class> ParseClasses(string @class);
+		protected abstract Class[] ParseClasses(string @class);
 
 		/// <summary>
 		/// 
 		/// </summary>
 		/// <param name="field"></param>
 		/// <returns></returns>
-		protected abstract List<Field> ParseFields(string field);
+		protected abstract Field[] ParseFields(string field);
 
 		/// <summary>
 		/// 
 		/// </summary>
 		/// <param name="method"></param>
 		/// <returns></returns>
-		protected abstract List<Method> ParseMethods(string method);
+		protected abstract Method[] ParseMethods(string method);
 
 		/// <summary>
 		/// 
 		/// </summary>
 		/// <param name="parameter"></param>
 		/// <returns></returns>
-		protected abstract List<Parameter> ParseParameters(string parameter);
+		protected abstract Parameter[] ParseParameters(string parameter);
 	}
 
 	/// <summary>
