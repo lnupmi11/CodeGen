@@ -258,6 +258,7 @@ namespace CodeGen.generators
 		/// <summary>
 		/// Dictionary of language names (keys) and its Language objects (values) 
 		/// </summary>
+		/// 
 		/// \todo Add languages: JS_ES5, Crystal, Closure, Kotlin, Rust, Scala, Lua,
 		/// \todo Add frameworks: Pyhton/Django, Ruby/Rails
 		public static readonly Dictionary<string, Languange> Languanges = new Dictionary<string, Languange>

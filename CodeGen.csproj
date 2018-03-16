@@ -5,6 +5,12 @@
     <RuntimeFrameworkVersion>2.0.5</RuntimeFrameworkVersion>
     <DocumentationFile>docs/CodeGen.xml</DocumentationFile>
   </PropertyGroup>
+    <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+        <CheckForOverflowUnderflow>true</CheckForOverflowUnderflow>
+    </PropertyGroup>
+    <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+        <CheckForOverflowUnderflow>true</CheckForOverflowUnderflow>
+    </PropertyGroup>
   <ItemGroup>
     <PackageReference Include="CommandLineParser" Version="2.2.1" />
     <PackageReference Include="Newtonsoft.Json" Version="11.0.1" />
