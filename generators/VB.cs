@@ -92,7 +92,7 @@ namespace CodeGen.generators
 	}
 
 	/// <inheritdoc />
-	internal class VbNormalizer : Normalizer
+	public class VbNormalizer : Normalizer
 	{
 		private static Normalizer _singletonInstance = null;
 		
@@ -101,6 +101,10 @@ namespace CodeGen.generators
 			
 		}
 		
+		/// <summary>
+		/// 
+		/// </summary>
+		/// <returns></returns>
 		public static Normalizer GetNormalizer()
 		{
 			return _singletonInstance ?? (_singletonInstance = new VbNormalizer());
