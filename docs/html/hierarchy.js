@@ -17,7 +17,8 @@ var hierarchy =
     [ "CodeGen.generators.Languange", "a00015.html", null ],
     [ "CodeGen.generators.Method", "a00016.html", null ],
     [ "CodeGen.generators.Normalizer", "a00017.html", [
-      [ "CodeGen.generators.JavaNormalizer", "a00014.html", null ]
+      [ "CodeGen.generators.JavaNormalizer", "a00014.html", null ],
+      [ "CodeGen.generators.VbNormalizer", "a00026.html", null ]
     ] ],
     [ "CodeGen.generators.Package", "a00018.html", null ],
     [ "CodeGen.parser.Parser", "a00020.html", null ],

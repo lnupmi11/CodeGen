@@ -9,5 +9,5 @@ var searchData=
   ['getindenttest',['GetIndentTest',['../a00010.html#aa695d2d64351f9cfc01fa9a66cfcc5f0',1,'CodeGen::tests::generators::GeneratorConfTest']]],
   ['getlanguage',['GetLanguage',['../a00009.html#a358bcc4be771d981ac1aa4c451b48383',1,'CodeGen::generators::GeneratorConf']]],
   ['getlanguagetest',['GetLanguageTest',['../a00010.html#a2b8c73a49a08299aee6cc08ba88ccdc9',1,'CodeGen::tests::generators::GeneratorConfTest']]],
-  ['getnormalizer',['GetNormalizer',['../a00014.html#afc9ff828354d85305d60c3654de4378a',1,'CodeGen::generators::JavaNormalizer']]]
+  ['getnormalizer',['GetNormalizer',['../a00014.html#afc9ff828354d85305d60c3654de4378a',1,'CodeGen.generators.JavaNormalizer.GetNormalizer()'],['../a00026.html#a2b8cdae78a9f29a9b34d92b4555616a5',1,'CodeGen.generators.VbNormalizer.GetNormalizer()']]]
 ];
