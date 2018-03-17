@@ -7,7 +7,7 @@ namespace CodeGen.generators
 	/// <summary>
 	/// Generator for JavaScript ES6 
 	/// </summary>
-	public class ES6Generator : Generator
+	public class Es6Generator : Generator
 	{
 		private const string ClassFormat = "class {0} {1}{{{2}{3}}}{4}";
 		private string Indent { get; set; } = GeneratorConf.GetIndent(true, 4);

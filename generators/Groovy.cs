@@ -4,7 +4,7 @@ namespace CodeGen.generators
 {
 	/// <inheritdoc />
 	/// <summary>
-	/// Groovy language generator
+	/// Generator for Groovy
 	/// </summary>
 	public class GroovyGenerator : Generator
 	{

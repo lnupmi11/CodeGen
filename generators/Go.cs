@@ -4,7 +4,7 @@ namespace CodeGen.generators
 {
 	/// <inheritdoc />
 	/// <summary>
-	/// Go language generator
+	/// Generator for Go
 	/// </summary>
 	public class GoGenerator : Generator
 	{

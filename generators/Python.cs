@@ -5,7 +5,7 @@ namespace CodeGen.generators
 {
 	/// <inheritdoc />
 	/// <summary>
-	/// Python language generator
+	/// Generator for Python
 	/// </summary>
 	public class PythonGenerator : Generator
 	{

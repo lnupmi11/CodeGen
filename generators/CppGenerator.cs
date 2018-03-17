@@ -5,7 +5,7 @@ namespace CodeGen.generators
 {
     /// <inheritdoc />
     /// <summary>
-    /// C++ language generator
+    /// Generator for C++
     /// </summary>
     public class CppGenerator : Generator
     {

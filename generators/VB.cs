@@ -5,7 +5,7 @@ namespace CodeGen.generators
 {
 	/// <inheritdoc />
 	/// <summary>
-	/// Visual Basic language generator
+	/// Generator for Visual Basic
 	/// </summary>
 	public class VbGenerator : Generator
 	{
@@ -92,6 +92,7 @@ namespace CodeGen.generators
 	}
 
 	/// <inheritdoc />
+	/// <summary>Normalizer for Visual Basic</summary>
 	public class VbNormalizer : Normalizer
 	{
 		private static Normalizer _singletonInstance = null;
@@ -102,9 +103,9 @@ namespace CodeGen.generators
 		}
 		
 		/// <summary>
-		/// 
+		/// Method for getting a singleton
 		/// </summary>
-		/// <returns></returns>
+		/// <returns>Normalizer instance</returns>
 		public static Normalizer GetNormalizer()
 		{
 			return _singletonInstance ?? (_singletonInstance = new VbNormalizer());

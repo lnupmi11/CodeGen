@@ -5,7 +5,7 @@ namespace CodeGen.generators
 {
 	/// <inheritdoc />
 	/// <summary>
-	/// Java language generator
+	/// Generator for Java
 	/// </summary>
 	public class JavaGenerator : Generator
 	{
@@ -153,9 +153,9 @@ namespace CodeGen.generators
 		};
 
 		/// <summary>
-		/// 
+		/// Method for getting a singleton
 		/// </summary>
-		/// <returns></returns>
+		/// <returns>Normalizer instance</returns>
 		public static Normalizer GetNormalizer()
 		{
 			return _singletonInstance ?? (_singletonInstance = new JavaNormalizer());
