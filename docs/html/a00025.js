@@ -1,6 +1,7 @@
 var a00025 =
 [
-    [ "Default", "a00025.html#a773fcfe6f0e77f96ab75279c5f8c2051", null ],
-    [ "Name", "a00025.html#a6b02f8bef23931e0a98adb0ff6399aed", null ],
-    [ "Type", "a00025.html#a42c04d2c0f45318b1fcf0fd8753bdbcf", null ]
+    [ "GenerateClass", "a00025.html#a78dd1bac9e915e214bb6a43b3ebc15b5", null ],
+    [ "GenerateField", "a00025.html#a114f5fcd8cc13180701041b6d9815f3f", null ],
+    [ "GenerateMethod", "a00025.html#ab8855feff4b8292c04a53362d270b34d", null ],
+    [ "Indent", "a00025.html#a747bea8b5ce26b87f0fe50fd66ad09c1", null ]
 ];

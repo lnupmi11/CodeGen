@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['indentsize',['IndentSize',['../a00016.html#a3337b97358faf06c1e633e80f71cf2b4',1,'CodeGen::generators::Languange']]]
+  ['generator',['Generator',['../a00015.html#a25fb0a47247497581d2d0560d0db66d8',1,'CodeGen::generators::Languange']]]
 ];

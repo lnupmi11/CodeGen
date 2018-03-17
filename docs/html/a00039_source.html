@@ -4,7 +4,7 @@
 <meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.8.6"/>
-<title>CodeGen: /home/travis/build/lnupmi11/CodeGen/generators/Ruby.cs Source File</title>
+<title>CodeGen: /home/travis/build/lnupmi11/CodeGen/parser/Parser.cs Source File</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -102,166 +102,26 @@ $(document).ready(function(){initNavTree('a00039_source.html','');});
 
 <div class="header">
   <div class="headertitle">
-<div class="title">Ruby.cs</div>  </div>
+<div class="title">Parser.cs</div>  </div>
 </div><!--header-->
 <div class="contents">
-<a href="a00039.html">Go to the documentation of this file.</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="keyword">using</span> System.Collections.Generic;</div>
-<div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;<span class="keyword">using</span> System.Linq;</div>
-<div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;</div>
-<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="keyword">namespace </span>CodeGen.generators</div>
-<div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;{</div>
-<div class="line"><a name="l00010"></a><span class="lineno"><a class="line" href="a00024.html">   10</a></span>&#160;    <span class="keyword">public</span> <span class="keyword">class </span><a class="code" href="a00024.html">RubyGenerator</a> : <a class="code" href="a00008.html">Generator</a></div>
-<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;    {</div>
-<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;        <span class="keyword">private</span> <span class="keyword">const</span> <span class="keywordtype">string</span> ClassFormat = <span class="stringliteral">&quot;class {0}{1}\n{2}{3}{4}end&quot;</span>;</div>
-<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;        <span class="keyword">private</span> <span class="keywordtype">string</span> Indent { <span class="keyword">get</span>; set; } = GeneratorConf.GetIndent(<span class="keyword">true</span>, 4);</div>
-<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;</div>
-<div class="line"><a name="l00016"></a><span class="lineno"><a class="line" href="a00024.html#a5d54d68890f2fc6c58e297f79647c033">   16</a></span>&#160;        <span class="keyword">protected</span> <span class="keyword">override</span> <span class="keywordtype">string</span> <a class="code" href="a00024.html#a5d54d68890f2fc6c58e297f79647c033">GenerateClass</a>(<a class="code" href="a00003.html">Class</a> <span class="keyword">@class</span>)</div>
-<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;        {</div>
-<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;            <span class="keywordtype">string</span> fields = <span class="stringliteral">&quot;&quot;</span>, inherits = <span class="stringliteral">&quot;&quot;</span>, methods = <span class="stringliteral">&quot;&quot;</span>, classes = <span class="stringliteral">&quot;&quot;</span>;</div>
-<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;</div>
-<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;            <span class="keywordflow">if</span> (!<span class="keywordtype">string</span>.IsNullOrWhiteSpace(<span class="keyword">@class</span>.Parent))</div>
-<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;            {</div>
-<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;                inherits = <span class="stringliteral">&quot; &lt; &quot;</span> + <span class="keyword">@class</span>.Parent;</div>
-<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;            }</div>
-<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;</div>
-<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;            <span class="keywordflow">if</span> (<span class="keyword">@class</span>.Fields?.Length &gt; 0)</div>
-<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;            {</div>
-<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;                fields = GeneratorConf.ShiftCode(GenerateInit(<span class="keyword">@class</span>), 1, Indent);</div>
-<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;            }</div>
-<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;</div>
-<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;            methods = <span class="keyword">@class</span>.Methods?.Aggregate(<span class="charliteral">&#39;\n&#39;</span> + methods,</div>
-<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;                (current, method) =&gt; current + <span class="stringliteral">&quot;\n&quot;</span> + <a class="code" href="a00009.html">GeneratorConf</a>.<a class="code" href="a00009.html#a71dbec00a6e5d6d390dd8a24b64b6bb2">ShiftCode</a>(GenerateMethod(method), 1, Indent) + <span class="stringliteral">&quot;\n&quot;</span>);</div>
-<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;</div>
-<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;            classes = <span class="keyword">@class</span>.Classes?.Aggregate(classes,</div>
-<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;                (current, cls) =&gt; current + <span class="stringliteral">&quot;\n&quot;</span> + <a class="code" href="a00009.html">GeneratorConf</a>.<a class="code" href="a00009.html#a71dbec00a6e5d6d390dd8a24b64b6bb2">ShiftCode</a>(GenerateClass(cls), 1, Indent));</div>
-<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;</div>
-<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;            <span class="keywordflow">if</span> (!<span class="keywordtype">string</span>.IsNullOrWhiteSpace(classes)) classes += <span class="stringliteral">&quot;\n&quot;</span>;</div>
-<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;</div>
-<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;            <span class="keywordflow">return</span> string.Format(ClassFormat, <span class="keyword">@class</span>.Name, inherits, fields, methods, classes);</div>
-<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;        }</div>
-<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;</div>
-<div class="line"><a name="l00042"></a><span class="lineno"><a class="line" href="a00024.html#a08fbd6d88c129901aa159e3a9a706278">   42</a></span>&#160;        <span class="keyword">protected</span> <span class="keyword">override</span> <span class="keywordtype">string</span> <a class="code" href="a00024.html#a08fbd6d88c129901aa159e3a9a706278">GenerateField</a>(<a class="code" href="a00007.html">Field</a> field)</div>
-<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;        {</div>
-<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;            var result = Indent;</div>
-<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;</div>
-<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;<span class="comment">//          if (field.Access == &quot;public&quot;)</span></div>
-<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;<span class="comment">//          {</span></div>
-<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;<span class="comment">//              field.Name = field.Name?.First().ToString().ToUpper() + field.Name?.Substring(1);</span></div>
-<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;<span class="comment">//          }</span></div>
-<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;</div>
-<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;<span class="comment">//          result += field.Name + &#39; &#39; + field.Type;</span></div>
-<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;</div>
-<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;            <span class="keywordflow">return</span> result;</div>
-<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;        }</div>
-<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;</div>
-<div class="line"><a name="l00057"></a><span class="lineno"><a class="line" href="a00024.html#aa37c187dae8e400b050dcddba10d216b">   57</a></span>&#160;        <span class="keyword">protected</span> <span class="keyword">override</span> <span class="keywordtype">string</span> <a class="code" href="a00024.html#aa37c187dae8e400b050dcddba10d216b">GenerateMethod</a>(<a class="code" href="a00017.html">Method</a> method)</div>
-<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;        {</div>
-<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;            <span class="keywordflow">return</span> GenerateMethodWithBody(method, <span class="stringliteral">&quot;&quot;</span>);</div>
-<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;        }</div>
-<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;</div>
-<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;        <span class="keyword">private</span> <span class="keywordtype">string</span> GenerateMethodWithBody(<a class="code" href="a00017.html">Method</a> method, <span class="keywordtype">string</span> body)</div>
-<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;        {</div>
-<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;            var result = <span class="stringliteral">&quot;def &quot;</span>;</div>
-<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;</div>
-<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;            <span class="keywordflow">if</span> (method.<a class="code" href="a00017.html#ad713380461315774e85e7316f9a48df9">Access</a> == <span class="stringliteral">&quot;private&quot;</span>) result = <span class="stringliteral">&quot;private &quot;</span> + result;</div>
-<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;</div>
-<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;            <span class="keywordflow">if</span> (method.<a class="code" href="a00017.html#a40aa2b9a7000ae6acc851b97410ce2af">Static</a>) result += <span class="stringliteral">&quot;self.&quot;</span>;</div>
-<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;</div>
-<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;</div>
-<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;            result += method.Name;</div>
-<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;            <span class="keywordflow">if</span> (method.<a class="code" href="a00017.html#ae6898cecae4a670b5e72568bce89fea3">Parameters</a>?.Length &gt; 0)</div>
-<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;            {</div>
-<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;                result += <span class="charliteral">&#39;(&#39;</span>;</div>
-<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;</div>
-<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;                <span class="keywordflow">for</span> (var i = 0; i &lt; method.Parameters?.Length; i++)</div>
-<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;                {</div>
-<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;                    result += method.Parameters[i].Name;</div>
-<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;                    <span class="keywordflow">if</span> (!<span class="keywordtype">string</span>.IsNullOrWhiteSpace(method.<a class="code" href="a00017.html#ae6898cecae4a670b5e72568bce89fea3">Parameters</a>[i].<a class="code" href="a00025.html#a773fcfe6f0e77f96ab75279c5f8c2051">Default</a>))</div>
-<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;                    {</div>
-<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;                        result += <span class="charliteral">&#39;=&#39;</span> + method.Parameters[i].Default;</div>
-<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;                    }</div>
-<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;</div>
-<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;                    <span class="keywordflow">if</span> (i + 1 &lt; method.<a class="code" href="a00017.html#ae6898cecae4a670b5e72568bce89fea3">Parameters</a>.Length)</div>
-<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;                    {</div>
-<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;                        result += <span class="stringliteral">&quot;, &quot;</span>;</div>
-<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;                    }</div>
-<div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;                }</div>
-<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;</div>
-<div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;                result += <span class="stringliteral">&quot;)&quot;</span>;</div>
-<div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;            }</div>
-<div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;</div>
-<div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;            <span class="keywordflow">if</span> (!<span class="keywordtype">string</span>.IsNullOrWhiteSpace(body)) </div>
-<div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;                result += <span class="stringliteral">&quot;\n&quot;</span> + GeneratorConf.ShiftCode(body, 1, Indent);</div>
-<div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160;</div>
-<div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160;</div>
-<div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160;            result += <span class="stringliteral">&quot;\nend&quot;</span>;</div>
-<div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160;            <span class="keywordflow">return</span> result;</div>
-<div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160;        }</div>
-<div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160;</div>
-<div class="line"><a name="l00101"></a><span class="lineno">  101</span>&#160;        <span class="keyword">private</span> <span class="keywordtype">string</span> GenerateInit(Class <span class="keyword">@class</span>)</div>
-<div class="line"><a name="l00102"></a><span class="lineno">  102</span>&#160;        {</div>
-<div class="line"><a name="l00103"></a><span class="lineno">  103</span>&#160;            <span class="keywordtype">string</span> result = <span class="stringliteral">&quot;&quot;</span>, body = <span class="stringliteral">&quot;&quot;</span>;</div>
-<div class="line"><a name="l00104"></a><span class="lineno">  104</span>&#160;            var init = <span class="keyword">new</span> Method</div>
-<div class="line"><a name="l00105"></a><span class="lineno">  105</span>&#160;            {</div>
-<div class="line"><a name="l00106"></a><span class="lineno">  106</span>&#160;                Name = <span class="stringliteral">&quot;initialize&quot;</span>,</div>
-<div class="line"><a name="l00107"></a><span class="lineno">  107</span>&#160;            };</div>
-<div class="line"><a name="l00108"></a><span class="lineno">  108</span>&#160;            var previousIsStatic = <span class="keyword">false</span>;</div>
-<div class="line"><a name="l00109"></a><span class="lineno">  109</span>&#160;            var paramList = <span class="keyword">new</span> List&lt;Parameter&gt;();</div>
-<div class="line"><a name="l00110"></a><span class="lineno">  110</span>&#160;</div>
-<div class="line"><a name="l00111"></a><span class="lineno">  111</span>&#160;            <span class="keywordflow">for</span> (var i = 0; i &lt; <span class="keyword">@class</span>.Fields.Length; i++)</div>
-<div class="line"><a name="l00112"></a><span class="lineno">  112</span>&#160;            {</div>
-<div class="line"><a name="l00113"></a><span class="lineno">  113</span>&#160;                var field = <span class="keyword">@class</span>.Fields[i];</div>
-<div class="line"><a name="l00114"></a><span class="lineno">  114</span>&#160;</div>
-<div class="line"><a name="l00115"></a><span class="lineno">  115</span>&#160;                <span class="keywordflow">if</span> (field.Static)</div>
-<div class="line"><a name="l00116"></a><span class="lineno">  116</span>&#160;                {</div>
-<div class="line"><a name="l00117"></a><span class="lineno">  117</span>&#160;                    previousIsStatic = <span class="keyword">true</span>;</div>
-<div class="line"><a name="l00118"></a><span class="lineno">  118</span>&#160;                    <span class="keywordflow">continue</span>;</div>
-<div class="line"><a name="l00119"></a><span class="lineno">  119</span>&#160;                }</div>
-<div class="line"><a name="l00120"></a><span class="lineno">  120</span>&#160;</div>
-<div class="line"><a name="l00121"></a><span class="lineno">  121</span>&#160;                paramList.Add(<span class="keyword">new</span> Parameter</div>
-<div class="line"><a name="l00122"></a><span class="lineno">  122</span>&#160;                {</div>
-<div class="line"><a name="l00123"></a><span class="lineno">  123</span>&#160;                    Name = field.Name,</div>
-<div class="line"><a name="l00124"></a><span class="lineno">  124</span>&#160;                    Default = field.Default</div>
-<div class="line"><a name="l00125"></a><span class="lineno">  125</span>&#160;                });</div>
-<div class="line"><a name="l00126"></a><span class="lineno">  126</span>&#160;</div>
-<div class="line"><a name="l00127"></a><span class="lineno">  127</span>&#160;                body += <span class="stringliteral">&quot;@&quot;</span> + field.Name + <span class="stringliteral">&quot; = &quot;</span> + field.Name;</div>
-<div class="line"><a name="l00128"></a><span class="lineno">  128</span>&#160;</div>
-<div class="line"><a name="l00129"></a><span class="lineno">  129</span>&#160;                <span class="keywordflow">if</span> (i + 1 &lt; <span class="keyword">@class</span>.Fields.Length &amp;&amp; !previousIsStatic)</div>
-<div class="line"><a name="l00130"></a><span class="lineno">  130</span>&#160;                {</div>
-<div class="line"><a name="l00131"></a><span class="lineno">  131</span>&#160;                    body += <span class="stringliteral">&quot;\n&quot;</span>;</div>
-<div class="line"><a name="l00132"></a><span class="lineno">  132</span>&#160;                }</div>
-<div class="line"><a name="l00133"></a><span class="lineno">  133</span>&#160;</div>
-<div class="line"><a name="l00134"></a><span class="lineno">  134</span>&#160;                previousIsStatic = <span class="keyword">false</span>;</div>
-<div class="line"><a name="l00135"></a><span class="lineno">  135</span>&#160;            }</div>
-<div class="line"><a name="l00136"></a><span class="lineno">  136</span>&#160;</div>
-<div class="line"><a name="l00137"></a><span class="lineno">  137</span>&#160;            init.Parameters = paramList.ToArray();</div>
-<div class="line"><a name="l00138"></a><span class="lineno">  138</span>&#160;</div>
-<div class="line"><a name="l00139"></a><span class="lineno">  139</span>&#160;            result += GenerateMethodWithBody(init, body);</div>
-<div class="line"><a name="l00140"></a><span class="lineno">  140</span>&#160;</div>
-<div class="line"><a name="l00141"></a><span class="lineno">  141</span>&#160;            <span class="keywordflow">return</span> result;</div>
-<div class="line"><a name="l00142"></a><span class="lineno">  142</span>&#160;        }</div>
-<div class="line"><a name="l00143"></a><span class="lineno">  143</span>&#160;    }</div>
-<div class="line"><a name="l00144"></a><span class="lineno">  144</span>&#160;}</div>
-<div class="ttc" id="a00024_html"><div class="ttname"><a href="a00024.html">CodeGen.generators.RubyGenerator</a></div><div class="ttdoc">Ruby language generator </div><div class="ttdef"><b>Definition:</b> <a href="a00039_source.html#l00010">Ruby.cs:10</a></div></div>
-<div class="ttc" id="a00017_html_ad713380461315774e85e7316f9a48df9"><div class="ttname"><a href="a00017.html#ad713380461315774e85e7316f9a48df9">CodeGen.generators.Method.Access</a></div><div class="ttdeci">string Access</div><div class="ttdoc">Represents access level of the method. Type: string </div><div class="ttdef"><b>Definition:</b> <a href="a00037_source.html#l00184">Models.cs:184</a></div></div>
-<div class="ttc" id="a00003_html"><div class="ttname"><a href="a00003.html">CodeGen.generators.Class</a></div><div class="ttdoc">The structure that describes class. Contains name, array of fields, methods and subclasses, parent class name, access specifier. Overrides ToString() method. </div><div class="ttdef"><b>Definition:</b> <a href="a00037_source.html#l00048">Models.cs:48</a></div></div>
-<div class="ttc" id="a00017_html_ae6898cecae4a670b5e72568bce89fea3"><div class="ttname"><a href="a00017.html#ae6898cecae4a670b5e72568bce89fea3">CodeGen.generators.Method.Parameters</a></div><div class="ttdeci">Parameter[] Parameters</div><div class="ttdoc">Represents parameters of the method. Type: array of type Parameter </div><div class="ttdef"><b>Definition:</b> <a href="a00037_source.html#l00202">Models.cs:202</a></div></div>
-<div class="ttc" id="a00017_html_a40aa2b9a7000ae6acc851b97410ce2af"><div class="ttname"><a href="a00017.html#a40aa2b9a7000ae6acc851b97410ce2af">CodeGen.generators.Method.Static</a></div><div class="ttdeci">bool Static</div><div class="ttdoc">Denotes if the mathod is static or not. Type: boolean </div><div class="ttdef"><b>Definition:</b> <a href="a00037_source.html#l00196">Models.cs:196</a></div></div>
-<div class="ttc" id="a00024_html_a5d54d68890f2fc6c58e297f79647c033"><div class="ttname"><a href="a00024.html#a5d54d68890f2fc6c58e297f79647c033">CodeGen.generators.RubyGenerator.GenerateClass</a></div><div class="ttdeci">override string GenerateClass(Class @class)</div><div class="ttdoc">Class generator: generates class with fields, methods and subclasses from given class object Class ob...</div><div class="ttdef"><b>Definition:</b> <a href="a00039_source.html#l00016">Ruby.cs:16</a></div></div>
-<div class="ttc" id="a00024_html_a08fbd6d88c129901aa159e3a9a706278"><div class="ttname"><a href="a00024.html#a08fbd6d88c129901aa159e3a9a706278">CodeGen.generators.RubyGenerator.GenerateField</a></div><div class="ttdeci">override string GenerateField(Field field)</div><div class="ttdoc">Field generator: generates field from given field object Field objectString of generated code of fiel...</div><div class="ttdef"><b>Definition:</b> <a href="a00039_source.html#l00042">Ruby.cs:42</a></div></div>
-<div class="ttc" id="a00009_html"><div class="ttname"><a href="a00009.html">CodeGen.generators.GeneratorConf</a></div><div class="ttdoc">Holds the configuration of generator </div><div class="ttdef"><b>Definition:</b> <a href="a00031_source.html#l00192">GeneratorConf.cs:192</a></div></div>
-<div class="ttc" id="a00017_html"><div class="ttname"><a href="a00017.html">CodeGen.generators.Method</a></div><div class="ttdoc">The structure that describes method. Contains name, return type, access level, const and static prope...</div><div class="ttdef"><b>Definition:</b> <a href="a00037_source.html#l00166">Models.cs:166</a></div></div>
-<div class="ttc" id="a00024_html_aa37c187dae8e400b050dcddba10d216b"><div class="ttname"><a href="a00024.html#aa37c187dae8e400b050dcddba10d216b">CodeGen.generators.RubyGenerator.GenerateMethod</a></div><div class="ttdeci">override string GenerateMethod(Method method)</div><div class="ttdoc">Method generator: generates method from given method object Method objectString of generated code of ...</div><div class="ttdef"><b>Definition:</b> <a href="a00039_source.html#l00057">Ruby.cs:57</a></div></div>
-<div class="ttc" id="a00009_html_a71dbec00a6e5d6d390dd8a24b64b6bb2"><div class="ttname"><a href="a00009.html#a71dbec00a6e5d6d390dd8a24b64b6bb2">CodeGen.generators.GeneratorConf.ShiftCode</a></div><div class="ttdeci">static string ShiftCode(string code, int num, string indent)</div><div class="ttdoc">Shifts code using given parameters </div><div class="ttdef"><b>Definition:</b> <a href="a00031_source.html#l00335">GeneratorConf.cs:335</a></div></div>
-<div class="ttc" id="a00008_html"><div class="ttname"><a href="a00008.html">CodeGen.generators.Generator</a></div><div class="ttdoc">Interface of language generator </div><div class="ttdef"><b>Definition:</b> <a href="a00031_source.html#l00010">GeneratorConf.cs:10</a></div></div>
-<div class="ttc" id="a00025_html_a773fcfe6f0e77f96ab75279c5f8c2051"><div class="ttname"><a href="a00025.html#a773fcfe6f0e77f96ab75279c5f8c2051">CodeGen.generators.Variable.Default</a></div><div class="ttdeci">string Default</div><div class="ttdoc">Represents default value of the varibale. Type: string </div><div class="ttdef"><b>Definition:</b> <a href="a00037_source.html#l00114">Models.cs:114</a></div></div>
-<div class="ttc" id="a00007_html"><div class="ttname"><a href="a00007.html">CodeGen.generators.Field</a></div><div class="ttdoc">The structure that describes field. Contains access, const and static properties. Inherits from Varia...</div><div class="ttdef"><b>Definition:</b> <a href="a00037_source.html#l00121">Models.cs:121</a></div></div>
+<a href="a00039.html">Go to the documentation of this file.</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;</div>
+<div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;</div>
+<div class="line"><a name="l00003"></a><span class="lineno"><a class="line" href="a00047.html">    3</a></span>&#160;<span class="keyword">namespace </span>CodeGen.parser</div>
+<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;{</div>
+<div class="line"><a name="l00008"></a><span class="lineno"><a class="line" href="a00020.html">    8</a></span>&#160;    <span class="keyword">public</span> <span class="keyword">class </span><a class="code" href="a00020.html">Parser</a></div>
+<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;    {</div>
+<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;            </div>
+<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;    }</div>
+<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;}</div>
+<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;</div>
+<div class="ttc" id="a00020_html"><div class="ttname"><a href="a00020.html">CodeGen.parser.Parser</a></div><div class="ttdoc">Parser </div><div class="ttdef"><b>Definition:</b> <a href="a00039_source.html#l00008">Parser.cs:8</a></div></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="navelem"><a class="el" href="dir_76ab5dc027795deb5b098ae38ba247cb.html">generators</a></li><li class="navelem"><a class="el" href="a00039.html">Ruby.cs</a></li>
+    <li class="navelem"><a class="el" href="dir_572890c148f68441e050f6560d78312b.html">parser</a></li><li class="navelem"><a class="el" href="a00039.html">Parser.cs</a></li>
     <li class="footer">Generated by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.6 </li>

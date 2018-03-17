@@ -4,7 +4,7 @@
 <meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.8.6"/>
-<title>CodeGen: /home/travis/build/lnupmi11/CodeGen/generators/GeneratorConf.cs Source File</title>
+<title>CodeGen: /home/travis/build/lnupmi11/CodeGen/generators/Go.cs Source File</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -102,291 +102,100 @@ $(document).ready(function(){initNavTree('a00031_source.html','');});
 
 <div class="header">
   <div class="headertitle">
-<div class="title">GeneratorConf.cs</div>  </div>
+<div class="title">Go.cs</div>  </div>
 </div><!--header-->
 <div class="contents">
-<a href="a00031.html">Go to the documentation of this file.</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="keyword">using</span> System;</div>
-<div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;<span class="keyword">using</span> System.Collections.Generic;</div>
-<div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="keyword">using</span> System.Linq;</div>
-<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;</div>
-<div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="keyword">namespace </span>CodeGen.generators</div>
-<div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;{</div>
-<div class="line"><a name="l00010"></a><span class="lineno"><a class="line" href="a00008.html">   10</a></span>&#160;    <span class="keyword">public</span> <span class="keyword">abstract</span> <span class="keyword">class </span><a class="code" href="a00008.html">Generator</a></div>
-<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;    {</div>
-<div class="line"><a name="l00015"></a><span class="lineno"><a class="line" href="a00008.html#a7a3edb5addb8b879b39666718f32514d">   15</a></span>&#160;        <span class="keyword">protected</span> <span class="keyword">static</span> <span class="keywordtype">bool</span> UseTabs = <span class="keyword">true</span>;</div>
-<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;</div>
-<div class="line"><a name="l00022"></a><span class="lineno"><a class="line" href="a00008.html#a5c5f7f56cdb910dc5d71ed407f874d84">   22</a></span>&#160;        <span class="keyword">public</span> Dictionary&lt;string, string&gt; <a class="code" href="a00008.html#a5c5f7f56cdb910dc5d71ed407f874d84">Generate</a>(<a class="code" href="a00019.html">Package</a> pkg)</div>
-<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;        {</div>
-<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;            var data = <span class="keyword">new</span> Dictionary&lt;string, string&gt;();</div>
-<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;            UseTabs = !pkg.UseSpaces;</div>
-<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;            <span class="keywordflow">foreach</span> (var <span class="keyword">@class</span> <span class="keywordflow">in</span> pkg.Classes)</div>
-<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;            {</div>
-<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;                <span class="keywordflow">if</span> (<span class="keyword">@class</span>?.Name != null)</div>
-<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;                    data[<span class="keyword">@class</span>.Name] = GenerateClass(<span class="keyword">@class</span>) + <span class="charliteral">&#39;\n&#39;</span>;</div>
-<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;            }</div>
-<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;</div>
-<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;            <span class="keywordflow">return</span> data;</div>
-<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;        }</div>
+<a href="a00031.html">Go to the documentation of this file.</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="keyword">using</span> System.Linq;</div>
+<div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;</div>
+<div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="keyword">namespace </span>CodeGen.generators</div>
+<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;{</div>
+<div class="line"><a name="l00009"></a><span class="lineno"><a class="line" href="a00011.html">    9</a></span>&#160;    <span class="keyword">public</span> <span class="keyword">class </span><a class="code" href="a00011.html">GoGenerator</a> : <a class="code" href="a00008.html">Generator</a></div>
+<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;    {</div>
+<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;        <span class="keyword">private</span> <span class="keyword">const</span> <span class="keywordtype">string</span> ClassFormat = <span class="stringliteral">&quot;type {0} struct {{{1}}}{2}{3}&quot;</span>;</div>
+<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;        <span class="keyword">private</span> <span class="keywordtype">string</span> Indent { <span class="keyword">get</span>; set; } = GeneratorConf.GetIndent(<span class="keyword">true</span>, 4);</div>
+<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;</div>
+<div class="line"><a name="l00015"></a><span class="lineno"><a class="line" href="a00011.html#aacdb59f4942c999f06400f9f92732858">   15</a></span>&#160;        <span class="keyword">protected</span> <span class="keyword">override</span> <span class="keywordtype">string</span> <a class="code" href="a00011.html#aacdb59f4942c999f06400f9f92732858">GenerateClass</a>(<a class="code" href="a00003.html">Class</a> <span class="keyword">@class</span>)</div>
+<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;        {</div>
+<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;            <span class="keywordtype">string</span> fields = <span class="stringliteral">&quot;&quot;</span>, methods = <span class="stringliteral">&quot;&quot;</span>, classes = <span class="stringliteral">&quot;&quot;</span>;</div>
+<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;            fields = <span class="keyword">@class</span>.Fields?.Aggregate(<span class="charliteral">&#39;\n&#39;</span> + fields, (current, field) =&gt; current + GenerateField(field) + <span class="charliteral">&#39;\n&#39;</span>);</div>
+<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;            methods = <span class="keyword">@class</span>.Methods?.Aggregate(<span class="stringliteral">&quot;\n\n&quot;</span> + methods,</div>
+<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;                (current, method) =&gt; current + <span class="stringliteral">&quot;func (&quot;</span> + <span class="keyword">@class</span>.Name + <span class="stringliteral">&quot;) &quot;</span> + GenerateMethod(method) + <span class="stringliteral">&quot;\n\n&quot;</span>);</div>
+<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;            classes = <span class="keyword">@class</span>.Classes?.Aggregate(classes, (current, cls) =&gt; current + GenerateClass(cls));</div>
+<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;            <span class="keywordflow">return</span> string.Format(ClassFormat, <span class="keyword">@class</span>.Name, fields, methods, classes);</div>
+<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;        }</div>
+<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;</div>
+<div class="line"><a name="l00026"></a><span class="lineno"><a class="line" href="a00011.html#aa7417b36b964e679a37dfee960148768">   26</a></span>&#160;        <span class="keyword">protected</span> <span class="keyword">override</span> <span class="keywordtype">string</span> <a class="code" href="a00011.html#aa7417b36b964e679a37dfee960148768">GenerateField</a>(<a class="code" href="a00007.html">Field</a> field)</div>
+<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;        {</div>
+<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;            var result = Indent;</div>
+<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;</div>
+<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;            <span class="keywordflow">if</span> (field.<a class="code" href="a00007.html#a49f206d40214424a35eefb0704371ad0">Access</a> == <span class="stringliteral">&quot;public&quot;</span>)</div>
+<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;            {</div>
+<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;                field.Name = field.Name?.First().ToString().ToUpper() + field.<a class="code" href="a00024.html#a6b02f8bef23931e0a98adb0ff6399aed">Name</a>?.Substring(1);</div>
+<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;            }</div>
 <div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;</div>
-<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;        <span class="keyword">protected</span> <span class="keyword">abstract</span> <span class="keywordtype">string</span> GenerateClass(<a class="code" href="a00003.html">Class</a> <span class="keyword">@class</span>);</div>
-<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;</div>
-<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;        <span class="keyword">protected</span> <span class="keyword">abstract</span> <span class="keywordtype">string</span> GenerateField(<a class="code" href="a00007.html">Field</a> field);</div>
-<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;</div>
-<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;        <span class="keyword">protected</span> <span class="keyword">abstract</span> <span class="keywordtype">string</span> GenerateMethod(<a class="code" href="a00017.html">Method</a> method);</div>
-<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;    }</div>
-<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;</div>
-<div class="line"><a name="l00060"></a><span class="lineno"><a class="line" href="a00018.html">   60</a></span>&#160;    <span class="keyword">public</span> <span class="keyword">abstract</span> <span class="keyword">class </span><a class="code" href="a00018.html">Normalizer</a></div>
-<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;    {</div>
-<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;        <span class="keyword">public</span> <span class="keyword">abstract</span> <a class="code" href="a00019.html">Package</a> NormalizePackage(<a class="code" href="a00019.html">Package</a> pkg);</div>
-<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;</div>
-<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;        <span class="keyword">protected</span> <span class="keyword">abstract</span> <a class="code" href="a00003.html">Class</a> NormalizeClass(<a class="code" href="a00003.html">Class</a> <span class="keyword">@class</span>);</div>
-<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;</div>
-<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;        <span class="keyword">protected</span> <span class="keyword">abstract</span> <a class="code" href="a00007.html">Field</a> NormalizeField(<a class="code" href="a00007.html">Field</a> field);</div>
-<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;</div>
-<div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;        <span class="keyword">protected</span> <span class="keyword">abstract</span> <a class="code" href="a00017.html">Method</a> NormalizeMethod(<a class="code" href="a00017.html">Method</a> method);</div>
-<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;</div>
-<div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160;        <span class="keyword">protected</span> <span class="keyword">abstract</span> <a class="code" href="a00020.html">Parameter</a> NormalizeParameter(<a class="code" href="a00020.html">Parameter</a> parameter);</div>
-<div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160;    }</div>
-<div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160;</div>
-<div class="line"><a name="l00101"></a><span class="lineno"><a class="line" href="a00021.html">  101</a></span>&#160;    <span class="keyword">public</span> <span class="keyword">abstract</span> <span class="keyword">class </span><a class="code" href="a00021.html">Parser</a></div>
-<div class="line"><a name="l00102"></a><span class="lineno">  102</span>&#160;    {</div>
-<div class="line"><a name="l00108"></a><span class="lineno">  108</span>&#160;        <span class="keyword">public</span> <span class="keyword">abstract</span> <a class="code" href="a00019.html">Package</a> ParsePackage(<span class="keywordtype">string</span> pkg);</div>
-<div class="line"><a name="l00109"></a><span class="lineno">  109</span>&#160;</div>
-<div class="line"><a name="l00115"></a><span class="lineno">  115</span>&#160;        <span class="keyword">protected</span> <span class="keyword">abstract</span> <a class="code" href="a00003.html">Class</a>[] ParseClasses(<span class="keywordtype">string</span> <span class="keyword">@class</span>);</div>
-<div class="line"><a name="l00116"></a><span class="lineno">  116</span>&#160;</div>
-<div class="line"><a name="l00122"></a><span class="lineno">  122</span>&#160;        <span class="keyword">protected</span> <span class="keyword">abstract</span> <a class="code" href="a00007.html">Field</a>[] ParseFields(<span class="keywordtype">string</span> field);</div>
-<div class="line"><a name="l00123"></a><span class="lineno">  123</span>&#160;</div>
-<div class="line"><a name="l00129"></a><span class="lineno">  129</span>&#160;        <span class="keyword">protected</span> <span class="keyword">abstract</span> <a class="code" href="a00017.html">Method</a>[] ParseMethods(<span class="keywordtype">string</span> method);</div>
-<div class="line"><a name="l00130"></a><span class="lineno">  130</span>&#160;</div>
-<div class="line"><a name="l00136"></a><span class="lineno">  136</span>&#160;        <span class="keyword">protected</span> <span class="keyword">abstract</span> <a class="code" href="a00020.html">Parameter</a>[] ParseParameters(<span class="keywordtype">string</span> parameter);</div>
-<div class="line"><a name="l00137"></a><span class="lineno">  137</span>&#160;    }</div>
-<div class="line"><a name="l00138"></a><span class="lineno">  138</span>&#160;</div>
-<div class="line"><a name="l00142"></a><span class="lineno"><a class="line" href="a00016.html">  142</a></span>&#160;    <span class="keyword">public</span> <span class="keyword">struct </span><a class="code" href="a00016.html">Languange</a></div>
-<div class="line"><a name="l00143"></a><span class="lineno">  143</span>&#160;    {</div>
-<div class="line"><a name="l00147"></a><span class="lineno"><a class="line" href="a00016.html#a25fb0a47247497581d2d0560d0db66d8">  147</a></span>&#160;        <span class="keyword">public</span> readonly <a class="code" href="a00008.html">Generator</a> <a class="code" href="a00016.html#a25fb0a47247497581d2d0560d0db66d8">Generator</a>;</div>
-<div class="line"><a name="l00148"></a><span class="lineno">  148</span>&#160;</div>
-<div class="line"><a name="l00152"></a><span class="lineno"><a class="line" href="a00016.html#af00eae192536b05d637d0b81954202c7">  152</a></span>&#160;        <span class="keyword">public</span> readonly <span class="keywordtype">string</span> <a class="code" href="a00016.html#af00eae192536b05d637d0b81954202c7">Extension</a>;</div>
-<div class="line"><a name="l00153"></a><span class="lineno">  153</span>&#160;</div>
-<div class="line"><a name="l00157"></a><span class="lineno"><a class="line" href="a00016.html#aa63aaf377bcac5ca06c14304701c3493">  157</a></span>&#160;        <span class="keyword">public</span> readonly <span class="keywordtype">string</span> <a class="code" href="a00016.html#aa63aaf377bcac5ca06c14304701c3493">Comment</a>;</div>
-<div class="line"><a name="l00158"></a><span class="lineno">  158</span>&#160;</div>
-<div class="line"><a name="l00162"></a><span class="lineno">  162</span>&#160;        <span class="keyword">private</span> readonly <a class="code" href="a00018.html">Normalizer</a> _normalizer;</div>
-<div class="line"><a name="l00163"></a><span class="lineno">  163</span>&#160;</div>
-<div class="line"><a name="l00167"></a><span class="lineno"><a class="line" href="a00016.html#a3337b97358faf06c1e633e80f71cf2b4">  167</a></span>&#160;        <span class="keyword">public</span> readonly <span class="keywordtype">int</span> <a class="code" href="a00016.html#a3337b97358faf06c1e633e80f71cf2b4">IndentSize</a>;</div>
-<div class="line"><a name="l00168"></a><span class="lineno">  168</span>&#160;</div>
-<div class="line"><a name="l00177"></a><span class="lineno"><a class="line" href="a00016.html#a89fa98041473b18a7df845e14edcba07">  177</a></span>&#160;        <span class="keyword">public</span> <a class="code" href="a00016.html#a89fa98041473b18a7df845e14edcba07">Languange</a>(<a class="code" href="a00008.html">Generator</a> generator, <span class="keywordtype">string</span> extension = <span class="stringliteral">&quot;&quot;</span>, <span class="keywordtype">string</span> comment = <span class="stringliteral">&quot;&quot;</span>, <a class="code" href="a00018.html">Normalizer</a> normalizer = null,</div>
-<div class="line"><a name="l00178"></a><span class="lineno">  178</span>&#160;            <span class="keywordtype">int</span> indentSize = 4)</div>
-<div class="line"><a name="l00179"></a><span class="lineno">  179</span>&#160;        {</div>
-<div class="line"><a name="l00180"></a><span class="lineno">  180</span>&#160;            <a class="code" href="a00008.html">Generator</a> = generator;</div>
-<div class="line"><a name="l00181"></a><span class="lineno">  181</span>&#160;            Extension = extension;</div>
-<div class="line"><a name="l00182"></a><span class="lineno">  182</span>&#160;            Comment = comment;</div>
-<div class="line"><a name="l00183"></a><span class="lineno">  183</span>&#160;            _normalizer = normalizer;</div>
-<div class="line"><a name="l00184"></a><span class="lineno">  184</span>&#160;            IndentSize = indentSize;</div>
-<div class="line"><a name="l00185"></a><span class="lineno">  185</span>&#160;        }</div>
-<div class="line"><a name="l00186"></a><span class="lineno">  186</span>&#160;    }</div>
-<div class="line"><a name="l00187"></a><span class="lineno">  187</span>&#160;</div>
-<div class="line"><a name="l00191"></a><span class="lineno">  191</span>&#160;    <span class="comment">// ReSharper disable once ClassNeverInstantiated.Global</span></div>
-<div class="line"><a name="l00192"></a><span class="lineno"><a class="line" href="a00009.html">  192</a></span>&#160;    <span class="keyword">public</span> <span class="keyword">class </span><a class="code" href="a00009.html">GeneratorConf</a></div>
-<div class="line"><a name="l00193"></a><span class="lineno">  193</span>&#160;    {</div>
-<div class="line"><a name="l00197"></a><span class="lineno"><a class="line" href="a00009.html#a9680e7722e2eb32214fa8ac1476f7903">  197</a></span>&#160;        <span class="keyword">public</span> <span class="keyword">static</span> readonly <a class="code" href="a00019.html">Package</a> ExamplePkg = <span class="keyword">new</span> <a class="code" href="a00019.html">Package</a></div>
-<div class="line"><a name="l00198"></a><span class="lineno">  198</span>&#160;        {</div>
-<div class="line"><a name="l00199"></a><span class="lineno">  199</span>&#160;            Name = <span class="stringliteral">&quot;main&quot;</span>,</div>
-<div class="line"><a name="l00200"></a><span class="lineno">  200</span>&#160;            UseSpaces = <span class="keyword">true</span>,</div>
-<div class="line"><a name="l00201"></a><span class="lineno">  201</span>&#160;            Classes = <span class="keyword">new</span>[]</div>
-<div class="line"><a name="l00202"></a><span class="lineno">  202</span>&#160;            {</div>
-<div class="line"><a name="l00203"></a><span class="lineno">  203</span>&#160;                <span class="keyword">new</span> <a class="code" href="a00003.html">Class</a> {Name = <span class="stringliteral">&quot;Fruit&quot;</span>},</div>
-<div class="line"><a name="l00204"></a><span class="lineno">  204</span>&#160;                <span class="keyword">new</span> <a class="code" href="a00003.html">Class</a></div>
-<div class="line"><a name="l00205"></a><span class="lineno">  205</span>&#160;                {</div>
-<div class="line"><a name="l00206"></a><span class="lineno">  206</span>&#160;                    Name = <span class="stringliteral">&quot;Apple&quot;</span>,</div>
-<div class="line"><a name="l00207"></a><span class="lineno">  207</span>&#160;                    Parent = <span class="stringliteral">&quot;Fruit&quot;</span>,</div>
-<div class="line"><a name="l00208"></a><span class="lineno">  208</span>&#160;                    Fields = <span class="keyword">new</span>[]</div>
-<div class="line"><a name="l00209"></a><span class="lineno">  209</span>&#160;                    {</div>
-<div class="line"><a name="l00210"></a><span class="lineno">  210</span>&#160;                        <span class="keyword">new</span> <a class="code" href="a00007.html">Field</a></div>
-<div class="line"><a name="l00211"></a><span class="lineno">  211</span>&#160;                        {</div>
-<div class="line"><a name="l00212"></a><span class="lineno">  212</span>&#160;                            Access = <span class="stringliteral">&quot;public&quot;</span>,</div>
-<div class="line"><a name="l00213"></a><span class="lineno">  213</span>&#160;                            Type = <span class="stringliteral">&quot;string&quot;</span>,</div>
-<div class="line"><a name="l00214"></a><span class="lineno">  214</span>&#160;                            Name = <span class="stringliteral">&quot;colour&quot;</span>,</div>
-<div class="line"><a name="l00215"></a><span class="lineno">  215</span>&#160;                            Default = <span class="stringliteral">&quot;\&quot;red\&quot;&quot;</span></div>
-<div class="line"><a name="l00216"></a><span class="lineno">  216</span>&#160;                        },</div>
-<div class="line"><a name="l00217"></a><span class="lineno">  217</span>&#160;                        <span class="keyword">new</span> <a class="code" href="a00007.html">Field</a></div>
-<div class="line"><a name="l00218"></a><span class="lineno">  218</span>&#160;                        {</div>
-<div class="line"><a name="l00219"></a><span class="lineno">  219</span>&#160;                            Access = <span class="stringliteral">&quot;public&quot;</span>,</div>
-<div class="line"><a name="l00220"></a><span class="lineno">  220</span>&#160;                            Type = <span class="stringliteral">&quot;string&quot;</span>,</div>
-<div class="line"><a name="l00221"></a><span class="lineno">  221</span>&#160;                            Static = <span class="keyword">true</span>,</div>
-<div class="line"><a name="l00222"></a><span class="lineno">  222</span>&#160;                            Name = <span class="stringliteral">&quot;sort&quot;</span>,</div>
-<div class="line"><a name="l00223"></a><span class="lineno">  223</span>&#160;                            Default = <span class="stringliteral">&quot;\&quot;Golden\&quot;&quot;</span>,</div>
-<div class="line"><a name="l00224"></a><span class="lineno">  224</span>&#160;                            Getter = <span class="keyword">true</span>,</div>
-<div class="line"><a name="l00225"></a><span class="lineno">  225</span>&#160;                            Setter = <span class="keyword">true</span></div>
-<div class="line"><a name="l00226"></a><span class="lineno">  226</span>&#160;                        },</div>
-<div class="line"><a name="l00227"></a><span class="lineno">  227</span>&#160;                        <span class="keyword">new</span> <a class="code" href="a00007.html">Field</a></div>
-<div class="line"><a name="l00228"></a><span class="lineno">  228</span>&#160;                        {</div>
-<div class="line"><a name="l00229"></a><span class="lineno">  229</span>&#160;                            Access = <span class="stringliteral">&quot;private&quot;</span>,</div>
-<div class="line"><a name="l00230"></a><span class="lineno">  230</span>&#160;                            Type = <span class="stringliteral">&quot;int&quot;</span>,</div>
-<div class="line"><a name="l00231"></a><span class="lineno">  231</span>&#160;                            Name = <span class="stringliteral">&quot;size&quot;</span>,</div>
-<div class="line"><a name="l00232"></a><span class="lineno">  232</span>&#160;                            Default = <span class="stringliteral">&quot;1&quot;</span>,</div>
-<div class="line"><a name="l00233"></a><span class="lineno">  233</span>&#160;                            Getter = <span class="keyword">true</span></div>
-<div class="line"><a name="l00234"></a><span class="lineno">  234</span>&#160;                        }</div>
-<div class="line"><a name="l00235"></a><span class="lineno">  235</span>&#160;                    },</div>
-<div class="line"><a name="l00236"></a><span class="lineno">  236</span>&#160;                    Methods = <span class="keyword">new</span>[]</div>
-<div class="line"><a name="l00237"></a><span class="lineno">  237</span>&#160;                    {</div>
-<div class="line"><a name="l00238"></a><span class="lineno">  238</span>&#160;                        <span class="keyword">new</span> <a class="code" href="a00017.html">Method</a></div>
-<div class="line"><a name="l00239"></a><span class="lineno">  239</span>&#160;                        {</div>
-<div class="line"><a name="l00240"></a><span class="lineno">  240</span>&#160;                            Access = <span class="stringliteral">&quot;private&quot;</span>,</div>
-<div class="line"><a name="l00241"></a><span class="lineno">  241</span>&#160;                            Return = <span class="stringliteral">&quot;&quot;</span>,</div>
-<div class="line"><a name="l00242"></a><span class="lineno">  242</span>&#160;                            Name = <span class="stringliteral">&quot;print&quot;</span>,</div>
-<div class="line"><a name="l00243"></a><span class="lineno">  243</span>&#160;                            Parameters = <span class="keyword">new</span>[]</div>
-<div class="line"><a name="l00244"></a><span class="lineno">  244</span>&#160;                            {</div>
-<div class="line"><a name="l00245"></a><span class="lineno">  245</span>&#160;                                <span class="keyword">new</span> <a class="code" href="a00020.html">Parameter</a></div>
-<div class="line"><a name="l00246"></a><span class="lineno">  246</span>&#160;                                {</div>
-<div class="line"><a name="l00247"></a><span class="lineno">  247</span>&#160;                                    Name = <span class="stringliteral">&quot;colour&quot;</span>,</div>
-<div class="line"><a name="l00248"></a><span class="lineno">  248</span>&#160;                                    Type = <span class="stringliteral">&quot;string&quot;</span></div>
-<div class="line"><a name="l00249"></a><span class="lineno">  249</span>&#160;                                }</div>
-<div class="line"><a name="l00250"></a><span class="lineno">  250</span>&#160;                            }</div>
-<div class="line"><a name="l00251"></a><span class="lineno">  251</span>&#160;                        },</div>
-<div class="line"><a name="l00252"></a><span class="lineno">  252</span>&#160;                        <span class="keyword">new</span> <a class="code" href="a00017.html">Method</a></div>
-<div class="line"><a name="l00253"></a><span class="lineno">  253</span>&#160;                        {</div>
-<div class="line"><a name="l00254"></a><span class="lineno">  254</span>&#160;                            Access = <span class="stringliteral">&quot;protected&quot;</span>,</div>
-<div class="line"><a name="l00255"></a><span class="lineno">  255</span>&#160;                            Return = <span class="stringliteral">&quot;int&quot;</span>,</div>
-<div class="line"><a name="l00256"></a><span class="lineno">  256</span>&#160;                            Static = <span class="keyword">true</span>,</div>
-<div class="line"><a name="l00257"></a><span class="lineno">  257</span>&#160;                            Name = <span class="stringliteral">&quot;getSizeValue&quot;</span></div>
-<div class="line"><a name="l00258"></a><span class="lineno">  258</span>&#160;                        },</div>
-<div class="line"><a name="l00259"></a><span class="lineno">  259</span>&#160;                        <span class="keyword">new</span> <a class="code" href="a00017.html">Method</a></div>
-<div class="line"><a name="l00260"></a><span class="lineno">  260</span>&#160;                        {</div>
-<div class="line"><a name="l00261"></a><span class="lineno">  261</span>&#160;                            Access = <span class="stringliteral">&quot;public&quot;</span>,</div>
-<div class="line"><a name="l00262"></a><span class="lineno">  262</span>&#160;                            Return = <span class="stringliteral">&quot;string&quot;</span>,</div>
-<div class="line"><a name="l00263"></a><span class="lineno">  263</span>&#160;                            Name = <span class="stringliteral">&quot;getColorName&quot;</span>,</div>
-<div class="line"><a name="l00264"></a><span class="lineno">  264</span>&#160;                            Const = <span class="keyword">true</span></div>
-<div class="line"><a name="l00265"></a><span class="lineno">  265</span>&#160;                        }</div>
-<div class="line"><a name="l00266"></a><span class="lineno">  266</span>&#160;                    },</div>
-<div class="line"><a name="l00267"></a><span class="lineno">  267</span>&#160;                    Classes = <span class="keyword">new</span>[]</div>
-<div class="line"><a name="l00268"></a><span class="lineno">  268</span>&#160;                    {</div>
-<div class="line"><a name="l00269"></a><span class="lineno">  269</span>&#160;                        <span class="keyword">new</span> <a class="code" href="a00003.html">Class</a></div>
-<div class="line"><a name="l00270"></a><span class="lineno">  270</span>&#160;                        {</div>
-<div class="line"><a name="l00271"></a><span class="lineno">  271</span>&#160;                            Access = <span class="stringliteral">&quot;private&quot;</span>,</div>
-<div class="line"><a name="l00272"></a><span class="lineno">  272</span>&#160;                            Name = <span class="stringliteral">&quot;Seed&quot;</span>,</div>
-<div class="line"><a name="l00273"></a><span class="lineno">  273</span>&#160;                            Fields = <span class="keyword">new</span>[]</div>
-<div class="line"><a name="l00274"></a><span class="lineno">  274</span>&#160;                            {</div>
-<div class="line"><a name="l00275"></a><span class="lineno">  275</span>&#160;                                <span class="keyword">new</span> <a class="code" href="a00007.html">Field</a></div>
-<div class="line"><a name="l00276"></a><span class="lineno">  276</span>&#160;                                {</div>
-<div class="line"><a name="l00277"></a><span class="lineno">  277</span>&#160;                                    Access = <span class="stringliteral">&quot;public&quot;</span>,</div>
-<div class="line"><a name="l00278"></a><span class="lineno">  278</span>&#160;                                    Type = <span class="stringliteral">&quot;int&quot;</span>,</div>
-<div class="line"><a name="l00279"></a><span class="lineno">  279</span>&#160;                                    Name = <span class="stringliteral">&quot;size&quot;</span></div>
-<div class="line"><a name="l00280"></a><span class="lineno">  280</span>&#160;                                }</div>
-<div class="line"><a name="l00281"></a><span class="lineno">  281</span>&#160;                            },</div>
-<div class="line"><a name="l00282"></a><span class="lineno">  282</span>&#160;                            Methods = <span class="keyword">new</span>[]</div>
-<div class="line"><a name="l00283"></a><span class="lineno">  283</span>&#160;                            {</div>
-<div class="line"><a name="l00284"></a><span class="lineno">  284</span>&#160;                                <span class="keyword">new</span> <a class="code" href="a00017.html">Method</a></div>
-<div class="line"><a name="l00285"></a><span class="lineno">  285</span>&#160;                                {</div>
-<div class="line"><a name="l00286"></a><span class="lineno">  286</span>&#160;                                    Static = <span class="keyword">true</span>,</div>
-<div class="line"><a name="l00287"></a><span class="lineno">  287</span>&#160;                                    Access = <span class="stringliteral">&quot;public&quot;</span>,</div>
-<div class="line"><a name="l00288"></a><span class="lineno">  288</span>&#160;                                    Return = <span class="stringliteral">&quot;int&quot;</span>,</div>
-<div class="line"><a name="l00289"></a><span class="lineno">  289</span>&#160;                                    Name = <span class="stringliteral">&quot;transform&quot;</span>,</div>
-<div class="line"><a name="l00290"></a><span class="lineno">  290</span>&#160;                                    Const = <span class="keyword">true</span></div>
-<div class="line"><a name="l00291"></a><span class="lineno">  291</span>&#160;                                }</div>
-<div class="line"><a name="l00292"></a><span class="lineno">  292</span>&#160;                            }</div>
-<div class="line"><a name="l00293"></a><span class="lineno">  293</span>&#160;                        }</div>
-<div class="line"><a name="l00294"></a><span class="lineno">  294</span>&#160;                    }</div>
-<div class="line"><a name="l00295"></a><span class="lineno">  295</span>&#160;                },</div>
-<div class="line"><a name="l00296"></a><span class="lineno">  296</span>&#160;            }</div>
-<div class="line"><a name="l00297"></a><span class="lineno">  297</span>&#160;        };</div>
-<div class="line"><a name="l00298"></a><span class="lineno">  298</span>&#160;</div>
-<div class="line"><a name="l00304"></a><span class="lineno"><a class="line" href="a00009.html#a830f7e81defcc68af267575792253b35">  304</a></span>&#160;        <span class="keyword">public</span> <span class="keyword">static</span> readonly Dictionary&lt;string, Languange&gt; Languanges = <span class="keyword">new</span> Dictionary&lt;string, Languange&gt;</div>
-<div class="line"><a name="l00305"></a><span class="lineno">  305</span>&#160;        {</div>
-<div class="line"><a name="l00306"></a><span class="lineno">  306</span>&#160;            {<span class="stringliteral">&quot;java&quot;</span>, <span class="keyword">new</span> <a class="code" href="a00016.html">Languange</a>(<span class="keyword">new</span> <a class="code" href="a00014.html">JavaGenerator</a>(), <span class="stringliteral">&quot;java&quot;</span>, <span class="stringliteral">&quot;/* {0} */&quot;</span>)},</div>
-<div class="line"><a name="l00307"></a><span class="lineno">  307</span>&#160;            {<span class="stringliteral">&quot;go&quot;</span>, <span class="keyword">new</span> <a class="code" href="a00016.html">Languange</a>(<span class="keyword">new</span> <a class="code" href="a00011.html">GoGenerator</a>(), <span class="stringliteral">&quot;go&quot;</span>, <span class="stringliteral">&quot;/* {0} */&quot;</span>)},</div>
-<div class="line"><a name="l00308"></a><span class="lineno">  308</span>&#160;            {<span class="stringliteral">&quot;ruby&quot;</span>, <span class="keyword">new</span> <a class="code" href="a00016.html">Languange</a>(<span class="keyword">new</span> <a class="code" href="a00024.html">RubyGenerator</a>(), <span class="stringliteral">&quot;rb&quot;</span>, <span class="stringliteral">&quot;# {0}&quot;</span>)},</div>
-<div class="line"><a name="l00309"></a><span class="lineno">  309</span>&#160;            {<span class="stringliteral">&quot;python&quot;</span>, <span class="keyword">new</span> <a class="code" href="a00016.html">Languange</a>(<span class="keyword">new</span> <a class="code" href="a00023.html">PythonGenerator</a>(), <span class="stringliteral">&quot;py&quot;</span>, <span class="stringliteral">&quot;# {0}\n&quot;</span>)},</div>
-<div class="line"><a name="l00310"></a><span class="lineno">  310</span>&#160;            {<span class="stringliteral">&quot;vb&quot;</span>, <span class="keyword">new</span> <a class="code" href="a00016.html">Languange</a>(<span class="keyword">new</span> <a class="code" href="a00026.html">VbGenerator</a>(), <span class="stringliteral">&quot;vb&quot;</span>, <span class="stringliteral">&quot;&#39; {0}\n&quot;</span>)},</div>
-<div class="line"><a name="l00311"></a><span class="lineno">  311</span>&#160;            {<span class="stringliteral">&quot;csharp&quot;</span>, <span class="keyword">new</span> <a class="code" href="a00016.html">Languange</a>(<span class="keyword">new</span> <a class="code" href="a00005.html">CSharpGenerator</a>(), <span class="stringliteral">&quot;cs&quot;</span>, <span class="stringliteral">&quot;/* {0} */&quot;</span>)},</div>
-<div class="line"><a name="l00312"></a><span class="lineno">  312</span>&#160;            {<span class="stringliteral">&quot;js_es6&quot;</span>, <span class="keyword">new</span> <a class="code" href="a00016.html">Languange</a>(<span class="keyword">new</span> <a class="code" href="a00006.html">ES6Generator</a>(), <span class="stringliteral">&quot;js&quot;</span>, <span class="stringliteral">&quot;/* {0} */&quot;</span>)},</div>
-<div class="line"><a name="l00313"></a><span class="lineno">  313</span>&#160;            {<span class="stringliteral">&quot;groovy&quot;</span>, <span class="keyword">new</span> <a class="code" href="a00016.html">Languange</a>(<span class="keyword">new</span> <a class="code" href="a00013.html">GroovyGenerator</a>(), <span class="stringliteral">&quot;groovy&quot;</span>, <span class="stringliteral">&quot;/* {0} */&quot;</span>)},</div>
-<div class="line"><a name="l00314"></a><span class="lineno">  314</span>&#160;            {<span class="stringliteral">&quot;cpp&quot;</span>, <span class="keyword">new</span> <a class="code" href="a00016.html">Languange</a>(<span class="keyword">new</span> <a class="code" href="a00004.html">CppGenerator</a>(), <span class="stringliteral">&quot;cpp&quot;</span>, <span class="stringliteral">&quot;/* {0} */&quot;</span>)},</div>
-<div class="line"><a name="l00315"></a><span class="lineno">  315</span>&#160;        };</div>
-<div class="line"><a name="l00316"></a><span class="lineno">  316</span>&#160;</div>
-<div class="line"><a name="l00323"></a><span class="lineno"><a class="line" href="a00009.html#a00082fad632c4dda77b1b025d1b2b280">  323</a></span>&#160;        <span class="keyword">public</span> <span class="keyword">static</span> <span class="keywordtype">string</span> <a class="code" href="a00009.html#a00082fad632c4dda77b1b025d1b2b280">GetIndent</a>(<span class="keywordtype">bool</span> tabs, <span class="keywordtype">int</span> tabStop)</div>
-<div class="line"><a name="l00324"></a><span class="lineno">  324</span>&#160;        {</div>
-<div class="line"><a name="l00325"></a><span class="lineno">  325</span>&#160;            <span class="keywordflow">return</span> tabs ? <span class="stringliteral">&quot;\t&quot;</span> : <span class="keyword">new</span> string(<span class="charliteral">&#39; &#39;</span>, tabStop);</div>
-<div class="line"><a name="l00326"></a><span class="lineno">  326</span>&#160;        }</div>
-<div class="line"><a name="l00327"></a><span class="lineno">  327</span>&#160;</div>
-<div class="line"><a name="l00335"></a><span class="lineno"><a class="line" href="a00009.html#a71dbec00a6e5d6d390dd8a24b64b6bb2">  335</a></span>&#160;        <span class="keyword">public</span> <span class="keyword">static</span> <span class="keywordtype">string</span> <a class="code" href="a00009.html#a71dbec00a6e5d6d390dd8a24b64b6bb2">ShiftCode</a>(<span class="keywordtype">string</span> code, <span class="keywordtype">int</span> num, <span class="keywordtype">string</span> indent)</div>
-<div class="line"><a name="l00336"></a><span class="lineno">  336</span>&#160;        {</div>
-<div class="line"><a name="l00337"></a><span class="lineno">  337</span>&#160;            indent = string.Concat(Enumerable.Repeat(indent, num));</div>
-<div class="line"><a name="l00338"></a><span class="lineno">  338</span>&#160;            <span class="keywordflow">return</span> indent + code.Replace(<span class="stringliteral">&quot;\n&quot;</span>, <span class="stringliteral">&quot;\n&quot;</span> + indent);</div>
-<div class="line"><a name="l00339"></a><span class="lineno">  339</span>&#160;        }</div>
-<div class="line"><a name="l00340"></a><span class="lineno">  340</span>&#160;</div>
-<div class="line"><a name="l00346"></a><span class="lineno"><a class="line" href="a00009.html#a7b70aa3e67ba52dfbd1a271da20fc74e">  346</a></span>&#160;        <span class="keyword">public</span> <span class="keyword">static</span> <span class="keywordtype">string</span> <a class="code" href="a00009.html#a7b70aa3e67ba52dfbd1a271da20fc74e">NormalizeLang</a>(<span class="keywordtype">string</span> lang)</div>
-<div class="line"><a name="l00347"></a><span class="lineno">  347</span>&#160;        {</div>
-<div class="line"><a name="l00348"></a><span class="lineno">  348</span>&#160;            <span class="keywordflow">if</span> (lang == <span class="stringliteral">&quot;js&quot;</span>)</div>
-<div class="line"><a name="l00349"></a><span class="lineno">  349</span>&#160;            {</div>
-<div class="line"><a name="l00350"></a><span class="lineno">  350</span>&#160;                lang = <span class="stringliteral">&quot;js_es6&quot;</span>;</div>
-<div class="line"><a name="l00351"></a><span class="lineno">  351</span>&#160;            }</div>
-<div class="line"><a name="l00352"></a><span class="lineno">  352</span>&#160;            <span class="keywordflow">else</span> <span class="keywordflow">if</span> (lang == <span class="stringliteral">&quot;c#&quot;</span> || lang == <span class="stringliteral">&quot;cs&quot;</span>)</div>
-<div class="line"><a name="l00353"></a><span class="lineno">  353</span>&#160;            {</div>
-<div class="line"><a name="l00354"></a><span class="lineno">  354</span>&#160;                lang = <span class="stringliteral">&quot;csharp&quot;</span>;</div>
-<div class="line"><a name="l00355"></a><span class="lineno">  355</span>&#160;            }</div>
-<div class="line"><a name="l00356"></a><span class="lineno">  356</span>&#160;            <span class="keywordflow">else</span> <span class="keywordflow">if</span> (lang == <span class="stringliteral">&quot;yml&quot;</span>)</div>
-<div class="line"><a name="l00357"></a><span class="lineno">  357</span>&#160;            {</div>
-<div class="line"><a name="l00358"></a><span class="lineno">  358</span>&#160;                lang = <span class="stringliteral">&quot;yaml&quot;</span>;</div>
-<div class="line"><a name="l00359"></a><span class="lineno">  359</span>&#160;            }</div>
-<div class="line"><a name="l00360"></a><span class="lineno">  360</span>&#160;            <span class="keywordflow">else</span> <span class="keywordflow">if</span> (lang == <span class="stringliteral">&quot;c++&quot;</span>)</div>
-<div class="line"><a name="l00361"></a><span class="lineno">  361</span>&#160;            {</div>
-<div class="line"><a name="l00362"></a><span class="lineno">  362</span>&#160;                lang = <span class="stringliteral">&quot;cpp&quot;</span>;</div>
-<div class="line"><a name="l00363"></a><span class="lineno">  363</span>&#160;            }</div>
-<div class="line"><a name="l00364"></a><span class="lineno">  364</span>&#160;</div>
-<div class="line"><a name="l00365"></a><span class="lineno">  365</span>&#160;            <span class="keywordflow">return</span> lang;</div>
-<div class="line"><a name="l00366"></a><span class="lineno">  366</span>&#160;        }</div>
-<div class="line"><a name="l00367"></a><span class="lineno">  367</span>&#160;</div>
-<div class="line"><a name="l00374"></a><span class="lineno"><a class="line" href="a00009.html#a358bcc4be771d981ac1aa4c451b48383">  374</a></span>&#160;        <span class="keyword">public</span> <span class="keyword">static</span> <a class="code" href="a00016.html">Languange</a> <a class="code" href="a00009.html#a358bcc4be771d981ac1aa4c451b48383">GetLanguage</a>(<span class="keywordtype">string</span> name)</div>
-<div class="line"><a name="l00375"></a><span class="lineno">  375</span>&#160;        {</div>
-<div class="line"><a name="l00376"></a><span class="lineno">  376</span>&#160;            name = NormalizeLang(name);</div>
-<div class="line"><a name="l00377"></a><span class="lineno">  377</span>&#160;            <a class="code" href="a00016.html">Languange</a> lang;</div>
-<div class="line"><a name="l00378"></a><span class="lineno">  378</span>&#160;            <span class="keywordflow">try</span></div>
-<div class="line"><a name="l00379"></a><span class="lineno">  379</span>&#160;            {</div>
-<div class="line"><a name="l00380"></a><span class="lineno">  380</span>&#160;                lang = Languanges[name];</div>
-<div class="line"><a name="l00381"></a><span class="lineno">  381</span>&#160;            }</div>
-<div class="line"><a name="l00382"></a><span class="lineno">  382</span>&#160;            <span class="keywordflow">catch</span> (Exception)</div>
-<div class="line"><a name="l00383"></a><span class="lineno">  383</span>&#160;            {</div>
-<div class="line"><a name="l00384"></a><span class="lineno">  384</span>&#160;                <span class="keywordflow">throw</span> <span class="keyword">new</span> IndexOutOfRangeException(<span class="stringliteral">&quot;this language doesn&#39;t exist&quot;</span>);</div>
-<div class="line"><a name="l00385"></a><span class="lineno">  385</span>&#160;            }</div>
-<div class="line"><a name="l00386"></a><span class="lineno">  386</span>&#160;</div>
-<div class="line"><a name="l00387"></a><span class="lineno">  387</span>&#160;            <span class="keywordflow">return</span> lang;</div>
-<div class="line"><a name="l00388"></a><span class="lineno">  388</span>&#160;        }</div>
-<div class="line"><a name="l00389"></a><span class="lineno">  389</span>&#160;    }</div>
-<div class="line"><a name="l00390"></a><span class="lineno">  390</span>&#160;}</div>
-<div class="ttc" id="a00024_html"><div class="ttname"><a href="a00024.html">CodeGen.generators.RubyGenerator</a></div><div class="ttdoc">Ruby language generator </div><div class="ttdef"><b>Definition:</b> <a href="a00039_source.html#l00010">Ruby.cs:10</a></div></div>
-<div class="ttc" id="a00016_html_af00eae192536b05d637d0b81954202c7"><div class="ttname"><a href="a00016.html#af00eae192536b05d637d0b81954202c7">CodeGen.generators.Languange.Extension</a></div><div class="ttdeci">readonly string Extension</div><div class="ttdoc">Holds the extension of the file. Field is read only </div><div class="ttdef"><b>Definition:</b> <a href="a00031_source.html#l00152">GeneratorConf.cs:152</a></div></div>
-<div class="ttc" id="a00016_html_a89fa98041473b18a7df845e14edcba07"><div class="ttname"><a href="a00016.html#a89fa98041473b18a7df845e14edcba07">CodeGen.generators.Languange.Languange</a></div><div class="ttdeci">Languange(Generator generator, string extension=&quot;&quot;, string comment=&quot;&quot;, Normalizer normalizer=null, int indentSize=4)</div><div class="ttdoc">Constructor for language, used to avoid struct initializers </div><div class="ttdef"><b>Definition:</b> <a href="a00031_source.html#l00177">GeneratorConf.cs:177</a></div></div>
-<div class="ttc" id="a00016_html_a3337b97358faf06c1e633e80f71cf2b4"><div class="ttname"><a href="a00016.html#a3337b97358faf06c1e633e80f71cf2b4">CodeGen.generators.Languange.IndentSize</a></div><div class="ttdeci">readonly int IndentSize</div><div class="ttdoc">The size of identation (works if using spaces, else 1 tab) </div><div class="ttdef"><b>Definition:</b> <a href="a00031_source.html#l00167">GeneratorConf.cs:167</a></div></div>
-<div class="ttc" id="a00003_html"><div class="ttname"><a href="a00003.html">CodeGen.generators.Class</a></div><div class="ttdoc">The structure that describes class. Contains name, array of fields, methods and subclasses, parent class name, access specifier. Overrides ToString() method. </div><div class="ttdef"><b>Definition:</b> <a href="a00037_source.html#l00048">Models.cs:48</a></div></div>
-<div class="ttc" id="a00023_html"><div class="ttname"><a href="a00023.html">CodeGen.generators.PythonGenerator</a></div><div class="ttdoc">Python language generator </div><div class="ttdef"><b>Definition:</b> <a href="a00038_source.html#l00010">Python.cs:10</a></div></div>
-<div class="ttc" id="a00021_html"><div class="ttname"><a href="a00021.html">CodeGen.generators.Parser</a></div><div class="ttdoc">Language parser </div><div class="ttdef"><b>Definition:</b> <a href="a00031_source.html#l00101">GeneratorConf.cs:101</a></div></div>
-<div class="ttc" id="a00009_html_a00082fad632c4dda77b1b025d1b2b280"><div class="ttname"><a href="a00009.html#a00082fad632c4dda77b1b025d1b2b280">CodeGen.generators.GeneratorConf.GetIndent</a></div><div class="ttdeci">static string GetIndent(bool tabs, int tabStop)</div><div class="ttdoc">Creates indent using given parameters </div><div class="ttdef"><b>Definition:</b> <a href="a00031_source.html#l00323">GeneratorConf.cs:323</a></div></div>
-<div class="ttc" id="a00018_html"><div class="ttname"><a href="a00018.html">CodeGen.generators.Normalizer</a></div><div class="ttdoc">Interface of language normalizer: normalizes package data according to specified language ...</div><div class="ttdef"><b>Definition:</b> <a href="a00031_source.html#l00060">GeneratorConf.cs:60</a></div></div>
-<div class="ttc" id="a00006_html"><div class="ttname"><a href="a00006.html">CodeGen.generators.ES6Generator</a></div><div class="ttdoc">Generator for JavaScript ES6 </div><div class="ttdef"><b>Definition:</b> <a href="a00030_source.html#l00010">ES6.cs:10</a></div></div>
-<div class="ttc" id="a00009_html"><div class="ttname"><a href="a00009.html">CodeGen.generators.GeneratorConf</a></div><div class="ttdoc">Holds the configuration of generator </div><div class="ttdef"><b>Definition:</b> <a href="a00031_source.html#l00192">GeneratorConf.cs:192</a></div></div>
-<div class="ttc" id="a00008_html_a5c5f7f56cdb910dc5d71ed407f874d84"><div class="ttname"><a href="a00008.html#a5c5f7f56cdb910dc5d71ed407f874d84">CodeGen.generators.Generator.Generate</a></div><div class="ttdeci">Dictionary&lt; string, string &gt; Generate(Package pkg)</div><div class="ttdoc">Package generator: generates package with classes and subpackages from given package object ...</div><div class="ttdef"><b>Definition:</b> <a href="a00031_source.html#l00022">GeneratorConf.cs:22</a></div></div>
-<div class="ttc" id="a00026_html"><div class="ttname"><a href="a00026.html">CodeGen.generators.VbGenerator</a></div><div class="ttdoc">Visual Basic language generator </div><div class="ttdef"><b>Definition:</b> <a href="a00040_source.html#l00010">VB.cs:10</a></div></div>
-<div class="ttc" id="a00016_html_a25fb0a47247497581d2d0560d0db66d8"><div class="ttname"><a href="a00016.html#a25fb0a47247497581d2d0560d0db66d8">CodeGen.generators.Languange.Generator</a></div><div class="ttdeci">readonly Generator Generator</div><div class="ttdoc">Holds the generator of the language. Field is read only </div><div class="ttdef"><b>Definition:</b> <a href="a00031_source.html#l00147">GeneratorConf.cs:147</a></div></div>
-<div class="ttc" id="a00014_html"><div class="ttname"><a href="a00014.html">CodeGen.generators.JavaGenerator</a></div><div class="ttdoc">Java language generator </div><div class="ttdef"><b>Definition:</b> <a href="a00035_source.html#l00009">Java.cs:9</a></div></div>
-<div class="ttc" id="a00017_html"><div class="ttname"><a href="a00017.html">CodeGen.generators.Method</a></div><div class="ttdoc">The structure that describes method. Contains name, return type, access level, const and static prope...</div><div class="ttdef"><b>Definition:</b> <a href="a00037_source.html#l00166">Models.cs:166</a></div></div>
-<div class="ttc" id="a00009_html_a7b70aa3e67ba52dfbd1a271da20fc74e"><div class="ttname"><a href="a00009.html#a7b70aa3e67ba52dfbd1a271da20fc74e">CodeGen.generators.GeneratorConf.NormalizeLang</a></div><div class="ttdeci">static string NormalizeLang(string lang)</div><div class="ttdoc">Converts given language into language which is used for identification of generator ...</div><div class="ttdef"><b>Definition:</b> <a href="a00031_source.html#l00346">GeneratorConf.cs:346</a></div></div>
-<div class="ttc" id="a00005_html"><div class="ttname"><a href="a00005.html">CodeGen.generators.CSharpGenerator</a></div><div class="ttdoc">C# language generator </div><div class="ttdef"><b>Definition:</b> <a href="a00029_source.html#l00011">CSharp.cs:11</a></div></div>
-<div class="ttc" id="a00020_html"><div class="ttname"><a href="a00020.html">CodeGen.generators.Parameter</a></div><div class="ttdoc">The structure that describes parameter. Inherits from Variable </div><div class="ttdef"><b>Definition:</b> <a href="a00037_source.html#l00158">Models.cs:158</a></div></div>
-<div class="ttc" id="a00016_html_aa63aaf377bcac5ca06c14304701c3493"><div class="ttname"><a href="a00016.html#aa63aaf377bcac5ca06c14304701c3493">CodeGen.generators.Languange.Comment</a></div><div class="ttdeci">readonly string Comment</div><div class="ttdoc">Holds comment format. Field is read only </div><div class="ttdef"><b>Definition:</b> <a href="a00031_source.html#l00157">GeneratorConf.cs:157</a></div></div>
-<div class="ttc" id="a00009_html_a358bcc4be771d981ac1aa4c451b48383"><div class="ttname"><a href="a00009.html#a358bcc4be771d981ac1aa4c451b48383">CodeGen.generators.GeneratorConf.GetLanguage</a></div><div class="ttdeci">static Languange GetLanguage(string name)</div><div class="ttdoc">Creates generator if it exists, else throws an error </div><div class="ttdef"><b>Definition:</b> <a href="a00031_source.html#l00374">GeneratorConf.cs:374</a></div></div>
-<div class="ttc" id="a00013_html"><div class="ttname"><a href="a00013.html">CodeGen.generators.GroovyGenerator</a></div><div class="ttdoc">Groovy language generator </div><div class="ttdef"><b>Definition:</b> <a href="a00034_source.html#l00009">Groovy.cs:9</a></div></div>
-<div class="ttc" id="a00011_html"><div class="ttname"><a href="a00011.html">CodeGen.generators.GoGenerator</a></div><div class="ttdoc">Go language generator </div><div class="ttdef"><b>Definition:</b> <a href="a00032_source.html#l00009">Go.cs:9</a></div></div>
-<div class="ttc" id="a00009_html_a71dbec00a6e5d6d390dd8a24b64b6bb2"><div class="ttname"><a href="a00009.html#a71dbec00a6e5d6d390dd8a24b64b6bb2">CodeGen.generators.GeneratorConf.ShiftCode</a></div><div class="ttdeci">static string ShiftCode(string code, int num, string indent)</div><div class="ttdoc">Shifts code using given parameters </div><div class="ttdef"><b>Definition:</b> <a href="a00031_source.html#l00335">GeneratorConf.cs:335</a></div></div>
-<div class="ttc" id="a00008_html"><div class="ttname"><a href="a00008.html">CodeGen.generators.Generator</a></div><div class="ttdoc">Interface of language generator </div><div class="ttdef"><b>Definition:</b> <a href="a00031_source.html#l00010">GeneratorConf.cs:10</a></div></div>
-<div class="ttc" id="a00016_html"><div class="ttname"><a href="a00016.html">CodeGen.generators.Languange</a></div><div class="ttdoc">The class that describes programming language and has a generator for it </div><div class="ttdef"><b>Definition:</b> <a href="a00031_source.html#l00142">GeneratorConf.cs:142</a></div></div>
-<div class="ttc" id="a00004_html"><div class="ttname"><a href="a00004.html">CodeGen.generators.CppGenerator</a></div><div class="ttdoc">C++ language generator </div><div class="ttdef"><b>Definition:</b> <a href="a00028_source.html#l00010">CppGenerator.cs:10</a></div></div>
-<div class="ttc" id="a00019_html"><div class="ttname"><a href="a00019.html">CodeGen.generators.Package</a></div><div class="ttdoc">The structure that describes package. Contains classes and subpackages </div><div class="ttdef"><b>Definition:</b> <a href="a00037_source.html#l00009">Models.cs:9</a></div></div>
-<div class="ttc" id="a00007_html"><div class="ttname"><a href="a00007.html">CodeGen.generators.Field</a></div><div class="ttdoc">The structure that describes field. Contains access, const and static properties. Inherits from Varia...</div><div class="ttdef"><b>Definition:</b> <a href="a00037_source.html#l00121">Models.cs:121</a></div></div>
+<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;            result += field.Name + <span class="charliteral">&#39; &#39;</span> + field.Type;</div>
+<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;</div>
+<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;            <span class="keywordflow">return</span> result;</div>
+<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;        }</div>
+<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;</div>
+<div class="line"><a name="l00041"></a><span class="lineno"><a class="line" href="a00011.html#ac732350d06454ed93f2053c0971c8fd9">   41</a></span>&#160;        <span class="keyword">protected</span> <span class="keyword">override</span> <span class="keywordtype">string</span> <a class="code" href="a00011.html#ac732350d06454ed93f2053c0971c8fd9">GenerateMethod</a>(<a class="code" href="a00016.html">Method</a> method)</div>
+<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;        {</div>
+<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;            var result = <span class="stringliteral">&quot;&quot;</span>;</div>
+<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;            <span class="keywordflow">if</span> (method.<a class="code" href="a00016.html#ad713380461315774e85e7316f9a48df9">Access</a> == <span class="stringliteral">&quot;public&quot;</span>)</div>
+<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;            {</div>
+<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;                method.Name = method.Name?.First().ToString().ToUpper() + method.<a class="code" href="a00016.html#a102f86b59635b173d66ed34541cf3e4c">Name</a>?.Substring(1);</div>
+<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;            }</div>
+<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;            result += method.Name + <span class="charliteral">&#39;(&#39;</span>;</div>
+<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;</div>
+<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;            <span class="keywordflow">for</span> (var i = 0; i &lt; method.Parameters?.Length; i++)</div>
+<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;            {</div>
+<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;                result += method.Parameters[i].Name + <span class="charliteral">&#39; &#39;</span> + method.Parameters[i].Type;</div>
+<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;                <span class="keywordflow">if</span> (i + 1 &lt; method.<a class="code" href="a00016.html#ae6898cecae4a670b5e72568bce89fea3">Parameters</a>.Length)</div>
+<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;                {</div>
+<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;                    result += <span class="stringliteral">&quot;, &quot;</span>;</div>
+<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;                }</div>
+<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;            }</div>
+<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;</div>
+<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;            result += <span class="charliteral">&#39;)&#39;</span>;</div>
+<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;</div>
+<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;            <span class="keywordflow">if</span> (method.<a class="code" href="a00016.html#a1f14ec7aef5e61d595870f2fee56a885">Return</a> != <span class="stringliteral">&quot;&quot;</span>)</div>
+<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;            {</div>
+<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;                result += <span class="stringliteral">&quot; &quot;</span> + method.Return;</div>
+<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;            }</div>
+<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;</div>
+<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;            result += <span class="stringliteral">&quot; {&quot;</span>;</div>
+<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;</div>
+<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;            <span class="keywordflow">if</span> (method.<a class="code" href="a00016.html#a1f14ec7aef5e61d595870f2fee56a885">Return</a> != <span class="stringliteral">&quot;&quot;</span>)</div>
+<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;            {</div>
+<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;                result += <span class="stringliteral">&quot;\n&quot;</span> + Indent + <span class="stringliteral">&quot;return nil\n&quot;</span>;</div>
+<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;            }</div>
+<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;</div>
+<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;            result += <span class="charliteral">&#39;}&#39;</span>;</div>
+<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;</div>
+<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;            <span class="keywordflow">return</span> result;</div>
+<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;        }</div>
+<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;    }</div>
+<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;}</div>
+<div class="ttc" id="a00016_html_a1f14ec7aef5e61d595870f2fee56a885"><div class="ttname"><a href="a00016.html#a1f14ec7aef5e61d595870f2fee56a885">CodeGen.generators.Method.Return</a></div><div class="ttdeci">string Return</div><div class="ttdoc">Represents return type of the method. Type: string </div><div class="ttdef"><b>Definition:</b> <a href="a00034_source.html#l00178">Models.cs:178</a></div></div>
+<div class="ttc" id="a00003_html"><div class="ttname"><a href="a00003.html">CodeGen.generators.Class</a></div><div class="ttdoc">The structure that describes class. Contains name, array of fields, methods and subclasses, parent class name, access specifier. Overrides ToString() method. </div><div class="ttdef"><b>Definition:</b> <a href="a00034_source.html#l00048">Models.cs:48</a></div></div>
+<div class="ttc" id="a00016_html_a102f86b59635b173d66ed34541cf3e4c"><div class="ttname"><a href="a00016.html#a102f86b59635b173d66ed34541cf3e4c">CodeGen.generators.Method.Name</a></div><div class="ttdeci">string Name</div><div class="ttdoc">Represents the name of the method. Type: string </div><div class="ttdef"><b>Definition:</b> <a href="a00034_source.html#l00172">Models.cs:172</a></div></div>
+<div class="ttc" id="a00024_html_a6b02f8bef23931e0a98adb0ff6399aed"><div class="ttname"><a href="a00024.html#a6b02f8bef23931e0a98adb0ff6399aed">CodeGen.generators.Variable.Name</a></div><div class="ttdeci">string Name</div><div class="ttdoc">Represents the name of the variable. Type: string </div><div class="ttdef"><b>Definition:</b> <a href="a00034_source.html#l00102">Models.cs:102</a></div></div>
+<div class="ttc" id="a00011_html_aacdb59f4942c999f06400f9f92732858"><div class="ttname"><a href="a00011.html#aacdb59f4942c999f06400f9f92732858">CodeGen.generators.GoGenerator.GenerateClass</a></div><div class="ttdeci">override string GenerateClass(Class @class)</div><div class="ttdoc">Class generator: generates class with fields, methods and subclasses from given class object Class ob...</div><div class="ttdef"><b>Definition:</b> <a href="a00031_source.html#l00015">Go.cs:15</a></div></div>
+<div class="ttc" id="a00016_html_ae6898cecae4a670b5e72568bce89fea3"><div class="ttname"><a href="a00016.html#ae6898cecae4a670b5e72568bce89fea3">CodeGen.generators.Method.Parameters</a></div><div class="ttdeci">Parameter[] Parameters</div><div class="ttdoc">Represents parameters of the method. Type: array of type Parameter </div><div class="ttdef"><b>Definition:</b> <a href="a00034_source.html#l00202">Models.cs:202</a></div></div>
+<div class="ttc" id="a00011_html_aa7417b36b964e679a37dfee960148768"><div class="ttname"><a href="a00011.html#aa7417b36b964e679a37dfee960148768">CodeGen.generators.GoGenerator.GenerateField</a></div><div class="ttdeci">override string GenerateField(Field field)</div><div class="ttdoc">Field generator: generates field from given field object Field objectString of generated code of fiel...</div><div class="ttdef"><b>Definition:</b> <a href="a00031_source.html#l00026">Go.cs:26</a></div></div>
+<div class="ttc" id="a00011_html"><div class="ttname"><a href="a00011.html">CodeGen.generators.GoGenerator</a></div><div class="ttdoc">Go language generator </div><div class="ttdef"><b>Definition:</b> <a href="a00031_source.html#l00009">Go.cs:9</a></div></div>
+<div class="ttc" id="a00011_html_ac732350d06454ed93f2053c0971c8fd9"><div class="ttname"><a href="a00011.html#ac732350d06454ed93f2053c0971c8fd9">CodeGen.generators.GoGenerator.GenerateMethod</a></div><div class="ttdeci">override string GenerateMethod(Method method)</div><div class="ttdoc">Method generator: generates method from given method object Method objectString of generated code of ...</div><div class="ttdef"><b>Definition:</b> <a href="a00031_source.html#l00041">Go.cs:41</a></div></div>
+<div class="ttc" id="a00007_html_a49f206d40214424a35eefb0704371ad0"><div class="ttname"><a href="a00007.html#a49f206d40214424a35eefb0704371ad0">CodeGen.generators.Field.Access</a></div><div class="ttdeci">string Access</div><div class="ttdoc">Represents access level of the field. Type: string </div><div class="ttdef"><b>Definition:</b> <a href="a00034_source.html#l00127">Models.cs:127</a></div></div>
+<div class="ttc" id="a00008_html"><div class="ttname"><a href="a00008.html">CodeGen.generators.Generator</a></div><div class="ttdoc">Interface of language generator </div><div class="ttdef"><b>Definition:</b> <a href="a00030_source.html#l00011">GeneratorConf.cs:11</a></div></div>
+<div class="ttc" id="a00016_html_ad713380461315774e85e7316f9a48df9"><div class="ttname"><a href="a00016.html#ad713380461315774e85e7316f9a48df9">CodeGen.generators.Method.Access</a></div><div class="ttdeci">string Access</div><div class="ttdoc">Represents access level of the method. Type: string </div><div class="ttdef"><b>Definition:</b> <a href="a00034_source.html#l00184">Models.cs:184</a></div></div>
+<div class="ttc" id="a00016_html"><div class="ttname"><a href="a00016.html">CodeGen.generators.Method</a></div><div class="ttdoc">The structure that describes method. Contains name, return type, access level, const and static prope...</div><div class="ttdef"><b>Definition:</b> <a href="a00034_source.html#l00166">Models.cs:166</a></div></div>
+<div class="ttc" id="a00007_html"><div class="ttname"><a href="a00007.html">CodeGen.generators.Field</a></div><div class="ttdoc">The structure that describes field. Contains access, const and static properties. Inherits from Varia...</div><div class="ttdef"><b>Definition:</b> <a href="a00034_source.html#l00121">Models.cs:121</a></div></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="navelem"><a class="el" href="dir_76ab5dc027795deb5b098ae38ba247cb.html">generators</a></li><li class="navelem"><a class="el" href="a00031.html">GeneratorConf.cs</a></li>
+    <li class="navelem"><a class="el" href="dir_76ab5dc027795deb5b098ae38ba247cb.html">generators</a></li><li class="navelem"><a class="el" href="a00031.html">Go.cs</a></li>
     <li class="footer">Generated by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.6 </li>

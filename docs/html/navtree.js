@@ -2,8 +2,7 @@ var NAVTREE =
 [
   [ "CodeGen", "index.html", [
     [ "CodeGen", "a00002.html", null ],
-    [ "Todo List", "a00069.html", null ],
-    [ "Bug List", "a00071.html", null ],
+    [ "Todo List", "a00065.html", null ],
     [ "Packages", null, [
       [ "Packages", "namespaces.html", "namespaces" ]
     ] ],
