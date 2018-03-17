@@ -63,6 +63,7 @@ namespace CodeGen.generators
 	/// \todo Make a singleton
 	public abstract class Normalizer
 	{
+		
 		/// <summary>
 		/// Package normalizer: normalizes package with classes and subpackages
 		/// </summary>
@@ -85,7 +86,7 @@ namespace CodeGen.generators
 		/// </summary>
 		/// <param name="class">Class object</param>
 		/// <returns>Normalized class object</returns>
-		public virtual Class NormalizeClass(ref Class @class)
+		protected virtual Class NormalizeClass(ref Class @class)
 		{
 			if (@class == null)
 				return null;
@@ -116,7 +117,7 @@ namespace CodeGen.generators
 		/// <returns>Normalized method object</returns>
 		protected virtual Method NormalizeMethod(ref Method method)
 		{
-			method.Return = new JavaNormalizer().NormalizeType(method.Return);
+			method.Return = NormalizeType(method.Return);
 			for (var i = 0; i < method.Parameters?.Length; i++)
 				NormalizeParameter(method.Parameters[i]);
 			return method;
@@ -169,7 +170,7 @@ namespace CodeGen.generators
 		/// <summary>
 		/// The size of identation (works if using spaces, else 1 tab)
 		/// </summary>
-		private readonly int IndentSize;
+		private readonly int _indentSize;
 
 		/// <summary>
 		/// Constructor for language, used to avoid struct initializers
@@ -186,7 +187,7 @@ namespace CodeGen.generators
 			Extension = extension;
 			Comment = comment;
 			Normalizer = normalizer;
-			IndentSize = indentSize;
+			_indentSize = indentSize;
 		}
 	}
 
@@ -309,11 +310,11 @@ namespace CodeGen.generators
 		/// \todo Add frameworks: Pyhton/Django, Ruby/Rails
 		public static readonly Dictionary<string, Languange> Languanges = new Dictionary<string, Languange>
 		{
-			{"java", new Languange(new JavaGenerator(), "java", "/* {0} */", new JavaNormalizer())},
+			{"java", new Languange(new JavaGenerator(), "java", "/* {0} */", JavaNormalizer.GetNormalizer())},
 			{"go", new Languange(new GoGenerator(), "go", "/* {0} */")},
 			{"ruby", new Languange(new RubyGenerator(), "rb", "# {0}")},
 			{"python", new Languange(new PythonGenerator(), "py", "# {0}\n")},
-			{"vb", new Languange(new VbGenerator(), "vb", "' {0}\n", new VbNormalizer())},
+			{"vb", new Languange(new VbGenerator(), "vb", "' {0}\n", VbNormalizer.GetNormalizer())},
 			{"csharp", new Languange(new CSharpGenerator(), "cs", "/* {0} */")},
 			{"js_es6", new Languange(new ES6Generator(), "js", "/* {0} */")},
 			{"groovy", new Languange(new GroovyGenerator(), "groovy", "/* {0} */")},

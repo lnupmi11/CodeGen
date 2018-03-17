@@ -133,6 +133,13 @@ namespace CodeGen.generators
 	/// <summary>Normalizer for Java</summary>
 	public class JavaNormalizer : Normalizer
 	{
+		private static Normalizer _singletonInstance = null;
+
+		private JavaNormalizer()
+		{
+			
+		}
+
 		/// <summary>
 		/// The dictionary of built in values
 		/// </summary>
@@ -144,6 +151,15 @@ namespace CodeGen.generators
 			{"boolean", "false"},
 			{"String", "\"\""},
 		};
+
+		/// <summary>
+		/// 
+		/// </summary>
+		/// <returns></returns>
+		public static Normalizer GetNormalizer()
+		{
+			return _singletonInstance ?? (_singletonInstance = new JavaNormalizer());
+		}
 
 		/// <inheritdoc />
 		protected override string NormalizeType(string type)

@@ -94,8 +94,20 @@ namespace CodeGen.generators
 	/// <inheritdoc />
 	internal class VbNormalizer : Normalizer
 	{
+		private static Normalizer _singletonInstance = null;
+		
+		private VbNormalizer()
+		{
+			
+		}
+		
+		public static Normalizer GetNormalizer()
+		{
+			return _singletonInstance ?? (_singletonInstance = new VbNormalizer());
+		}
+
 		/// <inheritdoc />
-		public override Class NormalizeClass(ref Class @class)
+		protected override Class NormalizeClass(ref Class @class)
 		{
 			base.NormalizeClass(ref @class);
 			@class.Access = Utils.Title(@class.Access);
