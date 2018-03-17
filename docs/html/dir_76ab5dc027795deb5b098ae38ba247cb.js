@@ -7,7 +7,7 @@ var dir_76ab5dc027795deb5b098ae38ba247cb =
       [ "CSharpGenerator", "a00005.html", "a00005" ]
     ] ],
     [ "ES6.cs", "a00030.html", [
-      [ "ES6Generator", "a00006.html", "a00006" ]
+      [ "Es6Generator", "a00006.html", "a00006" ]
     ] ],
     [ "GeneratorConf.cs", "a00031.html", [
       [ "Generator", "a00008.html", "a00008" ],

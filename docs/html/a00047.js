@@ -2,7 +2,7 @@ var a00047 =
 [
     [ "CppGenerator", "a00004.html", "a00004" ],
     [ "CSharpGenerator", "a00005.html", "a00005" ],
-    [ "ES6Generator", "a00006.html", "a00006" ],
+    [ "Es6Generator", "a00006.html", "a00006" ],
     [ "Generator", "a00008.html", "a00008" ],
     [ "Normalizer", "a00017.html", "a00017" ],
     [ "Languange", "a00015.html", "a00015" ],

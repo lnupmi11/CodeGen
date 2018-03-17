@@ -4,7 +4,7 @@ var hierarchy =
     [ "CodeGen.generators.Generator", "a00008.html", [
       [ "CodeGen.generators.CppGenerator", "a00004.html", null ],
       [ "CodeGen.generators.CSharpGenerator", "a00005.html", null ],
-      [ "CodeGen.generators.ES6Generator", "a00006.html", null ],
+      [ "CodeGen.generators.Es6Generator", "a00006.html", null ],
       [ "CodeGen.generators.GoGenerator", "a00011.html", null ],
       [ "CodeGen.generators.GroovyGenerator", "a00012.html", null ],
       [ "CodeGen.generators.JavaGenerator", "a00013.html", null ],
