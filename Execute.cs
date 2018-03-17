@@ -32,6 +32,8 @@ namespace CodeGen
 				? Program.DefaultPkg
 				: ParseFile(Program.Opts.File);
 
+			lang.Normalizer?.NormalizePackage(ref pkg);
+			
 			var data = gen.Generate(pkg);
 
 			if (Program.Opts != null && Program.Opts.Stdout)

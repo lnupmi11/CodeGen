@@ -7,6 +7,7 @@ namespace CodeGen.generators
 	/// <summary>
 	/// Interface of language generator
 	/// </summary>
+	/// \todo Make a singleton
 	public abstract class Generator
 	{
 		/// <summary>
@@ -31,6 +32,8 @@ namespace CodeGen.generators
 
 			return data;
 		}
+
+//		public abstract Generator getInstance();
 
 		/// <summary>
 		///	Class generator: generates class with fields, methods and subclasses from given class object
@@ -57,6 +60,7 @@ namespace CodeGen.generators
 	/// <summary>
 	/// Interface of language normalizer: normalizes package data according to specified language
 	/// </summary>
+	/// \todo Make a singleton
 	public abstract class Normalizer
 	{
 		/// <summary>
@@ -64,35 +68,77 @@ namespace CodeGen.generators
 		/// </summary>
 		/// <param name="pkg">Package object</param>
 		/// <returns>Normalized package object</returns>
-		public abstract Package NormalizePackage(Package pkg);
+		public virtual Package NormalizePackage(ref Package pkg)
+		{
+			if (pkg == null)
+				return null;
+			for (var i = 0; i < pkg.Classes?.Length; i++)
+				NormalizeClass(ref pkg.Classes[i]);
+			for (var i = 0; i < pkg.Packages?.Length; i++)
+				if (pkg.Packages[i] != pkg)
+					NormalizePackage(ref pkg.Packages[i]);
+			return pkg;
+		}
 
 		/// <summary>
 		/// Class normalizer: normalizes class with fields, methods and subclasses
 		/// </summary>
 		/// <param name="class">Class object</param>
 		/// <returns>Normalized class object</returns>
-		protected abstract Class NormalizeClass(Class @class);
+		public virtual Class NormalizeClass(ref Class @class)
+		{
+			if (@class == null)
+				return null;
+			for (var i = 0; i < @class.Fields?.Length; i++)
+				NormalizeField(ref @class.Fields[i]);
+			for (var i = 0; i < @class.Methods?.Length; i++)
+				NormalizeMethod(ref @class.Methods[i]);
+			for (var i = 0; i < @class.Classes?.Length; i++)
+				NormalizeClass(ref @class.Classes[i]);
+			return @class;
+		}
 
 		/// <summary>
 		/// Field normalizer: normalizes field
 		/// </summary>
 		/// <param name="field">Field object</param>
 		/// <returns>Normalized field object</returns>
-		protected abstract Field NormalizeField(Field field);
+		protected virtual Field NormalizeField(ref Field field)
+		{
+			field.Type = NormalizeType(field.Type);
+			return field;
+		}
 
 		/// <summary>
 		/// Method normalizer: normalizes method
 		/// </summary>
 		/// <param name="method">Method object</param>
 		/// <returns>Normalized method object</returns>
-		protected abstract Method NormalizeMethod(Method method);
+		protected virtual Method NormalizeMethod(ref Method method)
+		{
+			method.Return = new JavaNormalizer().NormalizeType(method.Return);
+			for (var i = 0; i < method.Parameters?.Length; i++)
+				NormalizeParameter(method.Parameters[i]);
+			return method;
+		}
 
 		/// <summary>
 		/// Parameter normalizer: normalizes parameter
 		/// </summary>
 		/// <param name="parameter">Parameter object</param>
 		/// <returns>Normalized parameter object</returns>
-		protected abstract Parameter NormalizeParameter(Parameter parameter);
+		protected virtual Parameter NormalizeParameter(Parameter parameter)
+		{
+			parameter.Type = NormalizeType(parameter.Type);
+			return parameter;
+		}
+
+		/// <summary>
+		/// Type normalizer: fixes the type to language's built in
+		/// </summary>
+		/// <param name="type"></param>
+		/// <returns></returns>
+		protected abstract string NormalizeType(string type);
 	}
 
 	/// <summary>
@@ -118,12 +164,12 @@ namespace CodeGen.generators
 		/// <summary>
 		/// Holds language normalizer. Field is read only
 		/// </summary>
-		private readonly Normalizer _normalizer;
+		public readonly Normalizer Normalizer;
 
 		/// <summary>
 		/// The size of identation (works if using spaces, else 1 tab)
 		/// </summary>
-		public readonly int IndentSize;
+		private readonly int IndentSize;
 
 		/// <summary>
 		/// Constructor for language, used to avoid struct initializers
@@ -139,7 +185,7 @@ namespace CodeGen.generators
 			Generator = generator;
 			Extension = extension;
 			Comment = comment;
-			_normalizer = normalizer;
+			Normalizer = normalizer;
 			IndentSize = indentSize;
 		}
 	}
@@ -263,15 +309,15 @@ namespace CodeGen.generators
 		/// \todo Add frameworks: Pyhton/Django, Ruby/Rails
 		public static readonly Dictionary<string, Languange> Languanges = new Dictionary<string, Languange>
 		{
-			{"java", new Languange(new JavaGenerator(), "java", "/* {0} */")},
+			{"java", new Languange(new JavaGenerator(), "java", "/* {0} */", new JavaNormalizer())},
 			{"go", new Languange(new GoGenerator(), "go", "/* {0} */")},
 			{"ruby", new Languange(new RubyGenerator(), "rb", "# {0}")},
 			{"python", new Languange(new PythonGenerator(), "py", "# {0}\n")},
-			{"vb", new Languange(new VbGenerator(), "vb", "' {0}\n")},
+			{"vb", new Languange(new VbGenerator(), "vb", "' {0}\n", new VbNormalizer())},
 			{"csharp", new Languange(new CSharpGenerator(), "cs", "/* {0} */")},
 			{"js_es6", new Languange(new ES6Generator(), "js", "/* {0} */")},
 			{"groovy", new Languange(new GroovyGenerator(), "groovy", "/* {0} */")},
-            {"cpp", new Languange(new CppGenerator(), "cpp", "/* {0} */")},
+			{"cpp", new Languange(new CppGenerator(), "cpp", "/* {0} */")},
 		};
 
 		/// <summary>
