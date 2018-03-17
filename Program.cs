@@ -40,14 +40,69 @@ namespace CodeGen
 
 	internal static class Program
 	{
-		public const string DefaultLang = "go";
+		public const string DefaultLang = "java";
 
 		public static readonly Package DefaultPkg = GeneratorConf.ExamplePkg;
 
 		public static Options Opts;
 
+		private const string FileContent = JavaContent;
+		
+		private static void Main(string[] args)
+		{
+			CommandLine.Parser.Default.ParseArguments<Options>(args)
+				.WithParsed(opts => Opts = opts)
+				.WithNotParsed(Console.WriteLine);
+			try
+			{
+			#if DEBUG
+//				Console.Out.WriteLine("Opts = {0}", Opts);				
+			#endif
+				
+			//	ExecuteConf.Execute();
+				var pkg = new JavaParser().ParsePackage(FileContent);
+				var m = GeneratorConf.GetLanguage(Opts.Lang).Generator.Generate(pkg);
+				foreach (var file in m)
+				{
+					Console.WriteLine(file.Value);
+				}
 
-		private const string fileContent = @"
+			}
+			catch (Exception e)
+			{
+				Console.WriteLine(e);
+			}
+		}
+		
+		private const string JavaContent = @"
+public class Fruit{}
+
+class Apple extends Fruit {
+        public String colour = ""red"";
+		public static String sort = ""Golden"";
+		private int size = 1;
+
+		private void print(String colour) {}
+
+		protected static int getSizeValue() {
+			return new 0;
+		}
+
+		public String getColorName() {
+			return new String();
+		}
+
+		private class Seed{
+			public int size;
+        
+			public static int transform() {
+				return 0;
+			}
+		}
+	}
+";
+		
+		private const string GoContent = @"
 type Apple struct {
         Colour string
         Sort string
@@ -72,31 +127,5 @@ func (Seed) Transform() int {
         return nil
 }
 ";
-		
-		private static void Main(string[] args)
-		{
-			CommandLine.Parser.Default.ParseArguments<Options>(args)
-				.WithParsed(opts => Opts = opts)
-				.WithNotParsed(Console.WriteLine);
-			try
-			{
-			#if DEBUG
-//				Console.Out.WriteLine("Opts = {0}", Opts);				
-			#endif
-				
-			//	ExecuteConf.Execute();
-				var pkg = new GoParser().ParsePackage(fileContent);
-				var m = new GoGenerator().Generate(pkg);
-				foreach (var file in m)
-				{
-					Console.WriteLine(file.Value);
-				}
-
-			}
-			catch (Exception e)
-			{
-				Console.WriteLine(e);
-			}
-		}
 	}
 }

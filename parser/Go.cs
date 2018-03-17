@@ -1,6 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
+﻿using System.Collections.Generic;
 using System.Text.RegularExpressions;
 using CodeGen.generators;
 
@@ -8,20 +6,26 @@ namespace CodeGen.parser
 {
 	/// <inheritdoc />
 	/// <summary>
-	/// Go language parser
+	/// Go language Parser
 	/// </summary>
 	public class GoParser : Parser
 	{
 		private static string _classMethod = "";
+
+		///\bug: only names with letters will be parsed, when digits and underscores are allowed for names 
 		private const string ClassRegex = @"type\s+(\w+)\s+struct\s*\{\s*((" + FieldRegex + @"\s*)*)\}";
+
 		private const string FieldRegex = @"(\w+)\s+(\w+)\s*(=\s*(\S+))?";
-		private static readonly string MethodRegex = @"(func\s*\(\s*(" + _classMethod + @")\s*\)\s*(\w+)\s*\(\s*(" + ParameterRegex + @")*\s*\)\s*(\w*)\s*{\s*return\s\w+\s*})";
+
+		private static readonly string MethodRegex = @"(func\s*\(\s*(" + _classMethod + @")\s*\)\s*(\w+)\s*\(\s*(" +
+		                                             ParameterRegex + @")*\s*\)\s*(\w*)\s*{\s*return\s\w+\s*})";
+
 		private const string ParameterRegex = @"(\w+)\s+(\w+)\s*,?\s*";
 
 		/// <inheritdoc />
 		public override Package ParsePackage(string pkg)
 		{
-			var package = new Package { Classes = ParseClasses(pkg) };
+			var package = new Package {Classes = ParseClasses(pkg)};
 			return package;
 		}
 
@@ -35,7 +39,7 @@ namespace CodeGen.parser
 			{
 				var name = classesMatch.Groups[1].Value;
 				_classMethod = name;
-				
+
 				classes.Add(new Class
 				{
 					Name = name,
@@ -45,7 +49,7 @@ namespace CodeGen.parser
 				});
 				classesMatch = classesMatch.NextMatch();
 			}
-			
+
 			return classes.ToArray();
 		}
 
@@ -53,13 +57,13 @@ namespace CodeGen.parser
 		protected override Field[] ParseFields(string fields)
 		{
 			var fieldsMatch = Regex.Match(fields, FieldRegex, RegexOptions.Singleline);
-			
+
 			var fieldsResult = new List<Field>();
 
 			while (fieldsMatch.Success)
 			{
 				var name = fieldsMatch.Groups[1].Value;
-				
+
 				fieldsResult.Add(new Field
 				{
 					Name = name,
@@ -68,13 +72,13 @@ namespace CodeGen.parser
 					Static = false,
 					Default = fieldsMatch.Groups.Count >= 6 ? fieldsMatch.Groups[5].Value : null,
 					Type = fieldsMatch.Groups[2].Value,
-					Getter = false,	// TODO: parse getters
-					Setter = false	// TODO: parse setters
+					Getter = false, // TODO: parse getters
+					Setter = false // TODO: parse setters
 				});
 
 				fieldsMatch = fieldsMatch.NextMatch();
 			}
-			
+
 			return fieldsResult.ToArray();
 		}
 
@@ -82,9 +86,9 @@ namespace CodeGen.parser
 		protected override Method[] ParseMethods(string @class)
 		{
 			var methodsMatch = Regex.Match(@class, MethodRegex, RegexOptions.Singleline);
-			
+
 			var methods = new List<Method>();
-			
+
 			while (methodsMatch.Success)
 			{
 				var name = methodsMatch.Groups[2].Value;
@@ -97,7 +101,7 @@ namespace CodeGen.parser
 					Static = false,
 					Parameters = ParseParameters(methodsMatch.Groups[3].Value)
 				});
-				
+
 				methodsMatch = methodsMatch.NextMatch();
 			}
 
@@ -108,9 +112,9 @@ namespace CodeGen.parser
 		protected override Parameter[] ParseParameters(string parameters)
 		{
 			var parametersMatch = Regex.Match(parameters, MethodRegex, RegexOptions.Singleline);
-			
+
 			var parametersResult = new List<Parameter>();
-			
+
 			while (parametersMatch.Success)
 			{
 				parametersResult.Add(new Parameter
