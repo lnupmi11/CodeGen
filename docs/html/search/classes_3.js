@@ -4,5 +4,6 @@ var searchData=
   ['generatorconf',['GeneratorConf',['../a00009.html',1,'CodeGen::generators']]],
   ['generatorconftest',['GeneratorConfTest',['../a00010.html',1,'CodeGen::tests::generators']]],
   ['gogenerator',['GoGenerator',['../a00011.html',1,'CodeGen::generators']]],
-  ['groovygenerator',['GroovyGenerator',['../a00012.html',1,'CodeGen::generators']]]
+  ['goparser',['GoParser',['../a00012.html',1,'CodeGen::parser']]],
+  ['groovygenerator',['GroovyGenerator',['../a00013.html',1,'CodeGen::generators']]]
 ];

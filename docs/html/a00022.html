@@ -4,7 +4,7 @@
 <meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.8.6"/>
-<title>CodeGen: CodeGen.generators.RubyGenerator Class Reference</title>
+<title>CodeGen: CodeGen.tests.parser.ParserTest Class Reference</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -105,207 +105,74 @@ $(document).ready(function(){initNavTree('a00022.html','');});
 
 <div class="header">
   <div class="summary">
-<a href="#pro-methods">Protected Member Functions</a> &#124;
-<a href="a00108.html">List of all members</a>  </div>
+<a href="#pub-methods">Public Member Functions</a> &#124;
+<a href="a00130.html">List of all members</a>  </div>
   <div class="headertitle">
-<div class="title">CodeGen.generators.RubyGenerator Class Reference</div>  </div>
+<div class="title">CodeGen.tests.parser.ParserTest Class Reference</div>  </div>
 </div><!--header-->
 <div class="contents">
 
-<p>Ruby language generator  
+<p> 
  <a href="a00022.html#details">More...</a></p>
-<div class="dynheader">
-Inheritance diagram for CodeGen.generators.RubyGenerator:</div>
-<div class="dyncontent">
-<div class="center"><img src="a00109.png" border="0" usemap="#_code_gen_8generators_8_ruby_generator_inherit__map" alt="Inheritance graph"/></div>
-<map name="_code_gen_8generators_8_ruby_generator_inherit__map" id="_code_gen_8generators_8_ruby_generator_inherit__map">
-<area shape="rect" id="node2" href="a00008.html" title="Interface of language generator " alt="" coords="82,5,160,32"/></map>
-<center><span class="legend">[<a target="top" href="graph_legend.html">legend</a>]</span></center></div>
-<div class="dynheader">
-Collaboration diagram for CodeGen.generators.RubyGenerator:</div>
-<div class="dyncontent">
-<div class="center"><img src="a00110.png" border="0" usemap="#_code_gen_8generators_8_ruby_generator_coll__map" alt="Collaboration graph"/></div>
-<map name="_code_gen_8generators_8_ruby_generator_coll__map" id="_code_gen_8generators_8_ruby_generator_coll__map">
-<area shape="rect" id="node2" href="a00008.html" title="Interface of language generator " alt="" coords="82,5,160,32"/></map>
-<center><span class="legend">[<a target="top" href="graph_legend.html">legend</a>]</span></center></div>
 <table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pro-methods"></a>
-Protected Member Functions</h2></td></tr>
-<tr class="memitem:a5d54d68890f2fc6c58e297f79647c033"><td class="memItemLeft" align="right" valign="top">override string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00022.html#a5d54d68890f2fc6c58e297f79647c033">GenerateClass</a> (<a class="el" href="a00003.html">Class</a> @class)</td></tr>
-<tr class="memdesc:a5d54d68890f2fc6c58e297f79647c033"><td class="mdescLeft">&#160;</td><td class="mdescRight"><a class="el" href="a00003.html" title="The structure that describes class. Contains name, array of fields, methods and subclasses, parent class name, access specifier. Overrides ToString() method. ">Class</a> generator: generates class with fields, methods and subclasses from given class object <dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">class</td><td><a class="el" href="a00003.html" title="The structure that describes class. Contains name, array of fields, methods and subclasses, parent class name, access specifier. Overrides ToString() method. ">Class</a> object</td></tr>
-  </table>
-  </dd>
-</dl>
-<dl class="section return"><dt>Returns</dt><dd>String of generated code of class</dd></dl>
-  <a href="#a5d54d68890f2fc6c58e297f79647c033">More...</a><br/></td></tr>
-<tr class="separator:a5d54d68890f2fc6c58e297f79647c033"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a08fbd6d88c129901aa159e3a9a706278"><td class="memItemLeft" align="right" valign="top">override string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00022.html#a08fbd6d88c129901aa159e3a9a706278">GenerateField</a> (<a class="el" href="a00007.html">Field</a> field)</td></tr>
-<tr class="memdesc:a08fbd6d88c129901aa159e3a9a706278"><td class="mdescLeft">&#160;</td><td class="mdescRight"><a class="el" href="a00007.html" title="The structure that describes field. Contains access, const and static properties. Inherits from Varia...">Field</a> generator: generates field from given field object <dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">field</td><td><a class="el" href="a00007.html" title="The structure that describes field. Contains access, const and static properties. Inherits from Varia...">Field</a> object</td></tr>
-  </table>
-  </dd>
-</dl>
-<dl class="section return"><dt>Returns</dt><dd>String of generated code of field</dd></dl>
-  <a href="#a08fbd6d88c129901aa159e3a9a706278">More...</a><br/></td></tr>
-<tr class="separator:a08fbd6d88c129901aa159e3a9a706278"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aa37c187dae8e400b050dcddba10d216b"><td class="memItemLeft" align="right" valign="top">override string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00022.html#aa37c187dae8e400b050dcddba10d216b">GenerateMethod</a> (<a class="el" href="a00015.html">Method</a> method)</td></tr>
-<tr class="memdesc:aa37c187dae8e400b050dcddba10d216b"><td class="mdescLeft">&#160;</td><td class="mdescRight"><a class="el" href="a00015.html" title="The structure that describes method. Contains name, return type, access level, const and static prope...">Method</a> generator: generates method from given method object <dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">method</td><td><a class="el" href="a00015.html" title="The structure that describes method. Contains name, return type, access level, const and static prope...">Method</a> object</td></tr>
-  </table>
-  </dd>
-</dl>
-<dl class="section return"><dt>Returns</dt><dd>String of generated code of method</dd></dl>
-  <a href="#aa37c187dae8e400b050dcddba10d216b">More...</a><br/></td></tr>
-<tr class="separator:aa37c187dae8e400b050dcddba10d216b"><td class="memSeparator" colspan="2">&#160;</td></tr>
-</table><table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="inherited"></a>
-Additional Inherited Members</h2></td></tr>
-<tr class="inherit_header pub_methods_a00008"><td colspan="2" onclick="javascript:toggleInherit('pub_methods_a00008')"><img src="closed.png" alt="-"/>&#160;Public Member Functions inherited from <a class="el" href="a00008.html">CodeGen.generators.Generator</a></td></tr>
-<tr class="memitem:a5c5f7f56cdb910dc5d71ed407f874d84 inherit pub_methods_a00008"><td class="memItemLeft" align="right" valign="top">Dictionary&lt; string, string &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00008.html#a5c5f7f56cdb910dc5d71ed407f874d84">Generate</a> (<a class="el" href="a00017.html">Package</a> pkg)</td></tr>
-<tr class="memdesc:a5c5f7f56cdb910dc5d71ed407f874d84 inherit pub_methods_a00008"><td class="mdescLeft">&#160;</td><td class="mdescRight"><a class="el" href="a00017.html" title="The structure that describes package. Contains classes and subpackages ">Package</a> generator: generates package with classes and subpackages from given package object  <a href="#a5c5f7f56cdb910dc5d71ed407f874d84">More...</a><br/></td></tr>
-<tr class="separator:a5c5f7f56cdb910dc5d71ed407f874d84 inherit pub_methods_a00008"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="inherit_header pro_static_attribs_a00008"><td colspan="2" onclick="javascript:toggleInherit('pro_static_attribs_a00008')"><img src="closed.png" alt="-"/>&#160;Static Protected Attributes inherited from <a class="el" href="a00008.html">CodeGen.generators.Generator</a></td></tr>
-<tr class="memitem:a7a3edb5addb8b879b39666718f32514d inherit pro_static_attribs_a00008"><td class="memItemLeft" align="right" valign="top">static bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00008.html#a7a3edb5addb8b879b39666718f32514d">UseTabs</a> = true</td></tr>
-<tr class="separator:a7a3edb5addb8b879b39666718f32514d inherit pro_static_attribs_a00008"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
+Public Member Functions</h2></td></tr>
+<tr class="memitem:a2ff958c473c175a86ea7823169a89f45"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00022.html#a2ff958c473c175a86ea7823169a89f45">GetFileFormatTest</a> ()</td></tr>
+<tr class="separator:a2ff958c473c175a86ea7823169a89f45"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad2dd3e55f52ce80b354d70751bd6915a"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00022.html#ad2dd3e55f52ce80b354d70751bd6915a">ValidateArgsTest</a> ()</td></tr>
+<tr class="separator:ad2dd3e55f52ce80b354d70751bd6915a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock"><p>Ruby language generator </p>
-
-<p>Definition at line <a class="el" href="a00035_source.html#l00010">10</a> of file <a class="el" href="a00035_source.html">Ruby.cs</a>.</p>
+<div class="textblock">
+<p>Definition at line <a class="el" href="a00045_source.html#l00010">10</a> of file <a class="el" href="a00045_source.html">ParserTest.cs</a>.</p>
 </div><h2 class="groupheader">Member Function Documentation</h2>
-<a class="anchor" id="a5d54d68890f2fc6c58e297f79647c033"></a>
+<a class="anchor" id="a2ff958c473c175a86ea7823169a89f45"></a>
 <div class="memitem">
 <div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">override string CodeGen.generators.RubyGenerator.GenerateClass </td>
+          <td class="memname">void CodeGen.tests.parser.ParserTest.GetFileFormatTest </td>
           <td>(</td>
-          <td class="paramtype"><a class="el" href="a00003.html">Class</a> @&#160;</td>
-          <td class="paramname"><em>class</em></td><td>)</td>
+          <td class="paramname"></td><td>)</td>
           <td></td>
         </tr>
       </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">protected</span><span class="mlabel">virtual</span></span>  </td>
-  </tr>
-</table>
 </div><div class="memdoc">
 
-<p><a class="el" href="a00003.html" title="The structure that describes class. Contains name, array of fields, methods and subclasses, parent class name, access specifier. Overrides ToString() method. ">Class</a> generator: generates class with fields, methods and subclasses from given class object <dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">class</td><td><a class="el" href="a00003.html" title="The structure that describes class. Contains name, array of fields, methods and subclasses, parent class name, access specifier. Overrides ToString() method. ">Class</a> object</td></tr>
-  </table>
-  </dd>
-</dl>
-<dl class="section return"><dt>Returns</dt><dd>String of generated code of class</dd></dl>
- </p>
+<p></p>
 
-<p>Implements <a class="el" href="a00008.html#a8847fd8b6d408a0dfc087dcc1dc58340">CodeGen.generators.Generator</a>.</p>
-
-<p>Definition at line <a class="el" href="a00035_source.html#l00016">16</a> of file <a class="el" href="a00035_source.html">Ruby.cs</a>.</p>
-
-<p><div class="dynheader">
-Here is the call graph for this function:</div>
-<div class="dyncontent">
-<div class="center"><img src="a00022_a5d54d68890f2fc6c58e297f79647c033_cgraph.png" border="0" usemap="#a00022_a5d54d68890f2fc6c58e297f79647c033_cgraph" alt=""/></div>
-<map name="a00022_a5d54d68890f2fc6c58e297f79647c033_cgraph" id="a00022_a5d54d68890f2fc6c58e297f79647c033_cgraph">
-<area shape="rect" id="node2" href="a00009.html#a71dbec00a6e5d6d390dd8a24b64b6bb2" title="Shifts code using given parameters " alt="" coords="293,5,496,46"/></map>
-</div>
-</p>
+<p>Definition at line <a class="el" href="a00045_source.html#l00016">16</a> of file <a class="el" href="a00045_source.html">ParserTest.cs</a>.</p>
 
 </div>
 </div>
-<a class="anchor" id="a08fbd6d88c129901aa159e3a9a706278"></a>
+<a class="anchor" id="ad2dd3e55f52ce80b354d70751bd6915a"></a>
 <div class="memitem">
 <div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">override string CodeGen.generators.RubyGenerator.GenerateField </td>
+          <td class="memname">void CodeGen.tests.parser.ParserTest.ValidateArgsTest </td>
           <td>(</td>
-          <td class="paramtype"><a class="el" href="a00007.html">Field</a>&#160;</td>
-          <td class="paramname"><em>field</em></td><td>)</td>
+          <td class="paramname"></td><td>)</td>
           <td></td>
         </tr>
       </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">protected</span><span class="mlabel">virtual</span></span>  </td>
-  </tr>
-</table>
 </div><div class="memdoc">
 
-<p><a class="el" href="a00007.html" title="The structure that describes field. Contains access, const and static properties. Inherits from Varia...">Field</a> generator: generates field from given field object <dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">field</td><td><a class="el" href="a00007.html" title="The structure that describes field. Contains access, const and static properties. Inherits from Varia...">Field</a> object</td></tr>
-  </table>
-  </dd>
-</dl>
-<dl class="section return"><dt>Returns</dt><dd>String of generated code of field</dd></dl>
- </p>
+<p></p>
 
-<p>Implements <a class="el" href="a00008.html#a0d1a48aedbca08c05af734a43739d1c3">CodeGen.generators.Generator</a>.</p>
-
-<p>Definition at line <a class="el" href="a00035_source.html#l00042">42</a> of file <a class="el" href="a00035_source.html">Ruby.cs</a>.</p>
-
-</div>
-</div>
-<a class="anchor" id="aa37c187dae8e400b050dcddba10d216b"></a>
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">override string CodeGen.generators.RubyGenerator.GenerateMethod </td>
-          <td>(</td>
-          <td class="paramtype"><a class="el" href="a00015.html">Method</a>&#160;</td>
-          <td class="paramname"><em>method</em></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">protected</span><span class="mlabel">virtual</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p><a class="el" href="a00015.html" title="The structure that describes method. Contains name, return type, access level, const and static prope...">Method</a> generator: generates method from given method object <dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">method</td><td><a class="el" href="a00015.html" title="The structure that describes method. Contains name, return type, access level, const and static prope...">Method</a> object</td></tr>
-  </table>
-  </dd>
-</dl>
-<dl class="section return"><dt>Returns</dt><dd>String of generated code of method</dd></dl>
- </p>
-
-<p>Implements <a class="el" href="a00008.html#a04fc9bd217b3b8c3d5f7b1a3f92c79d3">CodeGen.generators.Generator</a>.</p>
-
-<p>Definition at line <a class="el" href="a00035_source.html#l00057">57</a> of file <a class="el" href="a00035_source.html">Ruby.cs</a>.</p>
+<p>Definition at line <a class="el" href="a00045_source.html#l00028">28</a> of file <a class="el" href="a00045_source.html">ParserTest.cs</a>.</p>
 
 </div>
 </div>
 <hr/>The documentation for this class was generated from the following file:<ul>
-<li>/home/travis/build/lnupmi11/CodeGen/generators/<a class="el" href="a00035_source.html">Ruby.cs</a></li>
+<li>/home/travis/build/lnupmi11/CodeGen/tests/parser/<a class="el" href="a00045_source.html">ParserTest.cs</a></li>
 </ul>
 </div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="navelem"><a class="el" href="a00044.html">CodeGen</a></li><li class="navelem"><a class="el" href="a00045.html">generators</a></li><li class="navelem"><a class="el" href="a00022.html">RubyGenerator</a></li>
+    <li class="navelem"><a class="el" href="a00047.html">CodeGen</a></li><li class="navelem"><a class="el" href="a00050.html">tests</a></li><li class="navelem"><a class="el" href="a00052.html">parser</a></li><li class="navelem"><a class="el" href="a00022.html">ParserTest</a></li>
     <li class="footer">Generated by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.6 </li>
