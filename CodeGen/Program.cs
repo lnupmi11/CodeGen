@@ -105,18 +105,18 @@ class Apple extends Fruit {
 		
 		private const string GoContent = @"
 type Apple struct {
-        Colour string
+        Colour_1 string
         Sort string
         size int
 }
 
-func (Apple) print(colour string) {}
+func (Apple) print(colour string, hash int) {}
 
-func (Apple) getSizeValue() int {
+func (Apple) get_size() int {
         return nil
 }
 
-func (Apple) GetColorName() string {
+func (Apple) GetColorValue() string {
         return nil
 }
 
