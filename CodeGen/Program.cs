@@ -39,7 +39,7 @@ namespace CodeGen
 
 	internal static class Program
 	{
-		public const string DefaultLang = "python";
+		public const string DefaultLang = "java";
 
 		public static readonly Package DefaultPkg = GeneratorConf.ExamplePkg;
 
@@ -55,7 +55,8 @@ namespace CodeGen
 			#if DEBUG
 //				Console.Out.WriteLine("Opts = {0}", Opts);				
 			#endif
-				ExecuteConf.Execute();
+				var langName = Opts != null ? Opts.Lang : DefaultLang;
+				ExecuteConf.Execute(langName, Opts?.File, Opts != null && Opts.Stdout);
 			}
 			catch (Exception e)
 			{

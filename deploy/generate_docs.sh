@@ -69,12 +69,12 @@ git checkout -- _config.yml
 ################################################################################
 ##### Generate the Doxygen code documentation and log the output.          #####
 echo 'Generating Doxygen code documentation...'
-cat "$DOXYFILE" | sed -e '/INPUT /s/ = .*/ = ..\/../' > Doxyfile
+cat "$DOXYFILE" | sed -e '/INPUT /s/ = .*/ = ..\/..\/CodeGen/' > Doxyfile
 # Redirect both stderr and stdout to the log file AND the console.
 doxygen 2>&1 | tee doxygen.log
 
 echo 'Moving manual docs to github pages'
-cp -v $TRAVIS_BUILD_DIR/*.md ./ || true
+cp -v "$TRAVIS_BUILD_DIR/"*.md ./ || true
 
 ################################################################################
 ##### Upload the documentation to the gh-pages branch of the repository.   #####

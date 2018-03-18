@@ -2,7 +2,7 @@
 using System.IO;
 using CodeGen.utils;
 
-namespace CodeGen.tests.parser
+namespace CodeGen.Test.utils
 {
 	/// <summary>
 	/// 
