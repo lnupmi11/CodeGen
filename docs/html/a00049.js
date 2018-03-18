@@ -1,5 +1,5 @@
 var a00049 =
 [
-    [ "generators", "a00050.html", "a00050" ],
-    [ "parser", "a00051.html", "a00051" ]
+    [ "GoParser", "a00012.html", "a00012" ],
+    [ "JavaParser", "a00015.html", "a00015" ]
 ];

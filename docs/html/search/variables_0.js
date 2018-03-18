@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['builtindefaults',['BuiltInDefaults',['../a00014.html#a306ffee06ab8a16d7b552ac9dd476050',1,'CodeGen::generators::JavaNormalizer']]]
+  ['comment',['Comment',['../a00016.html#aa63aaf377bcac5ca06c14304701c3493',1,'CodeGen::generators::Languange']]]
 ];

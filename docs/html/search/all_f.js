@@ -1,6 +1,6 @@
 var searchData=
 [
-  ['usespaces',['UseSpaces',['../a00018.html#af03f90e7753d7fdc68699c32f86f82e9',1,'CodeGen::generators::Package']]],
-  ['usetabs',['UseTabs',['../a00008.html#a7a3edb5addb8b879b39666718f32514d',1,'CodeGen::generators::Generator']]],
-  ['utils_2ecs',['Utils.cs',['../a00045.html',1,'']]]
+  ['todo_20list',['Todo List',['../a00069.html',1,'']]],
+  ['tostring',['ToString',['../a00019.html#a73029cd81fc68696bfe2d801ee382e69',1,'CodeGen.generators.Package.ToString()'],['../a00003.html#a3d8c15ddeed8faad666f9dfdd53b758f',1,'CodeGen.generators.Class.ToString()']]],
+  ['type',['Type',['../a00025.html#a42c04d2c0f45318b1fcf0fd8753bdbcf',1,'CodeGen::generators::Variable']]]
 ];

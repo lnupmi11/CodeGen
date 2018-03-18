@@ -1,7 +1,7 @@
 var a00026 =
 [
-    [ "NormalizeClass", "a00026.html#a4421bc21fc60e72de15a93aad2481611", null ],
-    [ "NormalizeField", "a00026.html#a3a16d2fc8eb026ceec7a30e0009354dd", null ],
-    [ "NormalizeMethod", "a00026.html#a52fef8ce5e19d49d45e9aa44c356b850", null ],
-    [ "NormalizeType", "a00026.html#adfa84bcc754c3ba6b21eb8993cd811f9", null ]
+    [ "GenerateClass", "a00026.html#a78dd1bac9e915e214bb6a43b3ebc15b5", null ],
+    [ "GenerateField", "a00026.html#a114f5fcd8cc13180701041b6d9815f3f", null ],
+    [ "GenerateMethod", "a00026.html#ab8855feff4b8292c04a53362d270b34d", null ],
+    [ "Indent", "a00026.html#a747bea8b5ce26b87f0fe50fd66ad09c1", null ]
 ];

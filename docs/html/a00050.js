@@ -1,4 +1,5 @@
 var a00050 =
 [
-    [ "GeneratorConfTest", "a00010.html", "a00010" ]
+    [ "generators", "a00051.html", "a00051" ],
+    [ "parser", "a00052.html", "a00052" ]
 ];

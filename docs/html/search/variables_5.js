@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['normalizer',['Normalizer',['../a00015.html#ad188260793d4d4f994fb720d0ac60aff',1,'CodeGen::generators::Languange']]]
+  ['usetabs',['UseTabs',['../a00008.html#a7a3edb5addb8b879b39666718f32514d',1,'CodeGen::generators::Generator']]]
 ];
