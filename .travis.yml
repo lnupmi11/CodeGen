@@ -23,7 +23,7 @@ jobs:
         - dotnet build
     - stage: test
       script:
-      - dotnet xunit
+      - dotnet test ${GH_REPO_NAME}.Test
     - stage: docs
       if: branch IN (master, dev, creating-structure)
       script:
