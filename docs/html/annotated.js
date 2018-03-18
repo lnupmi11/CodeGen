@@ -1,4 +1,4 @@
 var annotated =
 [
-    [ "CodeGen", "a00047.html", "a00047" ]
+    [ "CodeGen", "a00038.html", "a00038" ]
 ];

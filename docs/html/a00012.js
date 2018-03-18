@@ -1,8 +1,8 @@
 var a00012 =
 [
-    [ "ParseClasses", "a00012.html#a4caebddf3afa095b6851dd97762a9d19", null ],
-    [ "ParseFields", "a00012.html#a55d383fbda0a05686c0f53f5ddb42c74", null ],
-    [ "ParseMethods", "a00012.html#a3a92d0e6bb283b9107838debcecf038a", null ],
-    [ "ParsePackage", "a00012.html#ac59b9062b5a95d87b0372f000f68d39a", null ],
-    [ "ParseParameters", "a00012.html#a15ec6b1af6fafceacc2c8f7005d69b37", null ]
+    [ "Languange", "a00012.html#a89fa98041473b18a7df845e14edcba07", null ],
+    [ "Comment", "a00012.html#aa63aaf377bcac5ca06c14304701c3493", null ],
+    [ "Extension", "a00012.html#af00eae192536b05d637d0b81954202c7", null ],
+    [ "Generator", "a00012.html#a25fb0a47247497581d2d0560d0db66d8", null ],
+    [ "Normalizer", "a00012.html#ad188260793d4d4f994fb720d0ac60aff", null ]
 ];

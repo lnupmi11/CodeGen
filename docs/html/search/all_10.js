@@ -1,6 +1,7 @@
 var searchData=
 [
-  ['usespaces',['UseSpaces',['../a00019.html#af03f90e7753d7fdc68699c32f86f82e9',1,'CodeGen::generators::Package']]],
-  ['usetabs',['UseTabs',['../a00008.html#a7a3edb5addb8b879b39666718f32514d',1,'CodeGen::generators::Generator']]],
-  ['utils_2ecs',['Utils.cs',['../a00046.html',1,'']]]
+  ['variable',['Variable',['../a00020.html',1,'CodeGen::generators']]],
+  ['vb_2ecs',['VB.cs',['../a00034.html',1,'']]],
+  ['vbgenerator',['VbGenerator',['../a00021.html',1,'CodeGen::generators']]],
+  ['vbnormalizer',['VbNormalizer',['../a00022.html',1,'CodeGen::generators']]]
 ];

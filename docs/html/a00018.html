@@ -4,7 +4,7 @@
 <meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.8.6"/>
-<title>CodeGen: CodeGen.generators.Normalizer Class Reference</title>
+<title>CodeGen: CodeGen.generators.PythonGenerator Class Reference</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -105,51 +105,79 @@ $(document).ready(function(){initNavTree('a00018.html','');});
 
 <div class="header">
   <div class="summary">
-<a href="#pub-methods">Public Member Functions</a> &#124;
 <a href="#pro-methods">Protected Member Functions</a> &#124;
-<a href="a00086.html">List of all members</a>  </div>
+<a href="a00102.html">List of all members</a>  </div>
   <div class="headertitle">
-<div class="title">CodeGen.generators.Normalizer Class Reference<span class="mlabels"><span class="mlabel">abstract</span></span></div>  </div>
+<div class="title">CodeGen.generators.PythonGenerator Class Reference</div>  </div>
 </div><!--header-->
 <div class="contents">
 
-<p>Interface of language normalizer: normalizes package data according to specified language  
+<p><a class="el" href="a00006.html" title="Interface of language generator ">Generator</a> for Python  
  <a href="a00018.html#details">More...</a></p>
 <div class="dynheader">
-Inheritance diagram for CodeGen.generators.Normalizer:</div>
+Inheritance diagram for CodeGen.generators.PythonGenerator:</div>
 <div class="dyncontent">
-<div class="center"><img src="a00087.png" border="0" usemap="#_code_gen_8generators_8_normalizer_inherit__map" alt="Inheritance graph"/></div>
-<map name="_code_gen_8generators_8_normalizer_inherit__map" id="_code_gen_8generators_8_normalizer_inherit__map">
-</map>
-<center><span class="legend">[<a target="top" href="graph_legend.html">legend</a>]</span></center></div>
+<div class="center"><img src="a00103.png" border="0" usemap="#_code_gen_8generators_8_python_generator_inherit__map" alt="Inheritance graph"/></div>
+<map name="_code_gen_8generators_8_python_generator_inherit__map" id="_code_gen_8generators_8_python_generator_inherit__map">
+<area shape="rect" id="node2" href="a00006.html" title="Interface of language generator " alt="" coords="30,6,167,127"/></map>
+</div>
+<div class="dynheader">
+Collaboration diagram for CodeGen.generators.PythonGenerator:</div>
+<div class="dyncontent">
+<div class="center"><img src="a00104.png" border="0" usemap="#_code_gen_8generators_8_python_generator_coll__map" alt="Collaboration graph"/></div>
+<map name="_code_gen_8generators_8_python_generator_coll__map" id="_code_gen_8generators_8_python_generator_coll__map">
+<area shape="rect" id="node2" href="a00006.html" title="Interface of language generator " alt="" coords="30,6,167,127"/></map>
+</div>
 <table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
-Public Member Functions</h2></td></tr>
-<tr class="memitem:a24212f04a2ed558c46ac62e23efcf0ae"><td class="memItemLeft" align="right" valign="top">abstract <a class="el" href="a00019.html">Package</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00018.html#a24212f04a2ed558c46ac62e23efcf0ae">NormalizePackage</a> (<a class="el" href="a00019.html">Package</a> pkg)</td></tr>
-<tr class="memdesc:a24212f04a2ed558c46ac62e23efcf0ae"><td class="mdescLeft">&#160;</td><td class="mdescRight"><a class="el" href="a00019.html" title="The structure that describes package. Contains classes and subpackages ">Package</a> normalizer: normalizes package with classes and subpackages  <a href="#a24212f04a2ed558c46ac62e23efcf0ae">More...</a><br/></td></tr>
-<tr class="separator:a24212f04a2ed558c46ac62e23efcf0ae"><td class="memSeparator" colspan="2">&#160;</td></tr>
-</table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pro-methods"></a>
 Protected Member Functions</h2></td></tr>
-<tr class="memitem:ae79262a7509b9d78393262dccf63dcc5"><td class="memItemLeft" align="right" valign="top">abstract <a class="el" href="a00003.html">Class</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00018.html#ae79262a7509b9d78393262dccf63dcc5">NormalizeClass</a> (<a class="el" href="a00003.html">Class</a> @class)</td></tr>
-<tr class="memdesc:ae79262a7509b9d78393262dccf63dcc5"><td class="mdescLeft">&#160;</td><td class="mdescRight"><a class="el" href="a00003.html" title="The structure that describes class. Contains name, array of fields, methods and subclasses, parent class name, access specifier. Overrides ToString() method. ">Class</a> normalizer: normalizes class with fields, methods and subclasses  <a href="#ae79262a7509b9d78393262dccf63dcc5">More...</a><br/></td></tr>
-<tr class="separator:ae79262a7509b9d78393262dccf63dcc5"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aafd7bd1d143fb2082a0e4ef53fcbb46b"><td class="memItemLeft" align="right" valign="top">abstract <a class="el" href="a00007.html">Field</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00018.html#aafd7bd1d143fb2082a0e4ef53fcbb46b">NormalizeField</a> (<a class="el" href="a00007.html">Field</a> field)</td></tr>
-<tr class="memdesc:aafd7bd1d143fb2082a0e4ef53fcbb46b"><td class="mdescLeft">&#160;</td><td class="mdescRight"><a class="el" href="a00007.html" title="The structure that describes field. Contains access, const and static properties. Inherits from Varia...">Field</a> normalizer: normalizes field  <a href="#aafd7bd1d143fb2082a0e4ef53fcbb46b">More...</a><br/></td></tr>
-<tr class="separator:aafd7bd1d143fb2082a0e4ef53fcbb46b"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a68a4b1c8b53e9ce28507430412cb310e"><td class="memItemLeft" align="right" valign="top">abstract <a class="el" href="a00017.html">Method</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00018.html#a68a4b1c8b53e9ce28507430412cb310e">NormalizeMethod</a> (<a class="el" href="a00017.html">Method</a> method)</td></tr>
-<tr class="memdesc:a68a4b1c8b53e9ce28507430412cb310e"><td class="mdescLeft">&#160;</td><td class="mdescRight"><a class="el" href="a00017.html" title="The structure that describes method. Contains name, return type, access level, const and static prope...">Method</a> normalizer: normalizes method  <a href="#a68a4b1c8b53e9ce28507430412cb310e">More...</a><br/></td></tr>
-<tr class="separator:a68a4b1c8b53e9ce28507430412cb310e"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a981da1c9b6b487ba3043e538a4991000"><td class="memItemLeft" align="right" valign="top">abstract <a class="el" href="a00020.html">Parameter</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00018.html#a981da1c9b6b487ba3043e538a4991000">NormalizeParameter</a> (<a class="el" href="a00020.html">Parameter</a> parameter)</td></tr>
-<tr class="memdesc:a981da1c9b6b487ba3043e538a4991000"><td class="mdescLeft">&#160;</td><td class="mdescRight"><a class="el" href="a00020.html" title="The structure that describes parameter. Inherits from Variable ">Parameter</a> normalizer: normalizes parameter  <a href="#a981da1c9b6b487ba3043e538a4991000">More...</a><br/></td></tr>
-<tr class="separator:a981da1c9b6b487ba3043e538a4991000"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7ef1629fdf50856e1424ed4fd8be564c"><td class="memItemLeft" align="right" valign="top">override string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00018.html#a7ef1629fdf50856e1424ed4fd8be564c">GenerateClass</a> (<a class="el" href="a00001.html">Class</a> @class)</td></tr>
+<tr class="memdesc:a7ef1629fdf50856e1424ed4fd8be564c"><td class="mdescLeft">&#160;</td><td class="mdescRight"><a class="el" href="a00001.html" title="The structure that describes class. Contains name, array of fields, methods and subclasses, parent class name, access specifier. Overrides ToString() method. ">Class</a> generator: generates class with fields, methods and subclasses from given class object <dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">class</td><td><a class="el" href="a00001.html" title="The structure that describes class. Contains name, array of fields, methods and subclasses, parent class name, access specifier. Overrides ToString() method. ">Class</a> object</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>String of generated code of class</dd></dl>
+  <a href="#a7ef1629fdf50856e1424ed4fd8be564c">More...</a><br/></td></tr>
+<tr class="separator:a7ef1629fdf50856e1424ed4fd8be564c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aafd171ffd14980515eef644b929bd712"><td class="memItemLeft" align="right" valign="top">override string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00018.html#aafd171ffd14980515eef644b929bd712">GenerateField</a> (<a class="el" href="a00005.html">Field</a> field)</td></tr>
+<tr class="memdesc:aafd171ffd14980515eef644b929bd712"><td class="mdescLeft">&#160;</td><td class="mdescRight"><a class="el" href="a00005.html" title="The structure that describes field. Contains access, const and static properties. Inherits from Varia...">Field</a> generator: generates field from given field object <dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">field</td><td><a class="el" href="a00005.html" title="The structure that describes field. Contains access, const and static properties. Inherits from Varia...">Field</a> object</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>String of generated code of field</dd></dl>
+  <a href="#aafd171ffd14980515eef644b929bd712">More...</a><br/></td></tr>
+<tr class="separator:aafd171ffd14980515eef644b929bd712"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a09ea61b8eb384efcc36aa3574f9cb6a8"><td class="memItemLeft" align="right" valign="top">override string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00018.html#a09ea61b8eb384efcc36aa3574f9cb6a8">GenerateMethod</a> (<a class="el" href="a00013.html">Method</a> method)</td></tr>
+<tr class="memdesc:a09ea61b8eb384efcc36aa3574f9cb6a8"><td class="mdescLeft">&#160;</td><td class="mdescRight"><a class="el" href="a00013.html" title="The structure that describes method. Contains name, return type, access level, const and static prope...">Method</a> generator: generates method from given method object <dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">method</td><td><a class="el" href="a00013.html" title="The structure that describes method. Contains name, return type, access level, const and static prope...">Method</a> object</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>String of generated code of method</dd></dl>
+  <a href="#a09ea61b8eb384efcc36aa3574f9cb6a8">More...</a><br/></td></tr>
+<tr class="separator:a09ea61b8eb384efcc36aa3574f9cb6a8"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="inherited"></a>
+Additional Inherited Members</h2></td></tr>
+<tr class="inherit_header pub_methods_a00006"><td colspan="2" onclick="javascript:toggleInherit('pub_methods_a00006')"><img src="closed.png" alt="-"/>&#160;Public Member Functions inherited from <a class="el" href="a00006.html">CodeGen.generators.Generator</a></td></tr>
+<tr class="memitem:a5c5f7f56cdb910dc5d71ed407f874d84 inherit pub_methods_a00006"><td class="memItemLeft" align="right" valign="top">Dictionary&lt; string, string &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00006.html#a5c5f7f56cdb910dc5d71ed407f874d84">Generate</a> (<a class="el" href="a00015.html">Package</a> pkg)</td></tr>
+<tr class="memdesc:a5c5f7f56cdb910dc5d71ed407f874d84 inherit pub_methods_a00006"><td class="mdescLeft">&#160;</td><td class="mdescRight"><a class="el" href="a00015.html" title="The structure that describes package. Contains classes and subpackages ">Package</a> generator: generates package with classes and subpackages from given package object  <a href="#a5c5f7f56cdb910dc5d71ed407f874d84">More...</a><br/></td></tr>
+<tr class="separator:a5c5f7f56cdb910dc5d71ed407f874d84 inherit pub_methods_a00006"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="inherit_header pro_static_attribs_a00006"><td colspan="2" onclick="javascript:toggleInherit('pro_static_attribs_a00006')"><img src="closed.png" alt="-"/>&#160;Static Protected Attributes inherited from <a class="el" href="a00006.html">CodeGen.generators.Generator</a></td></tr>
+<tr class="memitem:a7a3edb5addb8b879b39666718f32514d inherit pro_static_attribs_a00006"><td class="memItemLeft" align="right" valign="top">static bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00006.html#a7a3edb5addb8b879b39666718f32514d">UseTabs</a> = true</td></tr>
+<tr class="separator:a7a3edb5addb8b879b39666718f32514d inherit pro_static_attribs_a00006"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock"><p>Interface of language normalizer: normalizes package data according to specified language </p>
+<div class="textblock"><p><a class="el" href="a00006.html" title="Interface of language generator ">Generator</a> for Python </p>
 
-<p>Definition at line <a class="el" href="a00031_source.html#l00060">60</a> of file <a class="el" href="a00031_source.html">GeneratorConf.cs</a>.</p>
+<p>Definition at line <a class="el" href="a00032_source.html#l00010">10</a> of file <a class="el" href="a00032_source.html">Python.cs</a>.</p>
 </div><h2 class="groupheader">Member Function Documentation</h2>
-<a class="anchor" id="ae79262a7509b9d78393262dccf63dcc5"></a>
+<a class="anchor" id="a7ef1629fdf50856e1424ed4fd8be564c"></a>
 <div class="memitem">
 <div class="memproto">
 <table class="mlabels">
@@ -157,32 +185,45 @@ Protected Member Functions</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">abstract <a class="el" href="a00003.html">Class</a> CodeGen.generators.Normalizer.NormalizeClass </td>
+          <td class="memname">override string CodeGen.generators.PythonGenerator.GenerateClass </td>
           <td>(</td>
-          <td class="paramtype"><a class="el" href="a00003.html">Class</a> @&#160;</td>
+          <td class="paramtype"><a class="el" href="a00001.html">Class</a> @&#160;</td>
           <td class="paramname"><em>class</em></td><td>)</td>
           <td></td>
         </tr>
       </table>
   </td>
   <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">protected</span><span class="mlabel">pure virtual</span></span>  </td>
+<span class="mlabels"><span class="mlabel">protected</span><span class="mlabel">virtual</span></span>  </td>
   </tr>
 </table>
 </div><div class="memdoc">
 
-<p><a class="el" href="a00003.html" title="The structure that describes class. Contains name, array of fields, methods and subclasses, parent class name, access specifier. Overrides ToString() method. ">Class</a> normalizer: normalizes class with fields, methods and subclasses </p>
-<dl class="params"><dt>Parameters</dt><dd>
+<p><a class="el" href="a00001.html" title="The structure that describes class. Contains name, array of fields, methods and subclasses, parent class name, access specifier. Overrides ToString() method. ">Class</a> generator: generates class with fields, methods and subclasses from given class object <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">class</td><td><a class="el" href="a00003.html" title="The structure that describes class. Contains name, array of fields, methods and subclasses, parent class name, access specifier. Overrides ToString() method. ">Class</a> object</td></tr>
+    <tr><td class="paramname">class</td><td><a class="el" href="a00001.html" title="The structure that describes class. Contains name, array of fields, methods and subclasses, parent class name, access specifier. Overrides ToString() method. ">Class</a> object</td></tr>
   </table>
   </dd>
 </dl>
-<dl class="section return"><dt>Returns</dt><dd>Normalized class object</dd></dl>
+<dl class="section return"><dt>Returns</dt><dd>String of generated code of class</dd></dl>
+ </p>
+
+<p>Implements <a class="el" href="a00006.html#a8847fd8b6d408a0dfc087dcc1dc58340">CodeGen.generators.Generator</a>.</p>
+
+<p>Definition at line <a class="el" href="a00032_source.html#l00016">16</a> of file <a class="el" href="a00032_source.html">Python.cs</a>.</p>
+
+<p><div class="dynheader">
+Here is the call graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><img src="a00018_a7ef1629fdf50856e1424ed4fd8be564c_cgraph.png" border="0" usemap="#a00018_a7ef1629fdf50856e1424ed4fd8be564c_cgraph" alt=""/></div>
+<map name="a00018_a7ef1629fdf50856e1424ed4fd8be564c_cgraph" id="a00018_a7ef1629fdf50856e1424ed4fd8be564c_cgraph">
+<area shape="rect" id="node2" href="a00007.html#a71dbec00a6e5d6d390dd8a24b64b6bb2" title="Shifts code using given parameters " alt="" coords="240,5,443,46"/></map>
+</div>
+</p>
 
 </div>
 </div>
-<a class="anchor" id="aafd7bd1d143fb2082a0e4ef53fcbb46b"></a>
+<a class="anchor" id="aafd171ffd14980515eef644b929bd712"></a>
 <div class="memitem">
 <div class="memproto">
 <table class="mlabels">
@@ -190,32 +231,36 @@ Protected Member Functions</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">abstract <a class="el" href="a00007.html">Field</a> CodeGen.generators.Normalizer.NormalizeField </td>
+          <td class="memname">override string CodeGen.generators.PythonGenerator.GenerateField </td>
           <td>(</td>
-          <td class="paramtype"><a class="el" href="a00007.html">Field</a>&#160;</td>
+          <td class="paramtype"><a class="el" href="a00005.html">Field</a>&#160;</td>
           <td class="paramname"><em>field</em></td><td>)</td>
           <td></td>
         </tr>
       </table>
   </td>
   <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">protected</span><span class="mlabel">pure virtual</span></span>  </td>
+<span class="mlabels"><span class="mlabel">protected</span><span class="mlabel">virtual</span></span>  </td>
   </tr>
 </table>
 </div><div class="memdoc">
 
-<p><a class="el" href="a00007.html" title="The structure that describes field. Contains access, const and static properties. Inherits from Varia...">Field</a> normalizer: normalizes field </p>
-<dl class="params"><dt>Parameters</dt><dd>
+<p><a class="el" href="a00005.html" title="The structure that describes field. Contains access, const and static properties. Inherits from Varia...">Field</a> generator: generates field from given field object <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">field</td><td><a class="el" href="a00007.html" title="The structure that describes field. Contains access, const and static properties. Inherits from Varia...">Field</a> object</td></tr>
+    <tr><td class="paramname">field</td><td><a class="el" href="a00005.html" title="The structure that describes field. Contains access, const and static properties. Inherits from Varia...">Field</a> object</td></tr>
   </table>
   </dd>
 </dl>
-<dl class="section return"><dt>Returns</dt><dd>Normalized field object</dd></dl>
+<dl class="section return"><dt>Returns</dt><dd>String of generated code of field</dd></dl>
+ </p>
+
+<p>Implements <a class="el" href="a00006.html#a0d1a48aedbca08c05af734a43739d1c3">CodeGen.generators.Generator</a>.</p>
+
+<p>Definition at line <a class="el" href="a00032_source.html#l00047">47</a> of file <a class="el" href="a00032_source.html">Python.cs</a>.</p>
 
 </div>
 </div>
-<a class="anchor" id="a68a4b1c8b53e9ce28507430412cb310e"></a>
+<a class="anchor" id="a09ea61b8eb384efcc36aa3574f9cb6a8"></a>
 <div class="memitem">
 <div class="memproto">
 <table class="mlabels">
@@ -223,106 +268,44 @@ Protected Member Functions</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">abstract <a class="el" href="a00017.html">Method</a> CodeGen.generators.Normalizer.NormalizeMethod </td>
+          <td class="memname">override string CodeGen.generators.PythonGenerator.GenerateMethod </td>
           <td>(</td>
-          <td class="paramtype"><a class="el" href="a00017.html">Method</a>&#160;</td>
+          <td class="paramtype"><a class="el" href="a00013.html">Method</a>&#160;</td>
           <td class="paramname"><em>method</em></td><td>)</td>
           <td></td>
         </tr>
       </table>
   </td>
   <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">protected</span><span class="mlabel">pure virtual</span></span>  </td>
+<span class="mlabels"><span class="mlabel">protected</span><span class="mlabel">virtual</span></span>  </td>
   </tr>
 </table>
 </div><div class="memdoc">
 
-<p><a class="el" href="a00017.html" title="The structure that describes method. Contains name, return type, access level, const and static prope...">Method</a> normalizer: normalizes method </p>
-<dl class="params"><dt>Parameters</dt><dd>
+<p><a class="el" href="a00013.html" title="The structure that describes method. Contains name, return type, access level, const and static prope...">Method</a> generator: generates method from given method object <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">method</td><td><a class="el" href="a00017.html" title="The structure that describes method. Contains name, return type, access level, const and static prope...">Method</a> object</td></tr>
+    <tr><td class="paramname">method</td><td><a class="el" href="a00013.html" title="The structure that describes method. Contains name, return type, access level, const and static prope...">Method</a> object</td></tr>
   </table>
   </dd>
 </dl>
-<dl class="section return"><dt>Returns</dt><dd>Normalized method object</dd></dl>
+<dl class="section return"><dt>Returns</dt><dd>String of generated code of method</dd></dl>
+ </p>
 
-</div>
-</div>
-<a class="anchor" id="a24212f04a2ed558c46ac62e23efcf0ae"></a>
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">abstract <a class="el" href="a00019.html">Package</a> CodeGen.generators.Normalizer.NormalizePackage </td>
-          <td>(</td>
-          <td class="paramtype"><a class="el" href="a00019.html">Package</a>&#160;</td>
-          <td class="paramname"><em>pkg</em></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">pure virtual</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
+<p>Implements <a class="el" href="a00006.html#a04fc9bd217b3b8c3d5f7b1a3f92c79d3">CodeGen.generators.Generator</a>.</p>
 
-<p><a class="el" href="a00019.html" title="The structure that describes package. Contains classes and subpackages ">Package</a> normalizer: normalizes package with classes and subpackages </p>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">pkg</td><td><a class="el" href="a00019.html" title="The structure that describes package. Contains classes and subpackages ">Package</a> object</td></tr>
-  </table>
-  </dd>
-</dl>
-<dl class="section return"><dt>Returns</dt><dd>Normalized package object</dd></dl>
-
-</div>
-</div>
-<a class="anchor" id="a981da1c9b6b487ba3043e538a4991000"></a>
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">abstract <a class="el" href="a00020.html">Parameter</a> CodeGen.generators.Normalizer.NormalizeParameter </td>
-          <td>(</td>
-          <td class="paramtype"><a class="el" href="a00020.html">Parameter</a>&#160;</td>
-          <td class="paramname"><em>parameter</em></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">protected</span><span class="mlabel">pure virtual</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p><a class="el" href="a00020.html" title="The structure that describes parameter. Inherits from Variable ">Parameter</a> normalizer: normalizes parameter </p>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">parameter</td><td><a class="el" href="a00020.html" title="The structure that describes parameter. Inherits from Variable ">Parameter</a> object</td></tr>
-  </table>
-  </dd>
-</dl>
-<dl class="section return"><dt>Returns</dt><dd>Normalized parameter object</dd></dl>
+<p>Definition at line <a class="el" href="a00032_source.html#l00062">62</a> of file <a class="el" href="a00032_source.html">Python.cs</a>.</p>
 
 </div>
 </div>
 <hr/>The documentation for this class was generated from the following file:<ul>
-<li>/home/travis/build/lnupmi11/CodeGen/generators/<a class="el" href="a00031_source.html">GeneratorConf.cs</a></li>
+<li>/home/travis/build/lnupmi11/CodeGen/CodeGen/generators/<a class="el" href="a00032_source.html">Python.cs</a></li>
 </ul>
 </div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="navelem"><a class="el" href="a00047.html">CodeGen</a></li><li class="navelem"><a class="el" href="a00048.html">generators</a></li><li class="navelem"><a class="el" href="a00018.html">Normalizer</a></li>
+    <li class="navelem"><a class="el" href="a00038.html">CodeGen</a></li><li class="navelem"><a class="el" href="a00039.html">generators</a></li><li class="navelem"><a class="el" href="a00018.html">PythonGenerator</a></li>
     <li class="footer">Generated by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.6 </li>

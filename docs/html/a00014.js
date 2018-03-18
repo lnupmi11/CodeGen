@@ -1,7 +1,9 @@
 var a00014 =
 [
-    [ "GenerateClass", "a00014.html#aebc6618c4d20b03195d4dd2a9bd03ffb", null ],
-    [ "GenerateField", "a00014.html#a84c05958d52e40e29a5a2157de4579e2", null ],
-    [ "GenerateMethod", "a00014.html#a01dca6b9662f50fbd4735dbe97c99cc2", null ],
-    [ "Indent", "a00014.html#a2782dcca7a2de7d1db5e178e197c76ae", null ]
+    [ "NormalizeClass", "a00014.html#a363c4b74df556ac61706775ae1f2c7e7", null ],
+    [ "NormalizeField", "a00014.html#a28c786f600a5414f787826bdee86299d", null ],
+    [ "NormalizeMethod", "a00014.html#a64a8973387e52ee968083681550954a4", null ],
+    [ "NormalizePackage", "a00014.html#ae341a5d757b6f24da4301ae8041c2cbe", null ],
+    [ "NormalizeParameter", "a00014.html#a318b8095add396b497d20e0d5bd2d150", null ],
+    [ "NormalizeType", "a00014.html#a1638d89a5ad2179d35d13e24d77f2db2", null ]
 ];

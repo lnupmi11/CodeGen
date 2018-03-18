@@ -1,4 +1,6 @@
 var searchData=
 [
-  ['indentsize',['IndentSize',['../a00016.html#a3337b97358faf06c1e633e80f71cf2b4',1,'CodeGen::generators::Languange']]]
+  ['java_2ecs',['Java.cs',['../a00030.html',1,'']]],
+  ['javagenerator',['JavaGenerator',['../a00010.html',1,'CodeGen::generators']]],
+  ['javanormalizer',['JavaNormalizer',['../a00011.html',1,'CodeGen::generators']]]
 ];

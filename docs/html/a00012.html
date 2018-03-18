@@ -4,7 +4,7 @@
 <meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.8.6"/>
-<title>CodeGen: CodeGen.parser.GoParser Class Reference</title>
+<title>CodeGen: CodeGen.generators.Languange Struct Reference</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -106,210 +106,181 @@ $(document).ready(function(){initNavTree('a00012.html','');});
 <div class="header">
   <div class="summary">
 <a href="#pub-methods">Public Member Functions</a> &#124;
-<a href="#pro-methods">Protected Member Functions</a> &#124;
-<a href="a00123.html">List of all members</a>  </div>
+<a href="#pub-attribs">Public Attributes</a> &#124;
+<a href="a00071.html">List of all members</a>  </div>
   <div class="headertitle">
-<div class="title">CodeGen.parser.GoParser Class Reference</div>  </div>
+<div class="title">CodeGen.generators.Languange Struct Reference</div>  </div>
 </div><!--header-->
 <div class="contents">
 
-<p>Go language Parser  
+<p>The class that describes programming language and has a generator for it  
  <a href="a00012.html#details">More...</a></p>
 <div class="dynheader">
-Inheritance diagram for CodeGen.parser.GoParser:</div>
+Collaboration diagram for CodeGen.generators.Languange:</div>
 <div class="dyncontent">
-<div class="center"><img src="a00124.png" border="0" usemap="#_code_gen_8parser_8_go_parser_inherit__map" alt="Inheritance graph"/></div>
-<map name="_code_gen_8parser_8_go_parser_inherit__map" id="_code_gen_8parser_8_go_parser_inherit__map">
-<area shape="rect" id="node2" href="a00021.html" title="Language parser " alt="" coords="63,5,123,32"/></map>
-<center><span class="legend">[<a target="top" href="graph_legend.html">legend</a>]</span></center></div>
-<div class="dynheader">
-Collaboration diagram for CodeGen.parser.GoParser:</div>
-<div class="dyncontent">
-<div class="center"><img src="a00125.png" border="0" usemap="#_code_gen_8parser_8_go_parser_coll__map" alt="Collaboration graph"/></div>
-<map name="_code_gen_8parser_8_go_parser_coll__map" id="_code_gen_8parser_8_go_parser_coll__map">
-<area shape="rect" id="node2" href="a00021.html" title="Language parser " alt="" coords="63,5,123,32"/></map>
-<center><span class="legend">[<a target="top" href="graph_legend.html">legend</a>]</span></center></div>
+<div class="center"><img src="a00072.png" border="0" usemap="#_code_gen_8generators_8_languange_coll__map" alt="Collaboration graph"/></div>
+<map name="_code_gen_8generators_8_languange_coll__map" id="_code_gen_8generators_8_languange_coll__map">
+<area shape="rect" id="node2" href="a00014.html" title="Interface of language normalizer: normalizes package data according to specified language ..." alt="" coords="5,6,213,157"/><area shape="rect" id="node3" href="a00006.html" title="Interface of language generator " alt="" coords="239,21,441,142"/></map>
+</div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:ac59b9062b5a95d87b0372f000f68d39a"><td class="memItemLeft" align="right" valign="top">override <a class="el" href="a00019.html">Package</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00012.html#ac59b9062b5a95d87b0372f000f68d39a">ParsePackage</a> (string pkg)</td></tr>
-<tr class="separator:ac59b9062b5a95d87b0372f000f68d39a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a89fa98041473b18a7df845e14edcba07"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00012.html#a89fa98041473b18a7df845e14edcba07">Languange</a> (<a class="el" href="a00006.html">Generator</a> generator, string extension=&quot;&quot;, string comment=&quot;&quot;, <a class="el" href="a00014.html">Normalizer</a> normalizer=null, int indentSize=4)</td></tr>
+<tr class="memdesc:a89fa98041473b18a7df845e14edcba07"><td class="mdescLeft">&#160;</td><td class="mdescRight">Constructor for language, used to avoid struct initializers  <a href="#a89fa98041473b18a7df845e14edcba07">More...</a><br/></td></tr>
+<tr class="separator:a89fa98041473b18a7df845e14edcba07"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pro-methods"></a>
-Protected Member Functions</h2></td></tr>
-<tr class="memitem:a4caebddf3afa095b6851dd97762a9d19"><td class="memItemLeft" align="right" valign="top">override <a class="el" href="a00003.html">Class</a>[]&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00012.html#a4caebddf3afa095b6851dd97762a9d19">ParseClasses</a> (string @class)</td></tr>
-<tr class="separator:a4caebddf3afa095b6851dd97762a9d19"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a55d383fbda0a05686c0f53f5ddb42c74"><td class="memItemLeft" align="right" valign="top">override <a class="el" href="a00007.html">Field</a>[]&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00012.html#a55d383fbda0a05686c0f53f5ddb42c74">ParseFields</a> (string fields)</td></tr>
-<tr class="separator:a55d383fbda0a05686c0f53f5ddb42c74"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a3a92d0e6bb283b9107838debcecf038a"><td class="memItemLeft" align="right" valign="top">override <a class="el" href="a00017.html">Method</a>[]&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00012.html#a3a92d0e6bb283b9107838debcecf038a">ParseMethods</a> (string methods)</td></tr>
-<tr class="separator:a3a92d0e6bb283b9107838debcecf038a"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a15ec6b1af6fafceacc2c8f7005d69b37"><td class="memItemLeft" align="right" valign="top">override <a class="el" href="a00020.html">Parameter</a>[]&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00012.html#a15ec6b1af6fafceacc2c8f7005d69b37">ParseParameters</a> (string parameters)</td></tr>
-<tr class="separator:a15ec6b1af6fafceacc2c8f7005d69b37"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-attribs"></a>
+Public Attributes</h2></td></tr>
+<tr class="memitem:a25fb0a47247497581d2d0560d0db66d8"><td class="memItemLeft" align="right" valign="top">readonly <a class="el" href="a00006.html">Generator</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00012.html#a25fb0a47247497581d2d0560d0db66d8">Generator</a></td></tr>
+<tr class="memdesc:a25fb0a47247497581d2d0560d0db66d8"><td class="mdescLeft">&#160;</td><td class="mdescRight">Holds the generator of the language. <a class="el" href="a00005.html" title="The structure that describes field. Contains access, const and static properties. Inherits from Varia...">Field</a> is read only  <a href="#a25fb0a47247497581d2d0560d0db66d8">More...</a><br/></td></tr>
+<tr class="separator:a25fb0a47247497581d2d0560d0db66d8"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af00eae192536b05d637d0b81954202c7"><td class="memItemLeft" align="right" valign="top">readonly string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00012.html#af00eae192536b05d637d0b81954202c7">Extension</a></td></tr>
+<tr class="memdesc:af00eae192536b05d637d0b81954202c7"><td class="mdescLeft">&#160;</td><td class="mdescRight">Holds the extension of the file. <a class="el" href="a00005.html" title="The structure that describes field. Contains access, const and static properties. Inherits from Varia...">Field</a> is read only  <a href="#af00eae192536b05d637d0b81954202c7">More...</a><br/></td></tr>
+<tr class="separator:af00eae192536b05d637d0b81954202c7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa63aaf377bcac5ca06c14304701c3493"><td class="memItemLeft" align="right" valign="top">readonly string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00012.html#aa63aaf377bcac5ca06c14304701c3493">Comment</a></td></tr>
+<tr class="memdesc:aa63aaf377bcac5ca06c14304701c3493"><td class="mdescLeft">&#160;</td><td class="mdescRight">Holds comment format. <a class="el" href="a00005.html" title="The structure that describes field. Contains access, const and static properties. Inherits from Varia...">Field</a> is read only  <a href="#aa63aaf377bcac5ca06c14304701c3493">More...</a><br/></td></tr>
+<tr class="separator:aa63aaf377bcac5ca06c14304701c3493"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad188260793d4d4f994fb720d0ac60aff"><td class="memItemLeft" align="right" valign="top">readonly <a class="el" href="a00014.html">Normalizer</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00012.html#ad188260793d4d4f994fb720d0ac60aff">Normalizer</a></td></tr>
+<tr class="memdesc:ad188260793d4d4f994fb720d0ac60aff"><td class="mdescLeft">&#160;</td><td class="mdescRight">Holds language normalizer. <a class="el" href="a00005.html" title="The structure that describes field. Contains access, const and static properties. Inherits from Varia...">Field</a> is read only  <a href="#ad188260793d4d4f994fb720d0ac60aff">More...</a><br/></td></tr>
+<tr class="separator:ad188260793d4d4f994fb720d0ac60aff"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock"><p>Go language Parser </p>
+<div class="textblock"><p>The class that describes programming language and has a generator for it </p>
 
-<p>Definition at line <a class="el" href="a00033_source.html#l00013">13</a> of file <a class="el" href="a00033_source.html">Go.cs</a>.</p>
-</div><h2 class="groupheader">Member Function Documentation</h2>
-<a class="anchor" id="a4caebddf3afa095b6851dd97762a9d19"></a>
+<p>Definition at line <a class="el" href="a00027_source.html#l00148">148</a> of file <a class="el" href="a00027_source.html">GeneratorConf.cs</a>.</p>
+</div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
+<a class="anchor" id="a89fa98041473b18a7df845e14edcba07"></a>
 <div class="memitem">
 <div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">override <a class="el" href="a00003.html">Class</a> [] CodeGen.parser.GoParser.ParseClasses </td>
+          <td class="memname">CodeGen.generators.Languange.Languange </td>
           <td>(</td>
-          <td class="paramtype">string @&#160;</td>
-          <td class="paramname"><em>class</em></td><td>)</td>
-          <td></td>
+          <td class="paramtype"><a class="el" href="a00006.html">Generator</a>&#160;</td>
+          <td class="paramname"><em>generator</em>, </td>
         </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">protected</span><span class="mlabel">virtual</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p></p>
-
-<p>Implements <a class="el" href="a00021.html#accf3d4f316520662047ed81a8d9e1bf4">CodeGen.generators.Parser</a>.</p>
-
-<p>Definition at line <a class="el" href="a00033_source.html#l00062">62</a> of file <a class="el" href="a00033_source.html">Go.cs</a>.</p>
-
-</div>
-</div>
-<a class="anchor" id="a55d383fbda0a05686c0f53f5ddb42c74"></a>
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
         <tr>
-          <td class="memname">override <a class="el" href="a00007.html">Field</a> [] CodeGen.parser.GoParser.ParseFields </td>
-          <td>(</td>
+          <td class="paramkey"></td>
+          <td></td>
           <td class="paramtype">string&#160;</td>
-          <td class="paramname"><em>fields</em></td><td>)</td>
+          <td class="paramname"><em>extension</em> = <code>&quot;&quot;</code>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
           <td></td>
+          <td class="paramtype">string&#160;</td>
+          <td class="paramname"><em>comment</em> = <code>&quot;&quot;</code>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="a00014.html">Normalizer</a>&#160;</td>
+          <td class="paramname"><em>normalizer</em> = <code>null</code>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>indentSize</em> = <code>4</code>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
         </tr>
       </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">protected</span><span class="mlabel">virtual</span></span>  </td>
-  </tr>
-</table>
 </div><div class="memdoc">
 
-<p></p>
+<p>Constructor for language, used to avoid struct initializers </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">generator</td><td>Language generator</td></tr>
+    <tr><td class="paramname">extension</td><td>File extension</td></tr>
+    <tr><td class="paramname">comment</td><td>Comment format</td></tr>
+    <tr><td class="paramname">normalizer</td><td>Language normalizer</td></tr>
+    <tr><td class="paramname">indentSize</td><td>The size of identation (works if using spaces, else 1 tab)</td></tr>
+  </table>
+  </dd>
+</dl>
 
-<p>Implements <a class="el" href="a00021.html#a7813d83c395ca30951a19e88ebb5ca4c">CodeGen.generators.Parser</a>.</p>
-
-<p>Definition at line <a class="el" href="a00033_source.html#l00090">90</a> of file <a class="el" href="a00033_source.html">Go.cs</a>.</p>
+<p>Definition at line <a class="el" href="a00027_source.html#l00183">183</a> of file <a class="el" href="a00027_source.html">GeneratorConf.cs</a>.</p>
 
 </div>
 </div>
-<a class="anchor" id="a3a92d0e6bb283b9107838debcecf038a"></a>
+<h2 class="groupheader">Member Data Documentation</h2>
+<a class="anchor" id="aa63aaf377bcac5ca06c14304701c3493"></a>
 <div class="memitem">
 <div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">override <a class="el" href="a00017.html">Method</a> [] CodeGen.parser.GoParser.ParseMethods </td>
-          <td>(</td>
-          <td class="paramtype">string&#160;</td>
-          <td class="paramname"><em>methods</em></td><td>)</td>
-          <td></td>
+          <td class="memname">readonly string CodeGen.generators.Languange.Comment</td>
         </tr>
       </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">protected</span><span class="mlabel">virtual</span></span>  </td>
-  </tr>
-</table>
 </div><div class="memdoc">
 
-<p></p>
+<p>Holds comment format. <a class="el" href="a00005.html" title="The structure that describes field. Contains access, const and static properties. Inherits from Varia...">Field</a> is read only </p>
 
-<p>Implements <a class="el" href="a00021.html#a9e95c5f2631d21ba27abdbce3aad4ee8">CodeGen.generators.Parser</a>.</p>
-
-<p>Definition at line <a class="el" href="a00033_source.html#l00118">118</a> of file <a class="el" href="a00033_source.html">Go.cs</a>.</p>
+<p>Definition at line <a class="el" href="a00027_source.html#l00163">163</a> of file <a class="el" href="a00027_source.html">GeneratorConf.cs</a>.</p>
 
 </div>
 </div>
-<a class="anchor" id="ac59b9062b5a95d87b0372f000f68d39a"></a>
+<a class="anchor" id="af00eae192536b05d637d0b81954202c7"></a>
 <div class="memitem">
 <div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">override <a class="el" href="a00019.html">Package</a> CodeGen.parser.GoParser.ParsePackage </td>
-          <td>(</td>
-          <td class="paramtype">string&#160;</td>
-          <td class="paramname"><em>pkg</em></td><td>)</td>
-          <td></td>
+          <td class="memname">readonly string CodeGen.generators.Languange.Extension</td>
         </tr>
       </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">virtual</span></span>  </td>
-  </tr>
-</table>
 </div><div class="memdoc">
 
-<p></p>
+<p>Holds the extension of the file. <a class="el" href="a00005.html" title="The structure that describes field. Contains access, const and static properties. Inherits from Varia...">Field</a> is read only </p>
 
-<p>Implements <a class="el" href="a00021.html#a497c6a3478574cca174c08e6fc5e2cbd">CodeGen.generators.Parser</a>.</p>
-
-<p>Definition at line <a class="el" href="a00033_source.html#l00049">49</a> of file <a class="el" href="a00033_source.html">Go.cs</a>.</p>
+<p>Definition at line <a class="el" href="a00027_source.html#l00158">158</a> of file <a class="el" href="a00027_source.html">GeneratorConf.cs</a>.</p>
 
 </div>
 </div>
-<a class="anchor" id="a15ec6b1af6fafceacc2c8f7005d69b37"></a>
+<a class="anchor" id="a25fb0a47247497581d2d0560d0db66d8"></a>
 <div class="memitem">
 <div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">override <a class="el" href="a00020.html">Parameter</a> [] CodeGen.parser.GoParser.ParseParameters </td>
-          <td>(</td>
-          <td class="paramtype">string&#160;</td>
-          <td class="paramname"><em>parameters</em></td><td>)</td>
-          <td></td>
+          <td class="memname">readonly <a class="el" href="a00006.html">Generator</a> CodeGen.generators.Languange.Generator</td>
         </tr>
       </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">protected</span><span class="mlabel">virtual</span></span>  </td>
-  </tr>
-</table>
 </div><div class="memdoc">
 
-<p></p>
+<p>Holds the generator of the language. <a class="el" href="a00005.html" title="The structure that describes field. Contains access, const and static properties. Inherits from Varia...">Field</a> is read only </p>
 
-<p>Implements <a class="el" href="a00021.html#a3bb5b4fc773cb5e5530f026319f30da6">CodeGen.generators.Parser</a>.</p>
-
-<p>Definition at line <a class="el" href="a00033_source.html#l00148">148</a> of file <a class="el" href="a00033_source.html">Go.cs</a>.</p>
+<p>Definition at line <a class="el" href="a00027_source.html#l00153">153</a> of file <a class="el" href="a00027_source.html">GeneratorConf.cs</a>.</p>
 
 </div>
 </div>
-<hr/>The documentation for this class was generated from the following file:<ul>
-<li>/home/travis/build/lnupmi11/CodeGen/parser/<a class="el" href="a00033_source.html">Go.cs</a></li>
+<a class="anchor" id="ad188260793d4d4f994fb720d0ac60aff"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">readonly <a class="el" href="a00014.html">Normalizer</a> CodeGen.generators.Languange.Normalizer</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Holds language normalizer. <a class="el" href="a00005.html" title="The structure that describes field. Contains access, const and static properties. Inherits from Varia...">Field</a> is read only </p>
+
+<p>Definition at line <a class="el" href="a00027_source.html#l00168">168</a> of file <a class="el" href="a00027_source.html">GeneratorConf.cs</a>.</p>
+
+</div>
+</div>
+<hr/>The documentation for this struct was generated from the following file:<ul>
+<li>/home/travis/build/lnupmi11/CodeGen/CodeGen/generators/<a class="el" href="a00027_source.html">GeneratorConf.cs</a></li>
 </ul>
 </div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="navelem"><a class="el" href="a00047.html">CodeGen</a></li><li class="navelem"><a class="el" href="a00049.html">parser</a></li><li class="navelem"><a class="el" href="a00012.html">GoParser</a></li>
+    <li class="navelem"><a class="el" href="a00038.html">CodeGen</a></li><li class="navelem"><a class="el" href="a00039.html">generators</a></li><li class="navelem"><a class="el" href="a00012.html">Languange</a></li>
     <li class="footer">Generated by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.6 </li>

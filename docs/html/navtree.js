@@ -1,9 +1,7 @@
 var NAVTREE =
 [
   [ "CodeGen", "index.html", [
-    [ "CodeGen", "a00002.html", null ],
-    [ "Todo List", "a00069.html", null ],
-    [ "Bug List", "a00071.html", null ],
+    [ "Todo List", "a00053.html", null ],
     [ "Packages", null, [
       [ "Packages", "namespaces.html", "namespaces" ]
     ] ],
@@ -26,7 +24,7 @@ var NAVTREE =
 
 var NAVTREEINDEX =
 [
-"a00002.html"
+"a00001.html"
 ];
 
 var SYNCONMSG = 'click to disable panel synchronisation';

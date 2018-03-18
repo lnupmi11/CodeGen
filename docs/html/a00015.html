@@ -4,7 +4,7 @@
 <meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.8.6"/>
-<title>CodeGen: CodeGen.parser.JavaParser Class Reference</title>
+<title>CodeGen: CodeGen.generators.Package Class Reference</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -106,82 +106,69 @@ $(document).ready(function(){initNavTree('a00015.html','');});
 <div class="header">
   <div class="summary">
 <a href="#pub-methods">Public Member Functions</a> &#124;
-<a href="#pro-methods">Protected Member Functions</a> &#124;
-<a href="a00126.html">List of all members</a>  </div>
+<a href="#properties">Properties</a> &#124;
+<a href="a00087.html">List of all members</a>  </div>
   <div class="headertitle">
-<div class="title">CodeGen.parser.JavaParser Class Reference</div>  </div>
+<div class="title">CodeGen.generators.Package Class Reference</div>  </div>
 </div><!--header-->
 <div class="contents">
 
-<p>Java language Parser  
+<p>The structure that describes package. Contains classes and subpackages  
  <a href="a00015.html#details">More...</a></p>
 <div class="dynheader">
-Inheritance diagram for CodeGen.parser.JavaParser:</div>
+Collaboration diagram for CodeGen.generators.Package:</div>
 <div class="dyncontent">
-<div class="center"><img src="a00127.png" border="0" usemap="#_code_gen_8parser_8_java_parser_inherit__map" alt="Inheritance graph"/></div>
-<map name="_code_gen_8parser_8_java_parser_inherit__map" id="_code_gen_8parser_8_java_parser_inherit__map">
-<area shape="rect" id="node2" href="a00021.html" title="Language parser " alt="" coords="69,5,128,32"/></map>
-<center><span class="legend">[<a target="top" href="graph_legend.html">legend</a>]</span></center></div>
-<div class="dynheader">
-Collaboration diagram for CodeGen.parser.JavaParser:</div>
-<div class="dyncontent">
-<div class="center"><img src="a00128.png" border="0" usemap="#_code_gen_8parser_8_java_parser_coll__map" alt="Collaboration graph"/></div>
-<map name="_code_gen_8parser_8_java_parser_coll__map" id="_code_gen_8parser_8_java_parser_coll__map">
-<area shape="rect" id="node2" href="a00021.html" title="Language parser " alt="" coords="69,5,128,32"/></map>
-<center><span class="legend">[<a target="top" href="graph_legend.html">legend</a>]</span></center></div>
+<div class="center"><img src="a00088.png" border="0" usemap="#_code_gen_8generators_8_package_coll__map" alt="Collaboration graph"/></div>
+<map name="_code_gen_8generators_8_package_coll__map" id="_code_gen_8generators_8_package_coll__map">
+</map>
+</div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:ae5de9a5d007b2344e289fc1fc193d027"><td class="memItemLeft" align="right" valign="top">override <a class="el" href="a00019.html">Package</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00015.html#ae5de9a5d007b2344e289fc1fc193d027">ParsePackage</a> (string pkg)</td></tr>
-<tr class="separator:ae5de9a5d007b2344e289fc1fc193d027"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a73029cd81fc68696bfe2d801ee382e69"><td class="memItemLeft" align="right" valign="top">override string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00015.html#a73029cd81fc68696bfe2d801ee382e69">ToString</a> ()</td></tr>
+<tr class="separator:a73029cd81fc68696bfe2d801ee382e69"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pro-methods"></a>
-Protected Member Functions</h2></td></tr>
-<tr class="memitem:a6f1798a52753bc3c3d8a44dcc61b26f2"><td class="memItemLeft" align="right" valign="top">override <a class="el" href="a00003.html">Class</a>[]&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00015.html#a6f1798a52753bc3c3d8a44dcc61b26f2">ParseClasses</a> (string @class)</td></tr>
-<tr class="separator:a6f1798a52753bc3c3d8a44dcc61b26f2"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a669dac3c936c55cd50e86e80c0f6ea41"><td class="memItemLeft" align="right" valign="top">override <a class="el" href="a00007.html">Field</a>[]&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00015.html#a669dac3c936c55cd50e86e80c0f6ea41">ParseFields</a> (string body)</td></tr>
-<tr class="separator:a669dac3c936c55cd50e86e80c0f6ea41"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ae28013a31ee346ce90747917a9ef501c"><td class="memItemLeft" align="right" valign="top">override <a class="el" href="a00017.html">Method</a>[]&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00015.html#ae28013a31ee346ce90747917a9ef501c">ParseMethods</a> (string body)</td></tr>
-<tr class="separator:ae28013a31ee346ce90747917a9ef501c"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a0713cac233705ff4a172b25615b45df9"><td class="memItemLeft" align="right" valign="top">override <a class="el" href="a00020.html">Parameter</a>[]&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00015.html#a0713cac233705ff4a172b25615b45df9">ParseParameters</a> (string body)</td></tr>
-<tr class="separator:a0713cac233705ff4a172b25615b45df9"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="properties"></a>
+Properties</h2></td></tr>
+<tr class="memitem:a8da357302a6d399ce554f7a71bc4a90d"><td class="memItemLeft" align="right" valign="top">string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00015.html#a8da357302a6d399ce554f7a71bc4a90d">Name</a><code> [get, set]</code></td></tr>
+<tr class="memdesc:a8da357302a6d399ce554f7a71bc4a90d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Represents the name of the package. Type: string  <a href="#a8da357302a6d399ce554f7a71bc4a90d">More...</a><br/></td></tr>
+<tr class="separator:a8da357302a6d399ce554f7a71bc4a90d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af03f90e7753d7fdc68699c32f86f82e9"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00015.html#af03f90e7753d7fdc68699c32f86f82e9">UseSpaces</a><code> [get, set]</code></td></tr>
+<tr class="memdesc:af03f90e7753d7fdc68699c32f86f82e9"><td class="mdescLeft">&#160;</td><td class="mdescRight">Represents using of spaces or tabs. Type: boolean  <a href="#af03f90e7753d7fdc68699c32f86f82e9">More...</a><br/></td></tr>
+<tr class="separator:af03f90e7753d7fdc68699c32f86f82e9"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7bdaec0ad570345975582ca99076d4dd"><td class="memItemLeft" align="right" valign="top"><a class="el" href="a00001.html">Class</a>[]&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00015.html#a7bdaec0ad570345975582ca99076d4dd">Classes</a><code> [get, set]</code></td></tr>
+<tr class="memdesc:a7bdaec0ad570345975582ca99076d4dd"><td class="mdescLeft">&#160;</td><td class="mdescRight">Represents classes. Type: array of type <a class="el" href="a00001.html" title="The structure that describes class. Contains name, array of fields, methods and subclasses, parent class name, access specifier. Overrides ToString() method. ">Class</a>  <a href="#a7bdaec0ad570345975582ca99076d4dd">More...</a><br/></td></tr>
+<tr class="separator:a7bdaec0ad570345975582ca99076d4dd"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a014a74cbc2bc2876e24d5a250cb54c68"><td class="memItemLeft" align="right" valign="top"><a class="el" href="a00015.html">Package</a>[]&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00015.html#a014a74cbc2bc2876e24d5a250cb54c68">Packages</a><code> [get, set]</code></td></tr>
+<tr class="memdesc:a014a74cbc2bc2876e24d5a250cb54c68"><td class="mdescLeft">&#160;</td><td class="mdescRight">Represents subpackages. Type: array of type <a class="el" href="a00015.html" title="The structure that describes package. Contains classes and subpackages ">Package</a>  <a href="#a014a74cbc2bc2876e24d5a250cb54c68">More...</a><br/></td></tr>
+<tr class="separator:a014a74cbc2bc2876e24d5a250cb54c68"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock"><p>Java language Parser </p>
+<div class="textblock"><p>The structure that describes package. Contains classes and subpackages </p>
 
-<p>Definition at line <a class="el" href="a00036_source.html#l00014">14</a> of file <a class="el" href="a00036_source.html">Java.cs</a>.</p>
+<p>Definition at line <a class="el" href="a00031_source.html#l00009">9</a> of file <a class="el" href="a00031_source.html">Models.cs</a>.</p>
 </div><h2 class="groupheader">Member Function Documentation</h2>
-<a class="anchor" id="a6f1798a52753bc3c3d8a44dcc61b26f2"></a>
+<a class="anchor" id="a73029cd81fc68696bfe2d801ee382e69"></a>
 <div class="memitem">
 <div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">override <a class="el" href="a00003.html">Class</a> [] CodeGen.parser.JavaParser.ParseClasses </td>
+          <td class="memname">override string CodeGen.generators.Package.ToString </td>
           <td>(</td>
-          <td class="paramtype">string @&#160;</td>
-          <td class="paramname"><em>class</em></td><td>)</td>
+          <td class="paramname"></td><td>)</td>
           <td></td>
         </tr>
       </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">protected</span><span class="mlabel">virtual</span></span>  </td>
-  </tr>
-</table>
 </div><div class="memdoc">
 
 <p></p>
 
-<p>Implements <a class="el" href="a00021.html#accf3d4f316520662047ed81a8d9e1bf4">CodeGen.generators.Parser</a>.</p>
-
-<p>Definition at line <a class="el" href="a00036_source.html#l00071">71</a> of file <a class="el" href="a00036_source.html">Java.cs</a>.</p>
+<p>Definition at line <a class="el" href="a00031_source.html#l00036">36</a> of file <a class="el" href="a00031_source.html">Models.cs</a>.</p>
 
 </div>
 </div>
-<a class="anchor" id="a669dac3c936c55cd50e86e80c0f6ea41"></a>
+<h2 class="groupheader">Property Documentation</h2>
+<a class="anchor" id="a7bdaec0ad570345975582ca99076d4dd"></a>
 <div class="memitem">
 <div class="memproto">
 <table class="mlabels">
@@ -189,29 +176,23 @@ Protected Member Functions</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">override <a class="el" href="a00007.html">Field</a> [] CodeGen.parser.JavaParser.ParseFields </td>
-          <td>(</td>
-          <td class="paramtype">string&#160;</td>
-          <td class="paramname"><em>body</em></td><td>)</td>
-          <td></td>
+          <td class="memname"><a class="el" href="a00001.html">Class</a> [] CodeGen.generators.Package.Classes</td>
         </tr>
       </table>
   </td>
   <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">protected</span><span class="mlabel">virtual</span></span>  </td>
+<span class="mlabels"><span class="mlabel">get</span><span class="mlabel">set</span></span>  </td>
   </tr>
 </table>
 </div><div class="memdoc">
 
-<p></p>
+<p>Represents classes. Type: array of type <a class="el" href="a00001.html" title="The structure that describes class. Contains name, array of fields, methods and subclasses, parent class name, access specifier. Overrides ToString() method. ">Class</a> </p>
 
-<p>Implements <a class="el" href="a00021.html#a7813d83c395ca30951a19e88ebb5ca4c">CodeGen.generators.Parser</a>.</p>
-
-<p>Definition at line <a class="el" href="a00036_source.html#l00105">105</a> of file <a class="el" href="a00036_source.html">Java.cs</a>.</p>
+<p>Definition at line <a class="el" href="a00031_source.html#l00027">27</a> of file <a class="el" href="a00031_source.html">Models.cs</a>.</p>
 
 </div>
 </div>
-<a class="anchor" id="ae28013a31ee346ce90747917a9ef501c"></a>
+<a class="anchor" id="a8da357302a6d399ce554f7a71bc4a90d"></a>
 <div class="memitem">
 <div class="memproto">
 <table class="mlabels">
@@ -219,29 +200,23 @@ Protected Member Functions</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">override <a class="el" href="a00017.html">Method</a> [] CodeGen.parser.JavaParser.ParseMethods </td>
-          <td>(</td>
-          <td class="paramtype">string&#160;</td>
-          <td class="paramname"><em>body</em></td><td>)</td>
-          <td></td>
+          <td class="memname">string CodeGen.generators.Package.Name</td>
         </tr>
       </table>
   </td>
   <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">protected</span><span class="mlabel">virtual</span></span>  </td>
+<span class="mlabels"><span class="mlabel">get</span><span class="mlabel">set</span></span>  </td>
   </tr>
 </table>
 </div><div class="memdoc">
 
-<p></p>
+<p>Represents the name of the package. Type: string </p>
 
-<p>Implements <a class="el" href="a00021.html#a9e95c5f2631d21ba27abdbce3aad4ee8">CodeGen.generators.Parser</a>.</p>
-
-<p>Definition at line <a class="el" href="a00036_source.html#l00148">148</a> of file <a class="el" href="a00036_source.html">Java.cs</a>.</p>
+<p>Definition at line <a class="el" href="a00031_source.html#l00015">15</a> of file <a class="el" href="a00031_source.html">Models.cs</a>.</p>
 
 </div>
 </div>
-<a class="anchor" id="ae5de9a5d007b2344e289fc1fc193d027"></a>
+<a class="anchor" id="a014a74cbc2bc2876e24d5a250cb54c68"></a>
 <div class="memitem">
 <div class="memproto">
 <table class="mlabels">
@@ -249,29 +224,23 @@ Protected Member Functions</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">override <a class="el" href="a00019.html">Package</a> CodeGen.parser.JavaParser.ParsePackage </td>
-          <td>(</td>
-          <td class="paramtype">string&#160;</td>
-          <td class="paramname"><em>pkg</em></td><td>)</td>
-          <td></td>
+          <td class="memname"><a class="el" href="a00015.html">Package</a> [] CodeGen.generators.Package.Packages</td>
         </tr>
       </table>
   </td>
   <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">virtual</span></span>  </td>
+<span class="mlabels"><span class="mlabel">get</span><span class="mlabel">set</span></span>  </td>
   </tr>
 </table>
 </div><div class="memdoc">
 
-<p></p>
+<p>Represents subpackages. Type: array of type <a class="el" href="a00015.html" title="The structure that describes package. Contains classes and subpackages ">Package</a> </p>
 
-<p>Implements <a class="el" href="a00021.html#a497c6a3478574cca174c08e6fc5e2cbd">CodeGen.generators.Parser</a>.</p>
-
-<p>Definition at line <a class="el" href="a00036_source.html#l00064">64</a> of file <a class="el" href="a00036_source.html">Java.cs</a>.</p>
+<p>Definition at line <a class="el" href="a00031_source.html#l00033">33</a> of file <a class="el" href="a00031_source.html">Models.cs</a>.</p>
 
 </div>
 </div>
-<a class="anchor" id="a0713cac233705ff4a172b25615b45df9"></a>
+<a class="anchor" id="af03f90e7753d7fdc68699c32f86f82e9"></a>
 <div class="memitem">
 <div class="memproto">
 <table class="mlabels">
@@ -279,36 +248,31 @@ Protected Member Functions</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">override <a class="el" href="a00020.html">Parameter</a> [] CodeGen.parser.JavaParser.ParseParameters </td>
-          <td>(</td>
-          <td class="paramtype">string&#160;</td>
-          <td class="paramname"><em>body</em></td><td>)</td>
-          <td></td>
+          <td class="memname">bool CodeGen.generators.Package.UseSpaces</td>
         </tr>
       </table>
   </td>
   <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">protected</span><span class="mlabel">virtual</span></span>  </td>
+<span class="mlabels"><span class="mlabel">get</span><span class="mlabel">set</span></span>  </td>
   </tr>
 </table>
 </div><div class="memdoc">
-<dl class="bug"><dt><b><a class="el" href="a00070.html#_bug000001">Bug:</a></b></dt><dd>: parse params not working </dd></dl>
 
-<p>Implements <a class="el" href="a00021.html#a3bb5b4fc773cb5e5530f026319f30da6">CodeGen.generators.Parser</a>.</p>
+<p>Represents using of spaces or tabs. Type: boolean </p>
 
-<p>Definition at line <a class="el" href="a00036_source.html#l00186">186</a> of file <a class="el" href="a00036_source.html">Java.cs</a>.</p>
+<p>Definition at line <a class="el" href="a00031_source.html#l00021">21</a> of file <a class="el" href="a00031_source.html">Models.cs</a>.</p>
 
 </div>
 </div>
 <hr/>The documentation for this class was generated from the following file:<ul>
-<li>/home/travis/build/lnupmi11/CodeGen/parser/<a class="el" href="a00036_source.html">Java.cs</a></li>
+<li>/home/travis/build/lnupmi11/CodeGen/CodeGen/generators/<a class="el" href="a00031_source.html">Models.cs</a></li>
 </ul>
 </div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="navelem"><a class="el" href="a00047.html">CodeGen</a></li><li class="navelem"><a class="el" href="a00049.html">parser</a></li><li class="navelem"><a class="el" href="a00015.html">JavaParser</a></li>
+    <li class="navelem"><a class="el" href="a00038.html">CodeGen</a></li><li class="navelem"><a class="el" href="a00039.html">generators</a></li><li class="navelem"><a class="el" href="a00015.html">Package</a></li>
     <li class="footer">Generated by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.6 </li>
