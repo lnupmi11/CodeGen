@@ -40,13 +40,13 @@ namespace CodeGen
 
 	internal static class Program
 	{
-		public const string DefaultLang = "java";
+		public const string DefaultLang = "c#";
 
 		public static readonly Package DefaultPkg = GeneratorConf.ExamplePkg;
 
 		public static Options Opts;
 
-		private const string FileContent = JavaContent;
+		private const string FileContent = GoContent;
 		
 		private static void Main(string[] args)
 		{
@@ -60,7 +60,7 @@ namespace CodeGen
 			#endif
 				
 			//	ExecuteConf.Execute();
-				var pkg = new JavaParser().ParsePackage(FileContent);
+				var pkg = new GoParser().ParsePackage(FileContent);
 				var m = GeneratorConf.GetLanguage(Opts.Lang).Generator.Generate(pkg);
 				foreach (var file in m)
 				{
@@ -104,18 +104,18 @@ class Apple extends Fruit {
 		
 		private const string GoContent = @"
 type Apple struct {
-        Colour string
+        Colour_1 string
         Sort string
         size int
 }
 
-func (Apple) print(colour string) {}
+func (Apple) print(colour string, hash int) {}
 
-func (Apple) getSizeValue() int {
+func (Apple) get_size() int {
         return nil
 }
 
-func (Apple) GetColorName() string {
+func (Apple) GetColorValue() string {
         return nil
 }
 
