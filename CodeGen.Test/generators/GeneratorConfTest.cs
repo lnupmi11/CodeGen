@@ -1,8 +1,8 @@
 using System;
-using Xunit;
 using CodeGen.generators;
+using Xunit;
 
-namespace CodeGen.tests.generators {
+namespace CodeGen.Test.generators {
 	/// <summary>
 	/// 
 	/// </summary>

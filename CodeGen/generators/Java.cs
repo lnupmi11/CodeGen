@@ -9,7 +9,7 @@ namespace CodeGen.generators
 	/// </summary>
 	public class JavaGenerator : Generator
 	{
-		private const string ClassFormat = "{0}class {1}{2}{{{3}{4}{5}}}";
+		private const string ClassFormat = "{0}class {1} {2}{{{3}{4}{5}}}";
 		private string Indent { get; set; } = GeneratorConf.GetIndent(true, 4);
 
 		/// <inheritdoc />
@@ -19,7 +19,7 @@ namespace CodeGen.generators
 
 			if (@class.Parent?.Length > 0)
 			{
-				inherits = " extends " + @class.Parent + " ";
+				inherits = "extends " + @class.Parent + " ";
 			}
 
 			fields = @class.Fields?.Aggregate('\n' + fields,
