@@ -8,7 +8,6 @@ using Newtonsoft.Json;
 using YamlDotNet.Serialization;
 using YamlDotNet.Serialization.NamingConventions;
 
-
 namespace CodeGen
 {
 	/// <summary>
@@ -21,20 +20,21 @@ namespace CodeGen
 		/// <summary>
 		/// The main flow of application
 		/// </summary>
-		public static void Execute()
+		public static void Execute(string langName, string fileName, bool toStdout)
 		{
-			var langName = Program.Opts != null ? Program.Opts.Lang : Program.DefaultLang;
 			var lang = GeneratorConf.GetLanguage(langName);
 			var gen = lang.Generator;
 			if (gen == null) throw new NullReferenceException("This language has no generator");
 
-			var pkg = string.IsNullOrWhiteSpace(Program.Opts?.File)
+			var pkg = string.IsNullOrWhiteSpace(fileName)
 				? Program.DefaultPkg
-				: ParseFile(Program.Opts.File);
+				: ParseFile(fileName);
 
+			lang.Normalizer?.NormalizePackage(ref pkg);
+			
 			var data = gen.Generate(pkg);
 
-			if (Program.Opts != null && Program.Opts.Stdout)
+			if (toStdout)
 			{
 				PutDataToStdout(data, lang);
 			}
@@ -54,7 +54,7 @@ namespace CodeGen
 			Package pkg;
 
 			var fileFormat = Utils.GetFileFormat(fileName);
-
+			
 			switch (fileFormat)
 			{
 				case "xml":

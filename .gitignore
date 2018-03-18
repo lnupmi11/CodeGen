@@ -6,6 +6,8 @@
 # User-defined
 docs/
 out/
+html/
+latex/
 
 # User-specific files
 *.suo

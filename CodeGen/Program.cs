@@ -58,8 +58,9 @@ namespace CodeGen
 			#if DEBUG
 //				Console.Out.WriteLine("Opts = {0}", Opts);				
 			#endif
+//				var langName = Opts != null ? Opts.Lang : DefaultLang;
+//				ExecuteConf.Execute(langName, Opts?.File, Opts != null && Opts.Stdout);
 				
-			//	ExecuteConf.Execute();
 				var pkg = new JavaParser().ParsePackage(FileContent);
 				var m = GeneratorConf.GetLanguage(Opts.Lang).Generator.Generate(pkg);
 				foreach (var file in m)

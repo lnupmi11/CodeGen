@@ -5,7 +5,7 @@ namespace CodeGen.generators
 {
 	/// <inheritdoc />
 	/// <summary>
-	/// Ruby language generator
+	/// Generator for Ruby
 	/// </summary>
 	public class RubyGenerator : Generator
 	{

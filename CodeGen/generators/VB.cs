@@ -5,7 +5,7 @@ namespace CodeGen.generators
 {
 	/// <inheritdoc />
 	/// <summary>
-	/// Visual Basic language generator
+	/// Generator for Visual Basic
 	/// </summary>
 	public class VbGenerator : Generator
 	{
@@ -92,99 +92,65 @@ namespace CodeGen.generators
 	}
 
 	/// <inheritdoc />
-	internal class VbNormalizer : Normalizer
+	/// <summary>Normalizer for Visual Basic</summary>
+	public class VbNormalizer : Normalizer
 	{
-		public override Package NormalizePackage(Package pkg)
+		private static Normalizer _singletonInstance = null;
+		
+		private VbNormalizer()
 		{
-			for(var i = 0; i < pkg.Classes?.Length; i++)
-			{
-				pkg.Classes[i] = NormalizeClass(pkg.Classes[i]);
-			}
-
-			for(var i = 0; i < pkg.Packages?.Length; i++)
-			{
-				pkg.Packages[i] = NormalizePackage(pkg.Packages[i]);
-			}
-
-			return pkg;
+			
+		}
+		
+		/// <summary>
+		/// Method for getting a singleton
+		/// </summary>
+		/// <returns>Normalizer instance</returns>
+		public static Normalizer GetNormalizer()
+		{
+			return _singletonInstance ?? (_singletonInstance = new VbNormalizer());
 		}
 
-		protected override Class NormalizeClass(Class @class)
+		/// <inheritdoc />
+		protected override Class NormalizeClass(ref Class @class)
 		{
-			for (var i = 0; i < @class.Fields?.Length; i++)
-			{
-				@class.Fields[i] = NormalizeField(@class.Fields[i]);
-			}
-			
-			for (var i = 0; i < @class.Methods?.Length; i++)
-			{
-				@class.Methods[i] = NormalizeMethod(@class.Methods[i]);
-			}
-			
-			for (var i = 0; i < @class.Classes?.Length; i++)
-			{
-				@class.Classes[i] = NormalizeClass(@class.Classes[i]);
-			}
-
+			base.NormalizeClass(ref @class);
 			@class.Access = Utils.Title(@class.Access);
-
 			return @class;
 		}
 
-		protected override Field NormalizeField(Field field)
+		/// <inheritdoc />
+		protected override Field NormalizeField(ref Field field)
 		{
-			switch (field.Type)
-			{
-				case "int":
-					field.Type = "Integer";
-					break;
-				default:
-					field.Type = Utils.Title(field.Type);
-					break;
-			}
-
+			base.NormalizeField(ref field);
 			field.Access = Utils.Title(field.Access);
 			return field;
 		}
 
-		protected override Method NormalizeMethod(Method method)
+		/// <inheritdoc />
+		protected override Method NormalizeMethod(ref Method method)
 		{
-			switch (method.Return)
-			{
-				case "int":
-					method.Return = "Integer";
-					break;
-				case "void":
-					method.Return = "";
-					break;
-				default:
-					method.Return = Utils.Title(method.Return);
-					break;
-			}
-
+			base.NormalizeMethod(ref method);
 			method.Access = Utils.Title(method.Access);
-
-			for (var i = 0; i < method.Parameters?.Length; i++)
-			{
-				method.Parameters[i] = NormalizeParameter(method.Parameters[i]);
-			}
-
 			return method;
 		}
 
-		protected override Parameter NormalizeParameter(Parameter parameter)
+		/// <inheritdoc />
+		protected override string NormalizeType(string type)
 		{
-			switch (parameter.Type)
+			switch (type)
 			{
 				case "int":
-					parameter.Type = "Integer";
+					type = "Integer";
+					break;
+				case "void":
+					type = "";
 					break;
 				default:
-					parameter.Type = Utils.Title(parameter.Type);
+					type = Utils.Title(type);
 					break;
 			}
-
-			return parameter;
+			return type;
 		}
 	}
 }

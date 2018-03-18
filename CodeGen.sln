@@ -1,6 +1,8 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CodeGen", "CodeGen.csproj", "{0A034B10-A9D9-4D56-8FD2-844680D8CFCC}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CodeGen", "CodeGen\CodeGen.csproj", "{0A034B10-A9D9-4D56-8FD2-844680D8CFCC}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CodeGen.Test", "CodeGen.Test\CodeGen.Test.csproj", "{BC939E83-ABCA-46FE-A968-5B37774B7E4E}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -12,5 +14,9 @@ Global
 		{0A034B10-A9D9-4D56-8FD2-844680D8CFCC}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{0A034B10-A9D9-4D56-8FD2-844680D8CFCC}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{0A034B10-A9D9-4D56-8FD2-844680D8CFCC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BC939E83-ABCA-46FE-A968-5B37774B7E4E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BC939E83-ABCA-46FE-A968-5B37774B7E4E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BC939E83-ABCA-46FE-A968-5B37774B7E4E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BC939E83-ABCA-46FE-A968-5B37774B7E4E}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal
