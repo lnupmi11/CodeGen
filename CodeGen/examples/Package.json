@@ -1,5 +1,6 @@
 ﻿{
   "name": "main",
+  "useSpaces": true,
   "classes": [
     {
       "name": "Fruit",
@@ -105,5 +106,4 @@
       "access": ""
     }
   ]
-
 }

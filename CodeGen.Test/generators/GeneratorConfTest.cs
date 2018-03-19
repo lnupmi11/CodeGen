@@ -2,15 +2,10 @@ using System;
 using CodeGen.generators;
 using Xunit;
 
-namespace CodeGen.Test.generators {
-	/// <summary>
-	/// 
-	/// </summary>
-	public class GeneratorConfTest{
-
-		/// <summary>
-		/// 
-		/// </summary>
+namespace CodeGen.Test.generators
+{
+	public class GeneratorConfTest
+	{
 		[Fact]
 		public void GetIndentTest()
 		{
@@ -20,9 +15,6 @@ namespace CodeGen.Test.generators {
 			Assert.Equal("", GeneratorConf.GetIndent(false, 0));
 		}
 
-		/// <summary>
-		/// 
-		/// </summary>
 		[Fact]
 		public void ShiftCodeTest()
 		{
@@ -35,9 +27,6 @@ namespace CodeGen.Test.generators {
 			Assert.Equal("=D=Dcode", GeneratorConf.ShiftCode("code", 2, "=D"));
 		}
 
-		/// <summary>
-		/// 
-		/// </summary>
 		[Fact]
 		public void NormalizeLangTest()
 		{
@@ -54,9 +43,6 @@ namespace CodeGen.Test.generators {
 			Assert.Equal("some_unknown_language", GeneratorConf.NormalizeLang("some_unknown_language"));
 		}
 
-		/// <summary>
-		/// 
-		/// </summary>
 		[Fact]
 		public void GetLanguageTest()
 		{

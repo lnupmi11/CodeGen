@@ -123,7 +123,13 @@ namespace CodeGen
 			return pkg;
 		}
 
-		private static Package DeserializeJson(string body)
+		/// <summary>
+		/// 
+		/// </summary>
+		/// <param name="body"></param>
+		/// <returns></returns>
+		/// <exception cref="InvalidDataException"></exception>
+		public static Package DeserializeJson(string body)
 		{
 			try
 			{

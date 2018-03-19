@@ -4,14 +4,8 @@ using CodeGen.utils;
 
 namespace CodeGen.Test.utils
 {
-	/// <summary>
-	/// 
-	/// </summary>
 	public class ParserTest
 	{
-		/// <summary>
-		/// 
-		/// </summary>
 		[Fact]
 		public void GetFileFormatTest()
 		{
@@ -21,9 +15,6 @@ namespace CodeGen.Test.utils
 			Assert.Throws<InvalidDataException>(() => Utils.GetFileFormat("."));
 		}
 
-		/// <summary>
-		/// 
-		/// </summary>
 		[Fact]
 		public void ValidateArgsTest()
 		{
