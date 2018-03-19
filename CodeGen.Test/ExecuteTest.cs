@@ -1,4 +1,7 @@
-﻿using System.IO;
+﻿using System.Collections.Generic;
+using System.IO;
+using System.Reflection.Metadata.Ecma335;
+using CodeGen.generators;
 using Xunit;
 using static CodeGen.ExecuteConf;
 
@@ -7,31 +10,26 @@ namespace CodeGen.Test
 	public class ExecuteTest
 	{
 		[Theory]
-		[InlineData("error")]
-		[InlineData("will not work")]
+		[MemberData(nameof(DeserializeJsonData.ThrowsData), MemberType = typeof(DeserializeJsonData))]
 		public void TestDeserializeJsonThrowsError(string data)
 		{
 			Assert.Throws<InvalidDataException>(() => DeserializeJson(data));
 		}
 
 		[Theory]
-		[InlineData("")]
-		[InlineData("null")]
+		[MemberData(nameof(DeserializeJsonData.NullData), MemberType = typeof(DeserializeJsonData))]
 		public void TestDeserializeJsonIsNull(string data)
 		{
 			Assert.Null(DeserializeJson(data));
 		}
-		
+
 		[Theory]
-		[InlineData("{}")]
-		[InlineData("{ \"name\":\"test\"}")]
+		[MemberData(nameof(DeserializeJsonData.NotNullData), MemberType = typeof(DeserializeJsonData))]
 		public void TestDeserializeJsonIsNotNull(string data)
 		{
 			Assert.NotNull(DeserializeJson(data));
 		}
 		
-		
-
 		[Fact]
 		public void TestDeserializeJson()
 		{
@@ -79,7 +77,7 @@ namespace CodeGen.Test
 			}
             ");
 			Assert.NotEmpty(pak.Classes);
-			Assert.Equal(1, pak.Classes.Length);
+			Assert.Single(pak.Classes);
 			Assert.NotNull(pak.Classes[0]);
 			Assert.Equal("TestClass", pak.Classes[0].Name);
 			Assert.Equal("ParentTestClass", pak.Classes[0].Parent);
@@ -92,7 +90,35 @@ namespace CodeGen.Test
 			pak = DeserializeJson(testData);
 			Assert.Equal("Fruit", pak.Classes[0].Name);
 			*/
+		}
+
+		private class DeserializeJsonData
+		{
+			public static IEnumerable<object[]> ThrowsData => new List<object[]>
+			{
+				new object[] {"error"},
+				new object[] {"{"},
+				new object[] {"{{}"},
+				new object[] {"{]"},
+			};
+
+			public static IEnumerable<object[]> NullData => new List<object[]>
+			{
+				new object[] {""},
+				new object[] {"null"},
+			};
+
+			public static IEnumerable<object[]> NotNullData => new List<object[]>
+			{
+				new object[] {"{}"},
+				new object[] {"{\"name\":\"test\"}"},
+			};
 			
+//			public static IEnumerable<object[]> IsValidData => new List<object[]>
+//			{
+//				new object[] {new Package(), "{}"},
+//				new object[] {new Package{Name = "test"}, "{\"name\":\"test\"}"},
+//			};
 		}
 
 		[Fact]
