@@ -5,6 +5,7 @@ using System.Xml.Serialization;
 using CodeGen.generators;
 using CodeGen.utils;
 using Newtonsoft.Json;
+using YamlDotNet.Core;
 using YamlDotNet.Serialization;
 using YamlDotNet.Serialization.NamingConventions;
 
@@ -31,7 +32,7 @@ namespace CodeGen
 				: ParseFile(fileName);
 
 			lang.Normalizer?.NormalizePackage(ref pkg);
-			
+
 			var data = gen.Generate(pkg);
 
 			if (toStdout)
@@ -48,13 +49,13 @@ namespace CodeGen
 		{
 			return ParseFileByFormat(GetSerializedData(filename), filename);
 		}
-		
+
 		private static Package ParseFileByFormat(string body, string fileName)
 		{
 			Package pkg;
 
 			var fileFormat = Utils.GetFileFormat(fileName);
-			
+
 			switch (fileFormat)
 			{
 				case "xml":
@@ -114,13 +115,25 @@ namespace CodeGen
 			}
 		}
 
-		private static Package DeserializeYaml(string body)
+		/// <summary>
+		/// 
+		/// </summary>
+		/// <param name="body"></param>
+		/// <returns></returns>
+		public static Package DeserializeYaml(string body)
 		{
-			var deserializer = new DeserializerBuilder()
-				.WithNamingConvention(new CamelCaseNamingConvention())
-				.Build();
-			var pkg = deserializer.Deserialize<Package>(new StringReader(body));
-			return pkg;
+			try
+			{
+				var deserializer = new DeserializerBuilder()
+					.WithNamingConvention(new CamelCaseNamingConvention())
+					.Build();
+				var pkg = deserializer.Deserialize<Package>(new StringReader(body));
+				return pkg;
+			}
+			catch (YamlException)
+			{
+				throw new InvalidDataException("invalid Yaml file content");
+			}
 		}
 
 		/// <summary>
@@ -137,7 +150,7 @@ namespace CodeGen
 			}
 			catch (Exception)
 			{
-				throw new InvalidDataException("invalid json file content");
+				throw new InvalidDataException("invalid Json file content");
 			}
 		}
 
@@ -153,7 +166,7 @@ namespace CodeGen
 			}
 			catch (Exception)
 			{
-				throw new InvalidDataException("invalid xml file content");
+				throw new InvalidDataException("invalid XML file content");
 			}
 		}
 	}

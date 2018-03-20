@@ -3,12 +3,15 @@ using System.IO;
 using System.Reflection.Metadata.Ecma335;
 using CodeGen.generators;
 using Xunit;
+using Xunit.Sdk;
 using static CodeGen.ExecuteConf;
 
 namespace CodeGen.Test
 {
 	public class ExecuteTest
 	{
+		
+		/*   JSON TEST   */
 		[Theory]
 		[MemberData(nameof(DeserializeJsonData.ThrowsData), MemberType = typeof(DeserializeJsonData))]
 		public void TestDeserializeJsonThrowsError(string data)
@@ -52,16 +55,25 @@ namespace CodeGen.Test
 
 			pak = DeserializeJson(@"
             {
-	""useSpaces"": true,
-	""useSpaces"": false
-}
+				""useSpaces"": true,
+				""useSpaces"": false
+			}
             ");
 			Assert.False(pak.UseSpaces);
 
+			
 			pak = DeserializeJson(@"
             {
-	""classes"": []
-}
+				""useSpaces"": 6
+			}
+            ");
+			Assert.True(pak.UseSpaces);
+			
+			
+			pak = DeserializeJson(@"
+            {
+				""classes"": []
+			}
             ");
 			Assert.NotNull(pak.Classes);
 			Assert.Empty(pak.Classes);
@@ -81,7 +93,8 @@ namespace CodeGen.Test
 			Assert.NotNull(pak.Classes[0]);
 			Assert.Equal("TestClass", pak.Classes[0].Name);
 			Assert.Equal("ParentTestClass", pak.Classes[0].Parent);
-
+			
+			
 			/*
 			// valid file
 			const string testFileName = "../../../testAssets/ExecuteTestAssets/Package.json";
@@ -100,6 +113,18 @@ namespace CodeGen.Test
 				new object[] {"{"},
 				new object[] {"{{}"},
 				new object[] {"{]"},
+				new object[] {@"
+            
+				""classe"": [
+				]
+			}
+            "},
+				new object[] {@"
+            {
+				""classe"": 
+				]
+			}
+            "},
 			};
 
 			public static IEnumerable<object[]> NullData => new List<object[]>
@@ -121,9 +146,86 @@ namespace CodeGen.Test
 //			};
 		}
 
+		
+		
+		/*   YAML TEST   */
+		[Theory]
+		[MemberData(nameof(DeserializeYamlData.ThrowsData), MemberType = typeof(DeserializeYamlData))]
+		public void TestDeserializeYamlThrowsError(string data)
+		{
+			Assert.Throws<InvalidDataException>(() => DeserializeYaml(data));
+		}
+
+		[Theory]
+		[MemberData(nameof(DeserializeYamlData.NullData), MemberType = typeof(DeserializeYamlData))]
+		public void TestDeserializeYamlIsNull(string data)
+		{
+			Assert.Null(DeserializeYaml(data));
+		}
+
+		[Theory]
+		[MemberData(nameof(DeserializeYamlData.NotNullData), MemberType = typeof(DeserializeYamlData))]
+		public void TestDeserializeYamlIsNotNull(string data)
+		{
+			Assert.NotNull(DeserializeYaml(data));
+		}
+		
 		[Fact]
 		public void TestDeserializeYaml()
 		{
+			var pak = DeserializeYaml(@"name: test");
+			Assert.Equal("test", pak.Name);
+			Assert.False(pak.UseSpaces);
+
+			Assert.Null(pak.Classes);
+
+			pak = DeserializeYaml(@"
+name: test
+classes: 
+- name: TestClass");
+			Assert.NotNull(pak.Classes);
+			Assert.NotEmpty(pak.Classes);
+
+			pak = DeserializeYaml(@"
+name: test
+classes:
+- name: TestClass
+  parent: ParentTestClass
+            ");
+			Assert.NotEmpty(pak.Classes);
+			Assert.Single(pak.Classes);
+			Assert.NotNull(pak.Classes[0]);
+			Assert.Equal("TestClass", pak.Classes[0].Name);
+			Assert.Equal("ParentTestClass", pak.Classes[0].Parent);
 		}
+		
+		private class DeserializeYamlData
+		{
+			public static IEnumerable<object[]> ThrowsData => new List<object[]>
+			{
+				new object[] {"error"},
+				new object[] {"error: test"},
+				new object[] {"{"},
+				new object[] {"{{}"},
+				new object[] {"{]"},
+			};
+
+			public static IEnumerable<object[]> NullData => new List<object[]>
+			{
+				new object[] {""},
+				new object[] {"null"},
+			};
+
+			public static IEnumerable<object[]> NotNullData => new List<object[]>
+			{
+				new object[] {"name: test"},
+			};
+		}
+		
+		
+		
+		
+		
+		
 	}
 }
