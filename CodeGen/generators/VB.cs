@@ -41,7 +41,7 @@ namespace CodeGen.generators
 		}
 
 		/// <inheritdoc />
-		protected override string GenerateField(Field field)
+		public override string GenerateField(Field field)
 		{
 			var result = Indent + field.Access + ' ' + field.Name + " As " + field.Type;
 			if (field.Default?.Length > 0)

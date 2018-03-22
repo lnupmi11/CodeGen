@@ -137,10 +137,10 @@ namespace CodeGen
 		}
 
 		/// <summary>
-		/// 
+		/// Deserializes Package from Json data
 		/// </summary>
-		/// <param name="body"></param>
-		/// <returns></returns>
+		/// <param name="body">Json data in text format</param>
+		/// <returns>parsed Package</returns>
 		/// <exception cref="InvalidDataException"></exception>
 		public static Package DeserializeJson(string body)
 		{

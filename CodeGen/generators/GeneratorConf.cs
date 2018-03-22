@@ -33,7 +33,14 @@ namespace CodeGen.generators
 			return data;
 		}
 
-//		public abstract Generator getInstance();
+		/// <summary>
+		/// Gets indentation of current generator
+		/// </summary>
+		/// <returns>identation</returns>
+		public virtual string GetIndent()
+		{
+			return "\t";
+		}
 
 		/// <summary>
 		///	Class generator: generates class with fields, methods and subclasses from given class object
@@ -47,7 +54,7 @@ namespace CodeGen.generators
 		/// </summary>
 		/// <param name="field">Field object</param>
 		/// <returns>String of generated code of field</returns>
-		protected abstract string GenerateField(Field field);
+		public abstract string GenerateField(Field field);
 
 		/// <summary>
 		/// Method generator: generates method from given method object
@@ -140,6 +147,34 @@ namespace CodeGen.generators
 		/// <param name="type"></param>
 		/// <returns></returns>
 		protected abstract string NormalizeType(string type);
+	}
+
+	/// <summary>
+	/// 
+	/// </summary>
+	public abstract class Validator
+	{
+		private string[] AccessModifiers { get; } = {"", "public", "private", "protected", "default"};
+
+		/// <summary>
+		/// Checks if field is valid
+		/// </summary>
+		/// <param name="field">field to be checked</param>
+		/// <returns>if the field is valid or not</returns>
+		public virtual bool FieldIsValid(Field field)
+		{
+			if (field == null)
+				return false;
+			var isInvalid = string.IsNullOrWhiteSpace(field.Name);
+			isInvalid |= string.IsNullOrWhiteSpace(field.Type);
+			isInvalid |= string.IsNullOrWhiteSpace(field.Type);
+			isInvalid |= field.Name.Any(char.IsWhiteSpace);
+			isInvalid |= field.Type.Any(char.IsWhiteSpace);
+			if (field.Access == null) return !isInvalid;
+			isInvalid |= field.Access.Any(char.IsWhiteSpace);
+			isInvalid |= !AccessModifiers.Any(field.Access.Equals);
+			return !isInvalid;
+		}
 	}
 
 	/// <summary>

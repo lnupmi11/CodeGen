@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 
 namespace CodeGen.generators
@@ -10,7 +11,7 @@ namespace CodeGen.generators
 	public class JavaGenerator : Generator
 	{
 		private const string ClassFormat = "{0}class {1} {2}{{{3}{4}{5}}}";
-		private string Indent { get; set; } = GeneratorConf.GetIndent(true, 4);
+		private string Indent { get; } = GeneratorConf.GetIndent(true, 4);
 
 		/// <inheritdoc />
 		protected override string GenerateClass(Class @class)
@@ -40,10 +41,14 @@ namespace CodeGen.generators
 		}
 
 		/// <inheritdoc />
-		protected override string GenerateField(Field field)
+		/// <exception cref="ArgumentNullException">if field is null, or has whitespace or null name/type</exception>
+		public override string GenerateField(Field field)
 		{
+			if (!new JavaValidator().FieldIsValid(field))
+				throw new ArgumentNullException();
+
 			var result = Indent;
-			if (field.Access == "" || field.Access == "default")
+			if (string.IsNullOrWhiteSpace(field.Access) || field.Access == "default")
 			{
 				result += "private ";
 			}
@@ -127,6 +132,12 @@ namespace CodeGen.generators
 			result += '}';
 			return result;
 		}
+
+		/// <inheritdoc />
+		public override string GetIndent()
+		{
+			return Indent;
+		}
 	}
 
 	/// <inheritdoc />
@@ -137,7 +148,6 @@ namespace CodeGen.generators
 
 		private JavaNormalizer()
 		{
-			
 		}
 
 		/// <summary>
@@ -175,5 +185,10 @@ namespace CodeGen.generators
 
 			return type;
 		}
+	}
+
+	public class JavaValidator : Validator
+	{
+		
 	}
 }

@@ -45,7 +45,7 @@ namespace CodeGen.generators
 		}
 
 		/// <inheritdoc />
-		protected override string GenerateField(Field field)
+		public override string GenerateField(Field field)
 		{
 			var result = Indent;
 
