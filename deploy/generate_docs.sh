@@ -81,13 +81,14 @@ cp -v "$TRAVIS_BUILD_DIR/"*.md ./ || true
 # Only upload if Doxygen successfully created the documentation.
 # Check this by verifying that the html directory and the file html/index.html
 # both exist. This is a good indication that Doxygen did it's work.
+
+git add --all
 if [ -d "docs/html" ] && [ -f "docs/html/index.html" ] && ! git diff --exit-code --cached; then
     echo 'Uploading documentation to the gh-pages branch...'
     # Add everything in this directory (the Doxygen code documentation) to the
     # gh-pages branch.
     # GitHub is smart enough to know which files have changed and which files have
     # stayed the same and will only update the changed files.
-    git add --all
 
     # Commit the added files with a title and description containing the Travis CI
     # build number and the GitHub commit reference that issued this build.
