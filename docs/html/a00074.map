@@ -1,3 +1,4 @@
-<map id="CodeGen.generators.GeneratorConf" name="CodeGen.generators.GeneratorConf">
-<area shape="rect" id="node2" href="$a00015.html" title="The structure that describes package. Contains classes and subpackages " alt="" coords="21,6,219,127"/>
+<map id="CodeGen.generators.Languange" name="CodeGen.generators.Languange">
+<area shape="rect" id="node2" href="$a00014.html" title="Interface of language normalizer: normalizes package data according to specified language ..." alt="" coords="5,6,213,157"/>
+<area shape="rect" id="node3" href="$a00006.html" title="Interface of language generator " alt="" coords="239,21,441,142"/>
 </map>
