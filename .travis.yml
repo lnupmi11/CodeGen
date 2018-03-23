@@ -16,16 +16,21 @@ addons:
       - graphviz
 install:
 - dotnet restore
-jobs:
-  include:
-    - stage: build
-      script: 
-        - dotnet build
-    - stage: test
-      script:
-      - dotnet test ${GH_REPO_NAME}.Test
-    - stage: docs
-      if: branch IN (master, dev, creating-structure)
-      script:
-      - cd $TRAVIS_BUILD_DIR
-      - ./deploy/generate_docs.sh
+script:
+- dotnet build
+- dotnet test ${GH_REPO_NAME}.Test
+- cd $TRAVIS_BUILD_DIR
+- ./deploy/generate_docs.sh
+#  jobs:
+#    include:
+#      - stage: build
+#        script: 
+#          - dotnet build
+#      - stage: test
+#        script:
+#        - dotnet test ${GH_REPO_NAME}.Test
+#      - stage: docs
+#        if: branch IN (master, dev, creating-structure)
+#        script:
+#        - cd $TRAVIS_BUILD_DIR
+#        - ./deploy/generate_docs.sh
