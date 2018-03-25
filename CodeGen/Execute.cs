@@ -79,7 +79,7 @@ namespace CodeGen
 			var allowedSchemes = new[] {Uri.UriSchemeHttp, Uri.UriSchemeHttps, Uri.UriSchemeFtp, Uri.UriSchemeFtp};
 
 			var result = Uri.TryCreate(fileName, UriKind.Absolute, out var uriResult)
-			             && Array.IndexOf(allowedSchemes, uriResult.Scheme) > -1
+						 && Array.IndexOf(allowedSchemes, uriResult.Scheme) > -1
 				? Utils.Download(fileName)
 				: Utils.Read(fileName);
 
@@ -154,7 +154,13 @@ namespace CodeGen
 			}
 		}
 
-		private static Package DeserializeXml(string body)
+		/// <summary>
+		/// Deserialized Package from Xml data
+		/// </summary>
+		/// <param name="body">Xml data in text format</param>
+		/// <returns>Parsed Package</returns>
+		/// <exception cref="InvalidDataException"></exception>
+		public static Package DeserializeXml(string body)
 		{
 			try
 			{
