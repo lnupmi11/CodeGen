@@ -50,7 +50,14 @@ namespace CodeGen
 			return ParseFileByFormat(GetSerializedData(filename), filename);
 		}
 
-		private static Package ParseFileByFormat(string body, string fileName)
+		/// <summary>
+		/// Parses file by given fromat
+		/// </summary>
+		/// <param name="body">Document in string representation</param>
+		/// <param name="fileName">Name of file</param>
+		/// <returns>Parsed package by format</returns>
+		/// <exception cref="InvalidDataException"></exception>
+		public static Package ParseFileByFormat(string body, string fileName)
 		{
 			Package pkg;
 

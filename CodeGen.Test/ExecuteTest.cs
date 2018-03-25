@@ -1,10 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.IO;
-using System.Reflection.Metadata.Ecma335;
 using CodeGen.generators;
 using Xunit;
-using Xunit.Sdk;
 using static CodeGen.ExecuteConf;
 
 namespace CodeGen.Test
@@ -309,5 +306,40 @@ classes:
 				new object[] {"<Package><name>test</name></Package>"},
 			};
 		}	
+		
+		
+		/* Parse file by format test */
+
+		[Theory]
+		[MemberData(nameof(ParseFileByFormatTestData.ThrowsData), MemberType = typeof(ParseFileByFormatTestData))]
+		public void ParseFileByFoematTestExceptionThrowing(string body, string fileName)
+		{
+			Assert.Throws<InvalidDataException>(() => ParseFileByFormat(body, fileName));
+		}
+		
+		[Theory]
+		[MemberData(nameof(ParseFileByFormatTestData.NotNullData), MemberType = typeof(ParseFileByFormatTestData))]
+		public void ParseFileByFormatTest(string expected, string body, string fileName)
+		{
+			var pkg = ParseFileByFormat(body, fileName);
+			Assert.Equal(expected, pkg.Name);
+		}
+		
+		private class ParseFileByFormatTestData
+		{
+			public static IEnumerable<object[]> NotNullData => new List<object[]>
+			{
+				new object[] {"testXml", "<Package><name>testXml</name></Package>", "Test.xml"},
+				new object[] {"testJson", @"{""name"": ""testJson""}", "Test.json"},
+				new object[] {"testYaml", "name: testYaml", "Test.yml"},
+			};
+			
+			public static IEnumerable<object[]> ThrowsData => new List<object[]>
+			{
+				new object[] {"<Package><name>testXml</name></Package>", "Test.ml"},
+				new object[] {@"{""name"": ""testJson""}", "json."},
+				new object[] {"name: testYaml", "Testyml"},
+			};
+		}
 	}
 }
