@@ -49,7 +49,7 @@ namespace CodeGen.generators
 		public override string GenerateField(Field field)
 		{
 			var result = Indent;
-			if (field.Access == "" || field.Access == "default")
+			if (string.IsNullOrWhiteSpace(field.Access)  || field.Access == "default")
 			{
 				result += "private ";
 			}
@@ -133,7 +133,7 @@ namespace CodeGen.generators
 		/// </summary>
 		/// <param name="fields"></param>
 		/// <returns></returns>
-		private string GenerateGettersSetters(IEnumerable<Field> fields)
+		public string GenerateGettersSetters(IEnumerable<Field> fields)
 		{
 			if (fields == null) return "";
 			var result = "";
@@ -158,9 +158,14 @@ namespace CodeGen.generators
 		/// </summary>
 		/// <param name="field"></param>
 		/// <returns></returns>
-		private string GenerateGetter(Variable field)
+		public string GenerateGetter(Field field)
 		{
-			return "public " + field.Type + " get" + Utils.Title(field.Name) + "() {\n" + Indent +
+			var isStatic = "";
+			if (field.Static)
+			{
+				isStatic = "static ";
+			}
+			return "public " + isStatic + field.Type + " get" + Utils.Title(field.Name) + "()\n{\n" + Indent +
 			       "return " + field.Name + ";\n}";
 		}
 
@@ -169,7 +174,7 @@ namespace CodeGen.generators
 		/// </summary>
 		/// <param name="field"></param>
 		/// <returns></returns>
-		private string GenerateSetter(Variable field)
+		public string GenerateSetter(Variable field)
 		{
 			return "public void set" + Utils.Title(field.Name) + "(" + field.Type + " newValue) {\n" + Indent +
 			       field.Name + " = newValue;\n}";
