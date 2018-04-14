@@ -2,6 +2,7 @@
 using Xunit;
 using System.IO;
 using CodeGen.utils;
+using CodeGen.Test;
 
 namespace CodeGen.Test.utils
 {
@@ -51,6 +52,9 @@ namespace CodeGen.Test.utils
 			{
 				new object[] {"hello", "Hello"},
 				new object[] {"t", "T"},
+				new object[] {"1111", "1111"},
+				new object[] {"", ""},
+				new object[] {null, null},
 			};
 		}
 	}

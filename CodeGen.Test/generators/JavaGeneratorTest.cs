@@ -11,22 +11,36 @@ namespace CodeGen.Test.generators
 		private static string Indent { get; } = Gen.GetIndent();
 
 		[Theory]
-		[MemberData(nameof(JavaGeneratorTestData.ThrowsData), MemberType = typeof(JavaGeneratorTestData))]
+		[MemberData(nameof(JavaGeneratorTestData.FieldThrowsData), MemberType = typeof(JavaGeneratorTestData))]
 		public void TestGenerateFieldThrows(Field field)
 		{
 			Assert.Throws<ArgumentNullException>(() => Gen.GenerateField(field));
 		}
 
 		[Theory]
-		[MemberData(nameof(JavaGeneratorTestData.ValidData), MemberType = typeof(JavaGeneratorTestData))]
+		[MemberData(nameof(JavaGeneratorTestData.FieldValidData), MemberType = typeof(JavaGeneratorTestData))]
 		public void TestGenerateField(Field field, string output)
 		{
 			Assert.Equal(output, Gen.GenerateField(field));
 		}
 
+		[Theory]
+		[MemberData(nameof(JavaGeneratorTestData.MethodThrowsData), MemberType = typeof(JavaGeneratorTestData))]
+		public void TestGenerateMethodThrows(Method method)
+		{
+			Assert.Throws<ArgumentNullException>(() => Gen.GenerateMethod(method));
+		}
+
+		[Theory]
+		[MemberData(nameof(JavaGeneratorTestData.MethodValidData), MemberType = typeof(JavaGeneratorTestData))]
+		public void TestGenerateMethod(Method method, string output)
+		{
+			Assert.Equal(output, Gen.GenerateMethod(method));
+		}
+
 		private class JavaGeneratorTestData
 		{
-			public static IEnumerable<object[]> ThrowsData => new List<object[]>
+			public static IEnumerable<object[]> FieldThrowsData => new List<object[]>
 			{
 				new object[] {null},
 				new object[] {new Field {Name = ""}},
@@ -38,16 +52,16 @@ namespace CodeGen.Test.generators
 				new object[] {new Field {Name = "test", Type = "value", Access = "unknown"}},
 			};
 
-			public static IEnumerable<object[]> ValidData => new List<object[]>
+			public static IEnumerable<object[]> FieldValidData => new List<object[]>
 			{
 				new object[]
 				{
-					new Field {Name = "test", Type = "int"}, 
+					new Field {Name = "test", Type = "int"},
 					Indent + "private int test;"
 				},
 				new object[]
 				{
-					new Field {Name = "test", Type = "String", Access = "public"}, 
+					new Field {Name = "test", Type = "String", Access = "public"},
 					Indent + "public String test;"
 				},
 				new object[]
@@ -75,6 +89,16 @@ namespace CodeGen.Test.generators
 					new Field {Name = "test", Type = "String", Access = "protected", Static = true, Const = true},
 					Indent + "protected const static String test;"
 				},
+			};
+
+			public static IEnumerable<object[]> MethodThrowsData => new List<object[]>
+			{
+				
+			};
+
+			public static IEnumerable<object[]> MethodValidData => new List<object[]>
+			{
+				
 			};
 		}
 	}

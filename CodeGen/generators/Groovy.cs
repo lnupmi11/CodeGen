@@ -75,7 +75,7 @@ namespace CodeGen.generators
 		}
 
 		/// <inheritdoc />
-		protected override string GenerateMethod(Method method)
+		public override string GenerateMethod(Method method)
 		{
 			var result = "";
 			if (method.Access == "" || method.Access == "default")

@@ -52,7 +52,7 @@ namespace CodeGen.generators
 		}
 
 		/// <inheritdoc />
-		protected override string GenerateMethod(Method method)
+		public override string GenerateMethod(Method method)
 		{
 			var result = method.Access + ' ';
 			var type = method.Return?.Length > 0 ? "Function" : "Sub";

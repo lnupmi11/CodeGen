@@ -50,7 +50,7 @@ namespace CodeGen.generators
         }
 
         /// <inheritdoc />
-        protected override string GenerateMethod(Method method)
+        public override string GenerateMethod(Method method)
         {
             string result = "";
 

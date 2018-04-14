@@ -61,7 +61,7 @@ namespace CodeGen.generators
 		/// </summary>
 		/// <param name="method">Method object</param>
 		/// <returns>String of generated code of method</returns>
-		protected abstract string GenerateMethod(Method method);
+		public abstract string GenerateMethod(Method method);
 	}
 
 	/// <summary>
@@ -70,7 +70,6 @@ namespace CodeGen.generators
 	/// \todo Make a singleton
 	public abstract class Normalizer
 	{
-		
 		/// <summary>
 		/// Package normalizer: normalizes package with classes and subpackages
 		/// </summary>
@@ -355,6 +354,9 @@ namespace CodeGen.generators
 			{"groovy", new Languange(new GroovyGenerator(), "groovy", "/* {0} */")},
 			{"cpp", new Languange(new CppGenerator(), "cpp", "/* {0} */")},
 		};
+		//{"es6", new Languange(new Es6Generator(), "es2015", "/* {0} */")},
+//		{"js", new Languange(new Es6Generator(), "js5", "/* {0} */")},
+
 
 		/// <summary>
 		/// Creates indent using given parameters

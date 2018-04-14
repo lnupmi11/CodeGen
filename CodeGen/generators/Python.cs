@@ -59,7 +59,7 @@ namespace CodeGen.generators
 		}
 
 		/// <inheritdoc />
-		protected override string GenerateMethod(Method method)
+		public override string GenerateMethod(Method method)
 		{
 			return GenerateMethodWithBody(method, "pass");
 		}
