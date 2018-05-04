@@ -5,40 +5,40 @@ using Xunit;
 
 namespace CodeGen.Test.generators
 {
-	public class JavaGeneratorTest
+	public class CppGeneratorTest
 	{
-		private static Generator Gen { get; } = new JavaGenerator();
+		private static Generator Gen { get; } = new CppGenerator();
 		private static string Indent { get; } = Gen.GetIndent();
 
 		[Theory]
-		[MemberData(nameof(JavaGeneratorTestData.FieldThrowsData), MemberType = typeof(JavaGeneratorTestData))]
+		[MemberData(nameof(CppGeneratorTestData.FieldThrowsData), MemberType = typeof(CppGeneratorTestData))]
 		public void TestGenerateFieldThrows(Field field)
 		{
 			Assert.Throws<ArgumentNullException>(() => Gen.GenerateField(field));
 		}
 
 		[Theory]
-		[MemberData(nameof(JavaGeneratorTestData.FieldValidData), MemberType = typeof(JavaGeneratorTestData))]
+		[MemberData(nameof(CppGeneratorTestData.FieldValidData), MemberType = typeof(CppGeneratorTestData))]
 		public void TestGenerateField(Field field, string output)
 		{
 			Assert.Equal(output, Gen.GenerateField(field));
 		}
 
 //		[Theory]
-//		[MemberData(nameof(JavaGeneratorTestData.MethodThrowsData), MemberType = typeof(JavaGeneratorTestData))]
+//		[MemberData(nameof(CppGeneratorTestData.MethodThrowsData), MemberType = typeof(CppGeneratorTestData))]
 //		public void TestGenerateMethodThrows(Method method)
 //		{
 //			Assert.Throws<ArgumentNullException>(() => Gen.GenerateMethod(method));
 //		}
 
 //		[Theory]
-//		[MemberData(nameof(JavaGeneratorTestData.MethodValidData), MemberType = typeof(JavaGeneratorTestData))]
+//		[MemberData(nameof(CppGeneratorTestData.MethodValidData), MemberType = typeof(CppGeneratorTestData))]
 //		public void TestGenerateMethod(Method method, string output)
 //		{
 //			Assert.Equal(output, Gen.GenerateMethod(method));
 //		}
 
-		private class JavaGeneratorTestData
+		private class CppGeneratorTestData
 		{
 			public static IEnumerable<object[]> FieldThrowsData => new List<object[]>
 			{
@@ -57,48 +57,46 @@ namespace CodeGen.Test.generators
 				new object[]
 				{
 					new Field {Name = "test", Type = "int"},
-					Indent + "private int test;"
+					Indent + "int test = ;"
 				},
 				new object[]
 				{
-					new Field {Name = "test", Type = "String", Access = "public"},
-					Indent + "public String test;"
+					new Field {Name = "test", Type = "string", Access = "public"},
+					Indent + "string test = ;"
 				},
 				new object[]
 				{
-					new Field {Name = "test", Type = "String", Access = "public", Default = "\"test\""},
-					Indent + "public String test = \"test\";"
+					new Field {Name = "test", Type = "string", Access = "public", Default = "\"test\""},
+					Indent + "string test = \"test\";"
 				},
 				new object[]
 				{
-					new Field {Name = "test", Type = "String", Static = true},
-					Indent + "private static String test;"
+					new Field {Name = "test", Type = "string", Static = true},
+					Indent + "static string test = ;"
 				},
 				new object[]
 				{
-					new Field {Name = "test", Type = "String", Const = true},
-					Indent + "private const String test;"
+					new Field {Name = "test", Type = "string", Const = true},
+					Indent + "const string test = ;"
 				},
 				new object[]
 				{
-					new Field {Name = "test", Type = "String", Static = true, Const = true},
-					Indent + "private const static String test;"
+					new Field {Name = "test", Type = "string", Static = true, Const = true},
+					Indent + "static const string test = ;"
 				},
 				new object[]
 				{
-					new Field {Name = "test", Type = "String", Access = "protected", Static = true, Const = true},
-					Indent + "protected const static String test;"
+					new Field {Name = "test", Type = "string", Access = "protected", Static = true, Const = true},
+					Indent + "static const string test = ;"
 				},
 			};
 
 			public static IEnumerable<object[]> MethodThrowsData => new List<object[]>
 			{
-				
 			};
 
 			public static IEnumerable<object[]> MethodValidData => new List<object[]>
 			{
-				
 			};
 		}
 	}

@@ -54,5 +54,8 @@ namespace CodeGen.Test.generators
 			Assert.Equal(GeneratorConf.Languanges["vb"], GeneratorConf.GetLanguage("vb"));
 			Assert.Throws<IndexOutOfRangeException>(() => GeneratorConf.GetLanguage("somelang"));
 		}
+
+		
+		
 	}
 }

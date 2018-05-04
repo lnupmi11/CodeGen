@@ -9,10 +9,10 @@ namespace CodeGen.Test.generators
 	public class CSharpGeneratorTest
 	{
 		private FriendlyNameAttribute CSharpGenerator;
-		
+
 		private static CSharpGenerator Gen { get; } = new CSharpGenerator();
 		private static string Indent { get; } = Gen.GetIndent();
-		
+
 		[Theory]
 		[MemberData(nameof(CSharpGeneratorTestData.ValidData), MemberType = typeof(CSharpGeneratorTestData))]
 		public void TestGenerateField(Field field, string output)
@@ -25,16 +25,14 @@ namespace CodeGen.Test.generators
 		public void TestGenerateGetter(Field fieldVariable, string output)
 		{
 			Assert.Equal(output, Gen.GenerateGetter(fieldVariable));
-
 		}
 
 		[Theory]
 		[MemberData(nameof(CSharpGeneratorTestData.ValidData), MemberType = typeof(CSharpGeneratorTestData))]
 		public void TestGenerateSetter(Variable fieldVariable)
 		{
-			
 		}
-		
+
 		private class CSharpGeneratorTestData
 		{
 			public static IEnumerable<object[]> ThrowsData => new List<object[]>
@@ -53,12 +51,12 @@ namespace CodeGen.Test.generators
 			{
 				new object[]
 				{
-					new Field {Name = "test", Type = "int"}, 
+					new Field {Name = "test", Type = "int"},
 					Indent + "private int test;"
 				},
 				new object[]
 				{
-					new Field {Name = "test", Type = "string", Access = "public"}, 
+					new Field {Name = "test", Type = "string", Access = "public"},
 					Indent + "public string test;"
 				},
 				new object[]
@@ -77,17 +75,17 @@ namespace CodeGen.Test.generators
 					Indent + "private const string test;"
 				}
 			};
-			
+
 			public static IEnumerable<object[]> GetterData => new List<object[]>
 			{
 				new object[]
 				{
-					new Field {Name = "test", Type = "int"}, 
+					new Field {Name = "test", Type = "int"},
 					"public int getTest()\n{\n" + Indent + "return test;\n}"
 				},
 				new object[]
 				{
-					new Field {Name = "test", Type = "string", Access = "public"}, 
+					new Field {Name = "test", Type = "string", Access = "public"},
 					"public string getTest()\n{\n" + Indent + "return test;\n}"
 				},
 				new object[]
@@ -107,9 +105,5 @@ namespace CodeGen.Test.generators
 				}
 			};
 		}
-		
-		
-		
-		
 	}
 }
