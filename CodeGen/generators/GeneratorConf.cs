@@ -11,7 +11,7 @@ namespace CodeGen.generators
 	public abstract class Generator
 	{
 		/// <summary>
-		/// 
+		/// Use tabs or spaces
 		/// </summary>
 		protected static bool UseTabs = true;
 
@@ -349,7 +349,7 @@ namespace CodeGen.generators
 			{"ruby", new Languange(new RubyGenerator(), "rb", "# {0}")},
 			{"python", new Languange(new PythonGenerator(), "py", "# {0}\n")},
 			{"vb", new Languange(new VbGenerator(), "vb", "' {0}\n", VbNormalizer.GetNormalizer())},
-			{"csharp", new Languange(new CSharpGenerator(), "cs", "/* {0} */")},
+			{"csharp", new Languange(new CSharpGenerator(), "cs", "/* {0} */", CSharpNormalizer.GetNormalizer())},
 			{"js_es6", new Languange(new Es6Generator(), "js", "/* {0} */")},
 			{"groovy", new Languange(new GroovyGenerator(), "groovy", "/* {0} */")},
 			{"cpp", new Languange(new CppGenerator(), "cpp", "/* {0} */")},

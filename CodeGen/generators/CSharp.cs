@@ -117,11 +117,20 @@ namespace CodeGen.generators
 				}
 			}
 
-			result += ") {";
-
-			if (method.Type?.Length > 0)
+			result += ")\n{";
+			if (!string.IsNullOrWhiteSpace(method.Type) && method.Type != "void")
 			{
-				result += '\n' + Indent + "return new " + method.Type + "();\n";
+				string defaultVal;
+				if (CSharpNormalizer.BuiltInDefaults.ContainsKey(method.Type))
+				{
+					defaultVal = CSharpNormalizer.BuiltInDefaults[method.Type];
+				}
+				else
+				{
+					defaultVal = "new " + method.Type + "()";
+				}
+
+				result += '\n' + Indent + "return " + defaultVal + ";\n";
 			}
 
 			result += '}';
@@ -129,7 +138,7 @@ namespace CodeGen.generators
 		}
 
 		/// <summary>
-		/// 
+		/// Generates getters and setters for fields
 		/// </summary>
 		/// <param name="fields"></param>
 		/// <returns></returns>
@@ -154,30 +163,67 @@ namespace CodeGen.generators
 		}
 
 		/// <summary>
-		/// 
+		/// Generates getter for field
 		/// </summary>
 		/// <param name="field"></param>
 		/// <returns></returns>
 		public string GenerateGetter(Field field)
 		{
-			var isStatic = "";
-			if (field.Static)
-			{
-				isStatic = "static ";
-			}
-			return "public " + isStatic + field.Type + " get" + Utils.Title(field.Name) + "()\n{\n" + Indent +
-			       "return " + field.Name + ";\n}";
+			return $"public {field.Type} get{Utils.Title(field.Name)}()\n{{\n{Indent}return {field.Name};\n}}";
 		}
 
 		/// <summary>
-		/// 
+		/// Generates setter for field 
 		/// </summary>
 		/// <param name="field"></param>
 		/// <returns></returns>
 		public string GenerateSetter(Variable field)
 		{
-			return "public void set" + Utils.Title(field.Name) + "(" + field.Type + " newValue) {\n" + Indent +
-			       field.Name + " = newValue;\n}";
+			return $"public void set{Utils.Title(field.Name)}({field.Type} newValue)\n{{\n{Indent}{field.Name} = newValue;\n}}";
+		}
+	}
+	
+	/// <inheritdoc />
+	/// <summary>Normalizer for C#</summary>
+	public class CSharpNormalizer : Normalizer
+	{
+		private static Normalizer _singletonInstance;
+		
+		private CSharpNormalizer()
+		{
+		}
+
+		/// <summary>
+		/// The dictionary of built in values
+		/// </summary>
+		public static readonly Dictionary<string, string> BuiltInDefaults = new Dictionary<string, string>
+		{
+			{"int", "0"},
+			{"double", "0.0"},
+			{"float", "0.0f"},
+			{"char", "''"},
+			{"bool", "false"},
+			{"string", "\"\""},
+		};
+
+		/// <summary>
+		/// Method for getting a singleton
+		/// </summary>
+		/// <returns>Normalizer instance</returns>
+		public static Normalizer GetNormalizer()
+		{
+			return _singletonInstance ?? (_singletonInstance = new CSharpNormalizer());
+		}
+
+		/// <inheritdoc />
+		protected override string NormalizeType(string type)
+		{
+			if (string.IsNullOrWhiteSpace(type))
+			{
+				type = "void";
+			}
+
+			return type;
 		}
 	}
 }

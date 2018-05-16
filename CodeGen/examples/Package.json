@@ -44,7 +44,7 @@
       "methods": [
         {
           "name": "print",
-          "return": "",
+          "type": "",
           "access": "private",
           "const": false,
           "static": false,
@@ -58,7 +58,7 @@
         },
         {
           "name": "getSize",
-          "return": "int",
+          "type": "int",
           "access": "protected",
           "const": false,
           "static": true,
@@ -66,7 +66,7 @@
         },
         {
           "name": "getColor",
-          "return": "string",
+          "type": "string",
           "access": "public",
           "const": true,
           "static": false,
@@ -90,7 +90,7 @@
           "methods": [
             {
               "name": "transform",
-              "return": "int",
+              "type": "int",
               "access": "public",
               "const": true,
               "static": true,

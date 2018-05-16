@@ -145,7 +145,7 @@ namespace CodeGen.generators
 	public class JavaNormalizer : Normalizer
 	{
 		private static Normalizer _singletonInstance = null;
-
+		
 		private JavaNormalizer()
 		{
 		}
@@ -189,6 +189,5 @@ namespace CodeGen.generators
 
 	public class JavaValidator : Validator
 	{
-		
 	}
 }

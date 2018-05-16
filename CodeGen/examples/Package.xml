@@ -51,14 +51,14 @@
 				</method>
 				<method>
 					<name>getSize</name>
-					<return>int</return>
+					<type>int</type>
 					<access>protected</access>
 					<const>false</const>
 					<static>true</static>
 				</method>
 				<method>
 					<name>getColor</name>
-					<return>string</return>
+					<type>string</type>
 					<access>public</access>
 					<const>true</const>
 					<static>false</static>
@@ -80,7 +80,7 @@
 					<methods>
 						<method>
 							<name>transform</name>
-							<return>int</return>
+							<type>int</type>
 							<access>public</access>
 							<const>true</const>
 							<static>true</static>

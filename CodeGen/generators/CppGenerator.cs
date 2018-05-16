@@ -27,7 +27,6 @@ namespace CodeGen.generators
 			return string.Format(ClassFormat, @class.Name, parent, @public, @protected, @private);
 		}
 
-
 		/// <inheritdoc />
 		public override string GenerateField(Field field)
 		{
@@ -77,16 +76,15 @@ namespace CodeGen.generators
 					break;
 			}
 
-			result += method.Name;
-			result += "(";
+			result += method.Name + "(";
 			for (var i = 0; i < method.Parameters?.Length; i++)
 			{
 				var parameter = method.Parameters[i];
-//                if (parameter.Const)
-//                {
-//                    result += "const ";
-//                }
 				result += parameter.Type + " " + parameter.Name;
+				if (!string.IsNullOrWhiteSpace(parameter.Default))
+				{
+					result += " = " + parameter.Default;
+				}
 				if (i + 1 < method.Parameters?.Length)
 				{
 					result += ", ";
@@ -98,7 +96,7 @@ namespace CodeGen.generators
 		}
 
 		/// <summary>
-		/// 
+		/// Generates public, protected or private section 
 		/// </summary>
 		/// <param name="access"></param>
 		/// <param name="class"></param>
