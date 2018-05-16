@@ -37,7 +37,7 @@ namespace CodeGen.generators
 					current += (string.IsNullOrEmpty(field.Default) ? "null" : field.Default) + ";";
 					return current;
 				});
-			
+
 			classes = @class.Classes?.Aggregate(classes,
 				(current, cls) => current + "\n" + @class.Name + "." + cls.Name + " = " + GenerateClass(cls));
 
@@ -66,7 +66,7 @@ namespace CodeGen.generators
 		{
 			return GenerateMethodWithBody(method, "");
 		}
-		
+
 		/// <summary>
 		/// 
 		/// </summary>
