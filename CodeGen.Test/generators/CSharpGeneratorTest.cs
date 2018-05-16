@@ -27,10 +27,18 @@ namespace CodeGen.Test.generators
 			Assert.Equal(output, Gen.GenerateGetter(fieldVariable));
 		}
 
-	//	[Theory]
-		[MemberData(nameof(CSharpGeneratorTestData.ValidData), MemberType = typeof(CSharpGeneratorTestData))]
-		public void TestGenerateSetter(Variable fieldVariable)
+		[Theory]
+		[MemberData(nameof(CSharpGeneratorTestData.SetterData), MemberType = typeof(CSharpGeneratorTestData))]
+		public void TestGenerateSetter(Field fieldVariable, string output)
 		{
+			Assert.Equal(output, Gen.GenerateSetter(fieldVariable));
+		}
+		
+		[Theory]
+		[MemberData(nameof(CSharpGeneratorTestData.MethodData), MemberType = typeof(CSharpGeneratorTestData))]
+		public void TestGenerateMethod(Method fieldVariable, string output)
+		{
+			Assert.Equal(output, Gen.GenerateMethod(fieldVariable));
 		}
 
 		private class CSharpGeneratorTestData
@@ -102,6 +110,117 @@ namespace CodeGen.Test.generators
 				{
 					new Field {Name = "test", Type = "string", Const = true},
 					"public string getTest()\n{\n" + Indent + "return test;\n}"
+				}
+			};
+			
+			public static IEnumerable<object[]> SetterData => new List<object[]>
+			{
+				new object[]
+				{
+					new Field {Name = "test", Type = "int"},
+					"public void setTest(int newValue)\n{\n" + Indent + "test = newValue;\n}"
+				},
+				new object[]
+				{
+					new Field {Name = "test", Type = "string", Access = "public"},
+					"public void setTest(string newValue)\n{\n" + Indent + "test = newValue;\n}"
+				},
+				new object[]
+				{
+					new Field {Name = "test", Type = "string", Access = "protected", Default = "\"test\""},
+					"public void setTest(string newValue)\n{\n" + Indent + "test = newValue;\n}"
+				},
+				new object[]
+				{
+					new Field {Name = "test", Type = "string", Static = true},
+					"public void setTest(string newValue)\n{\n" + Indent + "test = newValue;\n}"
+				},
+				new object[]
+				{
+					new Field {Name = "test", Type = "string", Const = true},
+					"public void setTest(string newValue)\n{\n" + Indent + "test = newValue;\n}"
+				}
+			};
+			
+			public static IEnumerable<object[]> MethodData => new List<object[]>
+			{
+				new object[]
+				{
+					new Method() {Name = "test"},
+					"private void test()\n{}"
+				},
+				new object[]
+				{
+					new Method() {Name = "test", Access = "default"},
+					"private void test()\n{}"
+				},
+				new object[]
+				{
+					new Method() {Name = "test", Access = "protected"},
+					"protected void test()\n{}"
+				},
+				new object[]
+				{
+					new Method() {Name = "test", Static = true},
+					"private static void test()\n{}"
+				},
+				new object[]
+				{
+					new Method() {Name = "test", Access = "default", Static = true},
+					"private static void test()\n{}"
+				},
+				new object[]
+				{
+					new Method() {Name = "test", Access = "protected", Static = true},
+					"protected static void test()\n{}"
+				},
+				new object[]
+				{
+					new Method() {Name = "test",
+						Parameters = new []
+						{
+							new Parameter {Type = "int", Name = "a"}
+						}},
+					"private void test(int a)\n{}"
+				},
+				new object[]
+				{
+					new Method() {Name = "test", Type = "int"},
+					"private int test()\n{\n"+Indent+"return 0;\n}"
+				},
+				new object[]
+				{
+					new Method() {Name = "test", Access = "default", Type = "double"},
+					"private double test()\n{\n"+Indent+"return 0.0;\n}"
+				},
+				new object[]
+				{
+					new Method() {Name = "test", Access = "protected", Type = "float"},
+					"protected float test()\n{\n"+Indent+"return 0.0f;\n}"
+				},
+				new object[]
+				{
+					new Method() {Name = "test", Static = true, Type = "char"},
+					"private static char test()\n{\n"+Indent+"return '';\n}"
+				},
+				new object[]
+				{
+					new Method() {Name = "test", Access = "default", Static = true, Type = "bool"},
+					"private static bool test()\n{\n"+Indent+"return false;\n}"
+				},
+				new object[]
+				{
+					new Method() {Name = "test", Access = "protected", Static = true, Type = "string"},
+					"protected static string test()\n{\n"+Indent+"return \"\";\n}"
+				},
+				new object[]
+				{
+					new Method() {Name = "test", Type = "int",
+						Parameters = new []
+						{
+							new Parameter {Type = "int", Name = "a"}
+						}},
+					"private int test(int a)\n{\n"+Indent+"return 0;\n}"
 				}
 			};
 		}

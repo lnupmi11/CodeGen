@@ -85,7 +85,7 @@ namespace CodeGen.generators
 		public override string GenerateMethod(Method method)
 		{
 			var result = "";
-			if (method.Access == "" || method.Access == "default")
+			if (method.Access == "" || method.Access == "default"|| method.Access == null)
 			{
 				result += "private ";
 			}
@@ -99,7 +99,7 @@ namespace CodeGen.generators
 				result += "static ";
 			}
 
-			if (method.Type?.Length == 0)
+			if (method.Type == null || method.Type?.Length == 0)
 				result += "void ";
 			else
 				result += method.Type + ' ';
