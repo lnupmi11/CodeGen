@@ -123,7 +123,7 @@ namespace CodeGen.generators
 		protected override Field NormalizeField(ref Field field)
 		{
 			base.NormalizeField(ref field);
-			field.Access = Utils.Title(field.Access);
+			field.Access = string.IsNullOrWhiteSpace(field.Access) ? "Public" : Utils.Title(field.Access);
 			return field;
 		}
 
@@ -131,7 +131,7 @@ namespace CodeGen.generators
 		protected override Method NormalizeMethod(ref Method method)
 		{
 			base.NormalizeMethod(ref method);
-			method.Access = Utils.Title(method.Access);
+			method.Access = string.IsNullOrWhiteSpace(method.Access) ? "Public" : Utils.Title(method.Access);
 			return method;
 		}
 
