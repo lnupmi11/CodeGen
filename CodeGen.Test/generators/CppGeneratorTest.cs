@@ -24,19 +24,13 @@ namespace CodeGen.Test.generators
 			Assert.Equal(output, Gen.GenerateField(field));
 		}
 
-//		[Theory]
-//		[MemberData(nameof(CppGeneratorTestData.MethodThrowsData), MemberType = typeof(CppGeneratorTestData))]
-//		public void TestGenerateMethodThrows(Method method)
-//		{
-//			Assert.Throws<ArgumentNullException>(() => Gen.GenerateMethod(method));
-//		}
+		[Theory]
+		[MemberData(nameof(CppGeneratorTestData.MethodData), MemberType = typeof(CppGeneratorTestData))]
+		public void TestGenerateMethod(Method method, string result)
+		{
+			Assert.Equal(Gen.GenerateMethod(method), result);
+		}
 
-//		[Theory]
-//		[MemberData(nameof(CppGeneratorTestData.MethodValidData), MemberType = typeof(CppGeneratorTestData))]
-//		public void TestGenerateMethod(Method method, string output)
-//		{
-//			Assert.Equal(output, Gen.GenerateMethod(method));
-//		}
 
 		private class CppGeneratorTestData
 		{
@@ -91,12 +85,33 @@ namespace CodeGen.Test.generators
 				},
 			};
 
-			public static IEnumerable<object[]> MethodThrowsData => new List<object[]>
+			public static IEnumerable<object[]> MethodData => new List<object[]>
 			{
-			};
-
-			public static IEnumerable<object[]> MethodValidData => new List<object[]>
-			{
+				new object[]
+				{
+					new Method {Name = "methodName", Access = "public", Type = "int"},
+					$"int methodName();"
+				},
+				new object[]
+				{
+					new Method {Name = "MethodName", Access = "private", Type = "string"},
+					$"string MethodName();"
+				},
+				new object[]
+				{
+					new Method
+					{
+						Name = "MethodName",
+						Access = "private",
+						Type = "string",
+						Parameters = new[]
+						{
+							new Parameter {Name = "param1", Type = "int", Default = "100"},
+							new Parameter {Name = "param2", Type = "string"},
+						}
+					},
+					$"string MethodName(int param1 = 100, string param2);"
+				}
 			};
 		}
 	}
