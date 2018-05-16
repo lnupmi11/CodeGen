@@ -123,7 +123,7 @@ namespace CodeGen
 		}
 
 		/// <summary>
-		/// 
+		/// Deserializes Package from Yaml data
 		/// </summary>
 		/// <param name="body"></param>
 		/// <returns></returns>

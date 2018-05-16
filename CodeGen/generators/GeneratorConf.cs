@@ -123,7 +123,7 @@ namespace CodeGen.generators
 		/// <returns>Normalized method object</returns>
 		protected virtual Method NormalizeMethod(ref Method method)
 		{
-			method.Return = NormalizeType(method.Return);
+			method.Type = NormalizeType(method.Type);
 			for (var i = 0; i < method.Parameters?.Length; i++)
 				NormalizeParameter(method.Parameters[i]);
 			return method;
@@ -278,7 +278,7 @@ namespace CodeGen.generators
 						new Method
 						{
 							Access = "private",
-							Return = "",
+							Type = "",
 							Name = "print",
 							Parameters = new[]
 							{
@@ -292,14 +292,14 @@ namespace CodeGen.generators
 						new Method
 						{
 							Access = "protected",
-							Return = "int",
+							Type = "int",
 							Static = true,
 							Name = "getSizeValue"
 						},
 						new Method
 						{
 							Access = "public",
-							Return = "string",
+							Type = "string",
 							Name = "getColorName",
 							Const = true
 						}
@@ -325,7 +325,7 @@ namespace CodeGen.generators
 								{
 									Static = true,
 									Access = "public",
-									Return = "int",
+									Type = "int",
 									Name = "transform",
 									Const = true
 								}

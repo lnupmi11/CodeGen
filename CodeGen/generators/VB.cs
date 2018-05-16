@@ -55,7 +55,7 @@ namespace CodeGen.generators
 		public override string GenerateMethod(Method method)
 		{
 			var result = method.Access + ' ';
-			var type = method.Return?.Length > 0 ? "Function" : "Sub";
+			var type = method.Type?.Length > 0 ? "Function" : "Sub";
 			result += type + ' ' + method.Name + '(';
 
 			for (var i = 0; i < method.Parameters?.Length; i++)
@@ -79,7 +79,7 @@ namespace CodeGen.generators
 			result += ')';
 			if (type == "Function")
 			{
-				result += " As " + method.Return + '\n' + Indent + "Return 0";
+				result += " As " + method.Type + '\n' + Indent + "Return 0";
 			}
 			else
 			{
@@ -95,7 +95,7 @@ namespace CodeGen.generators
 	/// <summary>Normalizer for Visual Basic</summary>
 	public class VbNormalizer : Normalizer
 	{
-		private static Normalizer _singletonInstance = null;
+		private static Normalizer _singletonInstance;
 		
 		private VbNormalizer()
 		{

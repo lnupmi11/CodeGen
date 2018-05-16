@@ -99,10 +99,10 @@ namespace CodeGen.generators
 				result += "static ";
 			}
 
-			if (method.Return?.Length == 0)
+			if (method.Type?.Length == 0)
 				result += "void ";
 			else
-				result += method.Return + ' ';
+				result += method.Type + ' ';
 
 			result += method.Name + '(';
 
@@ -119,9 +119,9 @@ namespace CodeGen.generators
 
 			result += ") {";
 
-			if (method.Return?.Length > 0)
+			if (method.Type?.Length > 0)
 			{
-				result += '\n' + Indent + "return new " + method.Return + "();\n";
+				result += '\n' + Indent + "return new " + method.Type + "();\n";
 			}
 
 			result += '}';

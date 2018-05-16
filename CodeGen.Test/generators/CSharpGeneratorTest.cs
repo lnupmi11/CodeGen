@@ -27,7 +27,7 @@ namespace CodeGen.Test.generators
 			Assert.Equal(output, Gen.GenerateGetter(fieldVariable));
 		}
 
-		[Theory]
+	//	[Theory]
 		[MemberData(nameof(CSharpGeneratorTestData.ValidData), MemberType = typeof(CSharpGeneratorTestData))]
 		public void TestGenerateSetter(Variable fieldVariable)
 		{

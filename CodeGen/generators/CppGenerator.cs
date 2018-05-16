@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Linq;
 
 namespace CodeGen.generators
@@ -10,22 +9,21 @@ namespace CodeGen.generators
 	/// </summary>
 	public class CppGenerator : Generator
 	{
-		private const string ClassFormat = "class {0} {1} \n{{{2}{3}{4}}}";
-		private string Indent { get; set; } = GeneratorConf.GetIndent(true, 4);
+		private const string ClassFormat = "class {0} {1}\n{{{2}{3}{4}}}";
+		private string Indent { get; } = GeneratorConf.GetIndent(UseTabs, 4);
 
 		/// <inheritdoc />
 		protected override string GenerateClass(Class @class)
 		{
-			string parent = "", @public = "", @protected = "", @private = "";
+			var parent = "";
 			if (@class.Parent?.Length > 0)
 			{
 				parent = " : " + @class.Parent + " " + @class.Parent;
 			}
 
-			;
-			@public = GenerateSection("public", @class);
-			@protected = GenerateSection("protected", @class);
-			@private = GenerateSection("private", @class);
+			var @public = GenerateSection("public", @class);
+			var @protected = GenerateSection("protected", @class);
+			var @private = GenerateSection("private", @class);
 			return string.Format(ClassFormat, @class.Name, parent, @public, @protected, @private);
 		}
 
@@ -34,7 +32,9 @@ namespace CodeGen.generators
 		public override string GenerateField(Field field)
 		{
 			if (!new CppValidator().FieldIsValid(field))
+			{
 				throw new ArgumentNullException();
+			}
 
 			var result = Indent;
 			if (field.Static)
@@ -47,8 +47,7 @@ namespace CodeGen.generators
 				result += "const ";
 			}
 
-			result += field.Type + " ";
-			result += field.Name;
+			result += field.Type + " " + field.Name;
 			if (field.Default != "")
 			{
 				result += " = " + field.Default;
@@ -61,20 +60,20 @@ namespace CodeGen.generators
 		/// <inheritdoc />
 		public override string GenerateMethod(Method method)
 		{
-			string result = "";
+			var result = "";
 
 			if (method.Static)
 			{
 				result += "static ";
 			}
 
-			switch (method.Return)
+			switch (method.Type)
 			{
 				case "":
 					result += "void ";
 					break;
 				default:
-					result += method.Return + " ";
+					result += method.Type + " ";
 					break;
 			}
 

@@ -107,7 +107,7 @@ namespace CodeGen.generators
 				result += "\n" + GeneratorConf.ShiftCode(body, 1, Indent) + "\n";
 			}
 
-			if (method.Return != "" && method.Name != "constructor")
+			if (method.Type != "" && method.Name != "constructor")
 			{
 				result += "\n" + Indent + "return null;\n";
 			}

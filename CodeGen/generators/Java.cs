@@ -97,7 +97,7 @@ namespace CodeGen.generators
 				result += "static ";
 			}
 
-			result += method.Return + " ";
+			result += method.Type + " ";
 
 			result += method.Name;
 			result += '(';
@@ -114,16 +114,16 @@ namespace CodeGen.generators
 
 			result += ") {";
 
-			if (!string.IsNullOrWhiteSpace(method.Return) && method.Return != "void")
+			if (!string.IsNullOrWhiteSpace(method.Type) && method.Type != "void")
 			{
 				string defaultVal;
-				if (JavaNormalizer.BuiltInDefaults.ContainsKey(method.Return))
+				if (JavaNormalizer.BuiltInDefaults.ContainsKey(method.Type))
 				{
-					defaultVal = JavaNormalizer.BuiltInDefaults[method.Return];
+					defaultVal = JavaNormalizer.BuiltInDefaults[method.Type];
 				}
 				else
 				{
-					defaultVal = "new " + method.Return + "()";
+					defaultVal = "new " + method.Type + "()";
 				}
 
 				result += '\n' + Indent + "return " + defaultVal + ";\n";

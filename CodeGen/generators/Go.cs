@@ -58,14 +58,14 @@ namespace CodeGen.generators
 
 			result += ')';
 
-			if (method.Return != "")
+			if (method.Type != "")
 			{
-				result += " " + method.Return;
+				result += " " + method.Type;
 			}
 
 			result += " {";
 
-			if (method.Return != "")
+			if (method.Type != "")
 			{
 				result += "\n" + Indent + "return nil\n";
 			}
