@@ -39,7 +39,7 @@ namespace CodeGen
 
 	internal static class Program
 	{
-		public const string DefaultLang = "go";
+		public const string DefaultLang = "python";
 
 		public static readonly Package DefaultPkg = GeneratorConf.ExamplePkg;
 
