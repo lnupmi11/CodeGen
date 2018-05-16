@@ -96,7 +96,7 @@ namespace CodeGen.Test.generators
 				new object[]
 				{
 					new Field {Name = "test", Type = "string", Static = true},
-					"public static string getTest()\n{\n" + Indent + "return test;\n}"
+					"public string getTest()\n{\n" + Indent + "return test;\n}"
 				},
 				new object[]
 				{

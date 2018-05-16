@@ -9,15 +9,15 @@ namespace CodeGen.generators
 	public class GoGenerator : Generator
 	{
 		private const string ClassFormat = "type {0} struct {{{1}}}{2}{3}";
-		private string Indent { get; set; } = GeneratorConf.GetIndent(true, 4);
+		private string Indent { get; } = GeneratorConf.GetIndent(true, 4);
 
 		/// <inheritdoc />
 		protected override string GenerateClass(Class @class)
 		{
 			string fields = "", methods = "", classes = "";
-			fields = @class.Fields?.Aggregate('\n' + fields, (current, field) => current + GenerateField(field) + '\n');
-			methods = @class.Methods?.Aggregate("\n\n" + methods,
-				(current, method) => current + "func (" + @class.Name + ") " + GenerateMethod(method) + "\n\n");
+			fields = @class.Fields?.Aggregate($"\n{fields}", (current, field) => $"{current}{GenerateField(field)}\n");
+			methods = @class.Methods?.Aggregate($"\n\n{methods}",
+				(current, method) => current + $"func ({@class.Name}) {GenerateMethod(method)}\n\n");
 			classes = @class.Classes?.Aggregate(classes, (current, cls) => current + GenerateClass(cls));
 			return string.Format(ClassFormat, @class.Name, fields, methods, classes);
 		}
@@ -32,7 +32,7 @@ namespace CodeGen.generators
 				field.Name = field.Name?.First().ToString().ToUpper() + field.Name?.Substring(1);
 			}
 
-			result += field.Name + ' ' + field.Type;
+			result += $"{field.Name} {field.Type}";
 
 			return result;
 		}
@@ -45,6 +45,11 @@ namespace CodeGen.generators
 			{
 				method.Name = method.Name?.First().ToString().ToUpper() + method.Name?.Substring(1);
 			}
+			else
+			{
+				method.Name = method.Name?.First().ToString().ToLower() + method.Name?.Substring(1);
+			}
+
 			result += method.Name + '(';
 
 			for (var i = 0; i < method.Parameters?.Length; i++)
@@ -67,7 +72,7 @@ namespace CodeGen.generators
 
 			if (method.Type != "")
 			{
-				result += "\n" + Indent + "return nil\n";
+				result += $"\n{Indent}return nil\n";
 			}
 
 			result += '}';
