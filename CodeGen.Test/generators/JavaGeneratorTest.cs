@@ -24,19 +24,6 @@ namespace CodeGen.Test.generators
 			Assert.Equal(output, Gen.GenerateField(field));
 		}
 
-//		[Theory]
-//		[MemberData(nameof(JavaGeneratorTestData.MethodThrowsData), MemberType = typeof(JavaGeneratorTestData))]
-//		public void TestGenerateMethodThrows(Method method)
-//		{
-//			Assert.Throws<ArgumentNullException>(() => Gen.GenerateMethod(method));
-//		}
-
-//		[Theory]
-//		[MemberData(nameof(JavaGeneratorTestData.MethodValidData), MemberType = typeof(JavaGeneratorTestData))]
-//		public void TestGenerateMethod(Method method, string output)
-//		{
-//			Assert.Equal(output, Gen.GenerateMethod(method));
-//		}
 
 		private class JavaGeneratorTestData
 		{
@@ -89,16 +76,6 @@ namespace CodeGen.Test.generators
 					new Field {Name = "test", Type = "String", Access = "protected", Static = true, Const = true},
 					Indent + "protected const static String test;"
 				},
-			};
-
-			public static IEnumerable<object[]> MethodThrowsData => new List<object[]>
-			{
-				
-			};
-
-			public static IEnumerable<object[]> MethodValidData => new List<object[]>
-			{
-				
 			};
 		}
 	}

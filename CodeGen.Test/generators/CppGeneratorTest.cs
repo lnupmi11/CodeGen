@@ -31,7 +31,6 @@ namespace CodeGen.Test.generators
 			Assert.Equal(Gen.GenerateMethod(method), result);
 		}
 
-
 		private class CppGeneratorTestData
 		{
 			public static IEnumerable<object[]> FieldThrowsData => new List<object[]>

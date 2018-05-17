@@ -36,7 +36,7 @@ namespace CodeGen.Test.generators
 				{
 					new Field {Name = "fieldName", Type = "string"},
 					$"{Indent}"
-				}
+				},
 			};
 
 			public static IEnumerable<object[]> MethodData => new List<object[]>
@@ -44,12 +44,12 @@ namespace CodeGen.Test.generators
 				new object[]
 				{
 					new Method {Name = "methodName", Access = "public", Type = "int"},
-					$"def methodName\nend"
+					"def methodName\nend"
 				},
 				new object[]
 				{
 					new Method {Name = "MethodName", Access = "private", Type = "string"},
-					$"private def MethodName\nend"
+					"private def MethodName\nend"
 				},
 				new object[]
 				{
@@ -64,7 +64,23 @@ namespace CodeGen.Test.generators
 							new Parameter {Name = "param2", Type = "string"},
 						}
 					},
-					$"private def MethodName(param1=100, param2)\nend"
+					"private def MethodName(param1=100, param2)\nend"
+				},
+				new object[]
+				{
+					new Method
+					{
+						Name = "Sum",
+						Access = "private",
+						Type = "int",
+						Parameters = new[]
+						{
+							new Parameter {Name = "param1", Type = "int", Default = "350"},
+							new Parameter {Name = "param2", Type = "int", Default = "400"},
+							new Parameter {Name = "param3", Type = "int", Default = "500"},
+						}
+					},
+					"private def Sum(param1=350, param2=400, param3=500)\nend"
 				}
 			};
 		}

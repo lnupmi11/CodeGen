@@ -33,7 +33,7 @@ namespace CodeGen.Test.generators
 		{
 			Assert.Equal(output, Gen.GenerateSetter(fieldVariable));
 		}
-		
+
 		[Theory]
 		[MemberData(nameof(CSharpGeneratorTestData.MethodData), MemberType = typeof(CSharpGeneratorTestData))]
 		public void TestGenerateMethod(Method fieldVariable, string output)
@@ -60,27 +60,27 @@ namespace CodeGen.Test.generators
 				new object[]
 				{
 					new Field {Name = "test", Type = "int"},
-					Indent + "private int test;"
+					$"{Indent}private int test;"
 				},
 				new object[]
 				{
 					new Field {Name = "test", Type = "string", Access = "public"},
-					Indent + "public string test;"
+					$"{Indent}public string test;"
 				},
 				new object[]
 				{
 					new Field {Name = "test", Type = "string", Access = "public", Default = "\"test\""},
-					Indent + "public string test = \"test\";"
+					$"{Indent}public string test = \"test\";"
 				},
 				new object[]
 				{
 					new Field {Name = "test", Type = "string", Static = true},
-					Indent + "private static string test;"
+					$"{Indent}private static string test;"
 				},
 				new object[]
 				{
 					new Field {Name = "test", Type = "string", Const = true},
-					Indent + "private const string test;"
+					$"{Indent}private const string test;"
 				}
 			};
 
@@ -89,59 +89,59 @@ namespace CodeGen.Test.generators
 				new object[]
 				{
 					new Field {Name = "test", Type = "int"},
-					"public int getTest()\n{\n" + Indent + "return test;\n}"
+					$"public int getTest()\n{{\n{Indent}return test;\n}}"
 				},
 				new object[]
 				{
 					new Field {Name = "test", Type = "string", Access = "public"},
-					"public string getTest()\n{\n" + Indent + "return test;\n}"
+					$"public string getTest()\n{{\n{Indent}return test;\n}}"
 				},
 				new object[]
 				{
 					new Field {Name = "test", Type = "string", Access = "protected", Default = "\"test\""},
-					"public string getTest()\n{\n" + Indent + "return test;\n}"
+					$"public string getTest()\n{{\n{Indent}return test;\n}}"
 				},
 				new object[]
 				{
 					new Field {Name = "test", Type = "string", Static = true},
-					"public string getTest()\n{\n" + Indent + "return test;\n}"
+					$"public string getTest()\n{{\n{Indent}return test;\n}}"
 				},
 				new object[]
 				{
 					new Field {Name = "test", Type = "string", Const = true},
-					"public string getTest()\n{\n" + Indent + "return test;\n}"
+					$"public string getTest()\n{{\n{Indent}return test;\n}}"
 				}
 			};
-			
+
 			public static IEnumerable<object[]> SetterData => new List<object[]>
 			{
 				new object[]
 				{
 					new Field {Name = "test", Type = "int"},
-					"public void setTest(int newValue)\n{\n" + Indent + "test = newValue;\n}"
+					$"public void setTest(int newValue)\n{{\n{Indent}test = newValue;\n}}"
 				},
 				new object[]
 				{
 					new Field {Name = "test", Type = "string", Access = "public"},
-					"public void setTest(string newValue)\n{\n" + Indent + "test = newValue;\n}"
+					$"public void setTest(string newValue)\n{{\n{Indent}test = newValue;\n}}"
 				},
 				new object[]
 				{
 					new Field {Name = "test", Type = "string", Access = "protected", Default = "\"test\""},
-					"public void setTest(string newValue)\n{\n" + Indent + "test = newValue;\n}"
+					$"public void setTest(string newValue)\n{{\n{Indent}test = newValue;\n}}"
 				},
 				new object[]
 				{
 					new Field {Name = "test", Type = "string", Static = true},
-					"public void setTest(string newValue)\n{\n" + Indent + "test = newValue;\n}"
+					$"public void setTest(string newValue)\n{{\n{Indent}test = newValue;\n}}"
 				},
 				new object[]
 				{
 					new Field {Name = "test", Type = "string", Const = true},
-					"public void setTest(string newValue)\n{\n" + Indent + "test = newValue;\n}"
+					$"public void setTest(string newValue)\n{{\n{Indent}test = newValue;\n}}"
 				}
 			};
-			
+
 			public static IEnumerable<object[]> MethodData => new List<object[]>
 			{
 				new object[]
@@ -176,51 +176,58 @@ namespace CodeGen.Test.generators
 				},
 				new object[]
 				{
-					new Method() {Name = "test",
-						Parameters = new []
+					new Method()
+					{
+						Name = "test",
+						Parameters = new[]
 						{
 							new Parameter {Type = "int", Name = "a"}
-						}},
+						}
+					},
 					"private void test(int a)\n{}"
 				},
 				new object[]
 				{
 					new Method() {Name = "test", Type = "int"},
-					"private int test()\n{\n"+Indent+"return 0;\n}"
+					$"private int test()\n{{\n{Indent}return 0;\n}}"
 				},
 				new object[]
 				{
 					new Method() {Name = "test", Access = "default", Type = "double"},
-					"private double test()\n{\n"+Indent+"return 0.0;\n}"
+					$"private double test()\n{{\n{Indent}return 0.0;\n}}"
 				},
 				new object[]
 				{
 					new Method() {Name = "test", Access = "protected", Type = "float"},
-					"protected float test()\n{\n"+Indent+"return 0.0f;\n}"
+					$"protected float test()\n{{\n{Indent}return 0.0f;\n}}"
 				},
 				new object[]
 				{
 					new Method() {Name = "test", Static = true, Type = "char"},
-					"private static char test()\n{\n"+Indent+"return '';\n}"
+					$"private static char test()\n{{\n{Indent}return \'\';\n}}"
 				},
 				new object[]
 				{
 					new Method() {Name = "test", Access = "default", Static = true, Type = "bool"},
-					"private static bool test()\n{\n"+Indent+"return false;\n}"
+					$"private static bool test()\n{{\n{Indent}return false;\n}}"
 				},
 				new object[]
 				{
 					new Method() {Name = "test", Access = "protected", Static = true, Type = "string"},
-					"protected static string test()\n{\n"+Indent+"return \"\";\n}"
+					$"protected static string test()\n{{\n{Indent}return \"\";\n}}"
 				},
 				new object[]
 				{
-					new Method() {Name = "test", Type = "int",
-						Parameters = new []
+					new Method()
+					{
+						Name = "test",
+						Type = "int",
+						Parameters = new[]
 						{
 							new Parameter {Type = "int", Name = "a"}
-						}},
-					"private int test(int a)\n{\n"+Indent+"return 0;\n}"
+						}
+					},
+					$"private int test(int a)\n{{\n{Indent}return 0;\n}}"
 				}
 			};
 		}

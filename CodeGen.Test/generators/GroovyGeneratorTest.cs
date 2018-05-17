@@ -36,6 +36,16 @@ namespace CodeGen.Test.generators
 				{
 					new Field {Name = "fieldName", Type = "string"},
 					$"{Indent} String fieldName"
+				},
+				new object[]
+				{
+					new Field {Name = "number", Type = "int", Access = "public"},
+					$"{Indent}public int number"
+				},
+				new object[]
+				{
+					new Field {Name = "one", Type = "string", Default = "1", Access = "public", Const = true, Static = true},
+					$"{Indent}public static String one = 1"
 				}
 			};
 
@@ -65,6 +75,22 @@ namespace CodeGen.Test.generators
 						}
 					},
 					$"private String MethodName(int param1, String param2) {{\n{Indent}return 0\n}}"
+				},
+				new object[]
+				{
+					new Method
+					{
+						Name = "Sum",
+						Access = "public",
+						Type = "int",
+						Parameters = new[]
+						{
+							new Parameter {Name = "param1", Type = "int", Default = "350"},
+							new Parameter {Name = "param2", Type = "int", Default = "400"},
+							new Parameter {Name = "param3", Type = "int", Default = "500"},
+						}
+					},
+					$"public int Sum(int param1, int param2, int param3) {{\n{Indent}return 0\n}}"
 				}
 			};
 		}
