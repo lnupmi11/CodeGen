@@ -1,0 +1,48 @@
+name: main
+classes:
+- name: Fruit
+- name: Apple
+  parent: Fruit
+  fields:
+  - name: colour
+    type: string
+    default: '"red"'
+    access: public
+  - name: sort
+    type: string
+    default: '"Golden"'
+    access: public
+  - name: size
+    type: int
+    default: "1"
+    access: private
+    static: false
+  methods:
+  - name: print
+    type: ""
+    access: private
+    parameters:
+    - name: colour
+      type: string
+      default: ""
+  - name: getSize
+    type: int
+    access: protected
+    static: true
+  - name: getColor
+    type: string
+    access: public
+    const: true
+  classes:
+  - name: Seed
+    access: private
+    fields:
+    - name: size
+      type: int
+      access: public
+    methods:
+    - name: transform
+      type: int
+      access: public
+      const: true
+      static: true

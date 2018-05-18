@@ -3,6 +3,12 @@
 ##
 ## Get latest from https://github.com/github/gitignore/blob/master/VisualStudio.gitignore
 
+# User-defined
+docs/
+out/
+html/
+latex/
+
 # User-specific files
 *.suo
 *.user

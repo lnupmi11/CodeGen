@@ -1,0 +1,109 @@
+﻿{
+  "name": "main",
+  "useSpaces": true,
+  "classes": [
+    {
+      "name": "Fruit",
+      "fields": null,
+      "methods": null,
+      "classes": null,
+      "parent": "",
+      "access": ""
+    },
+    {
+      "name": "Apple",
+      "fields": [
+        {
+          "name": "colour",
+          "type": "string",
+          "const": false,
+          "pointer": false,
+          "default": "\"red\"",
+          "access": "public",
+          "static": false
+        },
+        {
+          "name": "sort",
+          "type": "string",
+          "const": false,
+          "pointer": false,
+          "default": "\"Golden\"",
+          "access": "public",
+          "static": true
+        },
+        {
+          "name": "size",
+          "type": "int",
+          "const": false,
+          "pointer": false,
+          "default": "1",
+          "access": "private",
+          "static": false
+        }
+      ],
+      "methods": [
+        {
+          "name": "print",
+          "type": "",
+          "access": "private",
+          "const": false,
+          "static": false,
+          "parameters": [
+            {
+              "name": "colour",
+              "type": "string",
+              "default": ""
+            }
+          ]
+        },
+        {
+          "name": "getSize",
+          "type": "int",
+          "access": "protected",
+          "const": false,
+          "static": true,
+          "parameters": null
+        },
+        {
+          "name": "getColor",
+          "type": "string",
+          "access": "public",
+          "const": true,
+          "static": false,
+          "parameters": null
+        }
+      ],
+      "classes": [
+        {
+          "name": "Seed",
+          "fields": [
+            {
+              "name": "size",
+              "type": "int",
+              "const": false,
+              "pointer": false,
+              "default": "",
+              "access": "public",
+              "static": false
+            }
+          ],
+          "methods": [
+            {
+              "name": "transform",
+              "type": "int",
+              "access": "public",
+              "const": true,
+              "static": true,
+              "parameters": null
+            }
+          ],
+          "classes": null,
+          "parent": "",
+          "access": "private"
+        }
+      ],
+      "parent": "Fruit",
+      "access": ""
+    }
+  ]
+}
