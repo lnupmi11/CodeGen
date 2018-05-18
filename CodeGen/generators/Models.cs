@@ -174,8 +174,8 @@ namespace CodeGen.generators
 		/// <summary>
 		/// Represents return type of the method. Type: string
 		/// </summary>
-		[XmlElement("return")]
-		public string Return { get; set; }
+		[XmlElement("type")]
+		public string Type { get; set; }
 
 		/// <summary>
 		/// Represents access level of the method. Type: string

@@ -37,7 +37,7 @@ namespace CodeGen.generators
 					current += (string.IsNullOrEmpty(field.Default) ? "null" : field.Default) + ";";
 					return current;
 				});
-			
+
 			classes = @class.Classes?.Aggregate(classes,
 				(current, cls) => current + "\n" + @class.Name + "." + cls.Name + " = " + GenerateClass(cls));
 
@@ -45,7 +45,7 @@ namespace CodeGen.generators
 		}
 
 		/// <inheritdoc />
-		protected override string GenerateField(Field field)
+		public override string GenerateField(Field field)
 		{
 			var result = Indent;
 
@@ -62,11 +62,11 @@ namespace CodeGen.generators
 		}
 
 		/// <inheritdoc />
-		protected override string GenerateMethod(Method method)
+		public override string GenerateMethod(Method method)
 		{
 			return GenerateMethodWithBody(method, "");
 		}
-		
+
 		/// <summary>
 		/// 
 		/// </summary>
@@ -107,7 +107,7 @@ namespace CodeGen.generators
 				result += "\n" + GeneratorConf.ShiftCode(body, 1, Indent) + "\n";
 			}
 
-			if (method.Return != "" && method.Name != "constructor")
+			if (method.Type != "" && method.Name != "constructor")
 			{
 				result += "\n" + Indent + "return null;\n";
 			}

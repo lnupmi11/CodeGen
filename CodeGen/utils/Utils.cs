@@ -21,6 +21,7 @@ namespace CodeGen.utils
 			{
 				return File.ReadAllText(name);
 			}
+
 			throw new FileNotFoundException("file does not exit");
 		}
 
@@ -33,7 +34,7 @@ namespace CodeGen.utils
 		{
 			File.WriteAllText(path, fileContext);
 		}
-		
+
 		/// <summary>
 		/// Downloads file from the server by url
 		/// </summary>
@@ -57,6 +58,7 @@ namespace CodeGen.utils
 			{
 				throw new InvalidDataException("specify language (-l) flag");
 			}
+
 			if (file == "")
 			{
 				throw new InvalidDataException("specify file path (-f) flag");
@@ -77,9 +79,10 @@ namespace CodeGen.utils
 			{
 				return arr.Last();
 			}
+
 			throw new InvalidDataException("invalid input file");
 		}
-		
+
 		/// <summary>
 		/// Converts first letter of the string to upper case and others to lower case
 		/// </summary>
@@ -87,7 +90,13 @@ namespace CodeGen.utils
 		/// <returns>Transformed string</returns>
 		public static string Title(string @string)
 		{
-			return @string?.First().ToString().ToUpper() + @string?.Substring(1).ToLower();
+			return string.IsNullOrEmpty(@string)
+				? @string
+				: (
+					@string.Length > 1 
+						? char.ToUpper(@string[0]) + @string.Substring(1) 
+						: @string.ToUpper()
+				);
 		}
 	}
 }

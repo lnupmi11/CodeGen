@@ -41,7 +41,7 @@ namespace CodeGen.generators
 		}
 
 		/// <inheritdoc />
-		protected override string GenerateField(Field field)
+		public override string GenerateField(Field field)
 		{
 			var result = Indent + field.Access + ' ' + field.Name + " As " + field.Type;
 			if (field.Default?.Length > 0)
@@ -52,10 +52,10 @@ namespace CodeGen.generators
 		}
 
 		/// <inheritdoc />
-		protected override string GenerateMethod(Method method)
+		public override string GenerateMethod(Method method)
 		{
 			var result = method.Access + ' ';
-			var type = method.Return?.Length > 0 ? "Function" : "Sub";
+			var type = method.Type?.Length > 0 ? "Function" : "Sub";
 			result += type + ' ' + method.Name + '(';
 
 			for (var i = 0; i < method.Parameters?.Length; i++)
@@ -79,7 +79,7 @@ namespace CodeGen.generators
 			result += ')';
 			if (type == "Function")
 			{
-				result += " As " + method.Return + '\n' + Indent + "Return 0";
+				result += " As " + method.Type + '\n' + Indent + "Return 0";
 			}
 			else
 			{
@@ -95,7 +95,7 @@ namespace CodeGen.generators
 	/// <summary>Normalizer for Visual Basic</summary>
 	public class VbNormalizer : Normalizer
 	{
-		private static Normalizer _singletonInstance = null;
+		private static Normalizer _singletonInstance;
 		
 		private VbNormalizer()
 		{
@@ -123,7 +123,7 @@ namespace CodeGen.generators
 		protected override Field NormalizeField(ref Field field)
 		{
 			base.NormalizeField(ref field);
-			field.Access = Utils.Title(field.Access);
+			field.Access = string.IsNullOrWhiteSpace(field.Access) ? "Public" : Utils.Title(field.Access);
 			return field;
 		}
 
@@ -131,7 +131,7 @@ namespace CodeGen.generators
 		protected override Method NormalizeMethod(ref Method method)
 		{
 			base.NormalizeMethod(ref method);
-			method.Access = Utils.Title(method.Access);
+			method.Access = string.IsNullOrWhiteSpace(method.Access) ? "Public" : Utils.Title(method.Access);
 			return method;
 		}
 

@@ -39,7 +39,7 @@ namespace CodeGen.generators
 		}
 
 		/// <inheritdoc />
-		protected override string GenerateField(Field field)
+		public override string GenerateField(Field field)
 		{
 			var result = Indent;
 			if (field.Access == "" || field.Access == "default")
@@ -75,7 +75,7 @@ namespace CodeGen.generators
 		}
 
 		/// <inheritdoc />
-		protected override string GenerateMethod(Method method)
+		public override string GenerateMethod(Method method)
 		{
 			var result = "";
 			if (method.Access == "" || method.Access == "default")
@@ -87,7 +87,7 @@ namespace CodeGen.generators
 				result += method.Access + ' ';
 			}
 
-			switch (method.Return)
+			switch (method.Type)
 			{
 				case "string":
 					result += "String ";
@@ -96,7 +96,7 @@ namespace CodeGen.generators
 					result += "void ";
 					break;
 				default:
-					result += method.Return + ' ';
+					result += method.Type + ' ';
 					break;
 			}
 
@@ -119,7 +119,7 @@ namespace CodeGen.generators
 
 			result += ") {";
 
-			if (method.Return?.Length > 0)
+			if (method.Type?.Length > 0)
 			{
 				result += '\n' + Indent + "return 0\n";
 			}

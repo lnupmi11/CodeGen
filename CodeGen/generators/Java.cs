@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 
 namespace CodeGen.generators
@@ -10,7 +11,7 @@ namespace CodeGen.generators
 	public class JavaGenerator : Generator
 	{
 		private const string ClassFormat = "{0}class {1} {2}{{{3}{4}{5}}}";
-		private string Indent { get; set; } = GeneratorConf.GetIndent(true, 4);
+		private string Indent { get; } = GeneratorConf.GetIndent(true, 4);
 
 		/// <inheritdoc />
 		protected override string GenerateClass(Class @class)
@@ -40,10 +41,14 @@ namespace CodeGen.generators
 		}
 
 		/// <inheritdoc />
-		protected override string GenerateField(Field field)
+		/// <exception cref="ArgumentNullException">if field is null, or has whitespace or null name/type</exception>
+		public override string GenerateField(Field field)
 		{
+			if (!new JavaValidator().FieldIsValid(field))
+				throw new ArgumentNullException();
+
 			var result = Indent;
-			if (field.Access == "" || field.Access == "default")
+			if (string.IsNullOrWhiteSpace(field.Access) || field.Access == "default")
 			{
 				result += "private ";
 			}
@@ -75,7 +80,7 @@ namespace CodeGen.generators
 		}
 
 		/// <inheritdoc />
-		protected override string GenerateMethod(Method method)
+		public override string GenerateMethod(Method method)
 		{
 			var result = "";
 			if (method.Access == "" || method.Access == "default")
@@ -92,7 +97,7 @@ namespace CodeGen.generators
 				result += "static ";
 			}
 
-			result += method.Return + " ";
+			result += method.Type + " ";
 
 			result += method.Name;
 			result += '(';
@@ -109,16 +114,16 @@ namespace CodeGen.generators
 
 			result += ") {";
 
-			if (!string.IsNullOrWhiteSpace(method.Return) && method.Return != "void")
+			if (!string.IsNullOrWhiteSpace(method.Type) && method.Type != "void")
 			{
 				string defaultVal;
-				if (JavaNormalizer.BuiltInDefaults.ContainsKey(method.Return))
+				if (JavaNormalizer.BuiltInDefaults.ContainsKey(method.Type))
 				{
-					defaultVal = JavaNormalizer.BuiltInDefaults[method.Return];
+					defaultVal = JavaNormalizer.BuiltInDefaults[method.Type];
 				}
 				else
 				{
-					defaultVal = "new " + method.Return + "()";
+					defaultVal = "new " + method.Type + "()";
 				}
 
 				result += '\n' + Indent + "return " + defaultVal + ";\n";
@@ -127,6 +132,12 @@ namespace CodeGen.generators
 			result += '}';
 			return result;
 		}
+
+		/// <inheritdoc />
+		public override string GetIndent()
+		{
+			return Indent;
+		}
 	}
 
 	/// <inheritdoc />
@@ -134,10 +145,9 @@ namespace CodeGen.generators
 	public class JavaNormalizer : Normalizer
 	{
 		private static Normalizer _singletonInstance = null;
-
+		
 		private JavaNormalizer()
 		{
-			
 		}
 
 		/// <summary>
@@ -175,5 +185,9 @@ namespace CodeGen.generators
 
 			return type;
 		}
+	}
+
+	public class JavaValidator : Validator
+	{
 	}
 }

@@ -19,7 +19,7 @@ namespace CodeGen.generators
 
 			if (!string.IsNullOrWhiteSpace(@class.Parent))
 			{
-				inherits = '(' + @class.Parent + ')';
+				inherits = $"({@class.Parent})";
 			}
 
 			if (@class.Fields?.Length > 0)
@@ -28,7 +28,7 @@ namespace CodeGen.generators
 			}
 			
 			methods = @class.Methods?.Aggregate('\n' + methods,
-				(current, method) => current + GeneratorConf.ShiftCode(GenerateMethod(method), 1, Indent) + '\n');
+				(current, method) => $"{current}{GeneratorConf.ShiftCode(GenerateMethod(method), 1, Indent)}\n");
 			
 			classes = @class.Classes?.Aggregate('\n' + classes,
 				(current, cls) => current + GeneratorConf.ShiftCode(GenerateClass(cls), 1, Indent));
@@ -44,22 +44,13 @@ namespace CodeGen.generators
 		}
 
 		/// <inheritdoc />
-		protected override string GenerateField(Field field)
+		public override string GenerateField(Field field)
 		{
-			var result = Indent;
-
-			if (field.Access == "public")
-			{
-				field.Name = field.Name?.First().ToString().ToUpper() + field.Name?.Substring(1);
-			}
-
-			result += field.Name + ' ' + field.Type;
-
-			return result;
+			return "self." + field.Name;
 		}
 
 		/// <inheritdoc />
-		protected override string GenerateMethod(Method method)
+		public override string GenerateMethod(Method method)
 		{
 			return GenerateMethodWithBody(method, "pass");
 		}
@@ -115,7 +106,7 @@ namespace CodeGen.generators
 			return result;
 		}
 
-		private string GenerateInit(Class @class)
+		public string GenerateInit(Class @class)
 		{
 			string result = "", body = "";
 			var init = new Method
@@ -125,7 +116,7 @@ namespace CodeGen.generators
 			var previousIsStatic = false;
 			var paramList = new List<Parameter>();
 
-			for (var i = 0; i < @class.Fields.Length; i++)
+			for (var i = 0; i < @class.Fields?.Length; i++)
 			{
 				var field = @class.Fields[i];
 
@@ -135,13 +126,28 @@ namespace CodeGen.generators
 					continue;
 				}
 
+				string access;
+				switch (field.Access)
+				{
+					case "private":
+						access = "__";
+						break;
+					case "protected":
+						access = "_";
+						break;
+					default:
+						access = "";
+						break;
+				}
+
 				paramList.Add(new Parameter
 				{
 					Name = field.Name,
 					Default = field.Default
 				});
-
-				body += "self." + field.Name + " = " + field.Name;
+				var fieldName = field.Name;
+				field.Name = access + field.Name;
+				body += $"{GenerateField(field)} = {fieldName}";
 
 				if (i + 1 < @class.Fields.Length && !previousIsStatic)
 				{
@@ -150,6 +156,11 @@ namespace CodeGen.generators
 
 				previousIsStatic = false;
 
+			}
+
+			if (body == "")
+			{
+				body = "pass";
 			}
 
 			init.Parameters = paramList.ToArray();

@@ -5,6 +5,7 @@ using System.Xml.Serialization;
 using CodeGen.generators;
 using CodeGen.utils;
 using Newtonsoft.Json;
+using YamlDotNet.Core;
 using YamlDotNet.Serialization;
 using YamlDotNet.Serialization.NamingConventions;
 
@@ -31,7 +32,7 @@ namespace CodeGen
 				: ParseFile(fileName);
 
 			lang.Normalizer?.NormalizePackage(ref pkg);
-			
+
 			var data = gen.Generate(pkg);
 
 			if (toStdout)
@@ -48,13 +49,20 @@ namespace CodeGen
 		{
 			return ParseFileByFormat(GetSerializedData(filename), filename);
 		}
-		
-		private static Package ParseFileByFormat(string body, string fileName)
+
+		/// <summary>
+		/// Parses file by given fromat
+		/// </summary>
+		/// <param name="body">Document in string representation</param>
+		/// <param name="fileName">Name of file</param>
+		/// <returns>Parsed package by format</returns>
+		/// <exception cref="InvalidDataException"></exception>
+		public static Package ParseFileByFormat(string body, string fileName)
 		{
 			Package pkg;
 
 			var fileFormat = Utils.GetFileFormat(fileName);
-			
+
 			switch (fileFormat)
 			{
 				case "xml":
@@ -78,7 +86,7 @@ namespace CodeGen
 			var allowedSchemes = new[] {Uri.UriSchemeHttp, Uri.UriSchemeHttps, Uri.UriSchemeFtp, Uri.UriSchemeFtp};
 
 			var result = Uri.TryCreate(fileName, UriKind.Absolute, out var uriResult)
-			             && Array.IndexOf(allowedSchemes, uriResult.Scheme) > -1
+						 && Array.IndexOf(allowedSchemes, uriResult.Scheme) > -1
 				? Utils.Download(fileName)
 				: Utils.Read(fileName);
 
@@ -114,20 +122,32 @@ namespace CodeGen
 			}
 		}
 
-		private static Package DeserializeYaml(string body)
-		{
-			var deserializer = new DeserializerBuilder()
-				.WithNamingConvention(new CamelCaseNamingConvention())
-				.Build();
-			var pkg = deserializer.Deserialize<Package>(new StringReader(body));
-			return pkg;
-		}
-
 		/// <summary>
-		/// 
+		/// Deserializes Package from Yaml data
 		/// </summary>
 		/// <param name="body"></param>
 		/// <returns></returns>
+		public static Package DeserializeYaml(string body)
+		{
+			try
+			{
+				var deserializer = new DeserializerBuilder()
+					.WithNamingConvention(new CamelCaseNamingConvention())
+					.Build();
+				var pkg = deserializer.Deserialize<Package>(new StringReader(body));
+				return pkg;
+			}
+			catch (YamlException)
+			{
+				throw new InvalidDataException("invalid Yaml file content");
+			}
+		}
+
+		/// <summary>
+		/// Deserializes Package from Json data
+		/// </summary>
+		/// <param name="body">Json data in text format</param>
+		/// <returns>parsed Package</returns>
 		/// <exception cref="InvalidDataException"></exception>
 		public static Package DeserializeJson(string body)
 		{
@@ -137,11 +157,17 @@ namespace CodeGen
 			}
 			catch (Exception)
 			{
-				throw new InvalidDataException("invalid json file content");
+				throw new InvalidDataException("invalid Json file content");
 			}
 		}
 
-		private static Package DeserializeXml(string body)
+		/// <summary>
+		/// Deserialized Package from Xml data
+		/// </summary>
+		/// <param name="body">Xml data in text format</param>
+		/// <returns>Parsed Package</returns>
+		/// <exception cref="InvalidDataException"></exception>
+		public static Package DeserializeXml(string body)
 		{
 			try
 			{
@@ -153,7 +179,7 @@ namespace CodeGen
 			}
 			catch (Exception)
 			{
-				throw new InvalidDataException("invalid xml file content");
+				throw new InvalidDataException("invalid XML file content");
 			}
 		}
 	}

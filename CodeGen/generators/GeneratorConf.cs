@@ -11,7 +11,7 @@ namespace CodeGen.generators
 	public abstract class Generator
 	{
 		/// <summary>
-		/// 
+		/// Use tabs or spaces
 		/// </summary>
 		protected static bool UseTabs = true;
 
@@ -33,7 +33,14 @@ namespace CodeGen.generators
 			return data;
 		}
 
-//		public abstract Generator getInstance();
+		/// <summary>
+		/// Gets indentation of current generator
+		/// </summary>
+		/// <returns>identation</returns>
+		public virtual string GetIndent()
+		{
+			return "\t";
+		}
 
 		/// <summary>
 		///	Class generator: generates class with fields, methods and subclasses from given class object
@@ -47,14 +54,14 @@ namespace CodeGen.generators
 		/// </summary>
 		/// <param name="field">Field object</param>
 		/// <returns>String of generated code of field</returns>
-		protected abstract string GenerateField(Field field);
+		public abstract string GenerateField(Field field);
 
 		/// <summary>
 		/// Method generator: generates method from given method object
 		/// </summary>
 		/// <param name="method">Method object</param>
 		/// <returns>String of generated code of method</returns>
-		protected abstract string GenerateMethod(Method method);
+		public abstract string GenerateMethod(Method method);
 	}
 
 	/// <summary>
@@ -63,7 +70,6 @@ namespace CodeGen.generators
 	/// \todo Make a singleton
 	public abstract class Normalizer
 	{
-		
 		/// <summary>
 		/// Package normalizer: normalizes package with classes and subpackages
 		/// </summary>
@@ -117,7 +123,7 @@ namespace CodeGen.generators
 		/// <returns>Normalized method object</returns>
 		protected virtual Method NormalizeMethod(ref Method method)
 		{
-			method.Return = NormalizeType(method.Return);
+			method.Type = NormalizeType(method.Type);
 			for (var i = 0; i < method.Parameters?.Length; i++)
 				NormalizeParameter(method.Parameters[i]);
 			return method;
@@ -140,6 +146,34 @@ namespace CodeGen.generators
 		/// <param name="type"></param>
 		/// <returns></returns>
 		protected abstract string NormalizeType(string type);
+	}
+
+	/// <summary>
+	/// 
+	/// </summary>
+	public abstract class Validator
+	{
+		private string[] AccessModifiers { get; } = {"", "public", "private", "protected", "default"};
+
+		/// <summary>
+		/// Checks if field is valid
+		/// </summary>
+		/// <param name="field">field to be checked</param>
+		/// <returns>if the field is valid or not</returns>
+		public virtual bool FieldIsValid(Field field)
+		{
+			if (field == null)
+				return false;
+			var isInvalid = string.IsNullOrWhiteSpace(field.Name);
+			isInvalid |= string.IsNullOrWhiteSpace(field.Type);
+			isInvalid |= string.IsNullOrWhiteSpace(field.Type);
+			isInvalid |= field.Name.Any(char.IsWhiteSpace);
+			isInvalid |= field.Type.Any(char.IsWhiteSpace);
+			if (field.Access == null) return !isInvalid;
+			isInvalid |= field.Access.Any(char.IsWhiteSpace);
+			isInvalid |= !AccessModifiers.Any(field.Access.Equals);
+			return !isInvalid;
+		}
 	}
 
 	/// <summary>
@@ -244,7 +278,7 @@ namespace CodeGen.generators
 						new Method
 						{
 							Access = "private",
-							Return = "",
+							Type = "",
 							Name = "print",
 							Parameters = new[]
 							{
@@ -258,14 +292,14 @@ namespace CodeGen.generators
 						new Method
 						{
 							Access = "protected",
-							Return = "int",
+							Type = "int",
 							Static = true,
 							Name = "getSizeValue"
 						},
 						new Method
 						{
 							Access = "public",
-							Return = "string",
+							Type = "string",
 							Name = "getColorName",
 							Const = true
 						}
@@ -291,7 +325,7 @@ namespace CodeGen.generators
 								{
 									Static = true,
 									Access = "public",
-									Return = "int",
+									Type = "int",
 									Name = "transform",
 									Const = true
 								}
@@ -315,11 +349,14 @@ namespace CodeGen.generators
 			{"ruby", new Languange(new RubyGenerator(), "rb", "# {0}")},
 			{"python", new Languange(new PythonGenerator(), "py", "# {0}\n")},
 			{"vb", new Languange(new VbGenerator(), "vb", "' {0}\n", VbNormalizer.GetNormalizer())},
-			{"csharp", new Languange(new CSharpGenerator(), "cs", "/* {0} */")},
+			{"csharp", new Languange(new CSharpGenerator(), "cs", "/* {0} */", CSharpNormalizer.GetNormalizer())},
 			{"js_es6", new Languange(new Es6Generator(), "js", "/* {0} */")},
 			{"groovy", new Languange(new GroovyGenerator(), "groovy", "/* {0} */")},
 			{"cpp", new Languange(new CppGenerator(), "cpp", "/* {0} */")},
 		};
+		//{"es6", new Languange(new Es6Generator(), "es2015", "/* {0} */")},
+//		{"js", new Languange(new Es6Generator(), "js5", "/* {0} */")},
+
 
 		/// <summary>
 		/// Creates indent using given parameters
