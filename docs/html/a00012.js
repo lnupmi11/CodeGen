@@ -1,8 +1,8 @@
 var a00012 =
 [
-    [ "Languange", "a00012.html#a89fa98041473b18a7df845e14edcba07", null ],
-    [ "Comment", "a00012.html#aa63aaf377bcac5ca06c14304701c3493", null ],
-    [ "Extension", "a00012.html#af00eae192536b05d637d0b81954202c7", null ],
-    [ "Generator", "a00012.html#a25fb0a47247497581d2d0560d0db66d8", null ],
-    [ "Normalizer", "a00012.html#ad188260793d4d4f994fb720d0ac60aff", null ]
+    [ "GenerateClass", "a00012.html#aebc6618c4d20b03195d4dd2a9bd03ffb", null ],
+    [ "GenerateField", "a00012.html#a84c05958d52e40e29a5a2157de4579e2", null ],
+    [ "GenerateMethod", "a00012.html#a01dca6b9662f50fbd4735dbe97c99cc2", null ],
+    [ "GetIndent", "a00012.html#a6de1d1c9e5efc470dd1f3b5d598a7075", null ],
+    [ "Indent", "a00012.html#a2782dcca7a2de7d1db5e178e197c76ae", null ]
 ];

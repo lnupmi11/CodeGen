@@ -1,7 +1,8 @@
 var a00018 =
 [
-    [ "GenerateClass", "a00018.html#a7ef1629fdf50856e1424ed4fd8be564c", null ],
-    [ "GenerateField", "a00018.html#aafd171ffd14980515eef644b929bd712", null ],
-    [ "GenerateMethod", "a00018.html#a09ea61b8eb384efcc36aa3574f9cb6a8", null ],
-    [ "Indent", "a00018.html#a6dc1dd399a759ac22c68c17d7144b461", null ]
+    [ "ToString", "a00018.html#a73029cd81fc68696bfe2d801ee382e69", null ],
+    [ "Classes", "a00018.html#a7bdaec0ad570345975582ca99076d4dd", null ],
+    [ "Name", "a00018.html#a8da357302a6d399ce554f7a71bc4a90d", null ],
+    [ "Packages", "a00018.html#a014a74cbc2bc2876e24d5a250cb54c68", null ],
+    [ "UseSpaces", "a00018.html#af03f90e7753d7fdc68699c32f86f82e9", null ]
 ];

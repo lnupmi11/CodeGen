@@ -1,3 +1,4 @@
-<map id="CodeGen.generators.JavaGenerator" name="CodeGen.generators.JavaGenerator">
-<area shape="rect" id="node2" href="$a00006.html" title="Interface of language generator " alt="" coords="51,6,188,127"/>
+<map id="CodeGen.generators.Validator" name="CodeGen.generators.Validator">
+<area shape="rect" id="node2" href="$a00003.html" title="{CodeGen.generators.CppValidator\n||}" alt="" coords="5,131,227,208"/>
+<area shape="rect" id="node3" href="$a00014.html" title="{CodeGen.generators.JavaValidator\n||}" alt="" coords="251,131,476,208"/>
 </map>

@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['usetabs',['UseTabs',['../a00006.html#a7a3edb5addb8b879b39666718f32514d',1,'CodeGen::generators::Generator']]]
+  ['usetabs',['UseTabs',['../a00008.html#a7a3edb5addb8b879b39666718f32514d',1,'CodeGen::generators::Generator']]]
 ];

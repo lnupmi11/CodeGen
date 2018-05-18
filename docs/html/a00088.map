@@ -1,3 +1,4 @@
-<map id="CodeGen.generators.JavaNormalizer" name="CodeGen.generators.JavaNormalizer">
-<area shape="rect" id="node2" href="$a00014.html" title="Interface of language normalizer: normalizes package data according to specified language ..." alt="" coords="43,6,201,157"/>
+<map id="CodeGen.generators.Languange" name="CodeGen.generators.Languange">
+<area shape="rect" id="node2" href="$a00017.html" title="Interface of language normalizer: normalizes package data according to specified language ..." alt="" coords="5,6,213,157"/>
+<area shape="rect" id="node3" href="$a00008.html" title="Interface of language generator " alt="" coords="239,13,441,149"/>
 </map>

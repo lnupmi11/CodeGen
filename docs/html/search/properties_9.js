@@ -1,5 +1,4 @@
 var searchData=
 [
-  ['setter',['Setter',['../a00005.html#ad57a32f584421475ceb3c929e56b20f9',1,'CodeGen::generators::Field']]],
-  ['static',['Static',['../a00005.html#a09f180833f4cf101aa0b4183407d7a80',1,'CodeGen.generators.Field.Static()'],['../a00013.html#a40aa2b9a7000ae6acc851b97410ce2af',1,'CodeGen.generators.Method.Static()']]]
+  ['type',['Type',['../a00024.html#a42c04d2c0f45318b1fcf0fd8753bdbcf',1,'CodeGen.generators.Variable.Type()'],['../a00016.html#a018dbbe7037dab3236a9c6e92e32f8b5',1,'CodeGen.generators.Method.Type()']]]
 ];
